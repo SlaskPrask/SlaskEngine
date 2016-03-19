@@ -4,6 +4,8 @@
 
 Sprite::Sprite(const char* file)
 {
+	tex = new sf::Texture();
+
 	if (!tex->loadFromFile(file))
 		tex = NULL;
 }
@@ -31,4 +33,5 @@ bool Sprite::bind()
 
 Sprite::~Sprite()
 {
+	delete tex;
 }

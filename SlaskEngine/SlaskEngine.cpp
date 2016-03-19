@@ -9,6 +9,7 @@ SlaskEngine::SlaskEngine()
 	
 	GraphicsHandler graphics(1280, 720, "SlaskEngine");
 	InputHandler input;
+	Sprite test("slask.png");
 
 	while (running)
 	{
