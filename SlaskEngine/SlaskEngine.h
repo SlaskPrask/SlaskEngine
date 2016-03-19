@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "GraphicsHandler.h"
 #include "InputHandler.h"
 
 using namespace sf;
@@ -8,6 +8,7 @@ using namespace sf;
 class SlaskEngine
 {
 private:
+	bool running;
 
 public:
 	SlaskEngine();

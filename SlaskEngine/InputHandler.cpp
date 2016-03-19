@@ -18,7 +18,8 @@ bool InputHandler::run(RenderWindow* window)
 {
 	bool close = false;
 	Event event;
-
+	
+	//0 is not pressed, 1 is initial press, 2 is held down
 	for (int i = 0; i < Keyboard::Key::KeyCount; i++)
 	{
 		if (key[i] == 1)
