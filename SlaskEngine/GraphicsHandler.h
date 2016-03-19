@@ -9,14 +9,24 @@ class GraphicsHandler
 {
 private:
 	sf::RenderWindow* window;
+	bool vsync; 
+	int framespersecond;
+	const char* label;
 
 public:
 	GraphicsHandler(int w, int h, const char* title);
 	~GraphicsHandler();
 
 	sf::RenderWindow* getWindow();
+	
 	void setTitle(const char* title);
 	void setFPS(int fps);
+	void setVSync(bool enabled);
+	
+	const char* getTitle();
+	int getFPS();
+	bool getVSync();
+	
 	void drawBegin();
 	void drawEnd();
 	void close();

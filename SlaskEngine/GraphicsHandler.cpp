@@ -12,6 +12,8 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 	settings.minorVersion = 0;
 
 	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
+	setVSync(true);
+	setFPS(60);
 	glEnable(GL_TEXTURE_2D);
 }
 
@@ -23,6 +25,27 @@ void GraphicsHandler::setTitle(const char* title)
 void GraphicsHandler::setFPS(int fps)
 {
 	window->setFramerateLimit(fps);
+}
+
+void GraphicsHandler::setVSync(bool enabled)
+{
+	window->setVerticalSyncEnabled(enabled);
+}
+
+
+int GraphicsHandler::getFPS()
+{
+	return framespersecond;
+}
+
+bool GraphicsHandler::getVSync()
+{
+	return vsync;
+}
+
+const char* GraphicsHandler::getTitle()
+{
+	return label;
 }
 
 sf::RenderWindow* GraphicsHandler::getWindow()
