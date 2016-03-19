@@ -4,7 +4,10 @@
 
 Sprite::Sprite(const char* file)
 {
-	glEnable(GL_TEXTURE_2D);
+	if (tex.loadFromFile(file))
+		sf::Texture::bind(&tex);
+	else
+		tex = NULL;
 }
 
 

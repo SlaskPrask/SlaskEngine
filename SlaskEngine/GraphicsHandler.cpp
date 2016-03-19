@@ -12,7 +12,7 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 	settings.minorVersion = 0;
 
 	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
-
+	glEnable(GL_TEXTURE_2D);
 }
 
 void GraphicsHandler::setTitle(const char* title)
