@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <gl/freeglut.h>
+#include "Sprite.h"
 
 
 class GraphicsHandler
@@ -19,5 +20,7 @@ public:
 	void drawBegin();
 	void drawEnd();
 	void close();
+
+	void drawSprite(Sprite* sprite, int x, int y);
 };
 

@@ -33,5 +33,6 @@ bool Sprite::bind()
 
 Sprite::~Sprite()
 {
-	delete tex;
+	if (tex)
+		delete tex;
 }

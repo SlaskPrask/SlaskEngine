@@ -45,6 +45,10 @@ void GraphicsHandler::close()
 	window->close();
 }
 
+void GraphicsHandler::drawSprite(Sprite* sprite, int x, int y)
+{
+
+}
 
 
 GraphicsHandler::~GraphicsHandler()
