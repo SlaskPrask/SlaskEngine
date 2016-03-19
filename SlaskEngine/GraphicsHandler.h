@@ -14,6 +14,8 @@ public:
 	~GraphicsHandler();
 
 	RenderWindow* getWindow();
+	void setTitle(const char* title);
+	void setFPS(int fps);
 	void drawBegin();
 	void drawEnd();
 	void close();

@@ -6,9 +6,7 @@ using namespace std;
 SlaskEngine::SlaskEngine()
 {
 	running = false;
-	RenderWindow window(VideoMode(1280, 720), "I'M SLASK"/*, Style::Titlebar*/);
-	window.setFramerateLimit(60);
-
+	
 	GraphicsHandler graphics(1280, 720, "SlaskEngine");
 	InputHandler input;
 
