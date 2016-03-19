@@ -6,7 +6,7 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 {
 }
 
-Window* GraphicsHandler::getWindow()
+RenderWindow* GraphicsHandler::getWindow()
 {
 	return window;
 }

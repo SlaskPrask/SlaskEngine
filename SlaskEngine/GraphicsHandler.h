@@ -7,13 +7,13 @@ using namespace sf;
 class GraphicsHandler
 {
 private:
-	Window* window;
+	RenderWindow* window;
 
 public:
 	GraphicsHandler(int w, int h, const char* title);
 	~GraphicsHandler();
 
-	Window* getWindow();
+	RenderWindow* getWindow();
 	void drawBegin();
 	void drawEnd();
 	void close();
