@@ -11,7 +11,7 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
 
-	Window window(VideoMode(w, h), title, Style::Default, settings);
+	window = new RenderWindow(VideoMode(w, h), title, Style::Default, settings);
 
 }
 
@@ -49,4 +49,5 @@ void GraphicsHandler::close()
 
 GraphicsHandler::~GraphicsHandler()
 {
+	delete window;
 }
