@@ -12,26 +12,46 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 	settings.minorVersion = 0;
 
 	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
+	setTitle(title);
 	setVSync(true);
 	setFPS(60);
 	glEnable(GL_TEXTURE_2D);
+	setSize(w, h);
 }
 
 void GraphicsHandler::setTitle(const char* title)
 {
+	label = title;
 	window->setTitle(title);
 }
 
 void GraphicsHandler::setFPS(int fps)
 {
+	framespersecond = fps;
 	window->setFramerateLimit(fps);
 }
 
 void GraphicsHandler::setVSync(bool enabled)
 {
+	vsync = enabled;
 	window->setVerticalSyncEnabled(enabled);
 }
 
+void GraphicsHandler::setSize(int w, int h)
+{
+	width = w;
+	height = h;
+}
+
+int GraphicsHandler::getWidth()
+{
+	return width;
+}
+
+int GraphicsHandler::getHeight()
+{
+	return height;
+}
 
 int GraphicsHandler::getFPS()
 {
