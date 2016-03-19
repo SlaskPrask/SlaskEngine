@@ -16,13 +16,12 @@ SlaskEngine::SlaskEngine()
 	while (running)
 	{
 		if (input.run(graphics.getWindow()))
-			window.close();
+			running = false;
 
 		//cout << input.getkey(InputHandler::Pause) << endl;
 
-		window.clear();
-		window.draw(shape);
-		window.display();
+		graphics.drawBegin();
+		graphics.drawEnd();
 	}
 	graphics.close();
 }
