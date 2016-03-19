@@ -15,8 +15,23 @@ GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 	setTitle(title);
 	setVSync(true);
 	setFPS(60);
-	glEnable(GL_TEXTURE_2D);
 	setSize(w, h);
+	setRenderSize(w, h);
+	
+	glEnable(GL_TEXTURE_2D);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glFogf(GL_FOG_MODE, GL_LINEAR);
+	glFogf(GL_FOG_START, 0);
+	glFogf(GL_FOG_END, 0);
+	glHint(GL_FOG_HINT, GL_NICEST);
+	glFogf(GL_FOG_DENSITY, 1);
+	glDisable(GL_FOG);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	glDisable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 }
 
 void GraphicsHandler::setTitle(const char* title)
@@ -41,6 +56,18 @@ void GraphicsHandler::setSize(int w, int h)
 {
 	width = w;
 	height = h;
+}
+
+void GraphicsHandler::setRenderSize(int w, int h) 
+{
+	int size = (w<h ? w : h);
+	int offset = (w<h ? h - w : w - h);
+	glViewport((w<h ? 0 : offset / 2), (w<h ? offset / 2 : 0), size, size);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, width, height, 0, 0, 1);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }
 
 int GraphicsHandler::getWidth()

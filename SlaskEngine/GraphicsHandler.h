@@ -26,6 +26,7 @@ public:
 	void setFPS(int fps);
 	void setVSync(bool enabled);
 	void setSize(int w, int h);
+	void setRenderSize(int w, int h);
 	
 	const char* getTitle();
 	int getFPS();
