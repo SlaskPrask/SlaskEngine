@@ -5,7 +5,7 @@ using namespace std;
 
 SlaskEngine::SlaskEngine()
 {
-	running = true;
+	running = false;
 	RenderWindow window(VideoMode(1280, 720), "I'M SLASK"/*, Style::Titlebar*/);
 	window.setFramerateLimit(60);
 
@@ -26,5 +26,6 @@ SlaskEngine::SlaskEngine()
 		window.draw(shape);
 		window.display();
 	}
+	graphics.close();
 }
 SlaskEngine::~SlaskEngine(){}

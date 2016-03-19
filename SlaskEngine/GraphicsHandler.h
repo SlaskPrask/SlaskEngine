@@ -14,5 +14,8 @@ public:
 	~GraphicsHandler();
 
 	Window* getWindow();
+	void drawBegin();
+	void drawEnd();
+	void close();
 };
 
