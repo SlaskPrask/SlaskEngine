@@ -2,25 +2,25 @@
 
 InputHandler::InputHandler()
 {
-	key = new int[Keyboard::Key::KeyCount];
+	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
 	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
 	{
 		mouse_butt[i] = 0;
 	}
-	for (int i = 0; i < Keyboard::Key::KeyCount; i++)
+	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
 	{
 		key[i] = 0;
 	}
 }
 
-bool InputHandler::run(RenderWindow* window)
+bool InputHandler::run(sf::RenderWindow* window)
 {
 	bool close = false;
-	Event event;
+	sf::Event event;
 	
 	//0 is not pressed, 1 is initial press, 2 is held down
-	for (int i = 0; i < Keyboard::Key::KeyCount; i++)
+	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
 	{
 		if (key[i] == 1)
 			key[i] = 2;
@@ -40,25 +40,25 @@ bool InputHandler::run(RenderWindow* window)
 		{
 		default:
 			break;
-		case Event::Closed:
+		case sf::Event::Closed:
 			close = true;
 			break;
-		case Event::Resized:
+		case sf::Event::Resized:
 			break;
-		case Event::LostFocus:
+		case sf::Event::LostFocus:
 			break;
-		case Event::GainedFocus:
+		case sf::Event::GainedFocus:
 			break;
-		case Event::TextEntered:
+		case sf::Event::TextEntered:
 			break;
-		case Event::KeyPressed:
+		case sf::Event::KeyPressed:
 			if (key[event.key.code] == 0)
 				key[event.key.code] = 1;
 			break;
-		case Event::KeyReleased:
+		case sf::Event::KeyReleased:
 			key[event.key.code] = 0;
 			break;
-		case Event::MouseWheelMoved:
+		case sf::Event::MouseWheelMoved:
 			if (event.mouseWheel.delta < 0)
 				mousewheel_down = -event.mouseWheel.delta;
 			else
@@ -67,7 +67,7 @@ bool InputHandler::run(RenderWindow* window)
 			mouse_x = event.mouseWheel.x;
 			mouse_y = event.mouseWheel.y;
 			break;
-		case Event::MouseButtonPressed:
+		case sf::Event::MouseButtonPressed:
 			if (event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 1;
@@ -75,7 +75,7 @@ bool InputHandler::run(RenderWindow* window)
 				mouse_y = event.mouseButton.y;
 			}
 			break;
-		case Event::MouseButtonReleased:
+		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 0;
@@ -83,23 +83,23 @@ bool InputHandler::run(RenderWindow* window)
 				mouse_y = event.mouseButton.y;
 			}
 			break;
-		case Event::MouseMoved:
+		case sf::Event::MouseMoved:
 			mouse_x = event.mouseMove.x;
 			mouse_y = event.mouseMove.y;
 			break;
-		case Event::MouseEntered:
+		case sf::Event::MouseEntered:
 			break;
-		case Event::MouseLeft:
+		case sf::Event::MouseLeft:
 			break;
-		case Event::JoystickButtonPressed:
+		case sf::Event::JoystickButtonPressed:
 			break;
-		case Event::JoystickButtonReleased:
+		case sf::Event::JoystickButtonReleased:
 			break;
-		case Event::JoystickMoved:
+		case sf::Event::JoystickMoved:
 			break;
-		case Event::JoystickConnected:
+		case sf::Event::JoystickConnected:
 			break;
-		case Event::JoystickDisconnected:
+		case sf::Event::JoystickDisconnected:
 			break;
 		}
 	}

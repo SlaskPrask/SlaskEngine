@@ -4,14 +4,14 @@
 
 GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
 {
-	ContextSettings settings;
+	sf::ContextSettings settings;
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
 	settings.antialiasingLevel = 4;
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
 
-	window = new RenderWindow(VideoMode(w, h), title, Style::Default, settings);
+	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
 
 }
 
@@ -25,7 +25,7 @@ void GraphicsHandler::setFPS(int fps)
 	window->setFramerateLimit(fps);
 }
 
-RenderWindow* GraphicsHandler::getWindow()
+sf::RenderWindow* GraphicsHandler::getWindow()
 {
 	return window;
 }

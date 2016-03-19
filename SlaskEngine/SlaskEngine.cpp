@@ -5,13 +5,10 @@ using namespace std;
 
 SlaskEngine::SlaskEngine()
 {
-	running = false;
+	running = true;
 	
 	GraphicsHandler graphics(1280, 720, "SlaskEngine");
 	InputHandler input;
-
-	CircleShape shape(100.f);
-	shape.setFillColor(Color::Blue);
 
 	while (running)
 	{

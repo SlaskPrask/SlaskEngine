@@ -3,8 +3,6 @@
 #include <SFML/System.hpp>
 #define MAXMOUSEBUTTONS (5)
 
-using namespace sf;
-
 class InputHandler
 {
 private:
@@ -20,7 +18,7 @@ public:
 	InputHandler();
 	~InputHandler();
 
-	bool run(RenderWindow* window);
+	bool run(sf::RenderWindow* window);
 
 	int getkey(int i);
 	int getmouse(int i);

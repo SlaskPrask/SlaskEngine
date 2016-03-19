@@ -2,18 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
-using namespace sf;
 
 class GraphicsHandler
 {
 private:
-	RenderWindow* window;
+	sf::RenderWindow* window;
 
 public:
 	GraphicsHandler(int w, int h, const char* title);
 	~GraphicsHandler();
 
-	RenderWindow* getWindow();
+	sf::RenderWindow* getWindow();
 	void setTitle(const char* title);
 	void setFPS(int fps);
 	void drawBegin();

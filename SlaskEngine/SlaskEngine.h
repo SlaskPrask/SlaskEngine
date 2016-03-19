@@ -2,8 +2,6 @@
 #include "GraphicsHandler.h"
 #include "InputHandler.h"
 
-using namespace sf;
-
 
 class SlaskEngine
 {
