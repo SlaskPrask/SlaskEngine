@@ -13,6 +13,9 @@ private:
 	int maxChannels;
 	void setMaxChannels(int channels);
 
+	bool sampleasync; 
+	bool sampledecompress;
+
 public:
 	AudioHandler(int channels);
 	~AudioHandler();
