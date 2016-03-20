@@ -6,8 +6,10 @@ AudioHandler::AudioHandler(int channels)
 {
 	//driverCount = 0;
 
+	audioSys = 0;
 	result = FMOD::Studio::System::create(&audioSys);
 	
+
 	if (result != FMOD_OK)
 	{
 		//ERROR

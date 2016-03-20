@@ -5,8 +5,8 @@
 class Audio
 {
 private:
-	
 	FMOD::Studio::Bank** bank;
+
 	bool sampleasync;
 	bool sampledecompress;
 

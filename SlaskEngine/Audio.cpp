@@ -4,9 +4,8 @@
 
 Audio::Audio(const char* file, FMOD_STUDIO_LOAD_BANK_FLAGS flags)
 {
-	FMOD_RESULT 
-		FMOD::Studio::System::loadBankFile(file, flags, bank);
-
+	FMOD::Studio::System* system;
+	system->loadBankFile(file, flags, bank);
 }
 
 void Audio::setSampleDecompress(bool enabled)
