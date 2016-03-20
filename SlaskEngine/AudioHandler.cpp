@@ -19,6 +19,8 @@ AudioHandler::AudioHandler()
 		return;
 	}
 
+	setMaxChannels(12);
+
 	//Initialize FMOD instance with 24 channels
 	audioSys->init(maxChannels, FMOD_INIT_NORMAL, 0);
 
