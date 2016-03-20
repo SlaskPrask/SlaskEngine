@@ -47,6 +47,10 @@ int AudioHandler::getMaxChannels()
 	return maxChannels;
 }
 
+FMOD::Studio::System* AudioHandler::getSystem()
+{
+	return audioSys;
+}
 
 AudioHandler::~AudioHandler()
 {

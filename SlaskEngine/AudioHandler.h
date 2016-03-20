@@ -3,6 +3,7 @@
 #include <fmod_studio.hpp>
 #include "Audio.h"
 
+
 class AudioHandler
 {
 private:
@@ -23,5 +24,7 @@ public:
 	~AudioHandler();
 
 	int getMaxChannels();
+
+	FMOD::Studio::System* getSystem();
 };
 
