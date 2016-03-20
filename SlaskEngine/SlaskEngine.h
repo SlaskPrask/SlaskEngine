@@ -2,6 +2,7 @@
 #include "GraphicsHandler.h"
 #include "InputHandler.h"
 #include "Sprite.h"
+#include "AudioHandler.h"
 
 
 class SlaskEngine
