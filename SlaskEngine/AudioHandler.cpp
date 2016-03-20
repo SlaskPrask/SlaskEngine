@@ -2,7 +2,7 @@
 
 
 
-AudioHandler::AudioHandler()
+AudioHandler::AudioHandler(int channels)
 {
 	if (FMOD::System_Create(&audioSys) != FMOD_OK) 
 	{
@@ -19,10 +19,10 @@ AudioHandler::AudioHandler()
 		return;
 	}
 
-	setMaxChannels(12);
+	//setMaxChannels(12);
 
 	//Initialize FMOD instance with 24 channels
-	audioSys->init(maxChannels, FMOD_INIT_NORMAL, 0);
+	audioSys->init(channels, FMOD_INIT_NORMAL, 0);
 
 }
 
