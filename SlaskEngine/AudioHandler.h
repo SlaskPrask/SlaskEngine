@@ -13,8 +13,8 @@ public:
 	AudioHandler();
 	~AudioHandler();
 
-	void setMaxChannels(int channels){};
+	void setMaxChannels(int channels);
 	
-	int getMaxChannels() {};
+	int getMaxChannels();
 };
 
