@@ -11,7 +11,9 @@ private:
 	bool running;
 
 public:
-	SlaskEngine();
+	static SlaskEngine* instance();
+
+	void init();
 	~SlaskEngine();
 	
 };

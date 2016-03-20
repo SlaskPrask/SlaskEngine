@@ -1,8 +1,12 @@
 #include "GraphicsHandler.h"
 
+GraphicsHandler* GraphicsHandler::instance()
+{
+	static GraphicsHandler graphicshandler;
+	return &graphicshandler;
+}
 
-
-GraphicsHandler::GraphicsHandler(int w, int h, const char* title)
+void GraphicsHandler::init(int w, int h, const char* title)
 {
 	sf::ContextSettings settings;
 	settings.depthBits = 24;

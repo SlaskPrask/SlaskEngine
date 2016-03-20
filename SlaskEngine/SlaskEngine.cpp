@@ -3,7 +3,13 @@
 
 using namespace std;
 
-SlaskEngine::SlaskEngine()
+SlaskEngine* SlaskEngine::instance()
+{
+	static SlaskEngine slaskengine;
+	return &slaskengine;
+}
+
+void SlaskEngine::init()
 {
 	running = true;
 	

@@ -1,8 +1,12 @@
 #include "AudioHandler.h"
 
+AudioHandler* AudioHandler::instance()
+{
+	static AudioHandler audiohandler;
+	return &audiohandler;
+}
 
-
-AudioHandler::AudioHandler(int channels)
+void AudioHandler::init(int channels)
 {
 	//driverCount = 0;
 
@@ -28,7 +32,7 @@ AudioHandler::AudioHandler(int channels)
 
 	setMaxChannels(channels);
 
-	//Initialize FMOD instance with 24 channels
+	//Initialize FMOD instance with 12 channels
 	result = audioSys->initialize(channels, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
 
 }

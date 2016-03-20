@@ -17,7 +17,9 @@ private:
 	int height;
 
 public:
-	GraphicsHandler(int w, int h, const char* title);
+	static GraphicsHandler* instance();
+
+	void init(int w, int h, const char* title);
 	~GraphicsHandler();
 
 	sf::RenderWindow* getWindow();

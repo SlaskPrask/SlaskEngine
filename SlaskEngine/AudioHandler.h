@@ -17,7 +17,9 @@ private:
 	bool sampledecompress;
 
 public:
-	AudioHandler(int channels);
+	static AudioHandler* instance();
+
+	void init(int channels);
 	~AudioHandler();
 
 	int getMaxChannels();

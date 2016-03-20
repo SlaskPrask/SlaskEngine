@@ -15,7 +15,9 @@ private:
 	int* key;
 
 public:
-	InputHandler();
+	static InputHandler* instance();
+
+	void init();
 	~InputHandler();
 
 	bool run(sf::RenderWindow* window);

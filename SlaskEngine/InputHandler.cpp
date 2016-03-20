@@ -1,6 +1,12 @@
 #include "InputHandler.h"
 
-InputHandler::InputHandler()
+InputHandler* InputHandler::instance()
+{
+	static InputHandler inputhandler;
+	return &inputhandler;
+}
+
+void InputHandler::init()
 {
 	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
