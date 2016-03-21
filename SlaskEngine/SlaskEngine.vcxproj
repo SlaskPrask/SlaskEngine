@@ -137,6 +137,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SlaskEngine.cpp" />
+    <ClCompile Include="slasknamespace.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="GraphicsHandler.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="SlaskEngine.h" />
+    <ClInclude Include="slasknamespace.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

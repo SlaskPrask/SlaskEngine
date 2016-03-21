@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "Sprite.h"
 #include "AudioHandler.h"
+#include "slasknamespace.h"
 
 
 class SlaskEngine
@@ -20,9 +21,3 @@ public:
 
 };
 
-namespace slask
-{
-	GraphicsHandler* graphics();
-	InputHandler* input();
-	AudioHandler* audio();
-};

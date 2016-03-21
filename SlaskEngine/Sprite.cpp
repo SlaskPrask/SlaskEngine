@@ -36,25 +36,3 @@ Sprite::~Sprite()
 	if (tex)
 		delete tex;
 }
-
-
-
-
-
-
-//namespaces
-
-GraphicsHandler* slask::graphics()
-{
-	return GraphicsHandler::instance();
-}
-
-InputHandler* slask::input()
-{
-	return InputHandler::instance();
-}
-
-AudioHandler* slask::audio()
-{
-	return AudioHandler::instance();
-}
