@@ -40,6 +40,7 @@ void SlaskEngine::init()
 		//cout << input.getkey(InputHandler::Pause) << endl;
 
 		graphics->drawBegin();
+		graphics->drawSprite(test, 0, 0, 100, 100);
 		graphics->drawEnd();
 	}
 	graphics->close();

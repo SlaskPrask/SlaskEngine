@@ -119,7 +119,7 @@ void GraphicsHandler::close()
 	window->close();
 }
 
-double GraphicsHandler::drawSprite(Sprite* sprite, int x, int y, int w, int h)
+void GraphicsHandler::drawSprite(Sprite* sprite, double x, double y, double w, double h)
 {
 	GLfloat d2d[] = { x,y,0,x + w,y,0,x,y + h,0,x + w,y + h,0 };
 	GLfloat d2d_tex[8] = { 0,0,1,0,0,1,1,1 };

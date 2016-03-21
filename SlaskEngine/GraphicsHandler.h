@@ -36,7 +36,7 @@ public:
 	int getWidth();
 	int getHeight();
 	
-	double drawSprite(Sprite* sprite, int x, int y, int w, int h);
+	void drawSprite(Sprite* sprite, double x, double y, double w, double h);
 
 	void drawBegin();
 	void drawEnd();
