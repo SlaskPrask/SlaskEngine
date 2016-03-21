@@ -17,4 +17,12 @@ public:
 	SlaskEngine();
 	~SlaskEngine();
 	
+
+};
+
+namespace slask
+{
+	GraphicsHandler* graphics();
+	InputHandler* input();
+	AudioHandler* audio();
 };
