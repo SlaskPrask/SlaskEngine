@@ -20,8 +20,9 @@ void InputHandler::init()
 	}
 }
 
-bool InputHandler::run(sf::RenderWindow* window)
+bool InputHandler::run()
 {
+	sf::RenderWindow *window = GraphicsHandler::instance()->getWindow();
 	bool close = false;
 	sf::Event event;
 	

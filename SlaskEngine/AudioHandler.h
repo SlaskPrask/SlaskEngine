@@ -7,7 +7,6 @@
 class AudioHandler
 {
 private:
-	FMOD_RESULT result;
 	FMOD::Studio::System* audioSys;
 
 	int driverCount;

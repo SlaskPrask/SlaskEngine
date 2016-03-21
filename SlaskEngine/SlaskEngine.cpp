@@ -24,7 +24,7 @@ void SlaskEngine::init()
 
 	while (running)
 	{
-		if (input->run(graphics->getWindow()))
+		if (input->run())
 			running = false;
 
 		//cout << input.getkey(InputHandler::Pause) << endl;

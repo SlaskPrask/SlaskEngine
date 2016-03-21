@@ -8,6 +8,7 @@ AudioHandler* AudioHandler::instance()
 
 void AudioHandler::init(int channels)
 {
+	FMOD_RESULT result;
 	//driverCount = 0;
 
 	audioSys = 0;
