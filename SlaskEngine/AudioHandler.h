@@ -23,7 +23,15 @@ public:
 	void init(int channels);
 	~AudioHandler();
 
+	FMOD_STUDIO_LOAD_BANK_FLAGS getSampleFlags()
+	{
+		return (FMOD_STUDIO_LOAD_BANK_NONBLOCKING*sampleasync) | (FMOD_STUDIO_LOAD_BANK_DECOMPRESS_SAMPLES*sampledecompress);
+	}
+
 	int getMaxChannels();
+
+	void setSampleDecompress(bool enabled);
+	void setSampleASync(bool enabled);
 
 	FMOD::Studio::System* getSystem();
 };

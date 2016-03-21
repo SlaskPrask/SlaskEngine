@@ -35,6 +35,8 @@ void AudioHandler::init(int channels)
 	//Initialize FMOD instance with 12 channels
 	result = audioSys->initialize(channels, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, 0);
 
+	setSampleAsync(false); 
+	setSampleDecompress(false);
 }
 
 void AudioHandler::setMaxChannels(int channels)
@@ -45,6 +47,15 @@ void AudioHandler::setMaxChannels(int channels)
 int AudioHandler::getMaxChannels()
 {
 	return maxChannels;
+}
+
+void Audio::setSampleDecompress(bool enabled)
+{
+	sampledecompress = enabled;
+}
+void Audio::setSampleASync(bool enabled)
+{
+	sampleasync = enabled;
 }
 
 FMOD::Studio::System* AudioHandler::getSystem()

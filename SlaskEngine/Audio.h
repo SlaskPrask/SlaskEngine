@@ -12,15 +12,8 @@ private:
 	bool sampledecompress;
 
 public:
-	Audio(const char* file, FMOD_STUDIO_LOAD_BANK_FLAGS flags);
+	Audio(const char* file);
 	~Audio();
 
-	FMOD_STUDIO_LOAD_BANK_FLAGS getSampleFlags()
-	{
-		return (FMOD_STUDIO_LOAD_BANK_NONBLOCKING*sampleasync) | (FMOD_STUDIO_LOAD_BANK_DECOMPRESS_SAMPLES*sampledecompress);
-	}
-
-	void setSampleDecompress(bool enabled);
-	void setSampleASync(bool enabled);
 };
 
