@@ -12,6 +12,5 @@ Audio::Audio(const char* file)
 
 Audio::~Audio()
 {
-	system = AudioHandler::instance()->getSystem();
 	system->unloadAll();
 }

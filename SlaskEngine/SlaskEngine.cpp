@@ -16,11 +16,9 @@ void SlaskEngine::init()
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init(1280, 720, "SlaskEngine");
 
-	InputHandler* input;
-	input->init();
+	InputHandler* input = InputHandler::instance();
 
-	AudioHandler* audio;
-	audio->init();
+	AudioHandler* audio = AudioHandler::instance();
 
 	Sprite test("slask.png");
 
