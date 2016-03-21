@@ -14,6 +14,7 @@ public:
 	static SlaskEngine* instance();
 
 	void init();
+	SlaskEngine();
 	~SlaskEngine();
 	
 };

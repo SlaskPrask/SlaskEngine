@@ -9,9 +9,13 @@ SlaskEngine* SlaskEngine::instance()
 	return &slaskengine;
 }
 
-void SlaskEngine::init()
+SlaskEngine::SlaskEngine() 
 {
 	init();
+}
+
+void SlaskEngine::init()
+{
 	cout << GraphicsHandler::instance() << "\n";
 	cout << GraphicsHandler::instance() << "\n";
 
