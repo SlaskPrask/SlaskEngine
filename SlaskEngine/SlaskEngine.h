@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "Sprite.h"
 #include "AudioHandler.h"
+#include "slasknamespace.h"
 
 
 class SlaskEngine
@@ -14,8 +15,9 @@ public:
 	static SlaskEngine* instance();
 
 	void init();
-
-	//SlaskEngine();
+	SlaskEngine();
 	~SlaskEngine();
 	
+
 };
+

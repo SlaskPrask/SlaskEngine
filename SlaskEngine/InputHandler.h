@@ -1,6 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include "GraphicsHandler.h"
 #define MAXMOUSEBUTTONS (5)
 
 class InputHandler
@@ -20,7 +20,7 @@ public:
 	void init();
 	~InputHandler();
 
-	bool run(sf::RenderWindow* window);
+	bool run();
 
 	int getkey(int i);
 	int getmouse(int i);

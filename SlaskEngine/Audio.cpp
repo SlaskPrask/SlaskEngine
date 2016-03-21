@@ -2,23 +2,15 @@
 
 
 
-Audio::Audio(const char* file, FMOD_STUDIO_LOAD_BANK_FLAGS flags)
+Audio::Audio(const char* file)
 {
 	system = AudioHandler::instance()->getSystem();
-	system->loadBankFile(file, flags, bank);
+	system->loadBankFile(file, AudioHandler::instance()->getSampleFlags(), bank);
 }
 
-void Audio::setSampleDecompress(bool enabled)
-{
-	sampledecompress = enabled;
-}
-void Audio::setSampleASync(bool enabled)
-{
-	sampleasync = enabled;
-}
+
 
 Audio::~Audio()
 {
-	system = AudioHandler::instance()->getSystem();
 	system->unloadAll();
 }
