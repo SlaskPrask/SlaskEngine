@@ -11,6 +11,10 @@ SlaskEngine* SlaskEngine::instance()
 
 void SlaskEngine::init()
 {
+	init();
+	cout << GraphicsHandler::instance() << "\n";
+	cout << GraphicsHandler::instance() << "\n";
+
 	running = true;
 	
 	GraphicsHandler* graphics = GraphicsHandler::instance();
@@ -21,6 +25,8 @@ void SlaskEngine::init()
 	AudioHandler* audio = AudioHandler::instance();
 
 	Sprite test("slask.png");
+	
+
 
 	while (running)
 	{
@@ -33,6 +39,7 @@ void SlaskEngine::init()
 		graphics->drawEnd();
 	}
 	graphics->close();
+
 }
 SlaskEngine::~SlaskEngine(){
 }
