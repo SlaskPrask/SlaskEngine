@@ -9,7 +9,8 @@ SlaskEngine* SlaskEngine::instance()
 	return &slaskengine;
 }
 
-void SlaskEngine::init()
+
+void SlaskEngine::init() /*SlaskEngine::SlaskEngine()*/
 {
 	running = true;
 	
@@ -31,5 +32,7 @@ void SlaskEngine::init()
 	}
 	graphics->close();
 }
-SlaskEngine::~SlaskEngine(){
+SlaskEngine::~SlaskEngine()
+{
+
 }
