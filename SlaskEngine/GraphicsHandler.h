@@ -36,10 +36,10 @@ public:
 	int getWidth();
 	int getHeight();
 	
+	double drawSprite(Sprite* sprite, int x, int y, int w, int h);
+
 	void drawBegin();
 	void drawEnd();
 	void close();
-
-	void drawSprite(Sprite* sprite, int x, int y);
 };
 
