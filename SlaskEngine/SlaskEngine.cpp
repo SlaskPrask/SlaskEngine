@@ -16,9 +16,6 @@ SlaskEngine::SlaskEngine()
 
 void SlaskEngine::init()
 {
-	cout << GraphicsHandler::instance() << "\n";
-	cout << GraphicsHandler::instance() << "\n";
-
 	running = true;
 	
 	GraphicsHandler* graphics = GraphicsHandler::instance();
@@ -31,7 +28,6 @@ void SlaskEngine::init()
 	Sprite test("slask.png");
 	
 
-
 	while (running)
 	{
 		if (input->run())
@@ -40,7 +36,7 @@ void SlaskEngine::init()
 		//cout << input.getkey(InputHandler::Pause) << endl;
 
 		graphics->drawBegin();
-		graphics->drawSprite(test, 0, 0, 100, 100);
+		graphics->drawSprite(&test, 0, 0, 100, 100);
 		graphics->drawEnd();
 	}
 	graphics->close();
