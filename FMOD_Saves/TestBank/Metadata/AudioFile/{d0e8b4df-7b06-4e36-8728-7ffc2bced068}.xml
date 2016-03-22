@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="AudioFile" id="{d0e8b4df-7b06-4e36-8728-7ffc2bced068}">
+        <property name="assetPath">
+            <value>Generic 1git - Git 1 R.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>76.848520833333339</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8cb73d81-a13a-4a82-ae9f-1f153ab47828}</destination>
+        </relationship>
+    </object>
+</objects>
