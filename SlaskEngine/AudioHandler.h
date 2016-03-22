@@ -12,6 +12,7 @@ private:
 	int driverCount;
 	int maxChannels;
 	void setMaxChannels(int channels);
+	void *extraDriverData;
 
 	bool sampleasync; 
 	bool sampledecompress;
@@ -24,6 +25,7 @@ public:
 
 	FMOD_STUDIO_LOAD_BANK_FLAGS getSampleFlags()
 	{
+		//return FMOD_STUDIO_LOAD_BANK_NORMAL;
 		return (FMOD_STUDIO_LOAD_BANK_NONBLOCKING*sampleasync) | (FMOD_STUDIO_LOAD_BANK_DECOMPRESS_SAMPLES*sampledecompress);
 	}
 

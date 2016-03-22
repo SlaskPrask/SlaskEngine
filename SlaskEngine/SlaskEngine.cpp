@@ -26,8 +26,11 @@ void SlaskEngine::init()
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 	Sprite testS("slask.png");
-	Audio testA("fmod\TestBank\Build\Desktop\Master Bank.bank");
-
+	
+	/*Audio testA("fmod\TestBank\Build\Desktop\Master Bank.bank");
+	Audio testB("fmod\TestBank\Build\Desktop\Master Bank.strings.bank");
+	FMOD::Studio::EventInstance* eventInstance = 0;
+	FMOD::Studio::EventDescription* spoop = 0;*/
 
 	while (running)
 	{
@@ -37,10 +40,8 @@ void SlaskEngine::init()
 		//cout << input.getkey(InputHandler::Pause) << endl;
 
 		/*&FMOD::Studio::System::update;
-		FMOD::Studio::EventDescription* spoop = 0;
-		audio->getSystem()->getEvent("event:/Audio", &spoop);
+		audio->getSystem()->getEvent("event:/Master Bank/Audio", &spoop);
 		spoop->loadSampleData();
-		FMOD::Studio::EventInstance* eventInstance = 0;
 		spoop->createInstance(&eventInstance);
 		eventInstance->start();
 		eventInstance->release();*/
