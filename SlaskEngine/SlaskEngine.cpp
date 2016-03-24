@@ -26,13 +26,13 @@ void SlaskEngine::init()
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 	Sprite testS("slask.png");
+	Font testF("Progandae.otf");
+	
 	
 	Audio testA("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	Audio testB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
 	FMOD::Studio::EventInstance* eventInstance = 0;
 	FMOD::Studio::EventDescription* spoop = 0;
-
-	cout << spoop << endl;
 
 	while (running)
 	{
@@ -56,12 +56,8 @@ void SlaskEngine::init()
 	}
 	
 	graphics->close();
-	
-	cout << spoop << endl;
 
 	&FMOD::Studio::Bank::unloadSampleData;
-
-	cout << spoop << endl;
 
 }
 SlaskEngine::~SlaskEngine(){

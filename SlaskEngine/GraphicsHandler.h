@@ -3,6 +3,7 @@
 #include <SFML/OpenGL.hpp>
 #include <gl/freeglut.h>
 #include "Sprite.h"
+#include "Font.h"
 
 
 class GraphicsHandler
