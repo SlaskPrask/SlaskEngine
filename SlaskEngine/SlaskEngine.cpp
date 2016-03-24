@@ -41,8 +41,9 @@ void SlaskEngine::init()
 	if (result != FMOD_OK)
 		cout << "Loading master strings bank: " << FMOD_ErrorString(result) << '\n';
 
+	//should only be event:/Music
 	FMOD::Studio::EventDescription* spoop = NULL;
-	result = audio->getSystem()->getEvent("event:/Master Bank/Music", &spoop);
+	result = audio->getSystem()->getEvent("event:/Music", &spoop);
 	if (result != FMOD_OK)
 		cout << "Getting event: " << FMOD_ErrorString(result) << '\n';
 
@@ -99,6 +100,7 @@ void SlaskEngine::init()
 	graphics->close();
 
 	//what is this? Kappa
+	//IDK I tried to play sounds
 	//&FMOD::Studio::Bank::unloadSampleData;
 
 }
