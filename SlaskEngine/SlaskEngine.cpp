@@ -31,15 +31,9 @@ void SlaskEngine::init()
 	/*TESTING INIT*/
 	FMOD_RESULT result;
 
-	FMOD::Studio::Bank* masterBank = NULL;
-	result = audio->getSystem()->loadBankFile("fmod/TestBank/Build/Desktop/Master Bank.bank", FMOD_STUDIO_LOAD_BANK_NORMAL, &masterBank);
-	if (result != FMOD_OK)
-		cout << "Loading master bank: " << FMOD_ErrorString(result) << '\n';
+	Audio TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
+	Audio TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
 
-	FMOD::Studio::Bank* stringsBank = NULL;
-	result = audio->getSystem()->loadBankFile("fmod/TestBank/Build/Desktop/Master Bank.strings.bank", FMOD_STUDIO_LOAD_BANK_NORMAL, &stringsBank);
-	if (result != FMOD_OK)
-		cout << "Loading master strings bank: " << FMOD_ErrorString(result) << '\n';
 
 	//should only be event:/Music
 	FMOD::Studio::EventDescription* spoop = NULL;
@@ -98,7 +92,6 @@ void SlaskEngine::init()
 		}
 
 		graphics->drawEnd();
-
 	}
 
 	graphics->close();

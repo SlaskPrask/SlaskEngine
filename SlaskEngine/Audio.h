@@ -10,6 +10,7 @@ private:
 	FMOD::Studio::System* system;
 	bool sampleasync;
 	bool sampledecompress;
+	FMOD_RESULT result;
 
 public:
 	Audio(const char* file);
