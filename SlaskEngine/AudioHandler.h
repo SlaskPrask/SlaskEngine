@@ -9,11 +9,15 @@ class AudioHandler
 private:
 	FMOD::Studio::System* audioSys;
 	FMOD::System* lowLevelSys;
+	FMOD::Studio::EventDescription* eventD;
+	FMOD::Studio::EventInstance* eventInstance;
 
+	const char* eventFile;
 	int driverCount;
 	int maxChannels;
 	void setMaxChannels(int channels);
 	void *extraDriverData;
+
 
 	bool sampleasync; 
 	bool sampledecompress;
@@ -36,8 +40,13 @@ public:
 
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
-	void playSound();
+	void playEvent();
+	void setEventFile(const char* file);
+
+	const char* getEventFile();
 
 	FMOD::Studio::System* getSystem();
+	FMOD::Studio::EventDescription* getEventDescription();
+	FMOD::Studio::EventInstance* getEventInstance();
 };
 

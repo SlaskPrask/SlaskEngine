@@ -9,17 +9,13 @@ private:
 	FMOD::Studio::Bank* bank;
 	FMOD::Studio::System* system;
 
-	const char* eventFile;
 	bool sampleasync;
 	bool sampledecompress;
 	FMOD_RESULT result;
-	FMOD::Studio::EventDescription* eventD;
+
 
 public:
 	Audio(const char* file);
-	void setEvent(const char* file);
-
-	const char* getEvent();
 
 	~Audio();
 
