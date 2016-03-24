@@ -60,17 +60,6 @@ void SlaskEngine::init()
 	if (result != FMOD_OK)
 		cout << "Volume: " << FMOD_ErrorString(result) << '\n';
 
-	/*Audio testA("fmod/TestBank/Build/Desktop/Master Bank.bank");
-	Audio testB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
-	FMOD::Studio::EventInstance* eventInstance = 0;
-	FMOD::Studio::EventDescription* spoop = 0;*/
-
- 	/*&FMOD::Studio::System::update;
-	audio->getSystem()->getEvent("event:/Master Bank/Audio", &spoop);
-	spoop->loadSampleData();
-	spoop->createInstance(&eventInstance);
-	eventInstance->start();
-	eventInstance->release();*/
 
 	while (running)
 	{
