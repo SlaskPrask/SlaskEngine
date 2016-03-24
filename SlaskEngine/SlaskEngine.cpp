@@ -47,18 +47,25 @@ void SlaskEngine::init()
 	if (result != FMOD_OK)
 		cout << "Getting event: " << FMOD_ErrorString(result) << '\n';
 
+	result = spoop->loadSampleData();
+	if (result != FMOD_OK)
+		cout << "Load Sample Data: " << FMOD_ErrorString(result) << '\n';
+
 	FMOD::Studio::EventInstance* eventInstance = NULL;
 	result = spoop->createInstance(&eventInstance);
 	if (result != FMOD_OK)
 		cout << "Creating instance: " << FMOD_ErrorString(result) << '\n';
+
+	result = eventInstance->setVolume(1);
+	if (result != FMOD_OK)
+		cout << "Volume: " << FMOD_ErrorString(result) << '\n';
 
 	/*Audio testA("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	Audio testB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
 	FMOD::Studio::EventInstance* eventInstance = 0;
 	FMOD::Studio::EventDescription* spoop = 0;*/
 
-
-	/*&FMOD::Studio::System::update;
+ 	/*&FMOD::Studio::System::update;
 	audio->getSystem()->getEvent("event:/Master Bank/Audio", &spoop);
 	spoop->loadSampleData();
 	spoop->createInstance(&eventInstance);
@@ -69,6 +76,7 @@ void SlaskEngine::init()
 	{
 		if (input->run())
 			running = false;
+		
 
 		/*TESTING GAME CODE*/
 		{
@@ -85,6 +93,13 @@ void SlaskEngine::init()
 					cout << "Stopping: " << FMOD_ErrorString(result) << '\n';
 			}
 		}
+
+		//update??
+
+		result = audio->getSystem()->update();
+		if (result != FMOD_OK)
+			cout << "Update: " << FMOD_ErrorString(result) << '\n';
+
 
 		graphics->drawBegin();
 

@@ -8,6 +8,7 @@ class AudioHandler
 {
 private:
 	FMOD::Studio::System* audioSys;
+	FMOD::System* lowLevelSys;
 
 	int driverCount;
 	int maxChannels;
