@@ -18,6 +18,8 @@ private:
 	bool sampleasync; 
 	bool sampledecompress;
 
+	FMOD_RESULT result;
+
 public:
 	static AudioHandler* instance();
 
@@ -34,6 +36,7 @@ public:
 
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
+	void playSound();
 
 	FMOD::Studio::System* getSystem();
 };

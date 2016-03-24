@@ -9,7 +9,6 @@ AudioHandler* AudioHandler::instance()
 
 void AudioHandler::init(int channels)
 {
-	FMOD_RESULT result;
 	
 	extraDriverData = 0;
 	audioSys = 0;
@@ -73,6 +72,11 @@ void AudioHandler::setSampleASync(bool enabled)
 FMOD::Studio::System* AudioHandler::getSystem()
 {
 	return audioSys;
+}
+
+void AudioHandler::playSound()
+{
+
 }
 
 AudioHandler::~AudioHandler()

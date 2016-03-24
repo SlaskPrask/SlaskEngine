@@ -11,6 +11,19 @@ Audio::Audio(const char* file)
 		std::cout << "Loading bank: " << FMOD_ErrorString(result) << '\n';
 }
 
+void Audio::setEvent(const char* file)
+{
+	eventFile = file;
+
+	result = system->getEvent(eventFile, &eventD);
+	if (result != FMOD_OK)
+		std::cout << "Getting event: " << FMOD_ErrorString(result) << '\n';
+}
+
+const char* Audio::getEvent()
+{
+	return eventFile;
+}
 
 
 Audio::~Audio()
