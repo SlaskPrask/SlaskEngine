@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioHandler.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsHandler.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioHandler.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsHandler.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="SlaskEngine.h" />
