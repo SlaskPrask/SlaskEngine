@@ -12,4 +12,6 @@ Font::Font(const char* file)
 
 Font::~Font()
 {
+	if (font)
+		delete font;
 }
