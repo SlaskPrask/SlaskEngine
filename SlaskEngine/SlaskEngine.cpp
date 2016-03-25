@@ -33,7 +33,8 @@ void SlaskEngine::init()
 
 	AudioBank TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	AudioBank TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
-	Audio TestE("Music");
+	Audio Team10("Music");
+	Audio Guitar("Audio");
 	//audio->setEventFile("event:/Music");
 	
 	//should only be event:/Music
@@ -65,13 +66,21 @@ void SlaskEngine::init()
 
 
 		{
-			if (input->getkey(InputHandler::Space) == 1)
+			if (input->getkey(InputHandler::Num1) == 1)
 			{
-				audio->play(&TestE);
+				audio->play(&Team10);
 			}
-			if (input->getkey(InputHandler::Return) == 1)
+			if (input->getkey(InputHandler::Q) == 1)
 			{
-				audio->stop(&TestE);
+				audio->stop(&Team10);
+			}
+			if (input->getkey(InputHandler::Num2) == 1)
+			{
+				audio->play(&Guitar);
+			}
+			if (input->getkey(InputHandler::W) == 1)
+			{
+				audio->stop(&Guitar);
 			}
 
 			//update?? idk, what is it
