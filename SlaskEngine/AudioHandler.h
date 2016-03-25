@@ -40,7 +40,7 @@ public:
 
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
-	void playEvent();
+	void playAudio();
 	void setEventFile(const char* file);
 
 	const char* getEventFile();

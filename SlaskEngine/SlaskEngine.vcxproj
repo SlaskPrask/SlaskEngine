@@ -132,6 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="AudioBank.cpp" />
     <ClCompile Include="AudioHandler.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsHandler.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Audio.h" />
+    <ClInclude Include="AudioBank.h" />
     <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsHandler.h" />

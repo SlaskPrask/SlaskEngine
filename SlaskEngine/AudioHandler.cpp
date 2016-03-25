@@ -94,7 +94,7 @@ FMOD::Studio::EventInstance* AudioHandler::getEventInstance()
 }
 
 
-void AudioHandler::playEvent()
+void AudioHandler::playAudio()
 {
 	result = audioSys->getEvent(eventFile, &eventD);
 	if (result != FMOD_OK)
