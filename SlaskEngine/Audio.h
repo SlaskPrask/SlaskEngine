@@ -8,6 +8,8 @@ class Audio
 private:
 	FMOD::Studio::Bank* bank;
 	FMOD::Studio::System* system;
+	FMOD::Studio::EventDescription* eventD;
+	FMOD::Studio::EventInstance* eventInstance;
 
 	bool sampleasync;
 	bool sampledecompress;

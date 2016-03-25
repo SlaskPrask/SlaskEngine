@@ -74,36 +74,8 @@ FMOD::Studio::System* AudioHandler::getSystem()
 	return audioSys;
 }
 
-void AudioHandler::setEventFile(const char* file)
-{
-	eventFile = file;
-}
-
-const char* AudioHandler::getEventFile()
-{
-	return eventFile;
-}
-
-FMOD::Studio::EventDescription* AudioHandler::getEventDescription()
-{
-	return eventD;
-}
-FMOD::Studio::EventInstance* AudioHandler::getEventInstance()
-{
-	return eventInstance;
-}
-
-
 void AudioHandler::playAudio()
 {
-	result = audioSys->getEvent(eventFile, &eventD);
-	if (result != FMOD_OK)
-		std::cout << "Getting event: " << FMOD_ErrorString(result) << '\n';
-
-	eventInstance = NULL;
-	result = eventD->createInstance(&eventInstance);
-	if (result != FMOD_OK)
-		std::cout << "Creating instance: " << FMOD_ErrorString(result) << '\n';
 
 }
 

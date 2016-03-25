@@ -2,6 +2,7 @@
 #include <fmod_errors.h>
 #include <fmod_studio.hpp>
 #include "Audio.h"
+#include "AudioBank.h"
 
 
 class AudioHandler
@@ -9,10 +10,7 @@ class AudioHandler
 private:
 	FMOD::Studio::System* audioSys;
 	FMOD::System* lowLevelSys;
-	FMOD::Studio::EventDescription* eventD;
-	FMOD::Studio::EventInstance* eventInstance;
 
-	const char* eventFile;
 	int driverCount;
 	int maxChannels;
 	void setMaxChannels(int channels);
@@ -41,12 +39,7 @@ public:
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
 	void playAudio();
-	void setEventFile(const char* file);
-
-	const char* getEventFile();
 
 	FMOD::Studio::System* getSystem();
-	FMOD::Studio::EventDescription* getEventDescription();
-	FMOD::Studio::EventInstance* getEventInstance();
 };
 

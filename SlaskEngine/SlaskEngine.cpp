@@ -33,7 +33,7 @@ void SlaskEngine::init()
 
 	Audio TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	Audio TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
-	audio->setEventFile("event:/Music");
+	//audio->setEventFile("event:/Music");
 	
 	//should only be event:/Music
 	/*FMOD::Studio::EventDescription* spoop = NULL;
