@@ -97,9 +97,14 @@ void AudioHandler::run()
 	audioSys->update();
 }
 
-void AudioHandler::pause(Audio* audio, bool paused)
+void AudioHandler::pause(Audio* audio)
 {
-	audio->getInstance()->setPaused(paused);
+	audio->getInstance()->setPaused(true);
+}
+
+void AudioHandler::unpause(Audio* audio)
+{
+	audio->getInstance()->setPaused(false);
 }
 
 void AudioHandler::trigger(Audio* audio)

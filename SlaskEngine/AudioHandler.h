@@ -42,7 +42,8 @@ public:
 	void setSampleASync(bool enabled);
 	void play(Audio* audio);
 	void stop(Audio* audio);
-	void pause(Audio* audio, bool paused);
+	void pause(Audio* audio);
+	void unpause(Audio* audio);
 	void trigger(Audio* audio);
 	void release(Audio* audio);
 

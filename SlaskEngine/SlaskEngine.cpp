@@ -47,6 +47,14 @@ void SlaskEngine::init()
 			{
 				audio->stop(&Team10);
 			}
+			if (input->getkey(slask::Key::A) == 1) 
+			{
+				audio->pause(&Team10);
+			}
+			if (input->getkey(slask::Key::Z) == 1)
+			{
+				audio->unpause(&Team10);
+			}
 			if (input->getkey(slask::Key::Num2) == 1)
 			{
 				audio->play(&Guitar);
@@ -54,6 +62,29 @@ void SlaskEngine::init()
 			if (input->getkey(slask::Key::W) == 1)
 			{
 				audio->stop(&Guitar);
+			}
+			if (input->getkey(slask::Key::S) == 1)
+			{
+				audio->pause(&Guitar);
+			}
+			if (input->getkey(slask::Key::X) == 1)
+			{
+				audio->unpause(&Guitar);
+			}
+			if (input->getkey(slask::Key::Num3) == 1)
+			{
+				audio->setPitch(&Guitar, 2);
+				audio->setPitch(&Team10, 2);
+			}
+			if (input->getkey(slask::Key::Num4) == 1)
+			{
+				audio->setPitch(&Guitar, 0.5f);
+				audio->setPitch(&Team10, 0.5f);
+			}
+			if (input->getkey(slask::Key::Num5) == 1)
+			{
+				audio->setPitch(&Guitar, 1);
+				audio->setPitch(&Team10, 1);
 			}
 		}
 
