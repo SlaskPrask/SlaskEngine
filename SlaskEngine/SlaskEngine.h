@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "AudioHandler.h"
 #include "slasknamespace.h"
+#include "LogHandler.h"
 
 
 class SlaskEngine
