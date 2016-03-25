@@ -86,6 +86,11 @@ void SlaskEngine::init()
 				audio->setPitch(&Guitar, 1);
 				audio->setPitch(&Team10, 1);
 			}
+			if (input->getkey(slask::Key::Num0) == 1)
+			{
+				//OH YEAH
+				audio->setTimePosition(&Team10, 37678);
+			}
 		}
 
 
