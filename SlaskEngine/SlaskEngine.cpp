@@ -84,6 +84,7 @@ void SlaskEngine::init()
 			}
 
 			//update?? idk, what is it
+			//it needs to be here or music won't play
 
 			result = audio->getSystem()->update();
 			if (result != FMOD_OK)
