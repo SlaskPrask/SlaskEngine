@@ -9,7 +9,7 @@ public:
 	Object();
 	virtual ~Object();
 
-	virtual bool run() {}
+	//virtual bool run() {}
 	virtual void draw() {}
 };
 
