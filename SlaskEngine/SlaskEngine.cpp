@@ -66,19 +66,19 @@ void SlaskEngine::init()
 
 
 		{
-			if (input->getkey(InputHandler::Num1) == 1)
+			if (input->getkey(slask::Key::Num1) == 1)
 			{
 				audio->play(&Team10);
 			}
-			if (input->getkey(InputHandler::Q) == 1)
+			if (input->getkey(slask::Key::Q) == 1)
 			{
 				audio->stop(&Team10);
 			}
-			if (input->getkey(InputHandler::Num2) == 1)
+			if (input->getkey(slask::Key::Num2) == 1)
 			{
 				audio->play(&Guitar);
 			}
-			if (input->getkey(InputHandler::W) == 1)
+			if (input->getkey(slask::Key::W) == 1)
 			{
 				audio->stop(&Guitar);
 			}
