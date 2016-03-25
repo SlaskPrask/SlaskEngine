@@ -1,8 +1,6 @@
 #include "SlaskEngine.h"
 #include <iostream>
 
-using namespace std;
-
 SlaskEngine* SlaskEngine::instance()
 {
 	static SlaskEngine slaskengine;
@@ -27,9 +25,6 @@ void SlaskEngine::init()
 	audio->init(24);
 	Sprite testS("slask.png");
 	Font testF("Progandae.otf");
-
-	/*TESTING INIT*/
-	FMOD_RESULT result;
 
 	AudioBank TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	AudioBank TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
