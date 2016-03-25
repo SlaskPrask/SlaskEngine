@@ -92,6 +92,11 @@ void AudioHandler::stop(Audio* audio)
 	audio->getInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
 }
 
+void AudioHandler::run()
+{
+	audioSys->update();
+}
+
 AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();

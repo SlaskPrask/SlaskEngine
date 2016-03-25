@@ -63,8 +63,6 @@ void SlaskEngine::init()
 			running = false;
 		
 		/*TESTING GAME CODE*/
-
-
 		{
 			if (input->getkey(slask::Key::Num1) == 1)
 			{
@@ -82,13 +80,6 @@ void SlaskEngine::init()
 			{
 				audio->stop(&Guitar);
 			}
-
-			//update?? idk, what is it
-			//it needs to be here or music won't play
-
-			result = audio->getSystem()->update();
-			if (result != FMOD_OK)
-				cout << "Update: " << FMOD_ErrorString(result) << '\n';
 		}
 
 
@@ -101,14 +92,11 @@ void SlaskEngine::init()
 		}
 
 		graphics->drawEnd();
+
+		audio->run();
 	}
 
 	graphics->close();
-
-	//what is this? Kappa
-	//IDK I tried to play sounds
-	//&FMOD::Studio::Bank::unloadSampleData;
-
 }
 
 SlaskEngine::~SlaskEngine()

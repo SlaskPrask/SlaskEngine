@@ -28,6 +28,8 @@ public:
 	void init(int channels);
 	~AudioHandler();
 
+	void run();
+
 	FMOD_STUDIO_LOAD_BANK_FLAGS getSampleFlags()
 	{
 		//return FMOD_STUDIO_LOAD_BANK_NORMAL;
