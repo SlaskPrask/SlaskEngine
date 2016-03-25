@@ -74,7 +74,7 @@ FMOD::Studio::System* AudioHandler::getSystem()
 	return audioSys;
 }
 
-void AudioHandler::playAudio()
+void AudioHandler::play()
 {
 
 }

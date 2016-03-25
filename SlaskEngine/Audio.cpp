@@ -4,8 +4,11 @@
 
 Audio::Audio(const char* file)
 {
+	std::string s = "event:/";
+	s += file;
+
 	eventD = NULL;
-	result = system->getEvent(file, &eventD);
+	result = system->getEvent(s.c_str(), &eventD);
 	if (result != FMOD_OK)
 		std::cout << "Getting event: " << FMOD_ErrorString(result) << '\n';
 

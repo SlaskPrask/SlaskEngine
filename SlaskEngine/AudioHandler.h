@@ -38,7 +38,7 @@ public:
 
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
-	void playAudio();
+	void play();
 
 	FMOD::Studio::System* getSystem();
 };
