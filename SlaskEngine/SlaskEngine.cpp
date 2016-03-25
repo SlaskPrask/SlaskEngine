@@ -35,26 +35,6 @@ void SlaskEngine::init()
 	AudioBank TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
 	Audio Team10("Music");
 	Audio Guitar("Audio");
-	//audio->setEventFile("event:/Music");
-	
-	//should only be event:/Music
-	/*FMOD::Studio::EventDescription* spoop = NULL;
-	result = audio->getSystem()->getEvent("event:/Music", &spoop);
-	if (result != FMOD_OK)
-		cout << "Getting event: " << FMOD_ErrorString(result) << '\n';*/
-
-	/*result = Audio->getEvent->FMOD::Studio::Bank::loadSampleData();
-	if (result != FMOD_OK)
-		cout << "Load Sample Data: " << FMOD_ErrorString(result) << '\n';
-
-	FMOD::Studio::EventInstance* eventInstance = NULL;
-	result = spoop->createInstance(&eventInstance);
-	if (result != FMOD_OK)
-		cout << "Creating instance: " << FMOD_ErrorString(result) << '\n';
-
-	result = eventInstance->setVolume(1);
-	if (result != FMOD_OK)
-		cout << "Volume: " << FMOD_ErrorString(result) << '\n';*/
 
 
 	while (running)

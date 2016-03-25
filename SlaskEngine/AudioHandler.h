@@ -42,8 +42,14 @@ public:
 	void setSampleASync(bool enabled);
 	void play(Audio* audio);
 	void stop(Audio* audio);
+	void pause(Audio* audio, bool paused);
+	void trigger(Audio* audio);
+	void release(Audio* audio);
 
 	void setVolume(Audio* audio, double vol);
+	void setParameterValue(Audio* audio, const char* param, double value);
+	void setPitch(Audio* audio, double pitch);
+	void setTimePosition(Audio* audio, int position);
 
 	//void loadEvent(Audio* audio, const char* event);
 

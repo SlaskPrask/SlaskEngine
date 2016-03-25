@@ -97,10 +97,44 @@ void AudioHandler::run()
 	audioSys->update();
 }
 
+void AudioHandler::pause(Audio* audio, bool paused)
+{
+	audio->getInstance()->setPaused(paused);
+}
+
+void AudioHandler::trigger(Audio* audio)
+{
+	//Makes the cursor able to move past a sustain point
+	audio->getInstance()->triggerCue();
+}
+
+void AudioHandler::release(Audio* audio)
+{
+	//Destroys the event
+	audio->getInstance()->release();
+}
+
 void AudioHandler::setVolume(Audio* audio, double vol)
 {
 	audio->getInstance()->setVolume((vol>1.0f ? 1.0f : (vol<0.0f ? 0.0f : vol)));;
 }
+
+void AudioHandler::setParameterValue(Audio* audio, const char* param, double value)
+{
+	audio->getInstance()->setParameterValue(param, value);
+}
+
+void AudioHandler::setPitch(Audio* audio, double pitch)
+{
+	audio->getInstance()->setPitch(pitch);
+}
+
+void AudioHandler::setTimePosition(Audio* audio, int position)
+{
+	//Timeline position in milliseconds
+	audio->getInstance()->setTimelinePosition(position);
+}
+
 
 AudioHandler::~AudioHandler()
 {
