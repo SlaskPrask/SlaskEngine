@@ -52,8 +52,6 @@ public:
 	void setPitch(Audio* audio, double pitch);
 	void setTimePosition(Audio* audio, int position);
 
-	//void loadEvent(Audio* audio, const char* event);
-
 	FMOD::Studio::System* getSystem();
 };
 

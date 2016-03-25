@@ -12,8 +12,6 @@ private:
 	FMOD::Studio::EventDescription* eventD;
 	FMOD::Studio::EventInstance* eventInstance;
 
-	bool sampleasync;
-	bool sampledecompress;
 	FMOD_RESULT result;
 
 

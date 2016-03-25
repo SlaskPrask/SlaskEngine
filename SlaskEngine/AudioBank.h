@@ -10,8 +10,6 @@ private:
 	FMOD::Studio::Bank* bank;
 	FMOD::Studio::System* system;
 
-	bool sampleasync;
-	bool sampledecompress;
 	FMOD_RESULT result;
 
 

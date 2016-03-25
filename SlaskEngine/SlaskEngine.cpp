@@ -31,7 +31,6 @@ void SlaskEngine::init()
 	Audio Team10("Music");
 	Audio Guitar("Audio");
 
-
 	while (running)
 	{
 		if (input->run())

@@ -10,8 +10,6 @@ Audio::Audio(const char* file)
 	std::string s = "event:/";
 	s += file;
 
-	std::cout << s.c_str() << '\n';
-
 	eventD = NULL;
 	result = system->getEvent(s.c_str(), &eventD);
 	if (result != FMOD_OK)
