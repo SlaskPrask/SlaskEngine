@@ -7,6 +7,9 @@ public:
 	double x;
 	double y;
 	Object();
-	~Object();
+	virtual ~Object();
+
+	virtual bool run() {}
+	virtual void draw() {}
 };
 
