@@ -1,4 +1,5 @@
 #include "AudioBank.h"
+#include "AudioHandler.h"
 #include <iostream>
 
 
@@ -13,5 +14,5 @@ AudioBank::AudioBank(const char* file)
 
 AudioBank::~AudioBank()
 {
-	system->unloadAll();
+	bank->unload();
 }

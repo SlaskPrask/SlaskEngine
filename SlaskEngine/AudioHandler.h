@@ -38,7 +38,8 @@ public:
 
 	void setSampleDecompress(bool enabled);
 	void setSampleASync(bool enabled);
-	void play();
+	void play(Audio* audio);
+	void stop(Audio* audio);
 
 	//void loadEvent(Audio* audio, const char* event);
 

@@ -82,12 +82,18 @@ FMOD::Studio::System* AudioHandler::getSystem()
 
 }*/
 
-void AudioHandler::play()
+void AudioHandler::play(Audio* audio)
 {
+	audio->getInstance()->start();
+}
 
+void AudioHandler::stop(Audio* audio)
+{
+	audio->getInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
 }
 
 AudioHandler::~AudioHandler()
 {
-
+	audioSys->unloadAll();
+	audioSys->release();
 }

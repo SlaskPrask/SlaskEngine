@@ -1,7 +1,8 @@
 #pragma once
 #include <fmod_errors.h>
 #include <fmod_studio.hpp>
-#include "AudioHandler.h"
+
+class AudioHandler;
 
 class Audio
 {
@@ -18,6 +19,7 @@ private:
 
 public:
 	Audio(const char* file);
+	FMOD::Studio::EventInstance* getInstance();
 
 	~Audio();
 

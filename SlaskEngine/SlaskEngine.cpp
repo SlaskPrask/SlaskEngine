@@ -61,30 +61,26 @@ void SlaskEngine::init()
 		if (input->run())
 			running = false;
 		
-		//audio->playEvent();
 		/*TESTING GAME CODE*/
 
 
 		{
-			/*if (input->getkey(InputHandler::Space) == 1)
+			if (input->getkey(InputHandler::Space) == 1)
 			{
-				audio->getEventInstance()->start();
-				if (result != FMOD_OK)
-					cout << "Playing: " << FMOD_ErrorString(result) << '\n';
+				audio->play(&TestE);
 			}
 			if (input->getkey(InputHandler::Return) == 1)
 			{
-				audio->getEventInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
-				if (result != FMOD_OK)
-					cout << "Stopping: " << FMOD_ErrorString(result) << '\n';
-			}*/
+				audio->stop(&TestE);
+			}
+
+			//update?? idk, what is it
+
+			result = audio->getSystem()->update();
+			if (result != FMOD_OK)
+				cout << "Update: " << FMOD_ErrorString(result) << '\n';
 		}
 
-		//update??
-
-		result = audio->getSystem()->update();
-		if (result != FMOD_OK)
-			cout << "Update: " << FMOD_ErrorString(result) << '\n';
 
 
 		graphics->drawBegin();
