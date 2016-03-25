@@ -137,7 +137,9 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsHandler.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="LogHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="SlaskEngine.cpp" />
     <ClCompile Include="slasknamespace.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -153,6 +155,8 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsHandler.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="LogHandler.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="SlaskEngine.h" />
     <ClInclude Include="slasknamespace.h" />
     <ClInclude Include="Sprite.h" />
