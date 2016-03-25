@@ -40,6 +40,8 @@ public:
 	void setSampleASync(bool enabled);
 	void play();
 
+	//void loadEvent(Audio* audio, const char* event);
+
 	FMOD::Studio::System* getSystem();
 };
 

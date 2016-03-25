@@ -31,8 +31,9 @@ void SlaskEngine::init()
 	/*TESTING INIT*/
 	FMOD_RESULT result;
 
-	Audio TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
-	Audio TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
+	AudioBank TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
+	AudioBank TestMSB("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
+	Audio TestE("Music");
 	//audio->setEventFile("event:/Music");
 	
 	//should only be event:/Music
@@ -60,10 +61,12 @@ void SlaskEngine::init()
 		if (input->run())
 			running = false;
 		
-		audio->playEvent();
+		//audio->playEvent();
 		/*TESTING GAME CODE*/
+
+
 		{
-			if (input->getkey(InputHandler::Space) == 1)
+			/*if (input->getkey(InputHandler::Space) == 1)
 			{
 				audio->getEventInstance()->start();
 				if (result != FMOD_OK)
@@ -74,7 +77,7 @@ void SlaskEngine::init()
 				audio->getEventInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
 				if (result != FMOD_OK)
 					cout << "Stopping: " << FMOD_ErrorString(result) << '\n';
-			}
+			}*/
 		}
 
 		//update??

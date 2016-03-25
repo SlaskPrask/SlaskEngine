@@ -10,9 +10,9 @@ AudioHandler* AudioHandler::instance()
 void AudioHandler::init(int channels)
 {
 	
-	extraDriverData = 0;
-	audioSys = 0;
-	lowLevelSys = 0;
+	extraDriverData = NULL;
+	audioSys = NULL;
+	lowLevelSys = NULL;
 	result = FMOD::Studio::System::create(&audioSys);
 
 	if (result != FMOD_OK)
@@ -44,7 +44,10 @@ void AudioHandler::init(int channels)
 
 	//Initialize FMOD instance with 12 channels
 	result = audioSys->initialize(channels, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, extraDriverData);
-
+	if (result != FMOD_OK)
+	{
+		std::cout << "Initializing: " << FMOD_ErrorString(result) << '\n';
+	}
 
 	setSampleASync(false); 
 	setSampleDecompress(false);
@@ -73,6 +76,11 @@ FMOD::Studio::System* AudioHandler::getSystem()
 {
 	return audioSys;
 }
+
+/*void loadEvent(Audio* audio, const char* event)
+{
+
+}*/
 
 void AudioHandler::play()
 {
