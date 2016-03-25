@@ -43,6 +43,8 @@ public:
 	void play(Audio* audio);
 	void stop(Audio* audio);
 
+	void setVolume(Audio* audio, double vol);
+
 	//void loadEvent(Audio* audio, const char* event);
 
 	FMOD::Studio::System* getSystem();

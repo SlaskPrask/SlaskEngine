@@ -97,6 +97,11 @@ void AudioHandler::run()
 	audioSys->update();
 }
 
+void AudioHandler::setVolume(Audio* audio, double vol)
+{
+	audio->getInstance()->setVolume((vol>1.0f ? 1.0f : (vol<0.0f ? 0.0f : vol)));;
+}
+
 AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();
