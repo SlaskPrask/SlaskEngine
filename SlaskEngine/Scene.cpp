@@ -23,4 +23,10 @@ void Scene::load(const char* file)
 
 Scene::~Scene()
 {
+	if (block)
+	{
+		for (int i = 0; i<w; i++)
+			delete block[i];
+		delete block;
+	}
 }
