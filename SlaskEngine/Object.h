@@ -12,4 +12,3 @@ public:
 	//virtual bool run() {}
 	virtual void draw() {}
 };
-

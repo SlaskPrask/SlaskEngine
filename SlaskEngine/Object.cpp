@@ -6,7 +6,6 @@ Object::Object()
 {
 }
 
-
 Object::~Object()
 {
 }
