@@ -4,35 +4,45 @@
 
 Sprite::Sprite(const char* file)
 {
-	tex = new sf::Texture();
-
-	if (!tex->loadFromFile(file))
-		tex = NULL;
+	w = 0;
+	h = 0;
+	{
+		sf::Image image;
+		image.loadFromFile(file);
+		glGenTextures(1,&texture);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		
+		w = image.getSize().x;
+		h = image.getSize().y;
+	}
 }
 
 int Sprite::getWidth()
 {
-	return tex->getSize().x;
+	return w;
 }
 
 int Sprite::getHeight()
 {
-	return tex->getSize().y;
+	return h;
 }
 
 bool Sprite::bind()
 {
-	if (tex)
+	if (w&&h)
 	{
-		sf::Texture::bind(tex);
-			return true;
+		glBindTexture(GL_TEXTURE_2D,texture);
+		return true;
 	}
 	else
-		return false;
+	return false;
 }
 
 Sprite::~Sprite()
 {
-	if (tex)
-		delete tex;
+	if (w&&h)
+	glDeleteTextures(1,&texture);
 }

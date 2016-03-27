@@ -5,7 +5,7 @@
 #include "AudioHandler.h"
 #include "slasknamespace.h"
 #include "LogHandler.h"
-
+#include <cmath>
 
 class SlaskEngine
 {
@@ -18,6 +18,5 @@ public:
 	void init();
 	SlaskEngine();
 	~SlaskEngine();
-	
 };
 

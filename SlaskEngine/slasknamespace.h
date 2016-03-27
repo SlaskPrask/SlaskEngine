@@ -2,12 +2,14 @@
 #include "GraphicsHandler.h"
 #include "InputHandler.h"
 #include "AudioHandler.h"
+#include "LogHandler.h"
 
 namespace slask
 {
 	GraphicsHandler* graphics();
 	InputHandler* input();
 	AudioHandler* audio();
+	LogHandler* log();
 
 	namespace Mouse
 	{

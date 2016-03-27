@@ -14,6 +14,10 @@ private:
 
 	int* key;
 
+	bool signal_resize;
+	bool signal_focus;
+	bool window_focus;
+
 public:
 	static InputHandler* instance();
 
@@ -28,4 +32,8 @@ public:
 	int getmousewheel_down();
 	int getmouse_x();
 	int getmouse_y();
+
+	bool getSignalResize();
+	bool getFocus();
+	bool getSignalFocus();
 };

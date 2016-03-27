@@ -10,6 +10,8 @@ void InputHandler::init()
 {
 	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
+	window_focus = true;
+	signal_focus = signal_resize = 0;
 	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
 	{
 		mouse_butt[i] = 0;
@@ -51,10 +53,15 @@ bool InputHandler::run()
 			close = true;
 			break;
 		case sf::Event::Resized:
+			signal_resize = true;
 			break;
 		case sf::Event::LostFocus:
+			window_focus = false;
+			signal_focus = true;
 			break;
 		case sf::Event::GainedFocus:
+			window_focus = true;
+			signal_focus = true;
 			break;
 		case sf::Event::TextEntered:
 			break;
@@ -146,4 +153,31 @@ int InputHandler::getmousewheel_down()
 InputHandler::~InputHandler()
 {
 	delete key;
+}
+
+bool InputHandler::getSignalResize()
+{
+	if (signal_resize)
+	{
+		signal_resize = 0;
+		return 1;
+	}
+	else
+	return 0;
+}
+
+bool InputHandler::getFocus()
+{
+	return window_focus;
+}
+
+bool InputHandler::getSignalFocus()
+{
+	if (signal_focus)
+	{
+		signal_focus = 0;
+		return 1;
+	}
+	else
+		return 0;
 }

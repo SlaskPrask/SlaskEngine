@@ -14,3 +14,8 @@ AudioHandler* slask::audio()
 {
 	return AudioHandler::instance();
 }
+
+LogHandler* slask::log()
+{
+	return LogHandler::instance();
+}
