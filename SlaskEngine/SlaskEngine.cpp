@@ -104,12 +104,12 @@ void SlaskEngine::init()
 
 		/*TESTING DRAWING*/
 		{
+			//the big at the back, stretched
+			graphics->drawSprite(&testS, 10, 10, graphics->getWidth() - 20, graphics->getHeight() - 20, 1000);
 			//small not moving, static position
 			graphics->drawSprite(&testS, 100, 100, 1);
-			//the big at the back, stretched
-			graphics->drawSprite(&testS, 10, 10, graphics->getWidth()-20, graphics->getHeight()-20, 1000);
 			//rolling one, static position
-			graphics->drawSprite(&testS, 100 + cos(position*3.14159265/180.0f)*100, 100 + sin(position*3.14159265 / 180.0f) * 100, 2);
+			graphics->drawSprite(&testS, 100 + cos(position*3.14159265 / 180.0f) * 100, 100 + sin(position*3.14159265 / 180.0f) * 100, 10);
 			//spinning whole, static position
 			graphics->drawSpriteRot(&testS, 300, 150, 100, 100, position, -10);
 			//spinning red, static position

@@ -24,7 +24,7 @@ void GraphicsHandler::init(int w, int h, const char* title)
 
 	window->setActive();
 	
-	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
 	glClearDepth(1.0f);
 	glDisable(GL_LIGHTING);
@@ -37,7 +37,7 @@ void GraphicsHandler::init(int w, int h, const char* title)
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	
 	//todo alpha blending fix
-	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	//todo drawing nice with culling maybe?
 	glDisable(GL_CULL_FACE);
@@ -194,33 +194,10 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 		set_color(r, g, b, a);
 	glVertexPointer(3, GL_FLOAT, 0, d2d);
 	glTexCoordPointer(2, GL_FLOAT, 0, d2d_tex);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
 	if (a != -1)
 		restore_color();
 	glPopMatrix();
-	/*
-	GLfloat d2d[] = { x1,y1,depth,x2,y2,depth,x3,y3,depth };
-	if (rot)
-	{
-		double w = max(abs(x1 - x2), max(abs(x2 - x3), abs(x1 - x3)));
-		double h = max(abs(y1 - y2), max(abs(y2 - y3), abs(y1 - y3)));
-		d2d[0] += w / 2 + cos(rad(rot + 180.0f))*w / 2 + cos(rad(rot + 90.0f))*h / 2;
-		d2d[1] += h / 2 - sin(rad(rot + 180.0f))*w / 2 - sin(rad(rot + 90.0f))*h / 2;
-		d2d[2] += -w / 2 + cos(rad(rot))*w / 2 + cos(rad(rot + 90.0f))*h / 2;
-		d2d[3] += h / 2 - sin(rad(rot))*w / 2 - sin(rad(rot + 90.0f))*h / 2;
-		d2d[4] += w / 2 + cos(rad(rot + 180.0f))*w / 2 + cos(rad(rot - 90.0f))*h / 2;
-		d2d[5] += -h / 2 - sin(rad(rot + 180.0f))*w / 2 - sin(rad(rot - 90.0f))*h / 2;
-	}
-	GLfloat d2d_tex[8] = { texx1,texy1,texx2,texy2,texx3,texy3 };
-	sprite->bind();
-	if (a != -1)
-		set_color(r, g, b, a);
-	glVertexPointer(3, GL_FLOAT, 0, d2d);
-	glTexCoordPointer(2, GL_FLOAT, 0, d2d_tex);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	if (a != -1)
-		restore_color();
-	*/
 }
 
 GraphicsHandler::~GraphicsHandler()
