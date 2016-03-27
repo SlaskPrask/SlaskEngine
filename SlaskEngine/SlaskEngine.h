@@ -5,7 +5,7 @@
 #include "AudioHandler.h"
 #include "slasknamespace.h"
 #include "LogHandler.h"
-#include "FileHandler.h"
+#include "File.h"
 #include <cmath>
 
 class SlaskEngine
