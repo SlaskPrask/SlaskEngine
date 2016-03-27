@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-class FileHandler
+class File
 {
 private:
 
@@ -9,9 +9,8 @@ private:
 	int key(bool reset);
 
 public:
-	static FileHandler* instance();
-	void init();
-	~FileHandler();
+	File();
+	~File();
 
 	
 	bool save(bool encrypted);

@@ -23,8 +23,6 @@ void SlaskEngine::init()
 	input->init();
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
-	FileHandler* file = FileHandler::instance();
-	file->init();
 	
 	//this is temp stuff just for testing
 	Sprite testS("slask.png");
