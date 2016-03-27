@@ -139,6 +139,7 @@
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="AudioBank.cpp" />
     <ClCompile Include="AudioHandler.cpp" />
+    <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsHandler.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioBank.h" />
     <ClInclude Include="AudioHandler.h" />
+    <ClInclude Include="FileHandler.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsHandler.h" />
     <ClInclude Include="InputHandler.h" />
