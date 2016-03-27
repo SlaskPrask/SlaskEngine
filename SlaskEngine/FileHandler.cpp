@@ -8,9 +8,18 @@ FileHandler* FileHandler::instance()
 	return &filehandler;
 }
 
+//remove this thign because it's just testing Kappa
+//and should probably make this not a singleton
+#include <iostream>
+#include <string>
 void FileHandler::init()
 {
-
+	std::string s="Slask made this thing and i don't know how it works Kappa.";
+	std::cout << "Original:  " << s << '\n';
+	std::string enc = crypt(s);
+	std::cout << "Encrypted: " << enc << '\n';
+	std::string dec = crypt(enc);
+	std::cout << "Decrypted: " << dec << '\n';
 }
 
 std::string FileHandler::crypt(std::string str)
