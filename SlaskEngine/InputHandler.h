@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/System.hpp>
 #include "GraphicsHandler.h"
+#include "Input.h"
 #include "LogHandler.h"
 
 #define MAXMOUSEBUTTONS (5)
@@ -13,6 +14,8 @@ private:
 	int mouse_butt[MAXMOUSEBUTTONS];
 	int mousewheel_up;
 	int mousewheel_down;
+	double deadzone[MAXJOYSTICKS];
+	double buttondeadzone[MAXJOYSTICKS];
 
 	int* key;
 
