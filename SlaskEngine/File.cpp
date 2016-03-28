@@ -3,7 +3,8 @@
 
 File::File()
 {
-	data = "";
+	clearData();
+	clearVector();
 }
 
 std::string File::crypt(std::string str)
@@ -57,8 +58,7 @@ int File::key(bool reset)
 
 void File::add(std::string str)
 {
-	data += str;
-	data += '\n';
+	entry.push_back(str);
 }
 
 void File::add(const char* str)
@@ -75,7 +75,14 @@ void File::add(int val)
 
 void File::save(std::string file,bool encrypt)
 {
+	clearData();
+	for (int i = 0; i<entry.size(); i++)
+	{
+		data += entry[i];
+		data += '\n';
+	}
 	saveToFile(file, (encrypt?crypt(data):data));
+	clearVector();
 }
 
 bool File::saveToFile(std::string file, std::string str)
@@ -102,7 +109,7 @@ bool File::load(std::string file, bool encrypted)
 		std::string content((std::istreambuf_iterator<char>(f)), (std::istreambuf_iterator<char>()));
 		data = (encrypted ? crypt(content) : content);
 		f.close();
-		entry.clear();
+		clearVector();
 		std::istringstream input(data);
 		std::string line;
 		while (std::getline(input, line))
@@ -131,7 +138,27 @@ std::string File::get(int i)
 	return val;
 }
 
+void File::clearVector()
+{
+	entry.clear();
+}
 
+void File::clearData()
+{
+	data = "";
+}
+
+void File::set(int i, int val)
+{
+	if (i >= 0 && i<entry.size())
+		entry[i] = val;
+}
+
+void File::set(int i, std::string val)
+{
+	if (i >= 0 && i<entry.size())
+		entry[i] = val;
+}
 
 File::~File()
 {

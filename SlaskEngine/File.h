@@ -29,6 +29,12 @@ public:
 	void add(const char* str);
 	void add(int val);
 
+	void clearVector();
+	void clearData();
+	
+	void set(int i, int val);
+	void set(int i, std::string val);
+	
 	std::string get(int i);
 	int getint(int i);
 	
