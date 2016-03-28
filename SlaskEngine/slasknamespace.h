@@ -13,6 +13,8 @@ namespace slask
 	LogHandler* log();
 	File file();
 
+	void start();
+
 	namespace Mouse
 	{
 		enum MouseButt { Mouse1, Mouse2, MouseMiddle, Mouse4, Mouse5 };

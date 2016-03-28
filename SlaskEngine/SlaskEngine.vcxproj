@@ -149,6 +149,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SlaskEngine.cpp" />
+    <ClCompile Include="SlaskGame.cpp" />
     <ClCompile Include="slasknamespace.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>

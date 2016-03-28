@@ -20,15 +20,20 @@ void SlaskEngine::init()
 	running = true;
 
 	GraphicsHandler* graphics = GraphicsHandler::instance();
-	graphics->init(1280,720,"SlaskEngine");
+	graphics->init("SlaskEngine");
 
 	InputHandler* input = InputHandler::instance();
 	input->init();
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
+
+	LogHandler::log("Engine", "Initialized");
+	LogHandler::log("-------------------------------------");
+	slask::start();//game initialization point
+
+	//this is temp stuff just for testing
 	File file;
 	
-	//this is temp stuff just for testing
 	Sprite testS("slask.png");
 	Font testF("Progandae.otf");
 	AudioBank TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
@@ -50,13 +55,8 @@ void SlaskEngine::init()
 	std::cout << file.get(1) << '\n';
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
-	LogHandler::notify("Test notification");
-	LogHandler::log("Test");
-	LogHandler::log("Test");
-	LogHandler::log("Test");
-	LogHandler::error("Test error");
-	
-	LogHandler::log("Engine", "Initialized");
+	//end of temp
+
 	while (running)
 	{
 		if (input->run())
@@ -175,6 +175,7 @@ void SlaskEngine::init()
 
 		audio->run();
 	}
+	LogHandler::log("-------------------------------------");
 	LogHandler::log("Engine", "Stopped");
 
 	graphics->close();

@@ -47,6 +47,7 @@ bool InputHandler::run()
 
 	mousewheel_up = mousewheel_down = 0;
 
+	if (window)
 	while (window->pollEvent(event))
 	{
 		switch (event.type)

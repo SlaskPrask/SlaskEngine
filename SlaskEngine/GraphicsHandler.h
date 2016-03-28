@@ -32,7 +32,7 @@ private:
 public:
 	static GraphicsHandler* instance();
 
-	void init(int w, int h, const char* title);
+	void init(const char* title);
 	~GraphicsHandler();
 
 	sf::RenderWindow* getWindow();

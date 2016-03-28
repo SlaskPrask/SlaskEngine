@@ -8,7 +8,7 @@ GraphicsHandler* GraphicsHandler::instance()
 	return &graphicshandler;
 }
 
-void GraphicsHandler::init(int w, int h, const char* title)
+void GraphicsHandler::init(const char* title)
 {
 	LogHandler::log("Graphics", "Start");
 
@@ -20,27 +20,32 @@ void GraphicsHandler::init(int w, int h, const char* title)
 
 	resolutions = sf::VideoMode::getFullscreenModes();
 
-	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
+	/*window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
 
 	if (!window)
 	{
 		LogHandler::error("Graphics", "Unable to create window.");
 		window = 0;
 		return;
-	}
+	}*/
 
+	window = 0;
 	framespersecond = 60;
 	vsync = true;
 	label = title;
-	setSize(w, h);
-	setRenderSize(w, h);
-	initGL();
+	width = height = 0;
+	//setSize(w, h);
+	//setRenderSize(w, h);
+	//initGL();
 
 	LogHandler::log("Graphics", "Initialized");
 }
 
 void GraphicsHandler::initGL()
 {
+	if (!window)
+		return;
+
 	setVSync(vsync);
 	setFPS(framespersecond);
 
@@ -178,18 +183,21 @@ bool GraphicsHandler::setFullscreenWindowed(int w, int h)
 void GraphicsHandler::setTitle(const char* title)
 {
 	label = title;
+	if (window)
 	window->setTitle(title);
 }
 
 void GraphicsHandler::setFPS(int fps)
 {
 	framespersecond = fps;
+	if (window)
 	window->setFramerateLimit(fps);
 }
 
 void GraphicsHandler::setVSync(bool enabled)
 {
 	vsync = enabled;
+	if (window)
 	window->setVerticalSyncEnabled(enabled);
 }
 
@@ -201,6 +209,9 @@ void GraphicsHandler::setSize(int w, int h)
 
 void GraphicsHandler::resize()
 {
+	if (!window)
+		return;
+
 	setSize(window->getSize().x, window->getSize().y);
 	setRenderSize(window->getSize().x, window->getSize().y);
 }
@@ -247,17 +258,26 @@ sf::RenderWindow* GraphicsHandler::getWindow()
 
 void GraphicsHandler::drawBegin()
 {
+	if (!window)
+		return;
+
 	window->clear();
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
 void GraphicsHandler::drawEnd()
 {
+	if (!window)
+		return;
+
 	window->display();
 }
 
 void GraphicsHandler::close()
 {
+	if (!window)
+		return;
+
 	window->close();
 	LogHandler::log("Graphics", "Window closed.");
 }
@@ -294,6 +314,9 @@ void GraphicsHandler::drawSpritePolyRot(Sprite* sprite, double x1, double y1, do
 
 void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
 {
+	if (!window)
+		return;
+
 	if (!sprite)
 	{
 		LogHandler::notify("Graphics", "Attempting to draw unloaded sprite.");
@@ -319,6 +342,9 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 
 void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth)
 {
+	if (!window)
+		return;
+
 	if (!sprite)
 	{
 		LogHandler::notify("Graphics", "Attempting to draw unloaded sprite.");
@@ -346,8 +372,11 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 
 GraphicsHandler::~GraphicsHandler()
 {
-	window->close();
-	delete window;
+	if (window)
+	{
+		window->close();
+		delete window;
+	}
 	LogHandler::log("Graphics", "End");
 }
 
