@@ -21,10 +21,11 @@ Input();
 void buttonToAxisDeadzone(); 
 void axisDeadZone();
 
-double getDeadZone();
+
 void setDeadZone();
 void axisType();
-
+/*
+double getDeadZone();
 int getint();
-double get();
+double get();*/
 };
