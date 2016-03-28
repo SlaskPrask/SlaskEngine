@@ -6,6 +6,13 @@
 #include "slasknamespace.h"
 #include "LogHandler.h"
 #include "File.h"
+#include "Input.h"
+#include "Object.h"
+#include "Scene.h"
+#include "Font.h"
+#include "Audio.h"
+#include "AudioBank.h"
+#include "Sprite.h"
 #include <cmath>
 
 class SlaskEngine

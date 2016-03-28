@@ -1,4 +1,4 @@
-#include "slasknamespace.h"
+#include "sources/slasknamespace.h"
 using namespace slask;
 
 void slask::start()

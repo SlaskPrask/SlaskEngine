@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/System.hpp>
 #include "GraphicsHandler.h"
-#include "Input.h"
 #include "LogHandler.h"
 
 #define MAXMOUSEBUTTONS (5)
+#define MAXJOYSTICKS (8)
 
 class InputHandler
 {

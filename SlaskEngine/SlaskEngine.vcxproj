@@ -136,42 +136,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Audio.cpp" />
-    <ClCompile Include="AudioBank.cpp" />
-    <ClCompile Include="AudioHandler.cpp" />
-    <ClCompile Include="File.cpp" />
-    <ClCompile Include="Font.cpp" />
-    <ClCompile Include="GraphicsHandler.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="LogHandler.cpp" />
+    <ClCompile Include="sources\Audio.cpp" />
+    <ClCompile Include="sources\AudioBank.cpp" />
+    <ClCompile Include="sources\AudioHandler.cpp" />
+    <ClCompile Include="sources\File.cpp" />
+    <ClCompile Include="sources\Font.cpp" />
+    <ClCompile Include="sources\GraphicsHandler.cpp" />
+    <ClCompile Include="sources\Input.cpp" />
+    <ClCompile Include="sources\InputHandler.cpp" />
+    <ClCompile Include="sources\LogHandler.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SlaskEngine.cpp" />
+    <ClCompile Include="sources\Object.cpp" />
+    <ClCompile Include="sources\Scene.cpp" />
+    <ClCompile Include="sources\SlaskEngine.cpp" />
     <ClCompile Include="SlaskGame.cpp" />
-    <ClCompile Include="slasknamespace.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="sources\slasknamespace.cpp" />
+    <ClCompile Include="sources\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Audio.h" />
-    <ClInclude Include="AudioBank.h" />
-    <ClInclude Include="AudioHandler.h" />
-    <ClInclude Include="File.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="GraphicsHandler.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="LogHandler.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SlaskEngine.h" />
-    <ClInclude Include="slasknamespace.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="sources\Audio.h" />
+    <ClInclude Include="sources\AudioBank.h" />
+    <ClInclude Include="sources\AudioHandler.h" />
+    <ClInclude Include="sources\File.h" />
+    <ClInclude Include="sources\Font.h" />
+    <ClInclude Include="sources\GraphicsHandler.h" />
+    <ClInclude Include="sources\Input.h" />
+    <ClInclude Include="sources\InputHandler.h" />
+    <ClInclude Include="sources\LogHandler.h" />
+    <ClInclude Include="sources\Object.h" />
+    <ClInclude Include="sources\Scene.h" />
+    <ClInclude Include="sources\SlaskEngine.h" />
+    <ClInclude Include="sources\slasknamespace.h" />
+    <ClInclude Include="sources\Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,5 @@
 #pragma once
-
-#define MAXJOYSTICKS (8)
+#include "InputHandler.h"
 
 class Input
 {
