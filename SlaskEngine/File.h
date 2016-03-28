@@ -22,7 +22,7 @@ public:
 	File();
 	~File();
 	
-	void save(std::string file);
+	void save(std::string file, bool encrypted);
 	bool load(std::string file, bool encrypted);
 	
 	void add(std::string str);

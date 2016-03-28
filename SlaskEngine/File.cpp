@@ -73,10 +73,9 @@ void File::add(int val)
 	add(s);
 }
 
-void File::save(std::string file)
+void File::save(std::string file,bool encrypt)
 {
-	std::string enc = crypt(data);
-	saveToFile(file, enc);
+	saveToFile(file, (encrypt?crypt(data):data));
 }
 
 bool File::saveToFile(std::string file, std::string str)
@@ -129,7 +128,6 @@ std::string File::get(int i)
 	std::string val = "";
 	if (i < entry.size())
 		val = entry[i];
-	std::cout << val << std::endl;
 	return val;
 }
 

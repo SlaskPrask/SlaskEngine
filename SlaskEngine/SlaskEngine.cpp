@@ -38,13 +38,13 @@ void SlaskEngine::init()
 	file.add("Zas");
 	file.add(19123);
 	file.add("I'm Slask");
-	file.save("Save Test.txt");
+	file.save("Save Test.txt", true);
 
 	file.load("Save Test.txt", true);
-	file.get(0);
-	file.get(1);
-	file.getint(2);
-	file.get(3);
+	std::cout << file.get(0) << '\n';
+	std::cout << file.get(1) << '\n';
+	std::cout << file.getint(2) << '\n';
+	std::cout << file.get(3) << '\n';
 	
 
 	while (running)
