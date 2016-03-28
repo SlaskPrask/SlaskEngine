@@ -16,7 +16,6 @@ private:
 	
 	bool saveToFile(std::string file, std::string str);
 
-	std::string line;
 	std::vector<std::string> entry;
 
 public:

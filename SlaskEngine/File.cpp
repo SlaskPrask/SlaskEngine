@@ -105,6 +105,7 @@ bool File::load(std::string file, bool encrypted)
 		f.close();
 		entry.clear();
 		std::istringstream input(data);
+		std::string line;
 		while (std::getline(input, line))
 		{
 			entry.push_back(line);
@@ -121,7 +122,7 @@ std::string File::get(int i)
 	if (i<entry.size())
 		val = entry[i];
 	std::cout << val;
-	return val;;
+	return val;
 }
 
 File::~File()

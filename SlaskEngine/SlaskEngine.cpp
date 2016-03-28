@@ -41,7 +41,7 @@ void SlaskEngine::init()
 	file.save("Save Test.txt");
 
 	file.load("Save Test.txt", true);
-	file.get(4);
+	file.get(3);
 	
 
 	while (running)
