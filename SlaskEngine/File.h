@@ -30,6 +30,7 @@ public:
 	void add(int val);
 
 	std::string get(int i);
+	int getint(int i);
 	
 };
 

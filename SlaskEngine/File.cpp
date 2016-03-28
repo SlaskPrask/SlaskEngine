@@ -82,7 +82,7 @@ void File::save(std::string file)
 bool File::saveToFile(std::string file, std::string str)
 {
 	std::ofstream f;
-	
+
 	f.open(file);
 	if (f.is_open())
 	{
@@ -96,7 +96,7 @@ bool File::saveToFile(std::string file, std::string str)
 bool File::load(std::string file, bool encrypted)
 {
 	std::ifstream f;
-	
+
 	f.open(file);
 	if (f.is_open())
 	{
@@ -110,20 +110,30 @@ bool File::load(std::string file, bool encrypted)
 		{
 			entry.push_back(line);
 		}
-		return 1;	
+		return 1;
 	}
 	return 0;
 }
 
+int File::getint(int i)
+{
+	std::string str = get(i);
+	std::istringstream input(str);
+	int val = 0;
+	input >> val;
+	return val;
+}
 
 std::string File::get(int i)
 {
 	std::string val = "";
-	if (i<entry.size())
+	if (i < entry.size())
 		val = entry[i];
-	std::cout << val;
+	std::cout << val << std::endl;
 	return val;
 }
+
+
 
 File::~File()
 {
