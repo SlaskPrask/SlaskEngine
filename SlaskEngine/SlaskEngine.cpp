@@ -23,6 +23,7 @@ void SlaskEngine::init()
 	input->init();
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
+	File file;
 	
 	//this is temp stuff just for testing
 	Sprite testS("slask.png");
@@ -33,7 +34,15 @@ void SlaskEngine::init()
 	Audio Guitar("Audio");
 	int position = 0;
 	
+	file.add("Hi");
+	file.add("Zas");
+	file.add(19123);
+	file.add("I'm Slask");
+	file.save("Save Test.txt");
 
+	file.load("Save Test.txt", true);
+	file.get(4);
+	
 
 	while (running)
 	{
