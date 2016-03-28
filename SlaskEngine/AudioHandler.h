@@ -3,6 +3,8 @@
 #include <fmod_studio.hpp>
 #include "Audio.h"
 #include "AudioBank.h"
+#include "LogHandler.h"
+
 
 
 class AudioHandler
@@ -21,6 +23,8 @@ private:
 	bool sampledecompress;
 
 	FMOD_RESULT result;
+
+	AudioHandler() {}
 
 public:
 	static AudioHandler* instance();

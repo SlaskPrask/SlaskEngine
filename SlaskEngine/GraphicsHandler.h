@@ -4,6 +4,7 @@
 #include <gl/freeglut.h>
 #include "Sprite.h"
 #include "Font.h"
+#include "LogHandler.h"
 
 #define DEPTHRANGE (10000)
 
@@ -20,6 +21,8 @@ private:
 
 	inline void set_color(double r, double g, double b, double a);
 	inline void restore_color();
+
+	GraphicsHandler() {}
 
 public:
 	static GraphicsHandler* instance();

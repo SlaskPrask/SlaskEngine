@@ -51,7 +51,7 @@ void SlaskEngine::init()
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
 	
-
+	LogHandler::log("Engine", "Initialized");
 	while (running)
 	{
 		if (input->run())
@@ -149,12 +149,12 @@ void SlaskEngine::init()
 
 		audio->run();
 	}
+	LogHandler::log("Engine", "Stopped");
 
 	graphics->close();
-
-	LogHandler::log("Engine", "End");
 }
 
 SlaskEngine::~SlaskEngine()
 {
+	LogHandler::log("Engine", "End");
 }

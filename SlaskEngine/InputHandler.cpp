@@ -8,6 +8,8 @@ InputHandler* InputHandler::instance()
 
 void InputHandler::init()
 {
+	LogHandler::log("Input", "Start");
+
 	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
 	window_focus = true;
@@ -20,6 +22,8 @@ void InputHandler::init()
 	{
 		key[i] = 0;
 	}
+
+	LogHandler::log("Input", "Initialized");
 }
 
 bool InputHandler::run()
@@ -122,12 +126,30 @@ bool InputHandler::run()
 
 int InputHandler::getkey(int i)
 {
+	if (i>=0&&i<sf::Keyboard::Key::KeyCount)
 	return key[i];
+	else
+	{
+		std::string unhandledKey = "Reading key ";
+		unhandledKey += i;
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
 }
 
 int InputHandler::getmouse(int i)
 {
-	return mouse_butt[i];
+	if (i >= 0 && i<MAXMOUSEBUTTONS)
+		return mouse_butt[i];
+	else
+	{
+		std::string unhandledKey = "Reading mouse button ";
+		unhandledKey += i;
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
 }
 
 int InputHandler::getmouse_x()
@@ -153,6 +175,7 @@ int InputHandler::getmousewheel_down()
 InputHandler::~InputHandler()
 {
 	delete key;
+	LogHandler::log("Input", "End");
 }
 
 bool InputHandler::getSignalResize()

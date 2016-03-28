@@ -12,7 +12,7 @@ std::string File::crypt(std::string str)
 	std::string crypted = "";
 
 	key(true);
-	for (int temp = 0; temp < str.size(); temp++)
+	for (unsigned int temp = 0; temp < str.size(); temp++)
 	{
 		crypted += str[temp] ^ (int(key(false)) + temp) % 255;
 	}
@@ -76,7 +76,7 @@ void File::add(int val)
 void File::save(std::string file,bool encrypt)
 {
 	clearData();
-	for (int i = 0; i<entry.size(); i++)
+	for (unsigned int i = 0; i<entry.size(); i++)
 	{
 		data += entry[i];
 		data += '\n';
@@ -95,6 +95,13 @@ bool File::saveToFile(std::string file, std::string str)
 		f << str;
 		f.close();
 		return 1;
+	}
+	else
+	{
+		std::string str = "Unable to open file \"";
+		str += file;
+		str += "\"for writing.";
+		LogHandler::error("File", str.c_str());
 	}
 	return 0;
 }
@@ -118,6 +125,13 @@ bool File::load(std::string file, bool encrypted)
 		}
 		return 1;
 	}
+	else
+	{
+		std::string str = "Unable to open file \"";
+		str += file;
+		str += "\"for reading.";
+		LogHandler::error("File", str.c_str());
+	}
 	return 0;
 }
 
@@ -133,8 +147,15 @@ int File::getint(int i)
 std::string File::get(int i)
 {
 	std::string val = "";
-	if (i>=0 && i < entry.size())
+	if (i>=0 && (unsigned int) i < entry.size())
 		val = entry[i];
+	else
+	{
+		std::string str = "Getting file entry ";
+		str += i;
+		str += " out of range.";
+		LogHandler::error("File", str.c_str());
+	}
 	return val;
 }
 
@@ -156,8 +177,15 @@ void File::set(int i, int val)
 
 void File::set(int i, std::string val)
 {
-	if (i >= 0 && i<entry.size())
+	if (i >= 0 && (unsigned int)i<entry.size())
 		entry[i] = val;
+	else
+	{
+		std::string str = "Setting file entry ";
+		str += i;
+		str += " out of range.";
+		LogHandler::error("File", str.c_str());
+	}
 }
 
 File::~File()

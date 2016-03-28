@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/System.hpp>
 #include "GraphicsHandler.h"
+#include "LogHandler.h"
+
 #define MAXMOUSEBUTTONS (5)
 
 class InputHandler
@@ -17,6 +19,8 @@ private:
 	bool signal_resize;
 	bool signal_focus;
 	bool window_focus;
+
+	InputHandler() {}
 
 public:
 	static InputHandler* instance();

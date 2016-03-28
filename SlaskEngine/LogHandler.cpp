@@ -117,6 +117,11 @@ void LogHandler::notify(const char *str)
 	instance()->writeLog(0, str, Notify);
 }
 
+void LogHandler::notify(const char *logger, const char *str)
+{
+	instance()->writeLog(logger, str, Notify);
+}
+
 LogHandler::~LogHandler()
 {
 	if (enabled)

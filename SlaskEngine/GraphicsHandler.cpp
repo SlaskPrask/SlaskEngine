@@ -8,6 +8,8 @@ GraphicsHandler* GraphicsHandler::instance()
 
 void GraphicsHandler::init(int w, int h, const char* title)
 {
+	LogHandler::log("Graphics", "Start");
+
 	sf::ContextSettings settings;
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
@@ -16,6 +18,13 @@ void GraphicsHandler::init(int w, int h, const char* title)
 	settings.minorVersion = 0;
 
 	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
+
+	if (!window)
+	{
+		LogHandler::error("Graphics", "Unable to create window.");
+		return;
+	}
+
 	setTitle(title);
 	setVSync(true);
 	setFPS(60);
@@ -42,6 +51,8 @@ void GraphicsHandler::init(int w, int h, const char* title)
 	//todo drawing nice with culling maybe?
 	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+
+	LogHandler::log("Graphics", "Initialized");
 }
 
 void GraphicsHandler::setTitle(const char* title)
@@ -128,6 +139,7 @@ void GraphicsHandler::drawEnd()
 void GraphicsHandler::close()
 {
 	window->close();
+	LogHandler::log("Graphics", "Window closed.");
 }
 
 void GraphicsHandler::drawSprite(Sprite* sprite, double x, double y, double depth)
@@ -162,6 +174,12 @@ void GraphicsHandler::drawSpritePolyRot(Sprite* sprite, double x1, double y1, do
 
 void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
 {
+	if (!sprite)
+	{
+		LogHandler::notify("Graphics", "Attempting to draw unloaded sprite.");
+		return;
+	}
+
 	glPushMatrix();
 	GLfloat d2d[] = { -w/2.0f, - h/2.0f,depth, + w/2.0f, - h / 2.0f,depth, - w / 2.0f, + h / 2.0f,depth, + w / 2.0f, + h / 2.0f,depth };
 
@@ -181,6 +199,12 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 
 void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth)
 {
+	if (!sprite)
+	{
+		LogHandler::notify("Graphics", "Attempting to draw unloaded sprite.");
+		return;
+	}
+
 	glPushMatrix();
 	double cx = (x1 + x2 + x3) / 3;
 	double cy = (y1 + y2 + y3) / 3;
@@ -202,7 +226,9 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 
 GraphicsHandler::~GraphicsHandler()
 {
+	window->close();
 	delete window;
+	LogHandler::log("Graphics", "End");
 }
 
 inline void GraphicsHandler::set_color(double r, double g, double b, double a)

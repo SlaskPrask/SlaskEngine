@@ -9,10 +9,17 @@ AudioBank::AudioBank(const char* file)
 
 	result = system->loadBankFile(file, AudioHandler::instance()->getSampleFlags(), &bank);
 	if (result != FMOD_OK)
-		std::cout << "Loading bank: " << FMOD_ErrorString(result) << '\n';
+	{
+		std::string str = "Loading bank file: ";
+		str += FMOD_ErrorString(result);
+		LogHandler::error("Audio", str.c_str());
+		bank = NULL;
+		return;
+	}
 }
 
 AudioBank::~AudioBank()
 {
+	if (bank)
 	bank->unload();
 }

@@ -8,7 +8,14 @@ Sprite::Sprite(const char* file)
 	h = 0;
 	{
 		sf::Image image;
-		image.loadFromFile(file);
+		if (!image.loadFromFile(file))
+		{
+			std::string str = "Unable to load sprite from file \"";
+			str += file;
+			str += '\"';
+			LogHandler::error("Graphics", str.c_str());
+			return;
+		}
 		glGenTextures(1,&texture);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());

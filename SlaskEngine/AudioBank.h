@@ -1,6 +1,7 @@
 #pragma once
 #include <fmod_errors.h>
 #include <fmod_studio.hpp>
+#include "LogHandler.h"
 
 class AudioHandler;
 

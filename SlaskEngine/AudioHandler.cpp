@@ -9,7 +9,7 @@ AudioHandler* AudioHandler::instance()
 
 void AudioHandler::init(int channels)
 {
-	
+	LogHandler::log("Audio", "Start");
 	extraDriverData = NULL;
 	audioSys = NULL;
 	lowLevelSys = NULL;
@@ -17,17 +17,16 @@ void AudioHandler::init(int channels)
 
 	if (result != FMOD_OK)
 	{
-		//ERROR
+		LogHandler::error("Audio", "Failed to create sound system.");
 		return;
 	}
 
-
 	//Low Level stuff
-
 	
 	result = audioSys->getLowLevelSystem(&lowLevelSys);
 	if (result != FMOD_OK)
 	{
+		LogHandler::error("Audio", "Failed to get low level sound system.");
 		return;
 	}
 
@@ -35,9 +34,9 @@ void AudioHandler::init(int channels)
 
 	if (result != FMOD_OK)
 	{
+		LogHandler::error("Audio", "Failed to set software audio format."); 
 		return;
 	}
-
 
 	//Cool Stuff
 	setMaxChannels(channels);
@@ -46,11 +45,13 @@ void AudioHandler::init(int channels)
 	result = audioSys->initialize(channels, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, extraDriverData);
 	if (result != FMOD_OK)
 	{
-		std::cout << "Initializing: " << FMOD_ErrorString(result) << '\n';
+		LogHandler::error("Audio", FMOD_ErrorString(result));
 	}
 
 	setSampleASync(false); 
 	setSampleDecompress(false);
+
+	LogHandler::log("Audio", "Initialized");
 }
 
 void AudioHandler::setMaxChannels(int channels)
@@ -77,19 +78,20 @@ FMOD::Studio::System* AudioHandler::getSystem()
 	return audioSys;
 }
 
-/*void loadEvent(Audio* audio, const char* event)
-{
-
-}*/
-
 void AudioHandler::play(Audio* audio)
 {
-	audio->getInstance()->start();
+	if (audio->getInstance())
+		audio->getInstance()->start();
+	else
+		LogHandler::notify("Audio", "Attempting to play unloaded sound.");
 }
 
 void AudioHandler::stop(Audio* audio)
 {
-	audio->getInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
+	if (audio->getInstance())
+		audio->getInstance()->stop(FMOD_STUDIO_STOP_IMMEDIATE);
+	else
+		LogHandler::notify("Audio", "Attempting to stop unloaded sound.");
 }
 
 void AudioHandler::run()
@@ -99,45 +101,67 @@ void AudioHandler::run()
 
 void AudioHandler::pause(Audio* audio)
 {
-	audio->getInstance()->setPaused(true);
+	if (audio->getInstance())
+		audio->getInstance()->setPaused(true);
+	else
+		LogHandler::notify("Audio", "Attempting to pause unloaded sound.");
 }
 
 void AudioHandler::unpause(Audio* audio)
 {
-	audio->getInstance()->setPaused(false);
+	if (audio->getInstance())
+		audio->getInstance()->setPaused(false);
+	else
+		LogHandler::notify("Audio", "Attempting to unpause unloaded sound.");
 }
 
 void AudioHandler::trigger(Audio* audio)
 {
 	//Makes the cursor able to move past a sustain point
-	audio->getInstance()->triggerCue();
+	if (audio->getInstance())
+		audio->getInstance()->triggerCue();
+	else
+		LogHandler::notify("Audio", "Attempting to trigger unloaded sound.");
 }
 
 void AudioHandler::release(Audio* audio)
 {
 	//Destroys the event
-	audio->getInstance()->release();
+	if (audio->getInstance())
+		audio->getInstance()->release();
+	else
+		LogHandler::notify("Audio", "Attempting to release unloaded sound.");
 }
 
 void AudioHandler::setVolume(Audio* audio, double vol)
 {
-	audio->getInstance()->setVolume((vol>1.0f ? 1.0f : (vol<0.0f ? 0.0f : vol)));;
+	if (audio->getInstance())
+		audio->getInstance()->setVolume((float)(vol>1.0f ? 1.0f : (vol<0.0f ? 0.0f : vol)));
+	else
+		LogHandler::notify("Audio", "Attempting to set volume of an unloaded sound.");
 }
 
 void AudioHandler::setParameterValue(Audio* audio, const char* param, double value)
 {
-	audio->getInstance()->setParameterValue(param, value);
+	if (audio->getInstance())
+		audio->getInstance()->setParameterValue(param, (float)value);
+	else
+		LogHandler::notify("Audio", "Attempting to set parameter value of an unloaded sound.");
 }
 
 void AudioHandler::setPitch(Audio* audio, double pitch)
 {
-	audio->getInstance()->setPitch(pitch);
+	audio->getInstance()->setPitch((float)pitch);
 }
 
 void AudioHandler::setTimePosition(Audio* audio, int position)
 {
 	//Timeline position in milliseconds
-	audio->getInstance()->setTimelinePosition(position);
+	if (audio->getInstance())
+		audio->getInstance()->setTimelinePosition(position);
+	else
+		LogHandler::notify("Audio", "Attempting to set time position of an unloaded sound.");
+	
 }
 
 
@@ -145,4 +169,5 @@ AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();
 	audioSys->release();
+	LogHandler::log("Audio", "End");
 }
