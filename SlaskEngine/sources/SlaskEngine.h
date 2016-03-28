@@ -19,6 +19,7 @@ class SlaskEngine
 {
 private:
 	bool running;
+	std::vector<std::string> files;
 
 public:
 	static SlaskEngine* instance();

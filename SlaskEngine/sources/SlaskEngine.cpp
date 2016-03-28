@@ -57,8 +57,7 @@ void SlaskEngine::init()
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
 
-
-	file.searchFile("", "*.*");
+	file.searchFile(&files, "", "*.*");
 	//end of temp
 
 	while (running)

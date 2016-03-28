@@ -42,7 +42,6 @@ public:
 	std::string get(int i);
 	int getint(int i);
 
-	void searchFile(const char* path, const char* type);
-	void DumpEntry(_finddata32_t &dataF);
+	void searchFile(std::vector<std::string>*list, const char* path, const char* type);
 };
 
