@@ -50,6 +50,11 @@ void SlaskEngine::init()
 	std::cout << file.get(1) << '\n';
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
+	LogHandler::notify("Test notification");
+	LogHandler::log("Test");
+	LogHandler::log("Test");
+	LogHandler::log("Test");
+	LogHandler::error("Test error");
 	
 	LogHandler::log("Engine", "Initialized");
 	while (running)

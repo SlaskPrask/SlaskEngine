@@ -38,6 +38,21 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 {
 	if (enabled)
 	{
+		char sep = ' ';
+		switch (type)
+		{
+		default:
+		case Log:
+			sep = ' ';
+			break;
+		case Notify:
+			sep = '-';
+			break;
+		case Error:
+			sep = '*';
+			break;
+		}
+
 		std::ostringstream output;
 
 		time_t now;
@@ -53,7 +68,7 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 		timestr << timedata.tm_mon + 1 << '/';
 		timestr.fill('0');
 		timestr.width(2);
-		timestr << timedata.tm_mday << '/' << timedata.tm_year + 1900 << ' ';
+		timestr << timedata.tm_mday << '/' << timedata.tm_year + 1900 << sep;
 		timestr.fill('0');
 		timestr.width(2);
 		timestr << timedata.tm_hour << ':';
@@ -68,7 +83,7 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 		buffer.fill('0');
 		buffer.width(10);
 		buffer << elapsedTime;
-		output << timestr.str() << ' ' << buffer.str() << ' ';
+		output << timestr.str() << sep << buffer.str() << sep;
 		if (logger)
 		output << '[' << logger << "] ";
 		
@@ -76,13 +91,12 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 		{
 		default:
 		case Log:
+		case Notify:
 			output << str;
 			break;
-		case Notify:
-			output << "!!! " << str;
-			break;
 		case Error:
-			output << "ERROR ***" << str << "***";
+			output << "ERROR: " << str;
+			break;
 		}
 		output << '\n';
 
