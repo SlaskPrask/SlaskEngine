@@ -133,7 +133,7 @@ int File::getint(int i)
 std::string File::get(int i)
 {
 	std::string val = "";
-	if (i < entry.size())
+	if (i>=0 && i < entry.size())
 		val = entry[i];
 	return val;
 }
@@ -150,8 +150,8 @@ void File::clearData()
 
 void File::set(int i, int val)
 {
-	if (i >= 0 && i<entry.size())
-		entry[i] = val;
+	std::string s = std::to_string(val);
+	set(i,s);
 }
 
 void File::set(int i, std::string val)

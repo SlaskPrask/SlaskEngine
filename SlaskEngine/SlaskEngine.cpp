@@ -41,6 +41,8 @@ void SlaskEngine::init()
 	file.save("Save Test.txt", true);
 
 	file.load("Save Test.txt", true);
+	file.set(1, "Slask");
+	file.set(2, 12);
 	std::cout << file.get(0) << '\n';
 	std::cout << file.get(1) << '\n';
 	std::cout << file.getint(2) << '\n';
