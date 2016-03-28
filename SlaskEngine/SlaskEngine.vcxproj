@@ -142,6 +142,7 @@
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsHandler.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="LogHandler.cpp" />
     <ClCompile Include="main.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="File.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsHandler.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LogHandler.h" />
     <ClInclude Include="Object.h" />
