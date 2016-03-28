@@ -14,6 +14,9 @@ SlaskEngine::SlaskEngine()
 
 void SlaskEngine::init()
 {
+	LogHandler::setFile("log.txt");
+	LogHandler::log("Engine", "Start");
+
 	running = true;
 
 	GraphicsHandler* graphics = GraphicsHandler::instance();
@@ -148,6 +151,8 @@ void SlaskEngine::init()
 	}
 
 	graphics->close();
+
+	LogHandler::log("Engine", "End");
 }
 
 SlaskEngine::~SlaskEngine()
