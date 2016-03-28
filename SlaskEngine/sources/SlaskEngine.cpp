@@ -31,6 +31,7 @@ void SlaskEngine::init()
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
 
+
 	//this is temp stuff just for testing
 	File file;
 	
@@ -55,6 +56,9 @@ void SlaskEngine::init()
 	std::cout << file.get(1) << '\n';
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
+
+
+	file.searchFile("", "*.*");
 	//end of temp
 
 	while (running)

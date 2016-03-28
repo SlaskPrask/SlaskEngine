@@ -188,6 +188,39 @@ void File::set(int i, std::string val)
 	}
 }
 
+void File::searchFile(const char* path, const char* type) //type = *.* for all files or *.txt for txt files etc
+{
+	std::string str = path;
+	str += type;
+	const char* filepath = str.c_str();
+
+	int ff = _findfirst32(filepath, &data32);
+	
+	if (ff != -1)
+	{
+		int res = 0;
+		while (res != -1)
+		{
+				DumpEntry(data32);
+				res = _findnext32(ff, &data32);
+		}
+			_findclose(ff);
+	}
+}
+
+void File::DumpEntry(_finddata32_t &dataF)
+{
+	
+	if ((dataF.attrib & _A_SUBDIR) == _A_SUBDIR)
+	{
+		std::cout << "[" << dataF.name << "]" << std::endl;
+	}
+	else
+	{
+		std::cout << dataF.name << std::endl;
+	}
+}
+
 File::~File()
 {
 }

@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include "LogHandler.h"
+#include <io.h>
 
 class File
 {
@@ -18,6 +19,8 @@ private:
 	bool saveToFile(std::string file, std::string str);
 
 	std::vector<std::string> entry;
+
+	_finddata32_t data32;
 
 public:
 	File();
@@ -38,6 +41,8 @@ public:
 	
 	std::string get(int i);
 	int getint(int i);
-	
+
+	void searchFile(const char* path, const char* type);
+	void DumpEntry(_finddata32_t &dataF);
 };
 
