@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "AudioHandler.h"
 #include "LogHandler.h"
+#include "File.h"
 
 namespace slask
 {
@@ -10,6 +11,7 @@ namespace slask
 	InputHandler* input();
 	AudioHandler* audio();
 	LogHandler* log();
+	File file();
 
 	namespace Mouse
 	{

@@ -19,3 +19,8 @@ LogHandler* slask::log()
 {
 	return LogHandler::instance();
 }
+
+File slask::file()
+{
+	return File::File();
+}
