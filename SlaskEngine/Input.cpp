@@ -26,6 +26,21 @@ void Input::axisDeadZone()
 
 }
 
+double Input::getDeadZone()
+{
+
+}
+
+void Input::setDeadZone()
+{
+
+}
+
+void Input::axisType()
+{
+
+}
+
 Input::~Input()
 {
 }
