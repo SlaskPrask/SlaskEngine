@@ -5,13 +5,16 @@
 #include "Sprite.h"
 #include "Font.h"
 #include "LogHandler.h"
+#include <vector>
 
 #define DEPTHRANGE (10000)
 
 class GraphicsHandler
 {
 private:
+	std::vector<sf::VideoMode> resolutions;
 	sf::RenderWindow* window;
+	sf::ContextSettings settings;
 	bool vsync; 
 	int framespersecond;
 	const char* label;
@@ -21,6 +24,8 @@ private:
 
 	inline void set_color(double r, double g, double b, double a);
 	inline void restore_color();
+
+	void initGL();
 
 	GraphicsHandler() {}
 
@@ -44,6 +49,13 @@ public:
 	bool getVSync();
 	int getWidth();
 	int getHeight();
+
+	int getResolutions();
+	int getResolutionWidth(int i);
+	int getResolutionHeight(int i);
+	bool setFullscreen(int w,int h);
+	bool setWindowed(int w, int h);
+	bool setFullscreenWindowed(int w, int h);
 
 	//draw sprite at position
 	void drawSprite(Sprite* sprite, double x, double y, double depth);

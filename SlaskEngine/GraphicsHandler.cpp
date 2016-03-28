@@ -1,5 +1,7 @@
 #include "GraphicsHandler.h"
 
+//TODO: window checks
+
 GraphicsHandler* GraphicsHandler::instance()
 {
 	static GraphicsHandler graphicshandler;
@@ -10,29 +12,40 @@ void GraphicsHandler::init(int w, int h, const char* title)
 {
 	LogHandler::log("Graphics", "Start");
 
-	sf::ContextSettings settings;
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
 	settings.antialiasingLevel = 4;
 	settings.majorVersion = 3;
 	settings.minorVersion = 0;
 
+	resolutions = sf::VideoMode::getFullscreenModes();
+
 	window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
 
 	if (!window)
 	{
 		LogHandler::error("Graphics", "Unable to create window.");
+		window = 0;
 		return;
 	}
 
-	setTitle(title);
-	setVSync(true);
-	setFPS(60);
+	framespersecond = 60;
+	vsync = true;
+	label = title;
 	setSize(w, h);
 	setRenderSize(w, h);
+	initGL();
+
+	LogHandler::log("Graphics", "Initialized");
+}
+
+void GraphicsHandler::initGL()
+{
+	setVSync(vsync);
+	setFPS(framespersecond);
 
 	window->setActive();
-	
+
 	glDisable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
 	glClearDepth(1.0f);
@@ -44,15 +57,122 @@ void GraphicsHandler::init(int w, int h, const char* title)
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	
+
 	//todo alpha blending fix
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	//todo drawing nice with culling maybe?
 	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+}
 
-	LogHandler::log("Graphics", "Initialized");
+bool GraphicsHandler::setFullscreen(int w, int h)
+{
+	close();
+
+	bool valid = false;
+	for (unsigned int i = 0; i < resolutions.size();i++)
+	if (resolutions[i].width == w && resolutions[i].height == h)
+	{
+		valid = true;
+		break;
+	}
+
+	if (!valid)
+	{
+		std::string str = "Attempted to switch to unsupported resolution ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::notify("Graphics", str.c_str());
+		return false;
+	}
+
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Fullscreen, settings);
+
+	if (!window)
+	{
+		std::string str = "Unable change to supported fullscreen resolution ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::error("Graphics", str.c_str());
+		return false;
+	}
+	else
+	{
+		std::string str = "Changed to fullscreen resolution ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::log("Graphics", str.c_str());
+
+		setSize(w, h);
+		setRenderSize(w, h);
+		initGL();
+		return true;
+	}
+}
+
+bool GraphicsHandler::setWindowed(int w, int h)
+{
+	close();
+
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Default, settings);
+
+	if (!window)
+	{
+		std::string str = "Unable change to window ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::error("Graphics", str.c_str());
+		return false;
+	}
+	else
+	{
+		std::string str = "Changed to window ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::log("Graphics", str.c_str());
+
+		setSize(w, h);
+		setRenderSize(w, h);
+		initGL();
+		return true;
+	}
+}
+
+bool GraphicsHandler::setFullscreenWindowed(int w, int h)
+{
+	close();
+
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::None, settings);
+	window->setPosition(sf::Vector2i(0, 0));
+
+	if (!window)
+	{
+		std::string str = "Unable change to fullscreen windowed ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::error("Graphics", str.c_str());
+		return false;
+	}
+	else
+	{
+		std::string str = "Changed to fullscreen windowed ";
+		str += std::to_string(w);
+		str += 'x';
+		str += std::to_string(h);
+		LogHandler::log("Graphics", str.c_str());
+
+		setSize(w, h);
+		setRenderSize(w, h);
+		initGL();
+		return true;
+	}
 }
 
 void GraphicsHandler::setTitle(const char* title)

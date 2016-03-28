@@ -62,7 +62,10 @@ void SlaskEngine::init()
 		if (input->run())
 			running = false;
 		if (input->getSignalResize())
+		{
+			LogHandler::log("Engine", "Window resized.");
 			graphics->resize();
+		}
 
 		/*TESTING GAME CODE*/
 		{
@@ -121,6 +124,24 @@ void SlaskEngine::init()
 			{
 				//OH YEAH
 				audio->setTimePosition(&Team10, 37678);
+			}
+
+
+			if (input->getkey(slask::Key::LShift) && input->getkey(slask::Key::Z) == 1)
+			{
+				graphics->setFullscreenWindowed(1920,1080);
+			}
+			if (input->getkey(slask::Key::LShift) && input->getkey(slask::Key::X) == 1)
+			{
+				graphics->setWindowed(1280,720);
+			}
+			if (input->getkey(slask::Key::LShift) && input->getkey(slask::Key::C) == 1)
+			{
+				graphics->setWindowed(800,600);
+			}
+			if (input->getkey(slask::Key::LShift) && input->getkey(slask::Key::V)==1)
+			{
+				graphics->setFullscreen(1920,1080);
 			}
 		}
 
