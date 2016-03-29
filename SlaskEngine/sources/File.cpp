@@ -228,21 +228,23 @@ int File::compare(std::vector<std::string>*list, std::string file)
 			entry.push_back(line);
 		}
 		
-		for (unsigned int l = 0; l < list->size() ; l++)
+		//switch araound data + line stuff
+
+		for (unsigned int l = 0; l < entry.size() ; l++)
 		{
 			bool found = false;
 
 			std::string tstr = "Searching for: *";
-			tstr += list->at(l);
+			tstr += entry[l];
 			tstr += "*";
 			LogHandler::log("File", tstr.c_str());
 
-			for (unsigned int e = 0; e < entry.size(); e++)
+			for (unsigned int e = 0; e < list->size(); e++)
 			{
-				if (entry[e] == list->at(l))
+				if (list->at(e) == entry[l])
 				{
 					std::string str = "*";
-					str += list->at(l);
+					str += entry[l];
 					str += "* Found";
 					LogHandler::log("File", str.c_str());
 					found = true;
@@ -252,7 +254,7 @@ int File::compare(std::vector<std::string>*list, std::string file)
 			if (found != true) 
 			{
 				std::string str = "*";
-				str += list->at(l);
+				str += entry[l];
 				str += "* Not found!";
 				LogHandler::error("File", str.c_str());
 			}

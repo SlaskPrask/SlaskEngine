@@ -1,6 +1,3 @@
 Save Test.txt
 TestCompare.txt
-Bajs.txt
-log.txt
-meop.txt
-asdfoij.txt
+ThisShouldntExist.txt

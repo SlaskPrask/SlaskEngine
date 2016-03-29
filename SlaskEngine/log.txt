@@ -1,17 +1,23 @@
-03/29/2016 11:35:58 0000001038 [Engine] Start
-03/29/2016 11:35:58 0000001044 [Graphics] Start
-03/29/2016 11:35:58 0000001060 [Graphics] Initialized
-03/29/2016 11:35:58 0000001066 [Input] Start
-03/29/2016 11:35:58 0000001071 [Input] Initialized
-03/29/2016 11:35:58 0000001077 [Audio] Start
-03/29/2016 11:35:58 0000001397 [Audio] Initialized
-03/29/2016 11:35:58 0000001403 [Engine] Initialized
-03/29/2016 11:35:58 0000001411 -------------------------------------
-03/29/2016 11:35:59 0000001744 [Graphics] Changed to window 1280x720
-03/29/2016 11:35:59 0000001915 [File] Searching for: *log.txt*
-03/29/2016 11:35:59 0000002000 [File] *log.txt* Found
-03/29/2016 11:35:59 0000002034 [File] Searching for: *Save Test.txt*
-03/29/2016 11:35:59 0000002055 [File] *Save Test.txt* Found
-03/29/2016 11:35:59 0000002064 [File] Searching for: *TestCompare.txt*
-03/29/2016 11:35:59 0000002092 [File] *TestCompare.txt* Found
-03/29/2016 11:35:59 0000002126 [File] Search done
+03/29/2016 12:56:06 0000000114 [Engine] Start
+03/29/2016 12:56:06 0000000122 [Graphics] Start
+03/29/2016 12:56:06 0000000142 [Graphics] Initialized
+03/29/2016 12:56:06 0000000151 [Input] Start
+03/29/2016 12:56:06 0000000157 [Input] Initialized
+03/29/2016 12:56:06 0000000164 [Audio] Start
+03/29/2016 12:56:07 0000000519 [Audio] Initialized
+03/29/2016 12:56:07 0000000525 [Engine] Initialized
+03/29/2016 12:56:07 0000000531 -------------------------------------
+03/29/2016 12:56:07 0000000812 [Graphics] Changed to window 1280x720
+03/29/2016 12:56:07 0000001283 [File] Searching for: *Save Test.txt*
+03/29/2016 12:56:08 0000001670 [File] *Save Test.txt* Found
+03/29/2016 12:56:08 0000001704 [File] Searching for: *TestCompare.txt*
+03/29/2016 12:56:08 0000001761 [File] *TestCompare.txt* Found
+03/29/2016 12:56:08 0000001853 [File] Searching for: *Bajs.txt*
+03/29/2016*12:56:08*0000001885*[File] ERROR: *Bajs.txt* Not found!
+03/29/2016 12:56:08 0000001923 [File] Searching for: *log.txt*
+03/29/2016 12:56:08 0000001939 [File] *log.txt* Found
+03/29/2016 12:56:08 0000001970 [File] Searching for: *meop.txt*
+03/29/2016*12:56:08*0000001981*[File] ERROR: *meop.txt* Not found!
+03/29/2016 12:56:08 0000001992 [File] Searching for: *asdfoij.txt*
+03/29/2016*12:56:08*0000002002*[File] ERROR: *asdfoij.txt* Not found!
+03/29/2016 12:56:08 0000002020 [File] Search done
