@@ -1,17 +1,17 @@
-03/29/2016 11:31:06 0000000617 [Engine] Start
-03/29/2016 11:31:06 0000000623 [Graphics] Start
-03/29/2016 11:31:06 0000000636 [Graphics] Initialized
-03/29/2016 11:31:06 0000000642 [Input] Start
-03/29/2016 11:31:06 0000000646 [Input] Initialized
-03/29/2016 11:31:06 0000000652 [Audio] Start
-03/29/2016 11:31:06 0000000891 [Audio] Initialized
-03/29/2016 11:31:06 0000000896 [Engine] Initialized
-03/29/2016 11:31:06 0000000903 -------------------------------------
-03/29/2016 11:31:06 0000001514 [Graphics] Changed to window 1280x720
-03/29/2016 11:31:07 0000001691 [File] Searching for: *log.txt*
-03/29/2016*11:31:07*0000001788*[File] ERROR: *log.txt* Not found!
-03/29/2016 11:31:07 0000001811 [File] Searching for: *Save Test.txt*
-03/29/2016 11:31:07 0000001856 [File] *Save Test.txt* Found
-03/29/2016 11:31:07 0000001875 [File] Searching for: *TestCompare.txt*
-03/29/2016 11:31:07 0000001897 [File] *TestCompare.txt* Found
-03/29/2016 11:31:07 0000001908 [File] Search done
+03/29/2016 11:35:58 0000001038 [Engine] Start
+03/29/2016 11:35:58 0000001044 [Graphics] Start
+03/29/2016 11:35:58 0000001060 [Graphics] Initialized
+03/29/2016 11:35:58 0000001066 [Input] Start
+03/29/2016 11:35:58 0000001071 [Input] Initialized
+03/29/2016 11:35:58 0000001077 [Audio] Start
+03/29/2016 11:35:58 0000001397 [Audio] Initialized
+03/29/2016 11:35:58 0000001403 [Engine] Initialized
+03/29/2016 11:35:58 0000001411 -------------------------------------
+03/29/2016 11:35:59 0000001744 [Graphics] Changed to window 1280x720
+03/29/2016 11:35:59 0000001915 [File] Searching for: *log.txt*
+03/29/2016 11:35:59 0000002000 [File] *log.txt* Found
+03/29/2016 11:35:59 0000002034 [File] Searching for: *Save Test.txt*
+03/29/2016 11:35:59 0000002055 [File] *Save Test.txt* Found
+03/29/2016 11:35:59 0000002064 [File] Searching for: *TestCompare.txt*
+03/29/2016 11:35:59 0000002092 [File] *TestCompare.txt* Found
+03/29/2016 11:35:59 0000002126 [File] Search done
