@@ -43,5 +43,6 @@ public:
 	int getint(int i);
 
 	void searchFile(std::vector<std::string>*list, const char* path, const char* type);
+	int compare(std::vector<std::string>*list, std::string file);
 };
 

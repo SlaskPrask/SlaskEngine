@@ -209,6 +209,53 @@ void File::searchFile(std::vector<std::string>*list, const char* path, const cha
 	}
 }
 
+int File::compare(std::vector<std::string>*list, std::string file)
+{
+	std::ifstream f;
+
+	f.open(file);
+	if (f.is_open())
+	{
+		clearVector();
+		std::string content((std::istreambuf_iterator<char>(f)), (std::istreambuf_iterator<char>()));
+		data = content;
+		f.close();
+		std::istringstream input(data);
+		std::string line;
+		while (std::getline(input, line))
+		{
+			entry.push_back(line);
+		}
+		
+		for (unsigned int l = 0; l < list->size() ; l++)
+		{
+
+			for (unsigned int e = 0; e < entry.size(); e++)
+			{
+				if (entry[e] == list->at(l))
+				{
+					std::cout << "Found File" << std::endl;
+				}
+				else 
+				{
+					std::cout << "Looking for File" << std::endl;
+				}
+			}
+		}
+
+
+		return 1;
+	}
+	else
+	{
+		std::string str = "Unable to open file \"";
+		str += file;
+		str += "\"for reading.";
+		LogHandler::error("File", str.c_str());
+	}
+	return 0;
+}
+
 File::~File()
 {
 }
