@@ -1,10 +1,17 @@
-03/29/2016 08:06:33 0000001150 [Engine] Start
-03/29/2016 08:06:33 0000001157 [Graphics] Start
-03/29/2016 08:06:33 0000001169 [Graphics] Initialized
-03/29/2016 08:06:33 0000001176 [Input] Start
-03/29/2016 08:06:33 0000001180 [Input] Initialized
-03/29/2016 08:06:33 0000001185 [Audio] Start
-03/29/2016 08:06:33 0000001497 [Audio] Initialized
-03/29/2016 08:06:33 0000001504 [Engine] Initialized
-03/29/2016 08:06:33 0000001511 -------------------------------------
-03/29/2016 08:06:34 0000001786 [Graphics] Changed to window 1280x720
+03/29/2016 11:31:06 0000000617 [Engine] Start
+03/29/2016 11:31:06 0000000623 [Graphics] Start
+03/29/2016 11:31:06 0000000636 [Graphics] Initialized
+03/29/2016 11:31:06 0000000642 [Input] Start
+03/29/2016 11:31:06 0000000646 [Input] Initialized
+03/29/2016 11:31:06 0000000652 [Audio] Start
+03/29/2016 11:31:06 0000000891 [Audio] Initialized
+03/29/2016 11:31:06 0000000896 [Engine] Initialized
+03/29/2016 11:31:06 0000000903 -------------------------------------
+03/29/2016 11:31:06 0000001514 [Graphics] Changed to window 1280x720
+03/29/2016 11:31:07 0000001691 [File] Searching for: *log.txt*
+03/29/2016*11:31:07*0000001788*[File] ERROR: *log.txt* Not found!
+03/29/2016 11:31:07 0000001811 [File] Searching for: *Save Test.txt*
+03/29/2016 11:31:07 0000001856 [File] *Save Test.txt* Found
+03/29/2016 11:31:07 0000001875 [File] Searching for: *TestCompare.txt*
+03/29/2016 11:31:07 0000001897 [File] *TestCompare.txt* Found
+03/29/2016 11:31:07 0000001908 [File] Search done

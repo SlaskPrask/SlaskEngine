@@ -217,6 +217,7 @@ int File::compare(std::vector<std::string>*list, std::string file)
 	if (f.is_open())
 	{
 		clearVector();
+		clearData();
 		std::string content((std::istreambuf_iterator<char>(f)), (std::istreambuf_iterator<char>()));
 		data = content;
 		f.close();
@@ -229,21 +230,34 @@ int File::compare(std::vector<std::string>*list, std::string file)
 		
 		for (unsigned int l = 0; l < list->size() ; l++)
 		{
+			bool found = false;
+
+			std::string tstr = "Searching for: *";
+			tstr += list->at(l);
+			tstr += "*";
+			LogHandler::log("File", tstr.c_str());
 
 			for (unsigned int e = 0; e < entry.size(); e++)
 			{
 				if (entry[e] == list->at(l))
 				{
-					std::cout << "Found File" << std::endl;
-				}
-				else 
-				{
-					std::cout << "Looking for File" << std::endl;
+					std::string str = "*";
+					str += list->at(l);
+					str += "* Found";
+					LogHandler::log("File", str.c_str());
+					found = true;
+					break;
 				}
 			}
+			if (found != true) 
+			{
+				std::string str = "*";
+				str += list->at(l);
+				str += "* Not found!";
+				LogHandler::error("File", str.c_str());
+			}
 		}
-
-
+		LogHandler::log("File", "Search done");
 		return 1;
 	}
 	else
