@@ -73,15 +73,15 @@ void File::add(int val)
 	add(s);
 }
 
-void File::save(std::string file,bool encrypt)
+void File::save(std::string file, bool encrypt)
 {
 	clearData();
-	for (unsigned int i = 0; i<entry.size(); i++)
+	for (unsigned int i = 0; i < entry.size(); i++)
 	{
 		data += entry[i];
 		data += '\n';
 	}
-	saveToFile(file, (encrypt?crypt(data):data));
+	saveToFile(file, (encrypt ? crypt(data) : data));
 	clearVector();
 }
 
@@ -147,7 +147,7 @@ int File::getint(int i)
 std::string File::get(int i)
 {
 	std::string val = "";
-	if (i>=0 && (unsigned int) i < entry.size())
+	if (i >= 0 && (unsigned int)i < entry.size())
 		val = entry[i];
 	else
 	{
@@ -172,12 +172,12 @@ void File::clearData()
 void File::set(int i, int val)
 {
 	std::string s = std::to_string(val);
-	set(i,s);
+	set(i, s);
 }
 
 void File::set(int i, std::string val)
 {
-	if (i >= 0 && (unsigned int)i<entry.size())
+	if (i >= 0 && (unsigned int)i < entry.size())
 		entry[i] = val;
 	else
 	{
@@ -196,81 +196,87 @@ void File::searchFile(std::vector<std::string>*list, const char* path, const cha
 	const char* filepath = str.c_str();
 
 	int ff = _findfirst32(filepath, &data32);
-	
+
 	if (ff != -1)
 	{
 		int res = 0;
 		while (res != -1)
 		{
 			list->push_back(data32.name);
-				res = _findnext32(ff, &data32);
+			res = _findnext32(ff, &data32);
 		}
-			_findclose(ff);
+		_findclose(ff);
 	}
 }
 
-int File::compare(std::vector<std::string>*list, std::string file)
+void File::checkSaves(std::vector<std::string>*list, int amountSaves, const char* path, const char* savename, const char* fileType)
 {
-	std::ifstream f;
+	std::string type = ".";
+	type += fileType;
 
-	f.open(file);
-	if (f.is_open())
+	for (unsigned int i = 0; i < amountSaves; i++)
 	{
-		clearVector();
-		clearData();
-		std::string content((std::istreambuf_iterator<char>(f)), (std::istreambuf_iterator<char>()));
-		data = content;
-		f.close();
-		std::istringstream input(data);
-		std::string line;
-		while (std::getline(input, line))
+		bool found = false;
+		std::string saveName = savename;
+		saveName += std::to_string(i + 1);
+
+		std::string fullSavePath = path;
+		fullSavePath += saveName;
+
+		if (list->size() == NULL)
 		{
-			entry.push_back(line);
+			createSaves(fullSavePath, type);
 		}
-		
-		//switch araound data + line stuff
-
-		for (unsigned int l = 0; l < entry.size() ; l++)
+		else
 		{
-			bool found = false;
-
-			std::string tstr = "Searching for: *";
-			tstr += entry[l];
-			tstr += "*";
-			LogHandler::log("File", tstr.c_str());
-
-			for (unsigned int e = 0; e < list->size(); e++)
+			for (unsigned int c = 0; c < list->size(); c++)
 			{
-				if (list->at(e) == entry[l])
+				std::string fullFile = list->at(c);
+				std::string substrSaveName = fullFile.substr(0, saveName.length());
+				if (substrSaveName == saveName)
 				{
-					std::string str = "*";
-					str += entry[l];
-					str += "* Found";
-					LogHandler::log("File", str.c_str());
-					found = true;
-					break;
+					int pos = fullFile.find(type);
+					std::string substrFileEnd = fullFile.substr(pos);
+					
+					if (substrFileEnd == type)
+					{
+						//use substrFileName to set the filenames in the game later on.
+						//std::string substrFileName = fullFile.substr(substrSaveName.length() + 1, pos - type.length() - 2);
+						found = true;
+						break;
+					}
 				}
 			}
-			if (found != true) 
+			if (found != true && list->size() != NULL)
 			{
-				std::string str = "*";
-				str += entry[l];
-				str += "* Not found!";
-				LogHandler::error("File", str.c_str());
+				createSaves(fullSavePath, type);
 			}
+
 		}
-		LogHandler::log("File", "Search done");
-		return 1;
 	}
-	else
-	{
-		std::string str = "Unable to open file \"";
-		str += file;
-		str += "\"for reading.";
-		LogHandler::error("File", str.c_str());
-	}
-	return 0;
 }
+
+void File::createSaves(std::string fileName, std::string fileEnd)
+{
+	emptySave = " @empty";
+
+	std::string newfile = fileName;
+	newfile += emptySave;
+	newfile += fileEnd;
+	std::string str = fileName;
+	str += " created";
+
+	std::ofstream f;
+
+	f.open(newfile);
+
+	if (f.is_open())
+	{
+		LogHandler::log("File", str.c_str());
+		f.close();
+	}
+}
+
 
 File::~File()
 {

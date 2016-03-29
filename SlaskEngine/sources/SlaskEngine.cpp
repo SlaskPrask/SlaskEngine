@@ -57,8 +57,10 @@ void SlaskEngine::init()
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
 
-	file.searchFile(&files, "", "*.txt");
-	file.compare(&files, "TestCompare.txt");
+	file.searchFile(&files, "Saves/", "*.txt");
+	//file.compare(&files, "TestCompare.txt");
+
+	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
 	//end of temp
 
 	while (running)

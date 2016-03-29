@@ -21,6 +21,8 @@ private:
 	std::vector<std::string> entry;
 
 	_finddata32_t data32;
+	
+	std::string emptySave;
 
 public:
 	File();
@@ -43,6 +45,8 @@ public:
 	int getint(int i);
 
 	void searchFile(std::vector<std::string>*list, const char* path, const char* type);
-	int compare(std::vector<std::string>*list, std::string file);
+
+	void checkSaves(std::vector<std::string>*list, int amountSaves, const char* path, const char* savename, const char* fileType);
+	void createSaves(std::string fileName, std::string fileEnd);
 };
 
