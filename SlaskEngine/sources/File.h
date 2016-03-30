@@ -50,7 +50,7 @@ public:
 	void createSaves(std::string fileName, std::string fileEnd);
 
 	void newSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName);
-	void copySave();
+	void copySave(int sFile, int cToFile, const char* path, const char* savename, const char* fileType, const char* pName);
 	void deleteSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName);
 };
 

@@ -1,23 +1,14 @@
-03/29/2016 12:56:06 0000000114 [Engine] Start
-03/29/2016 12:56:06 0000000122 [Graphics] Start
-03/29/2016 12:56:06 0000000142 [Graphics] Initialized
-03/29/2016 12:56:06 0000000151 [Input] Start
-03/29/2016 12:56:06 0000000157 [Input] Initialized
-03/29/2016 12:56:06 0000000164 [Audio] Start
-03/29/2016 12:56:07 0000000519 [Audio] Initialized
-03/29/2016 12:56:07 0000000525 [Engine] Initialized
-03/29/2016 12:56:07 0000000531 -------------------------------------
-03/29/2016 12:56:07 0000000812 [Graphics] Changed to window 1280x720
-03/29/2016 12:56:07 0000001283 [File] Searching for: *Save Test.txt*
-03/29/2016 12:56:08 0000001670 [File] *Save Test.txt* Found
-03/29/2016 12:56:08 0000001704 [File] Searching for: *TestCompare.txt*
-03/29/2016 12:56:08 0000001761 [File] *TestCompare.txt* Found
-03/29/2016 12:56:08 0000001853 [File] Searching for: *Bajs.txt*
-03/29/2016*12:56:08*0000001885*[File] ERROR: *Bajs.txt* Not found!
-03/29/2016 12:56:08 0000001923 [File] Searching for: *log.txt*
-03/29/2016 12:56:08 0000001939 [File] *log.txt* Found
-03/29/2016 12:56:08 0000001970 [File] Searching for: *meop.txt*
-03/29/2016*12:56:08*0000001981*[File] ERROR: *meop.txt* Not found!
-03/29/2016 12:56:08 0000001992 [File] Searching for: *asdfoij.txt*
-03/29/2016*12:56:08*0000002002*[File] ERROR: *asdfoij.txt* Not found!
-03/29/2016 12:56:08 0000002020 [File] Search done
+03/30/2016 14:19:21 0000000863 [Engine] Start
+03/30/2016 14:19:21 0000000872 [Graphics] Start
+03/30/2016 14:19:21 0000000899 [Graphics] Initialized
+03/30/2016 14:19:21 0000000910 [Input] Start
+03/30/2016 14:19:21 0000000917 [Input] Initialized
+03/30/2016 14:19:21 0000000925 [Audio] Start
+03/30/2016 14:19:21 0000001194 [Audio] Initialized
+03/30/2016 14:19:21 0000001201 [Engine] Initialized
+03/30/2016 14:19:21 0000001208 -------------------------------------
+03/30/2016 14:19:21 0000001467 [Graphics] Changed to window 1280x720
+03/30/2016 14:19:22 0000001680 [File] Successfully removed
+03/30/2016 14:19:22 0000001734 [File] Saves/SAVE5 created
+03/30/2016 14:19:22 0000001762 [File] New file succeesfully created
+03/30/2016 14:19:22 0000001790 [File] File succeesfully copied

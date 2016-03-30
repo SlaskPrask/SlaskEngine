@@ -313,9 +313,73 @@ void File::newSave(int sFile, const char* path, const char* savename, const char
 	}
 }
 
-void File::copySave()
+void File::copySave(int sFile, int cToFile, const char* path, const char* savename, const char* fileType, const char* pName)
 {
+	std::string copyFile = path;
+	copyFile += savename;
+	copyFile += std::to_string(sFile);
+	copyFile += " ";
+	copyFile += pName;
+	copyFile += ".";
+	copyFile += fileType;
 
+	std::string toFile = path;
+	toFile += savename;
+	toFile += std::to_string(cToFile);
+
+	std::string newName = toFile;
+
+	toFile += emptySave;
+	toFile += ".";
+	toFile += fileType;
+
+	newName += " ";
+	newName += pName;
+	newName += ".";
+	newName += fileType;
+
+	std::ifstream f;
+
+	f.open(copyFile);
+	if (f.is_open())
+	{
+		std::string content((std::istreambuf_iterator<char>(f)), (std::istreambuf_iterator<char>()));
+		data = content;
+		f.close();
+	}
+	else
+	{
+		std::string str = "Error opening file: ";
+		str += copyFile;
+		LogHandler::error("File", str.c_str());
+	}
+
+
+	std::ofstream f2;
+
+	f2.open(toFile);
+	if (f2.is_open())
+	{
+		f2 << data;
+		f2.close();
+	}
+	else
+	{
+		std::string str = "Error opening file: ";
+		str += toFile;
+		LogHandler::error("File", str.c_str());
+	}
+
+	int result = std::rename(toFile.c_str(), newName.c_str());
+
+	if (result == 0)
+	{
+		LogHandler::log("File", "File succeesfully copied");
+	}
+	else
+	{
+		LogHandler::error("File", "Error copying file");
+	}
 }
 
 void File::deleteSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName)

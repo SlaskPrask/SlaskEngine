@@ -60,9 +60,10 @@ void SlaskEngine::init()
 	file.searchFile(&files, "Saves/", "*.txt");
 	//file.compare(&files, "TestCompare.txt");
 
+	file.deleteSave(5, "Saves/", "SAVE", "txt", "Slask");
 	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
-	file.deleteSave(2, "Saves/", "SAVE", "txt", "Slask");
-	file.newSave(2, "Saves/", "SAVE", "txt", "Slask");
+	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
+	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");
 	//end of temp
 
 	while (running)

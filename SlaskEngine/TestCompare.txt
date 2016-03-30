@@ -1,3 +1,0 @@
-Save Test.txt
-TestCompare.txt
-ThisShouldntExist.txt
