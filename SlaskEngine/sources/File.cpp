@@ -5,6 +5,7 @@ File::File()
 {
 	clearData();
 	clearVector();
+	emptySave = " @empty";
 }
 
 std::string File::crypt(std::string str)
@@ -258,7 +259,7 @@ void File::checkSaves(std::vector<std::string>*list, int amountSaves, const char
 
 void File::createSaves(std::string fileName, std::string fileEnd)
 {
-	emptySave = " @empty";
+	
 
 	std::string newfile = fileName;
 	newfile += emptySave;
@@ -277,6 +278,76 @@ void File::createSaves(std::string fileName, std::string fileEnd)
 	}
 }
 
+
+void File::newSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName)
+{
+	//if this is run, it's always after making sure that all saves exist
+	//get the correct savefile to rename
+
+	int result;
+
+	std::string fullFile = path;
+	fullFile +=	savename;
+	fullFile += std::to_string(sFile);
+	fullFile += emptySave;
+	fullFile += ".";
+	fullFile += fileType;
+
+	std::string newFile = path;
+	newFile += savename;
+	newFile += std::to_string(sFile);
+	newFile += " ";
+	newFile += pName;
+	newFile += ".";
+	newFile += fileType;
+
+	result = std::rename(fullFile.c_str(), newFile.c_str());
+
+	if (result == 0)
+	{
+		LogHandler::log("File", "New file succeesfully created");
+	}
+	else
+	{
+		LogHandler::error("File", "Error creating file");
+	}
+}
+
+void File::copySave()
+{
+
+}
+
+void File::deleteSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName)
+{
+	//if this is run, it's always after making sure that all saves exist
+	//get the correct savefile delete
+
+	std::string fileEnd = ".";
+	fileEnd += fileType;
+
+	std::string fullSavePath = path;
+	fullSavePath += savename;
+	fullSavePath += std::to_string(sFile);
+
+	std::string delFile = path;
+	delFile += savename;
+	delFile += std::to_string(sFile);
+	delFile += " ";
+	delFile += pName;
+	delFile += ".";
+	delFile += fileType;
+
+	if (std::remove(delFile.c_str()) != 0)
+	{
+		LogHandler::error("File", "Can't delete file");
+	}
+	else
+	{
+		LogHandler::log("File", "Successfully removed");
+		createSaves(fullSavePath, fileEnd);
+	}
+}
 
 File::~File()
 {
