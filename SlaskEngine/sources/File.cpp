@@ -305,11 +305,15 @@ void File::newSave(int sFile, const char* path, const char* savename, const char
 
 	if (result == 0)
 	{
-		LogHandler::log("File", "New file succeesfully created");
+		std::string str = newFile;
+		str += " created succesfully";
+		LogHandler::log("File", str.c_str());
 	}
 	else
 	{
-		LogHandler::error("File", "Error creating file");
+		std::string str = newFile;
+		str += " not created";
+		LogHandler::error("File", str.c_str());
 	}
 }
 
@@ -374,11 +378,15 @@ void File::copySave(int sFile, int cToFile, const char* path, const char* savena
 
 	if (result == 0)
 	{
-		LogHandler::log("File", "File succeesfully copied");
+		std::string str = newName;
+		str += " succesfully copied";
+		LogHandler::log("File", str.c_str());
 	}
 	else
 	{
-		LogHandler::error("File", "Error copying file");
+		std::string str = "Error copying ";
+		str += newName;
+		LogHandler::error("File", str.c_str());
 	}
 }
 
@@ -404,11 +412,15 @@ void File::deleteSave(int sFile, const char* path, const char* savename, const c
 
 	if (std::remove(delFile.c_str()) != 0)
 	{
-		LogHandler::error("File", "Can't delete file");
+		std::string str = "Can't delete ";
+		str += delFile;
+		LogHandler::error("File", str.c_str());
 	}
 	else
 	{
-		LogHandler::log("File", "Successfully removed");
+		std::string str = delFile;
+		str += " succesfully removed";
+		LogHandler::log("File", str.c_str());
 		createSaves(fullSavePath, fileEnd);
 	}
 }

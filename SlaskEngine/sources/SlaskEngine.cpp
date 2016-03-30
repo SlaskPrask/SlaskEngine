@@ -61,6 +61,7 @@ void SlaskEngine::init()
 	//file.compare(&files, "TestCompare.txt");
 
 	file.deleteSave(5, "Saves/", "SAVE", "txt", "Slask");
+	file.deleteSave(3, "Saves/", "SAVE", "txt", "Zas");
 	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
 	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
 	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");
