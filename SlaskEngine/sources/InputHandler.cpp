@@ -37,6 +37,9 @@ bool InputHandler::run()
 	{
 		if (key[i] == 1)
 			key[i] = 2;
+
+		else if (key[i] == -1)
+			key[i] = 0;
 	}
 
 	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
@@ -71,11 +74,12 @@ bool InputHandler::run()
 		case sf::Event::TextEntered:
 			break;
 		case sf::Event::KeyPressed:
-			if (key[event.key.code] == 0)
+			if (key[event.key.code] <= 0)
 				key[event.key.code] = 1;
 			break;
 		case sf::Event::KeyReleased:
-			key[event.key.code] = 0;
+			if (key[event.key.code] > 0)
+				key[event.key.code] = -1;
 			break;
 		case sf::Event::MouseWheelMoved:
 			if (event.mouseWheel.delta < 0)
@@ -204,4 +208,24 @@ bool InputHandler::getSignalFocus()
 	}
 	else
 		return 0;
+}
+
+bool InputHandler::getKeyPress(int keyCode)
+{
+	return key[keyCode] == 1;
+}
+
+bool InputHandler::getKeyRelease(int keyCode)
+{
+	return key[keyCode] == -1;
+}
+
+bool InputHandler::getKeyHeld(int keyCode)
+{
+	return key[keyCode] > 0;
+}
+
+bool InputHandler::getKeyIdle(int keyCode)
+{
+	return key[keyCode] <= 0;
 }
