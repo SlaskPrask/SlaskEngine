@@ -1,7 +1,5 @@
 #pragma once
-#include <fmod_errors.h>
-#include <fmod_studio.hpp>
-#include "LogHandler.h"
+#include "AudioHandler.h"
 
 class AudioHandler;
 
@@ -9,6 +7,7 @@ class AudioBank
 {
 private:
 	FMOD::Studio::Bank* bank;
+	
 	FMOD::Studio::System* system;
 
 	FMOD_RESULT result;

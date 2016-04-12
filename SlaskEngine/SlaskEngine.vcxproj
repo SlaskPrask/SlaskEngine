@@ -113,12 +113,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\Dependencies\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib</AdditionalDependencies>
+      <AdditionalDependencies>fmod_vc.lib;fmod64_vc.lib;fmodL_vc.lib;fmodL64_vc.lib;fmodstudio_vc.lib;fmodstudio64_vc.lib;fmodstudioL_vc.lib;fmodstudioL64_vc.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\Dependencies\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="sources\Audio.cpp" />
     <ClCompile Include="sources\AudioBank.cpp" />
+    <ClCompile Include="sources\AudioBus.cpp" />
     <ClCompile Include="sources\AudioHandler.cpp" />
     <ClCompile Include="sources\File.cpp" />
     <ClCompile Include="sources\Font.cpp" />
@@ -160,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
+    <ClInclude Include="sources\AudioBus.h" />
     <ClInclude Include="sources\AudioHandler.h" />
     <ClInclude Include="sources\File.h" />
     <ClInclude Include="sources\Font.h" />

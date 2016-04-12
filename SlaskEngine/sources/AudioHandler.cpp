@@ -130,7 +130,7 @@ void AudioHandler::release(Audio* audio)
 	if (audio->getInstance())
 		audio->getInstance()->release();
 	else
-		LogHandler::notify("Audio", "Attempting to release unloaded sound.");
+	LogHandler::notify("Audio", "Attempting to release unloaded sound.");
 }
 
 void AudioHandler::setVolume(Audio* audio, double vol)
@@ -138,7 +138,7 @@ void AudioHandler::setVolume(Audio* audio, double vol)
 	if (audio->getInstance())
 		audio->getInstance()->setVolume((float)(vol>1.0f ? 1.0f : (vol<0.0f ? 0.0f : vol)));
 	else
-		LogHandler::notify("Audio", "Attempting to set volume of an unloaded sound.");
+	LogHandler::notify("Audio", "Attempting to set volume of an unloaded sound.");
 }
 
 void AudioHandler::setParameterValue(Audio* audio, const char* param, double value)
@@ -146,7 +146,16 @@ void AudioHandler::setParameterValue(Audio* audio, const char* param, double val
 	if (audio->getInstance())
 		audio->getInstance()->setParameterValue(param, (float)value);
 	else
-		LogHandler::notify("Audio", "Attempting to set parameter value of an unloaded sound.");
+	LogHandler::notify("Audio", "Attempting to set parameter value of an unloaded sound.");
+}
+
+float AudioHandler::getParameterValue(Audio* audio, const char* param)
+{
+	float paramval = 0;
+	if (audio->getInstance())
+		audio->getInstance()->getParameterValue(param, &paramval);
+
+	return paramval;
 }
 
 void AudioHandler::setPitch(Audio* audio, double pitch)
@@ -160,14 +169,30 @@ void AudioHandler::setTimePosition(Audio* audio, int position)
 	if (audio->getInstance())
 		audio->getInstance()->setTimelinePosition(position);
 	else
-		LogHandler::notify("Audio", "Attempting to set time position of an unloaded sound.");
+	LogHandler::notify("Audio", "Attempting to set time position of an unloaded sound.");
 	
 }
 
+void AudioHandler::setBusVolume(AudioBus* bus, double vol)
+{
+	if (bus->getBus())
+		bus->getBus()->setFaderLevel(vol);
+	else
+		LogHandler::notify("Audio", "Attempting to set volume of an unexisting bus.");
+}
+
+double getBusVolume(AudioBus* bus)
+{
+	float busvol = 0;
+	if (bus->getBus())
+		return bus->getBus()->getFaderLevel(&busvol);
+
+	return busvol;
+}
 
 AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();
 	audioSys->release();
-	LogHandler::log("Audio", "End");
+	//LogHandler::log("Audio", "End");
 }

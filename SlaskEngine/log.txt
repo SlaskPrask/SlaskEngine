@@ -1,21 +1,16 @@
-03/30/2016 17:50:40 0000000667 [Engine] Start
-03/30/2016 17:50:40 0000000673 [Graphics] Start
-03/30/2016 17:50:40 0000000692 [Graphics] Initialized
-03/30/2016 17:50:40 0000000699 [Input] Start
-03/30/2016 17:50:40 0000000704 [Input] Initialized
-03/30/2016 17:50:40 0000000711 [Audio] Start
-03/30/2016 17:50:41 0000001383 [Audio] Initialized
-03/30/2016 17:50:41 0000001390 [Engine] Initialized
-03/30/2016 17:50:41 0000001407 -------------------------------------
-03/30/2016 17:50:42 0000001736 [Graphics] Changed to window 1280x720
-03/30/2016 17:50:42 0000001872 [File] Saves/SAVE5 Slask.txt succesfully removed
-03/30/2016 17:50:42 0000001956 [File] Saves/SAVE5 created
-03/30/2016 17:50:42 0000002001 [File] Saves/SAVE3 Zas.txt succesfully removed
-03/30/2016 17:50:42 0000002014 [File] Saves/SAVE3 created
-03/30/2016 17:50:42 0000002030 [File] Saves/SAVE3 Zas.txt created succesfully
-03/30/2016 17:50:42 0000002049 [File] Saves/SAVE5 Slask.txt succesfully copied
-03/30/2016 17:51:53 0000072944 -------------------------------------
-03/30/2016 17:51:53 0000072954 [Engine] Stopped
-03/30/2016 17:51:53 0000072979 [Graphics] Window closed.
-03/30/2016 17:51:53 0000072990 [Engine] End
-03/30/2016 17:51:53 0000073114 [Audio] End
+04/09/2016 11:27:59 0000000409 [Engine] Start
+04/09/2016 11:27:59 0000000416 [Graphics] Start
+04/09/2016 11:27:59 0000000431 [Graphics] Initialized
+04/09/2016 11:27:59 0000000438 [Input] Start
+04/09/2016 11:27:59 0000000444 [Input] Initialized
+04/09/2016 11:27:59 0000000449 [Audio] Start
+04/09/2016 11:27:59 0000000640 [Audio] Initialized
+04/09/2016 11:27:59 0000000646 [Engine] Initialized
+04/09/2016 11:27:59 0000000652 -------------------------------------
+04/09/2016 11:28:00 0000000989 [Graphics] Changed to window 1280x720
+04/09/2016 11:28:00 0000001476 [File] Saves/SAVE5 Slask.txt succesfully removed
+04/09/2016 11:28:00 0000001511 [File] Saves/SAVE5 created
+04/09/2016 11:28:00 0000001523 [File] Saves/SAVE3 Zas.txt succesfully removed
+04/09/2016 11:28:00 0000001546 [File] Saves/SAVE3 created
+04/09/2016 11:28:00 0000001561 [File] Saves/SAVE3 Zas.txt created succesfully
+04/09/2016 11:28:00 0000001579 [File] Saves/SAVE5 Slask.txt succesfully copied
