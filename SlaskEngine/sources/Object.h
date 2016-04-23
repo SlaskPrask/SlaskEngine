@@ -9,6 +9,6 @@ public:
 	Object();
 	virtual ~Object();
 
-	virtual bool run() {}
-	virtual void draw() {}
+	virtual bool run();
+	virtual void draw();
 };

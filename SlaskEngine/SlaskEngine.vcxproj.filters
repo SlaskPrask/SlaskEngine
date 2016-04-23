@@ -66,6 +66,12 @@
     <ClCompile Include="sources\AudioBus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sources\SpriteResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\SoundResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,6 +121,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sources\AudioHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\SpriteResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\SoundResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

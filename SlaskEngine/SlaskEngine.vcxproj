@@ -154,7 +154,9 @@
     <ClCompile Include="sources\SlaskEngine.cpp" />
     <ClCompile Include="SlaskGame.cpp" />
     <ClCompile Include="sources\slasknamespace.cpp" />
+    <ClCompile Include="sources\SoundResource.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
+    <ClCompile Include="sources\SpriteResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -175,7 +177,9 @@
     <ClInclude Include="sources\Scene.h" />
     <ClInclude Include="sources\SlaskEngine.h" />
     <ClInclude Include="sources\slasknamespace.h" />
+    <ClInclude Include="sources\SoundResource.h" />
     <ClInclude Include="sources\Sprite.h" />
+    <ClInclude Include="sources\SpriteResource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
