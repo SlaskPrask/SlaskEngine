@@ -1,5 +1,6 @@
 #pragma once
-#include "AudioHandler.h"
+#include <fmod_errors.h>
+#include <fmod_studio.hpp>
 
 class AudioBus
 {
