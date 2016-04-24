@@ -160,6 +160,7 @@
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteResource.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
+    <ClCompile Include="sources\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -185,6 +186,7 @@
     <ClInclude Include="sources\Sprite.h" />
     <ClInclude Include="sources\SpriteResource.h" />
     <ClInclude Include="sources\SteamHandler.h" />
+    <ClInclude Include="sources\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

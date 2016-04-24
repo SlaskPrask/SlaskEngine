@@ -45,8 +45,10 @@ void SlaskEngine::init()
 
 
 	//this is temp stuff just for testing
+	Timer timer;
 	File file;
 	
+	timer.startTimer();
 	Sprite testS("slask.png");
 	Font testF("Progandae.otf");
 	AudioBank TestMB("fmod/TestBank/Build/Desktop/Master Bank.bank");
@@ -77,6 +79,8 @@ void SlaskEngine::init()
 	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
 	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
 	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");
+
+	std::cout << std::to_string(timer.getTime()).c_str() << std::endl;
 	//end of temp
 
 	while (running)
