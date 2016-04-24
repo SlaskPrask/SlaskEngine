@@ -1,17 +1,29 @@
-03/28/2016 19:25:02 0000000358 [Engine] Start
-03/28/2016 19:25:02 0000000364 [Graphics] Start
-03/28/2016 19:25:02 0000000444 [Graphics] Initialized
-03/28/2016 19:25:02 0000000448 [Input] Start
-03/28/2016 19:25:02 0000000451 [Input] Initialized
-03/28/2016 19:25:02 0000000454 [Audio] Start
-03/28/2016 19:25:02 0000001215 [Audio] Initialized
-03/28/2016 19:25:02 0000001219 [Engine] Initialized
-03/28/2016 19:25:02 0000001222 -------------------------------------
-03/28/2016 19:25:03 0000001505 [Graphics] Changed to window 1280x720
-03/28/2016 19:25:07 0000006244 -------------------------------------
-03/28/2016 19:25:07 0000006248 [Engine] Stopped
-03/28/2016 19:25:07 0000006265 [Graphics] Window closed.
-03/28/2016 19:25:07 0000006269 [Engine] End
-03/28/2016 19:25:08 0000006369 [Audio] End
-03/28/2016 19:25:08 0000006372 [Input] End
-03/28/2016 19:25:08 0000006389 [Graphics] End
+04/24/2016 16:56:16 0000000420 [Engine] Start
+04/24/2016 16:56:16 0000000425 [Graphics] Start
+04/24/2016 16:56:16 0000000506 [Graphics] Initialized
+04/24/2016 16:56:16 0000000509 [Steam] Not in steam environment
+04/24/2016 16:56:16 0000000513 [Input] Start
+04/24/2016 16:56:16 0000000515 [Input] Initialized
+04/24/2016 16:56:16 0000000519 [Audio] Start
+04/24/2016 16:56:17 0000000990 [Audio] Initialized
+04/24/2016 16:56:17 0000000993 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
+04/24/2016 16:56:17 0000000999 -------------------------------------
+04/24/2016 16:56:17 0000001707 [Graphics] Changed to window 1280x720
+04/24/2016 16:56:18 0000001796 [File] Saves/SAVE5 Slask.txt succesfully removed
+04/24/2016 16:56:18 0000001802 [File] Saves/SAVE5 created
+04/24/2016 16:56:18 0000001809 [File] Saves/SAVE3 Zas.txt succesfully removed
+04/24/2016 16:56:18 0000001821 [File] Saves/SAVE3 created
+04/24/2016 16:56:18 0000001830 [File] Saves/SAVE3 Zas.txt created succesfully
+04/24/2016 16:56:18 0000001837 [File] Saves/SAVE5 Slask.txt succesfully copied
+04/24/2016 16:56:45 0000028974 [Engine] Window resized.
+04/24/2016 16:56:46 0000029964 [Engine] Window resized.
+04/24/2016 16:56:48 0000031740 [Engine] Window resized.
+04/24/2016 16:56:49 0000033160 [Engine] Window resized.
+04/24/2016 16:56:51 0000035300 [Engine] Window resized.
+04/24/2016 16:56:52 0000036560 [Engine] Window resized.
+04/24/2016 16:56:54 0000038196 -------------------------------------
+04/24/2016 16:56:54 0000038200 [Engine] Stopped
+04/24/2016 16:56:54 0000038215 [Graphics] Window closed.
+04/24/2016 16:56:54 0000038219 [Engine] End
+04/24/2016 16:56:54 0000038334 [Input] End
+04/24/2016 16:56:54 0000038347 [Graphics] End

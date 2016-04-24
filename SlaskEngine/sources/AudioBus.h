@@ -2,20 +2,19 @@
 #include <fmod_errors.h>
 #include <fmod_studio.hpp>
 
-class AudioHandler;
-
-class AudioBank
+class AudioBus
 {
 private:
-	FMOD::Studio::Bank* bank;
-	
+	FMOD::Studio::Bus* bus;
+
 	FMOD::Studio::System* system;
 
 	FMOD_RESULT result;
 
 
 public:
-	AudioBank(const char* file);
-	~AudioBank();
-};
+	AudioBus(const char* busName);
 
+	FMOD::Studio::Bus* getBus();
+	~AudioBus();
+};

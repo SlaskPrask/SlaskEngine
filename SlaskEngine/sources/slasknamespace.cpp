@@ -20,6 +20,11 @@ LogHandler* slask::log()
 	return LogHandler::instance();
 }
 
+SteamHandler* slask::steam()
+{
+	return SteamHandler::instance();
+}
+
 File slask::file()
 {
 	return File::File();

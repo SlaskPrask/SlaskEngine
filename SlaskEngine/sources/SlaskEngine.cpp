@@ -16,20 +16,33 @@ void SlaskEngine::init()
 {
 	LogHandler::setFile("log.txt");
 	LogHandler::log("Engine", "Start");
+	
+	
+	engineBuild = "ALPHA";
+	engineVersion = 1.0f;
+	fullEngineVersion = engineBuild;
+	fullEngineVersion += std::to_string(engineVersion);
 
 	running = true;
 
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init("SlaskEngine");
 
+	SteamHandler* steam = SteamHandler::instance();
+	steam->init();
+
 	InputHandler* input = InputHandler::instance();
 	input->init();
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 
-	LogHandler::log("Engine", "Initialized");
+	std::string eVer = "Initialized SlaskEngine Version: ";
+	eVer += fullEngineVersion;
+
+	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
+
 
 	//this is temp stuff just for testing
 	File file;
@@ -55,6 +68,15 @@ void SlaskEngine::init()
 	std::cout << file.get(1) << '\n';
 	std::cout << file.getint(2) << '\n';
 	std::cout << file.get(3) << '\n';
+
+	file.searchFile(&files, "Saves/", "*.txt");
+	//file.compare(&files, "TestCompare.txt");
+
+	file.deleteSave(5, "Saves/", "SAVE", "txt", "Slask");
+	file.deleteSave(3, "Saves/", "SAVE", "txt", "Zas");
+	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
+	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
+	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");
 	//end of temp
 
 	while (running)
