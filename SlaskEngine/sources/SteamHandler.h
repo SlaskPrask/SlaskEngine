@@ -1,9 +1,12 @@
+#pragma once
+
+#ifndef NO_STEAM
+
 #include <steam_api.h>
 //#include <steam_gameserver.h>
+
 #include "LogHandler.h"
 
-
-#pragma once
 class SteamHandler
 {
 private:
@@ -18,3 +21,5 @@ public:
 	~SteamHandler();
 };
 
+
+#endif

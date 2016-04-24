@@ -1,3 +1,5 @@
+#ifndef NO_STEAM
+
 #include "SteamHandler.h"
 #include <iostream>
 
@@ -43,3 +45,5 @@ SteamHandler::~SteamHandler()
 	if (SteamUser())
 		SteamAPI_Shutdown();
 }
+
+#endif

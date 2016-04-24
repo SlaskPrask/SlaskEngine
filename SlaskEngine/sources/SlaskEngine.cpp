@@ -35,8 +35,10 @@ void SlaskEngine::init(int argc, char *argv[])
 	audio->init(24);
 	audio->run();
 
+	#ifndef NO_STEAM
 	SteamHandler* steam = SteamHandler::instance();
 	steam->init();
+	#endif
 
 	InputHandler* input = InputHandler::instance();
 	input->init();
