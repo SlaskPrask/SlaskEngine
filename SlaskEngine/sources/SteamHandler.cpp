@@ -10,9 +10,9 @@ SteamHandler* SteamHandler::instance()
 
 void SteamHandler::init()
 {
+	LogHandler::log("Steam", "Start");
 	if (SteamUser())
 	{
-		LogHandler::log("Steam", "Start");
 		SteamAPI_Init();
 
 		if (SteamAPI_Init() != true)
@@ -20,11 +20,11 @@ void SteamHandler::init()
 			LogHandler::error("Steam", "Initialization failed");
 			return;
 		}
-
-		LogHandler::log("Steam", "Initialized");
 	}
 	else
-		LogHandler::log("Steam", "Not in steam environment");
+	LogHandler::log("Steam", "Not in steam environment");
+
+	LogHandler::log("Steam", "Initialized");
 
 }
 
