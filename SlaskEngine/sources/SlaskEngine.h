@@ -1,5 +1,6 @@
 #pragma once
 #include "GraphicsHandler.h"
+#include "SteamHandler.h"
 #include "InputHandler.h"
 #include "Sprite.h"
 #include "AudioHandler.h"

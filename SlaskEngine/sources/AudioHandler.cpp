@@ -46,6 +46,7 @@ void AudioHandler::init(int channels)
 	if (result != FMOD_OK)
 	{
 		LogHandler::error("Audio", FMOD_ErrorString(result));
+		return;
 	}
 
 	setSampleASync(false); 

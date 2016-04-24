@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "AudioHandler.h"
 #include "LogHandler.h"
+#include "SteamHandler.h"
 #include "File.h"
 
 namespace slask
@@ -11,6 +12,7 @@ namespace slask
 	InputHandler* input();
 	AudioHandler* audio();
 	LogHandler* log();
+	SteamHandler* steam();
 	File file();
 
 	void start();

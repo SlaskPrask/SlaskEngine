@@ -28,6 +28,9 @@ void SlaskEngine::init()
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init("SlaskEngine");
 
+	SteamHandler* steam = SteamHandler::instance();
+	steam->init();
+
 	InputHandler* input = InputHandler::instance();
 	input->init();
 	AudioHandler* audio = AudioHandler::instance();
