@@ -84,6 +84,9 @@
     <ClCompile Include="sources\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="techPlayer.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -147,9 +150,6 @@
     <ClInclude Include="sources\SteamHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sources\Slask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -157,6 +157,12 @@
       <Filter>TechDemo</Filter>
     </ClInclude>
     <ClInclude Include="sources\ListHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="techPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

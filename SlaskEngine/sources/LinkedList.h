@@ -66,7 +66,7 @@ public:
 
 	void _add(T *t)
 	{
-		if (_nextNode != 0)
+		if (_nextNode == 0)
 		{
 			if (_listHandle)
 			{
