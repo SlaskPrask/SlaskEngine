@@ -14,6 +14,7 @@
 #include "AudioBank.h"
 #include "Sprite.h"
 #include "ListHandle.h"
+#include "Timer.h"
 #include <cmath>
 
 class SlaskEngine

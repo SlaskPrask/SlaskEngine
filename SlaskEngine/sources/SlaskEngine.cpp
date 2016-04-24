@@ -45,7 +45,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
-	
+
 	while (running)
 	{
 		//input
@@ -68,14 +68,14 @@ void SlaskEngine::init(int argc, char *argv[])
 				if (objects.last() == obj)
 				break;
 				else
-				{
+			{
 					obj = obj->getNext();
 					delete (Object*)obj;
-				}
+			}
 			}
 			else
 			obj = obj->getNext();
-		}
+			}
 
 		//drawing
 		graphics->drawBegin();

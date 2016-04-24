@@ -158,6 +158,7 @@
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteResource.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
+    <ClCompile Include="sources\Timer.cpp" />
     <ClCompile Include="techGame.cpp" />
     <ClCompile Include="techTestObject.cpp" />
   </ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="sources\Sprite.h" />
     <ClInclude Include="sources\SpriteResource.h" />
     <ClInclude Include="sources\SteamHandler.h" />
+    <ClInclude Include="sources\Timer.h" />
     <ClInclude Include="techTestObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

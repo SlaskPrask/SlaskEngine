@@ -81,6 +81,9 @@
     <ClCompile Include="techGame.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
+    <ClCompile Include="sources\Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -142,6 +145,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sources\SteamHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sources\Slask.h">

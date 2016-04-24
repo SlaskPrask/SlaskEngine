@@ -1,0 +1,5 @@
+{17b89f61-5f0c-4b6f-9042-d8fbd0139ef5} event:/Audio
+{d8864668-5d8c-4cbe-946b-82439acfbef4} event:/Music
+{06c79cc1-9727-4037-8f18-cd219cce2e37} bus:/
+{5e1cd2f4-00a1-4ee2-a33f-ae11c0ecfa36} bus:/Reverb
+{b3ca2995-9db1-4f5d-9603-a6d1b1835054} bank:/Master Bank
