@@ -75,10 +75,10 @@
     <ClCompile Include="techTestObject.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
-    <ClCompile Include="techGame.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="techGame.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
   </ItemGroup>
@@ -144,14 +144,14 @@
     <ClInclude Include="sources\SteamHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\ListHandle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sources\Slask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techTestObject.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\ListHandle.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

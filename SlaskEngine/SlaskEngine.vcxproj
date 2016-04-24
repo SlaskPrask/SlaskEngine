@@ -153,12 +153,12 @@
     <ClCompile Include="sources\Object.cpp" />
     <ClCompile Include="sources\Scene.cpp" />
     <ClCompile Include="sources\SlaskEngine.cpp" />
-    <ClCompile Include="techGame.cpp" />
     <ClCompile Include="sources\slasknamespace.cpp" />
     <ClCompile Include="sources\SoundResource.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteResource.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
+    <ClCompile Include="techGame.cpp" />
     <ClCompile Include="techTestObject.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,7 +166,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\ListHandle.h" />
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
     <ClInclude Include="sources\AudioBus.h" />
@@ -177,6 +176,7 @@
     <ClInclude Include="sources\Input.h" />
     <ClInclude Include="sources\InputHandler.h" />
     <ClInclude Include="sources\LinkedList.h" />
+    <ClInclude Include="sources\ListHandle.h" />
     <ClInclude Include="sources\LogHandler.h" />
     <ClInclude Include="sources\Object.h" />
     <ClInclude Include="sources\Scene.h" />
