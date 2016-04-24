@@ -1,69 +1,97 @@
 #pragma once
 
+#include "ListHandle.h"
+
 template <class T>
 class LinkedList
 {
+	friend class ListHandle<T>;
 private:
-	T* _nextNode;
-	T* _prevNode;
+	T *_nextNode;
+	T *_prevNode;
 
-	void _next(T* t)
+protected:
+	ListHandle<T> *_listHandle;
+
+	void _next(T *t)
 	{
 		_nextNode = t;
 	}
 
-	void _previous(T* t)
+	void _prev(T *t)
 	{
-		_prevNode(t);
+		_prevNode = t;
+	}
+
+	void _removeHandleDown()
+	{
+		_listHandle = 0;
+		if (_nextNode)
+		_nextNode->_removeHandleDown();
 	}
 	
 public:
 	LinkedList()
 	{
-		_nextNode = NULL;
-		_prevNode = NULL;
+		_nextNode = 0;
+		_prevNode = 0;
+		_listHandle = 0;
 	}
 
-	T* getFirst()
+	T *getFirst()
 	{
-		if (prevNode == NULL)
+		if (prevNode == 0)
 			return this;
 		else
 			return _prevNode->getFirst();
 	}
 
-	T* getLast()
+	T *getLast()
 	{
-		if (_nextNode == NULL)
+		if (_nextNode == 0)
 			return this;
 		else
 			return _nextNode->getLast();
 	}
 
-	T* getNext()
+	T *getNext()
 	{
 		return _nextNode;
 	}
 
-	T* getPrevious()
+	T *getPrevious()
 	{
 		return _prevNode;
 	}
 
 	void _add(T *t)
 	{
-		if (_nextNode != NULL)
+		if (_nextNode != 0)
+		{
+			if (_listHandle)
+			{
+				_listHandle->setLast(t);
+				t->_listHandle = _listHandle;
+			}
 			_nextNode = t;
+		}
 		else
-			_nextNode->add(t);
+			_nextNode->_add(t);
 	}
 	
 	virtual ~LinkedList()
 	{
-		if (_prevNode != NULL)
-			_prevNode->_next(_nextNode);
-		if (_nextNode != NULL)
-			_nextNode->prev(_prevNode);
+		if (_prevNode != 0)
+		_prevNode->_next(_nextNode);
+		else
+		if (_listHandle)
+		_listHandle->setFirst(_nextNode);
+		
+		if (_nextNode != 0)
+		_nextNode->_prev(_prevNode);
+		else
+		if (_listHandle)
+		_listHandle->setLast(_prevNode);
 	}
 
 };

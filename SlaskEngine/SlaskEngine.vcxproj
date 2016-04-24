@@ -89,7 +89,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod64_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmodL_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmodL64_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio64_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudioL_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudioL64_vc.lib;C:\Program Files (x86)\sdk\redistributable_bin\steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmodL_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudioL_vc.lib;C:\Program Files (x86)\sdk\redistributable_bin\steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -148,24 +148,25 @@
     <ClCompile Include="sources\GraphicsHandler.cpp" />
     <ClCompile Include="sources\Input.cpp" />
     <ClCompile Include="sources\InputHandler.cpp" />
-    <ClCompile Include="sources\LinkedList.cpp" />
     <ClCompile Include="sources\LogHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sources\Object.cpp" />
     <ClCompile Include="sources\Scene.cpp" />
     <ClCompile Include="sources\SlaskEngine.cpp" />
-    <ClCompile Include="SlaskGame.cpp" />
+    <ClCompile Include="techGame.cpp" />
     <ClCompile Include="sources\slasknamespace.cpp" />
     <ClCompile Include="sources\SoundResource.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteResource.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
+    <ClCompile Include="techTestObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="sources\ListHandle.h" />
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
     <ClInclude Include="sources\AudioBus.h" />
@@ -179,12 +180,14 @@
     <ClInclude Include="sources\LogHandler.h" />
     <ClInclude Include="sources\Object.h" />
     <ClInclude Include="sources\Scene.h" />
+    <ClInclude Include="sources\Slask.h" />
     <ClInclude Include="sources\SlaskEngine.h" />
     <ClInclude Include="sources\slasknamespace.h" />
     <ClInclude Include="sources\SoundResource.h" />
     <ClInclude Include="sources\Sprite.h" />
     <ClInclude Include="sources\SpriteResource.h" />
     <ClInclude Include="sources\SteamHandler.h" />
+    <ClInclude Include="techTestObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

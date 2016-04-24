@@ -20,23 +20,11 @@ void GraphicsHandler::init(const char* title)
 
 	resolutions = sf::VideoMode::getFullscreenModes();
 
-	/*window = new sf::RenderWindow(sf::VideoMode(w, h), title, sf::Style::Default, settings);
-
-	if (!window)
-	{
-		LogHandler::error("Graphics", "Unable to create window.");
-		window = 0;
-		return;
-	}*/
-
 	window = 0;
 	framespersecond = 60;
 	vsync = true;
 	label = title;
 	width = height = 0;
-	//setSize(w, h);
-	//setRenderSize(w, h);
-	//initGL();
 
 	LogHandler::log("Graphics", "Initialized");
 }
@@ -282,36 +270,6 @@ void GraphicsHandler::close()
 	LogHandler::log("Graphics", "Window closed.");
 }
 
-void GraphicsHandler::drawSprite(Sprite* sprite, double x, double y, double depth)
-{
-	drawSpriteExt(sprite, x, y, sprite->getWidth(), sprite->getHeight(), 0, 0, 1, 1, 0, 1, 1, 1, -1, depth);
-}
-
-void GraphicsHandler::drawSprite(Sprite* sprite,double x, double y,double w, double h, double depth)
-{
-	drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, 0, 1, 1, 1, -1, depth);
-}
-
-void GraphicsHandler::drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double depth)
-{
-	drawSpriteExt(sprite, x, y, w, h, fromx, fromy, tox, toy, 0, 1, 1, 1, -1, depth);
-}
-
-void GraphicsHandler::drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot, double depth)
-{
-	drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, rot, 1, 1, 1, -1, depth);
-}
-
-void GraphicsHandler::drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double depth)
-{
-	drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, 0, 1, 1, 1, -1, depth);
-}
-
-void GraphicsHandler::drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double depth)
-{
-	drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, 1, 1, 1, -1, depth);
-}
-
 void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
 {
 	if (!window)
@@ -388,4 +346,20 @@ inline void GraphicsHandler::set_color(double r, double g, double b, double a)
 inline void GraphicsHandler::restore_color()
 {
 	glColor4f(1, 1, 1, 1);
+}
+
+
+int GraphicsHandler::getResolutions()
+{
+	return resolutions.size();
+}
+
+int GraphicsHandler::getResolutionWidth(int i)
+{
+	return resolutions[i].width;
+}
+
+int GraphicsHandler::getResolutionHeight(int i)
+{
+	return resolutions[i].height;
 }

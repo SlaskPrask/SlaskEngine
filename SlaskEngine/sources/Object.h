@@ -1,7 +1,15 @@
 #pragma once
-class Object
+
+#include "LinkedList.h"
+
+class SlaskEngine;
+
+class Object : public LinkedList<Object>
 {
+	friend class SlaskEngine;
 private:
+	bool _destroyed;
+	bool _getDestroyed();
 
 public:
 	double x;
@@ -9,6 +17,8 @@ public:
 	Object();
 	virtual ~Object();
 
-	virtual bool run();
+	virtual void run();
 	virtual void draw();
+
+	void destroy();
 };

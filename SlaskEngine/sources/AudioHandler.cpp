@@ -182,11 +182,13 @@ void AudioHandler::setBusVolume(AudioBus* bus, double vol)
 		LogHandler::notify("Audio", "Attempting to set volume of an unexisting bus.");
 }
 
-double getBusVolume(AudioBus* bus)
+double AudioHandler::getBusVolume(AudioBus* bus)
 {
 	float busvol = 0;
 	if (bus->getBus())
 		return bus->getBus()->getFaderLevel(&busvol);
+	else
+		LogHandler::notify("Audio", "Attempting to get volume of an unexisting bus.");
 
 	return busvol;
 }

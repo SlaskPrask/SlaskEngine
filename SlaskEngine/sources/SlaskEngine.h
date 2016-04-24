@@ -4,7 +4,6 @@
 #include "InputHandler.h"
 #include "Sprite.h"
 #include "AudioHandler.h"
-#include "slasknamespace.h"
 #include "LogHandler.h"
 #include "File.h"
 #include "Input.h"
@@ -14,22 +13,27 @@
 #include "Audio.h"
 #include "AudioBank.h"
 #include "Sprite.h"
+#include "ListHandle.h"
 #include <cmath>
 
 class SlaskEngine
 {
 private:
+	SlaskEngine();
 	bool running;
-	std::vector<std::string> files;
 	const char* engineBuild;
 	float engineVersion;
 	std::string fullEngineVersion;
+	ListHandle<Object> objects;
+	static SlaskEngine *slaskengine;
 
 public:
 	static SlaskEngine* instance();
 
-	void init();
-	SlaskEngine();
+	void createObject(Object *o);
+	void gameEnd();
+
+	void init(int argc, char *argv[]);
+	SlaskEngine(int argc, char *argv[]);
 	~SlaskEngine();
 };
-
