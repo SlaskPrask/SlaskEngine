@@ -148,6 +148,7 @@
     <ClCompile Include="sources\GraphicsHandler.cpp" />
     <ClCompile Include="sources\Input.cpp" />
     <ClCompile Include="sources\InputHandler.cpp" />
+    <ClCompile Include="sources\LinkedList.cpp" />
     <ClCompile Include="sources\LogHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sources\Object.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="sources\GraphicsHandler.h" />
     <ClInclude Include="sources\Input.h" />
     <ClInclude Include="sources\InputHandler.h" />
+    <ClInclude Include="sources\LinkedList.h" />
     <ClInclude Include="sources\LogHandler.h" />
     <ClInclude Include="sources\Object.h" />
     <ClInclude Include="sources\Scene.h" />
