@@ -106,6 +106,20 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 	}
 }
 
+void LogHandler::log(int i)
+{
+	std::ostringstream str;
+	str << i;
+	instance()->writeLog(0, str.str().c_str(), Log);
+}
+
+void LogHandler::log(double i)
+{
+	std::ostringstream str;
+	str << i;
+	instance()->writeLog(0, str.str().c_str(), Log);
+}
+
 void LogHandler::log(const char *str)
 {
 	instance()->writeLog(0, str, Log);

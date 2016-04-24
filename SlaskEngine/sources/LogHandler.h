@@ -25,6 +25,8 @@ public:
 	static void disablePrint();
 	static void setFile(const char *str);
 	static void log(const char *str);
+	static void log(int i);
+	static void log(double i);
 	static void log(const char *logger, const char *str);
 	static void error(const char *str);
 	static void error(const char* logger, const char *str);

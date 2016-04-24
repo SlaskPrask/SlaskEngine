@@ -74,10 +74,12 @@ bool InputHandler::run()
 		case sf::Event::TextEntered:
 			break;
 		case sf::Event::KeyPressed:
+			if (event.key.code>=0&&event.key.code<sf::Keyboard::Key::KeyCount)
 			if (key[event.key.code] <= 0)
 				key[event.key.code] = 1;
 			break;
 		case sf::Event::KeyReleased:
+			if (event.key.code >= 0 && event.key.code<sf::Keyboard::Key::KeyCount)
 			if (key[event.key.code] > 0)
 				key[event.key.code] = -1;
 			break;
@@ -91,7 +93,7 @@ bool InputHandler::run()
 			mouse_y = event.mouseWheel.y;
 			break;
 		case sf::Event::MouseButtonPressed:
-			if (event.mouseButton.button < MAXMOUSEBUTTONS)
+			if (event.mouseButton.button>=0 && event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 1;
 				mouse_x = event.mouseButton.x;
@@ -99,7 +101,7 @@ bool InputHandler::run()
 			}
 			break;
 		case sf::Event::MouseButtonReleased:
-			if (event.mouseButton.button < MAXMOUSEBUTTONS)
+			if (event.mouseButton.button >= 0 && event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 0;
 				mouse_x = event.mouseButton.x;
