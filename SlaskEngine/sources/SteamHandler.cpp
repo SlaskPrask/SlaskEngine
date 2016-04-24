@@ -36,6 +36,8 @@ std::string SteamHandler::getUserName()
 		return SteamFriends()->GetPersonaName();
 }
 
+
+
 SteamHandler::~SteamHandler()
 {
 	if (SteamUser())

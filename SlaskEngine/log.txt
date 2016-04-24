@@ -1,17 +1,23 @@
-04/24/2016 13:57:07 0000000927 [Engine] Start
-04/24/2016 13:57:07 0000000933 [Graphics] Start
-04/24/2016 13:57:07 0000000947 [Graphics] Initialized
-04/24/2016 13:57:07 0000000954 [Steam] Not in steam environment
-04/24/2016 13:57:07 0000000963 [Input] Start
-04/24/2016 13:57:07 0000000970 [Input] Initialized
-04/24/2016 13:57:07 0000000977 [Audio] Start
-04/24/2016 13:57:07 0000001317 [Audio] Initialized
-04/24/2016 13:57:07 0000001325 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
-04/24/2016 13:57:07 0000001338 -------------------------------------
-04/24/2016 13:57:08 0000001717 [Graphics] Changed to window 1280x720
-04/24/2016 13:57:08 0000001972 [File] Saves/SAVE5 Slask.txt succesfully removed
-04/24/2016 13:57:08 0000002041 [File] Saves/SAVE5 created
-04/24/2016 13:57:08 0000002071 [File] Saves/SAVE3 Zas.txt succesfully removed
-04/24/2016 13:57:08 0000002096 [File] Saves/SAVE3 created
-04/24/2016 13:57:08 0000002194 [File] Saves/SAVE3 Zas.txt created succesfully
-04/24/2016 13:57:08 0000002283 [File] Saves/SAVE5 Slask.txt succesfully copied
+04/24/2016 15:32:52 0000001085 [Engine] Start
+04/24/2016 15:32:52 0000001094 [Graphics] Start
+04/24/2016 15:32:52 0000001111 [Graphics] Initialized
+04/24/2016 15:32:52 0000001118 [Steam] Not in steam environment
+04/24/2016 15:32:52 0000001127 [Input] Start
+04/24/2016 15:32:52 0000001135 [Input] Initialized
+04/24/2016 15:32:52 0000001143 [Audio] Start
+04/24/2016 15:32:52 0000001734 [Audio] Initialized
+04/24/2016 15:32:52 0000001741 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
+04/24/2016 15:32:52 0000001757 -------------------------------------
+04/24/2016 15:32:53 0000002318 [Graphics] Changed to window 1280x720
+04/24/2016 15:32:53 0000002688 [File] Saves/SAVE5 Slask.txt succesfully removed
+04/24/2016 15:32:53 0000002785 [File] Saves/SAVE5 created
+04/24/2016 15:32:53 0000002808 [File] Saves/SAVE3 Zas.txt succesfully removed
+04/24/2016 15:32:53 0000002851 [File] Saves/SAVE3 created
+04/24/2016 15:32:53 0000003013 [File] Saves/SAVE3 Zas.txt created succesfully
+04/24/2016 15:32:53 0000003038 [File] Saves/SAVE5 Slask.txt succesfully copied
+04/24/2016 15:33:12 0000021254 -------------------------------------
+04/24/2016 15:33:12 0000021261 [Engine] Stopped
+04/24/2016 15:33:12 0000021290 [Graphics] Window closed.
+04/24/2016 15:33:12 0000021301 [Engine] End
+04/24/2016 15:33:12 0000021404 [Input] End
+04/24/2016 15:33:12 0000021423 [Graphics] End
