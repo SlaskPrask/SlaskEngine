@@ -28,12 +28,12 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	running = true;
 
+	GraphicsHandler* graphics = GraphicsHandler::instance();
+	graphics->init("SlaskEngine");
+
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 	audio->run();
-
-	GraphicsHandler* graphics = GraphicsHandler::instance();
-	graphics->init("SlaskEngine");
 
 	SteamHandler* steam = SteamHandler::instance();
 	steam->init();
