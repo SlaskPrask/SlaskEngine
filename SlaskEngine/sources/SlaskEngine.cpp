@@ -28,6 +28,10 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	running = true;
 
+	AudioHandler* audio = AudioHandler::instance();
+	audio->init(24);
+	audio->run();
+
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init("SlaskEngine");
 
@@ -36,8 +40,7 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	InputHandler* input = InputHandler::instance();
 	input->init();
-	AudioHandler* audio = AudioHandler::instance();
-	audio->init(24);
+
 
 	std::string eVer = "Initialized SlaskEngine Version: ";
 	eVer += fullEngineVersion;
@@ -48,6 +51,9 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	while (running)
 	{
+		//audio
+		audio->run();
+
 		//input
 		if (input->run())
 			slask::end();
@@ -87,8 +93,7 @@ void SlaskEngine::init(int argc, char *argv[])
 		}
 		graphics->drawEnd();
 
-		//audio
-		audio->run();
+
 	}
 	LogHandler::log("-------------------------------------");
 	LogHandler::log("Engine", "Stopped");
