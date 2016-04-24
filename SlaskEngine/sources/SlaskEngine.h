@@ -20,6 +20,9 @@ class SlaskEngine
 private:
 	bool running;
 	std::vector<std::string> files;
+	const char* engineBuild;
+	float engineVersion;
+	std::string fullEngineVersion;
 
 public:
 	static SlaskEngine* instance();

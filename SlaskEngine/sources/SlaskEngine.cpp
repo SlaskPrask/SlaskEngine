@@ -16,6 +16,12 @@ void SlaskEngine::init()
 {
 	LogHandler::setFile("log.txt");
 	LogHandler::log("Engine", "Start");
+	
+	
+	engineBuild = "ALPHA";
+	engineVersion = 1.0f;
+	fullEngineVersion = engineBuild;
+	fullEngineVersion += std::to_string(engineVersion);
 
 	running = true;
 
@@ -27,7 +33,10 @@ void SlaskEngine::init()
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 
-	LogHandler::log("Engine", "Initialized");
+	std::string eVer = "Initialized SlaskEngine Version: ";
+	eVer += fullEngineVersion;
+
+	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
 
