@@ -15,6 +15,7 @@
 #include "Sprite.h"
 #include "ListHandle.h"
 #include "Timer.h"
+#include "SpriteSet.h"
 #include <cmath>
 
 class SlaskEngine
@@ -26,13 +27,19 @@ private:
 	float engineVersion;
 	std::string fullEngineVersion;
 	ListHandle<Object> objects;
+	std::vector<SpriteSet*> spritesets;
 	static SlaskEngine *slaskengine;
 
 public:
 	static SlaskEngine* instance();
 
 	void createObject(Object *o);
+	SpriteSet* createSpriteSet(SpriteSet *ss);
+	SpriteSet* spriteSet(unsigned int i);
 	void gameEnd();
+	void deleteAllObjects();
+
+	void deleteAllSpriteSets();
 
 	void init(int argc, char *argv[]);
 	SlaskEngine(int argc, char *argv[]);

@@ -7,7 +7,7 @@ TestObject::TestObject()
 	windowHeight = getWindowHeight();
 	windowWidth = getWindowWidth();
 	position = 0;
-	sprite=new Sprite("slask.png");
+	sprite = getSprite(0, 0);
 
 	testF=new Font("Progandae.otf");
 	TestMB=new AudioBank("fmod/TestBank/Build/Desktop/Master Bank.bank");
@@ -43,6 +43,9 @@ TestObject::TestObject()
 
 void TestObject::run()
 {
+	windowHeight = getWindowHeight();
+	windowWidth = getWindowWidth();
+
 	position += 3;
 	if (position>360)
 	position -= 360;
@@ -145,5 +148,4 @@ void TestObject::draw()
 
 TestObject::~TestObject()
 {
-	delete sprite;
 }

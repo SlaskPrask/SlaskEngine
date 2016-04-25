@@ -157,6 +157,7 @@
     <ClCompile Include="sources\SoundResource.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteResource.cpp" />
+    <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
     <ClCompile Include="sources\Timer.cpp" />
     <ClCompile Include="techGame.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="sources\SoundResource.h" />
     <ClInclude Include="sources\Sprite.h" />
     <ClInclude Include="sources\SpriteResource.h" />
+    <ClInclude Include="sources\SpriteSet.h" />
     <ClInclude Include="sources\SteamHandler.h" />
     <ClInclude Include="sources\Timer.h" />
     <ClInclude Include="techPlayer.h" />

@@ -10,6 +10,11 @@ void slask::start()
 	setTitle("SlaskEngine Tech Demo");
 	setWindowed(1280, 720);
 
+	SpriteSet *marioSprites = createSpriteSet(new SpriteSet());//id 0
+	marioSprites->add("slask.png");//id 0
+
+	marioSprites->load();
+
 	createObject(new TestObject());
 	createObject(new player());
 }
@@ -17,5 +22,7 @@ void slask::start()
 void slask::end()
 {
 	log("WindowCLosed");
+
+	spriteSet(0)->unload();//mario sprites
 	exitGame();
 }

@@ -5,6 +5,26 @@ void slask::createObject(Object *o)
 	SlaskEngine::instance()->createObject(o);
 }
 
+SpriteSet* slask::createSpriteSet(SpriteSet *ss)
+{
+	return SlaskEngine::instance()->createSpriteSet(ss);
+}
+
+SpriteSet* slask::spriteSet(unsigned int i)
+{
+	return SlaskEngine::instance()->spriteSet(i);
+}
+
+Sprite* slask::spriteSetSprite(unsigned int i, unsigned int j)
+{
+	return SlaskEngine::instance()->spriteSet(i)->get(j);
+}
+
+void slask::deleteAllObjects()
+{
+	SlaskEngine::instance()->deleteAllObjects();
+}
+
 void slask::exitGame()
 {
 	SlaskEngine::instance()->gameEnd();

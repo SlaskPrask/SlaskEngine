@@ -51,14 +51,15 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
 
+	bool exitHandle=0;
+
 	while (running)
 	{
 		//audio
 		audio->run();
 
 		//input
-		if (input->run())
-			slask::end();
+		exitHandle = input->run();
 
 		if (input->getSignalResize())
 		{
@@ -76,14 +77,14 @@ void SlaskEngine::init(int argc, char *argv[])
 				if (objects.last() == obj)
 				break;
 				else
-			{
+				{
 					obj = obj->getNext();
 					delete (Object*)obj;
-			}
+				}
 			}
 			else
 			obj = obj->getNext();
-			}
+		}
 
 		//drawing
 		graphics->drawBegin();
@@ -95,8 +96,13 @@ void SlaskEngine::init(int argc, char *argv[])
 		}
 		graphics->drawEnd();
 
-
+		//exit handle
+		if (exitHandle)
+		slask::end();
 	}
+	LogHandler::log("Engine", "Stopping..");
+	deleteAllObjects();
+	deleteAllSpriteSets();
 	LogHandler::log("-------------------------------------");
 	LogHandler::log("Engine", "Stopped");
 
@@ -108,10 +114,49 @@ void SlaskEngine::createObject(Object *o)
 	objects.add(o);
 }
 
+SpriteSet* SlaskEngine::createSpriteSet(SpriteSet *ss)
+{
+	ss->engine_id = spritesets.size();
+	spritesets.push_back(ss);
+	return ss;
+}
+
+SpriteSet* SlaskEngine::spriteSet(unsigned int i)
+{
+	if (i < 0 || i >= spritesets.size())
+	{
+		std::string str = "Attempting to access sprite set ";
+		str += i;
+		str += "/";
+		int size = spritesets.size() - 1;
+		str += size;
+		str += " out of range. (Starting from 0.)";
+		LogHandler::error("File", str.c_str());
+		return NULL;
+	}
+	return spritesets[i];
+}
+
 void SlaskEngine::gameEnd()
 {
 	running = false;
 }
+
+void SlaskEngine::deleteAllObjects()
+{
+	while (objects.first())
+	{
+		delete (Object*)objects.first();
+	}
+}
+
+void SlaskEngine::deleteAllSpriteSets()
+{
+	for (unsigned int i = 0; i < spritesets.size(); i++)
+		delete spritesets[i];
+	spritesets.clear();
+}
+
 
 SlaskEngine::~SlaskEngine()
 {

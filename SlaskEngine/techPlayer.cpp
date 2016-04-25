@@ -10,7 +10,7 @@ player::player()
 	friction = 0.5;
 	accel = 0.2;
 	maxspeed = 10;
-	sprite = new Sprite("slask.png");//someone make a new sprite Kappa
+	sprite = getSprite(0,0);
 }
 
 void player::run()
@@ -42,5 +42,4 @@ void player::draw()
 
 player::~player()
 {
-	delete sprite;
 }

@@ -16,6 +16,14 @@ namespace slask
 
 	//call
 	void createObject(Object *o);
+	SpriteSet* createSpriteSet(SpriteSet *ss);//undocced
+	SpriteSet* spriteSet(unsigned int i);//undocced
+	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced
+	inline Sprite* getSprite(unsigned int i, unsigned int j)
+	{
+		return spriteSetSprite(i,j);
+	}
+	void deleteAllObjects();//undocced
 	void exitGame();
 
 	void setTitle(const char* title);
