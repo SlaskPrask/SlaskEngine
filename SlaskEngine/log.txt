@@ -1,22 +1,28 @@
-04/23/2016 15:05:52 0000001324 [Engine] Start
-04/23/2016 15:05:53 0000001334 [Graphics] Start
-04/23/2016 15:05:53 0000001348 [Graphics] Initialized
-04/23/2016 15:05:53 0000001356 [Input] Start
-04/23/2016 15:05:53 0000001361 [Input] Initialized
-04/23/2016 15:05:53 0000001367 [Audio] Start
-04/23/2016 15:05:53 0000001886 [Audio] Initialized
-04/23/2016 15:05:53 0000001895 [Engine] Initialized
-04/23/2016 15:05:53 0000001908 -------------------------------------
-04/23/2016 15:05:54 0000002359 [Graphics] Changed to window 1280x720
-04/23/2016 15:05:54 0000002507 [File] Saves/SAVE5 Slask.txt succesfully removed
-04/23/2016 15:05:54 0000002527 [File] Saves/SAVE5 created
-04/23/2016 15:05:54 0000002538 [File] Saves/SAVE3 Zas.txt succesfully removed
-04/23/2016 15:05:54 0000002558 [File] Saves/SAVE3 created
-04/23/2016 15:05:54 0000002570 [File] Saves/SAVE3 Zas.txt created succesfully
-04/23/2016 15:05:54 0000002611 [File] Saves/SAVE5 Slask.txt succesfully copied
-04/23/2016 15:05:58 0000006766 -------------------------------------
-04/23/2016 15:05:58 0000006778 [Engine] Stopped
-04/23/2016 15:05:58 0000006830 [Graphics] Window closed.
-04/23/2016 15:05:58 0000006848 [Engine] End
-04/23/2016 15:05:58 0000006966 [Input] End
-04/23/2016 15:05:58 0000006980 [Graphics] End
+04/25/2016 12:06:25 0000000956 [Engine] Start
+04/25/2016 12:06:25 0000000963 [Graphics] Start
+04/25/2016 12:06:25 0000000987 [Graphics] Initialized
+04/25/2016 12:06:25 0000001000 [Audio] Start
+04/25/2016 12:06:25 0000001256 [Audio] Initialized
+04/25/2016 12:06:25 0000001267 [Steam] Start
+04/25/2016 12:06:25 0000001275 [Steam] Not in steam environment
+04/25/2016 12:06:25 0000001285 [Steam] Initialized
+04/25/2016 12:06:25 0000001292 [Input] Start
+04/25/2016 12:06:25 0000001297 [Input] Initialized
+04/25/2016 12:06:25 0000001306 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
+04/25/2016 12:06:25 0000001318 -------------------------------------
+04/25/2016 12:06:26 0000002339 [Graphics] Changed to window 1280x720
+04/25/2016 12:06:26 0000002606 [File] Saves/SAVE5 Slask.txt succesfully removed
+04/25/2016 12:06:26 0000002661 [File] Saves/SAVE5 created
+04/25/2016 12:06:26 0000002734 [File] Saves/SAVE3 Zas.txt succesfully removed
+04/25/2016 12:06:26 0000002788 [File] Saves/SAVE3 created
+04/25/2016 12:06:27 0000002829 [File] Saves/SAVE3 Zas.txt created succesfully
+04/25/2016 12:06:27 0000002872 [File] Saves/SAVE5 Slask.txt succesfully copied
+04/25/2016 12:06:32 0000008748 WindowCLosed
+04/25/2016 12:06:33 0000008791 [Engine] Stopping..
+04/25/2016-12:06:33-0000008808-[Resources] A sprite set was left unloaded before deletion.
+04/25/2016 12:06:33 0000008829 -------------------------------------
+04/25/2016 12:06:33 0000008838 [Engine] Stopped
+04/25/2016 12:06:33 0000008867 [Graphics] Window closed.
+04/25/2016 12:06:33 0000008880 [Engine] End
+04/25/2016 12:06:33 0000008893 [Input] End
+04/25/2016 12:06:33 0000009026 [Graphics] End
