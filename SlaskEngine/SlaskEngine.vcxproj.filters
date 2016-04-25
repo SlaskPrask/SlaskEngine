@@ -87,6 +87,9 @@
     <ClCompile Include="techEnemy.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
+    <ClCompile Include="sources\Loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -160,6 +163,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sources\SpriteSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techEnemy.h">
