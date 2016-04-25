@@ -3,7 +3,7 @@
 #include <SFML/OpenGL.hpp>
 #include "LogHandler.h"
 
-class Sprite
+class Sprite //undocced
 {
 private:
 	int w, h;

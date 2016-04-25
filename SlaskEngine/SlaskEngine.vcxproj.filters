@@ -159,16 +159,16 @@
     <ClInclude Include="sources\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sources\SpriteSet.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="techEnemy.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
     <ClInclude Include="sources\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techEnemy.h">
+    <ClInclude Include="techPlayer.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>

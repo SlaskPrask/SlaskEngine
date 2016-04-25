@@ -126,7 +126,7 @@ void TestObject::draw()
 {
 	//the big at the back, stretched
 	drawSprite(sprite, 10, 10, windowWidth - 20, windowHeight - 20, 1000);
-	//small not moving, static position
+	/*//small not moving, static position
 	drawSprite(sprite, 100, 100, 1);
 	//rolling one, static position
 	drawSprite(sprite, 100 + cos(position*3.14159265 / 180.0f) * 100, 100 + sin(position*3.14159265 / 180.0f) * 100, 10);
@@ -143,7 +143,7 @@ void TestObject::draw()
 	//bottom right, dynamic position
 	drawSpritePoly(sprite, windowWidth, windowHeight, windowWidth - 100, windowHeight, windowWidth, windowHeight - 100, .5, 0, 0, 1, 1, 1, -100);
 	//spinning green, static position
-	drawSpritePolyExt(sprite, 300, 200, 200, 400, 400, 400, .5, 0, 0, 1, 1, 1, position*2.0f, 0, 1, 0, 1, -100);
+	drawSpritePolyExt(sprite, 300, 200, 200, 400, 400, 400, .5, 0, 0, 1, 1, 1, position*2.0f, 0, 1, 0, 1, -100);*/
 }
 
 TestObject::~TestObject()

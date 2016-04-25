@@ -1,13 +1,15 @@
 #pragma once
 #include "sources/Slask.h"
 
-class techEnemy
+class techEnemy: public Object
 {
 private:
 	int xdir,ydir;
 	Sprite *sprite;
 	void changeDirection();
-	Timer *dirTimer;
+	Timer dirTimer,blinkTimer;
+	int timerDistort;
+	bool blink;
 
 public:
 	void run();

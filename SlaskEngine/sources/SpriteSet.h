@@ -5,7 +5,7 @@
 
 class SlaskEngine;
 
-class SpriteSet
+class SpriteSet //undocced
 {
 	friend class SlaskEngine;
 private:

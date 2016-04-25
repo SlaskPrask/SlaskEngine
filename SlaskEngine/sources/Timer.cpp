@@ -17,7 +17,21 @@ void Timer::start()
 		run = true;
 	}
 	else
-		LogHandler::error("Timer", "Already running");
+		LogHandler::notify("Timer", "Already running");
+}
+
+
+void Timer::restart()
+{
+	if (clock != NULL)
+	{
+		stop();
+		clock = new sf::Clock;
+		pausedTime = 0;
+		run = true;
+	}
+	else
+		LogHandler::notify("Timer", "Doesn't Exist");
 }
 
 void Timer::unpause()
@@ -28,7 +42,7 @@ void Timer::unpause()
 		run = true;
 	}
 	else
-		LogHandler::error("Timer", "Already running");
+		LogHandler::notify("Timer", "Already running");
 }
 
 void Timer::pause()
@@ -42,7 +56,7 @@ void Timer::pause()
 		run = false;
 	}
 	else
-		LogHandler::error("Timer", "Doesn't Exist");
+		LogHandler::notify("Timer", "Doesn't Exist");
 }
 
 int Timer::getTime() //gives the elapsed time in milliseconds
@@ -58,7 +72,7 @@ int Timer::getTime() //gives the elapsed time in milliseconds
 	}
 	else
 	{
-		LogHandler::error("Timer", "Doesn't Exist");
+		LogHandler::notify("Timer", "Doesn't Exist");
 		return 0;
 	}
 }
@@ -72,7 +86,7 @@ void Timer::stop()
 		run = false;
 	}
 	else
-		LogHandler::error("Timer", "Doesn't Exist");
+		LogHandler::notify("Timer", "Doesn't Exist");
 }
 
 bool Timer::isRunning()
@@ -83,7 +97,7 @@ bool Timer::isRunning()
 	}
 	else
 	{
-		LogHandler::error("Timer", "Doesn't Exist");
+		LogHandler::notify("Timer", "Doesn't Exist");
 		return false;
 	}
 }

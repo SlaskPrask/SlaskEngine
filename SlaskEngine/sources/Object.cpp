@@ -22,6 +22,12 @@ void Object::destroy()
 	_destroyed = true;
 }
 
+void Object::at(double xp, double yp)
+{
+	x = xp;
+	y = yp;
+}
+
 bool Object::_getDestroyed()
 {
 	return _destroyed;

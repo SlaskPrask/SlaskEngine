@@ -1,8 +1,9 @@
 #include "slasknamespace.h"
 
-void slask::createObject(Object *o)
+Object* slask::createObject(Object *o)
 {
 	SlaskEngine::instance()->createObject(o);
+	return o;
 }
 
 SpriteSet* slask::createSpriteSet(SpriteSet *ss)

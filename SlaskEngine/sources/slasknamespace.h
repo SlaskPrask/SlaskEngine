@@ -15,7 +15,7 @@ namespace slask
 	void end();
 
 	//call
-	void createObject(Object *o);
+	Object* createObject(Object *o);//undocced (change return type)
 	SpriteSet* createSpriteSet(SpriteSet *ss);//undocced
 	SpriteSet* spriteSet(unsigned int i);//undocced
 	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced

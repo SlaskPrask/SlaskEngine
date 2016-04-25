@@ -2,7 +2,7 @@
 #include "LogHandler.h"
 #pragma once
 
-class Timer
+class Timer //undocced
 {
 private:
 
@@ -22,6 +22,7 @@ public:
 	int getTime();
 	bool isRunning();
 	void stop();
+	void restart();
 	void pause();
 
 

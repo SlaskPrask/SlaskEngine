@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "LogHandler.h"
 
-class Font
+class Font //undocced
 {
 private:
 	sf::Font* font;

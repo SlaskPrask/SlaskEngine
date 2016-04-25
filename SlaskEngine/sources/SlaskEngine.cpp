@@ -77,11 +77,15 @@ void SlaskEngine::init(int argc, char *argv[])
 			if (((Object*)obj)->_getDestroyed())
 			{
 				if (objects.last() == obj)
-				break;
+				{
+					delete obj;
+					break;
+				}
 				else
 				{
+					LinkedList<Object> *obj2 = obj;
 					obj = obj->getNext();
-					delete (Object*)obj;
+					delete obj2;
 				}
 			}
 			else

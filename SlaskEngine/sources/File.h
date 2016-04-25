@@ -7,7 +7,7 @@
 #include "LogHandler.h"
 #include <io.h>
 
-class File
+class File //undocced
 {
 private:
 

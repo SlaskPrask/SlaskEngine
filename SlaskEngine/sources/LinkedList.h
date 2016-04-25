@@ -74,6 +74,7 @@ public:
 				t->_listHandle = _listHandle;
 			}
 			_nextNode = t;
+			t->_prevNode = (T*)this;
 		}
 		else
 			_nextNode->_add(t);

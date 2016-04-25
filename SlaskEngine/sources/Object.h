@@ -20,5 +20,6 @@ public:
 	virtual void run();
 	virtual void draw();
 
+	void at(double xp,double yp);//undocced
 	void destroy();
 };
