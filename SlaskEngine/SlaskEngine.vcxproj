@@ -159,6 +159,7 @@
     <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
     <ClCompile Include="sources\Timer.cpp" />
+    <ClCompile Include="sources\TMXparser.cpp" />
     <ClCompile Include="techEnemy.cpp" />
     <ClCompile Include="techGame.cpp" />
     <ClCompile Include="techPlayer.cpp" />
@@ -169,6 +170,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="sources\TMXparser.h" />
     <ClInclude Include="techEnemy.h" />
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
@@ -209,8 +211,7 @@
     <Import Project="..\packages\sfml-window.2.3.2.0\build\native\sfml-window.targets" Condition="Exists('..\packages\sfml-window.2.3.2.0\build\native\sfml-window.targets')" />
     <Import Project="..\packages\sfml-graphics.redist.2.3.2.0\build\native\sfml-graphics.redist.targets" Condition="Exists('..\packages\sfml-graphics.redist.2.3.2.0\build\native\sfml-graphics.redist.targets')" />
     <Import Project="..\packages\sfml-graphics.2.3.2.0\build\native\sfml-graphics.targets" Condition="Exists('..\packages\sfml-graphics.2.3.2.0\build\native\sfml-graphics.targets')" />
-    <Import Project="..\packages\xercesc.redist.3.1.1\build\native\xercesc.redist.targets" Condition="Exists('..\packages\xercesc.redist.3.1.1\build\native\xercesc.redist.targets')" />
-    <Import Project="..\packages\xercesc.3.1.1\build\native\xercesc.targets" Condition="Exists('..\packages\xercesc.3.1.1\build\native\xercesc.targets')" />
+    <Import Project="..\packages\rapidxml.1.13\build\native\rapidxml.targets" Condition="Exists('..\packages\rapidxml.1.13\build\native\rapidxml.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -228,7 +229,6 @@
     <Error Condition="!Exists('..\packages\sfml-window.2.3.2.0\build\native\sfml-window.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-window.2.3.2.0\build\native\sfml-window.targets'))" />
     <Error Condition="!Exists('..\packages\sfml-graphics.redist.2.3.2.0\build\native\sfml-graphics.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-graphics.redist.2.3.2.0\build\native\sfml-graphics.redist.targets'))" />
     <Error Condition="!Exists('..\packages\sfml-graphics.2.3.2.0\build\native\sfml-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-graphics.2.3.2.0\build\native\sfml-graphics.targets'))" />
-    <Error Condition="!Exists('..\packages\xercesc.redist.3.1.1\build\native\xercesc.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xercesc.redist.3.1.1\build\native\xercesc.redist.targets'))" />
-    <Error Condition="!Exists('..\packages\xercesc.3.1.1\build\native\xercesc.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xercesc.3.1.1\build\native\xercesc.targets'))" />
+    <Error Condition="!Exists('..\packages\rapidxml.1.13\build\native\rapidxml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rapidxml.1.13\build\native\rapidxml.targets'))" />
   </Target>
 </Project>

@@ -90,6 +90,9 @@
     <ClCompile Include="sources\Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sources\TMXparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="techPlayer.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\TMXparser.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
