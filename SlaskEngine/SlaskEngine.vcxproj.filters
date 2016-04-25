@@ -63,12 +63,6 @@
     <ClCompile Include="sources\AudioBus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sources\SpriteResource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\SoundResource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sources\SteamHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -86,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="techPlayer.cpp">
       <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\SpriteSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Loader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,12 +138,6 @@
     <ClInclude Include="sources\AudioHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\SpriteResource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\SoundResource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sources\LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -163,6 +157,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\SpriteSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
