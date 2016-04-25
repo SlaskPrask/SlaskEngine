@@ -13,6 +13,9 @@ void slask::start()
 	SpriteSet *marioSprites = createSpriteSet(new SpriteSet());//id 0
 	marioSprites->add("slask.png");//id 0
 
+	SpriteSet *enemySprites = createSpriteSet(new SpriteSet());//id 1
+	enemySprites->add("slask.png");//id 0
+
 	marioSprites->load();
 
 	createObject(new TestObject());
@@ -24,5 +27,6 @@ void slask::end()
 	log("WindowCLosed");
 
 	spriteSet(0)->unload();//mario sprites
+	spriteSet(1)->unload();//enemy sprites
 	exitGame();
 }

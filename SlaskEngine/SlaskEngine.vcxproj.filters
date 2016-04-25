@@ -84,6 +84,9 @@
     <ClCompile Include="sources\SpriteSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="techEnemy.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
     <ClCompile Include="sources\Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -164,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="sources\Loader.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="techEnemy.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

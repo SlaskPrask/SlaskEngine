@@ -10,7 +10,7 @@ player::player()
 	friction = 0.5;
 	accel = 0.2;
 	maxspeed = 10;
-	sprite = getSprite(0,0);
+	sprite = getSprite(0,1);
 }
 
 void player::run()
@@ -37,7 +37,7 @@ void player::run()
 
 void player::draw()
 {
-	drawSprite(sprite,x,y,-100);
+	drawSprite(sprite,x-50,y-50,100,100,-100);
 }
 
 player::~player()

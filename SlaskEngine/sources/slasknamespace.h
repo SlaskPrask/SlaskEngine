@@ -30,6 +30,8 @@ namespace slask
 	void setFPS(int fps);
 	void setVSync(bool enabled);
 
+	int random(int max);//undocced
+
 	const char* getTitle();
 	int getFPS();
 	bool getVSync();

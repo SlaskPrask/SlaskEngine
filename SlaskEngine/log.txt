@@ -1,28 +1,28 @@
-04/25/2016 12:06:25 0000000956 [Engine] Start
-04/25/2016 12:06:25 0000000963 [Graphics] Start
-04/25/2016 12:06:25 0000000987 [Graphics] Initialized
-04/25/2016 12:06:25 0000001000 [Audio] Start
-04/25/2016 12:06:25 0000001256 [Audio] Initialized
-04/25/2016 12:06:25 0000001267 [Steam] Start
-04/25/2016 12:06:25 0000001275 [Steam] Not in steam environment
-04/25/2016 12:06:25 0000001285 [Steam] Initialized
-04/25/2016 12:06:25 0000001292 [Input] Start
-04/25/2016 12:06:25 0000001297 [Input] Initialized
-04/25/2016 12:06:25 0000001306 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
-04/25/2016 12:06:25 0000001318 -------------------------------------
-04/25/2016 12:06:26 0000002339 [Graphics] Changed to window 1280x720
-04/25/2016 12:06:26 0000002606 [File] Saves/SAVE5 Slask.txt succesfully removed
-04/25/2016 12:06:26 0000002661 [File] Saves/SAVE5 created
-04/25/2016 12:06:26 0000002734 [File] Saves/SAVE3 Zas.txt succesfully removed
-04/25/2016 12:06:26 0000002788 [File] Saves/SAVE3 created
-04/25/2016 12:06:27 0000002829 [File] Saves/SAVE3 Zas.txt created succesfully
-04/25/2016 12:06:27 0000002872 [File] Saves/SAVE5 Slask.txt succesfully copied
-04/25/2016 12:06:32 0000008748 WindowCLosed
-04/25/2016 12:06:33 0000008791 [Engine] Stopping..
-04/25/2016-12:06:33-0000008808-[Resources] A sprite set was left unloaded before deletion.
-04/25/2016 12:06:33 0000008829 -------------------------------------
-04/25/2016 12:06:33 0000008838 [Engine] Stopped
-04/25/2016 12:06:33 0000008867 [Graphics] Window closed.
-04/25/2016 12:06:33 0000008880 [Engine] End
-04/25/2016 12:06:33 0000008893 [Input] End
-04/25/2016 12:06:33 0000009026 [Graphics] End
+04/25/2016 13:13:41 0000000206 [Engine] Start
+04/25/2016 13:13:41 0000000210 [Graphics] Start
+04/25/2016 13:13:41 0000000222 [Graphics] Initialized
+04/25/2016 13:13:41 0000000225 [Audio] Start
+04/25/2016 13:13:41 0000000338 [Audio] Initialized
+04/25/2016 13:13:41 0000000340 [Steam] Start
+04/25/2016 13:13:41 0000000342 [Steam] Not in steam environment
+04/25/2016 13:13:41 0000000346 [Steam] Initialized
+04/25/2016 13:13:41 0000000349 [Input] Start
+04/25/2016 13:13:41 0000000351 [Input] Initialized
+04/25/2016 13:13:41 0000000353 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
+04/25/2016 13:13:41 0000000357 -------------------------------------
+04/25/2016 13:13:41 0000000723 [Graphics] Changed to window 1280x720
+04/25/2016 13:13:41 0000000826 [File] Saves/SAVE5 Slask.txt succesfully removed
+04/25/2016 13:13:41 0000000830 [File] Saves/SAVE5 created
+04/25/2016 13:13:41 0000000834 [File] Saves/SAVE3 Zas.txt succesfully removed
+04/25/2016 13:13:41 0000000839 [File] Saves/SAVE3 created
+04/25/2016 13:13:41 0000000843 [File] Saves/SAVE3 Zas.txt created succesfully
+04/25/2016 13:13:41 0000000848 [File] Saves/SAVE5 Slask.txt succesfully copied
+04/25/2016 13:13:43 0000002348 WindowCLosed
+04/25/2016-13:13:43-0000002350-[Resources] Attempting to unload an already unloaded sprite set.
+04/25/2016 13:13:43 0000002354 [Engine] Stopping..
+04/25/2016 13:13:43 0000002356 -------------------------------------
+04/25/2016 13:13:43 0000002359 [Engine] Stopped
+04/25/2016 13:13:43 0000002369 [Graphics] Window closed.
+04/25/2016 13:13:43 0000002372 [Engine] End
+04/25/2016 13:13:43 0000002375 [Input] End
+04/25/2016 13:13:43 0000002489 [Graphics] End

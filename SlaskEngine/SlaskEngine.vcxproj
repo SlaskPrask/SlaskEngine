@@ -159,6 +159,7 @@
     <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
     <ClCompile Include="sources\Timer.cpp" />
+    <ClCompile Include="techEnemy.cpp" />
     <ClCompile Include="techGame.cpp" />
     <ClCompile Include="techPlayer.cpp" />
     <ClCompile Include="techTestObject.cpp" />
@@ -168,6 +169,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="techEnemy.h" />
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
     <ClInclude Include="sources\AudioBus.h" />
