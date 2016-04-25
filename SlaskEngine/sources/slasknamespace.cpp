@@ -43,6 +43,11 @@ void slask::setVSync(bool enabled)
 	GraphicsHandler::instance()->setVSync(enabled);
 }
 
+int slask::random(int max)
+{
+	return rand()%(max+1);
+}
+
 const char* slask::getTitle()
 {
 	return GraphicsHandler::instance()->getTitle();

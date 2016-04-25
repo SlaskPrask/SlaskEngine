@@ -154,12 +154,11 @@
     <ClCompile Include="sources\Scene.cpp" />
     <ClCompile Include="sources\SlaskEngine.cpp" />
     <ClCompile Include="sources\slasknamespace.cpp" />
-    <ClCompile Include="sources\SoundResource.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
-    <ClCompile Include="sources\SpriteResource.cpp" />
     <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
     <ClCompile Include="sources\Timer.cpp" />
+    <ClCompile Include="techEnemy.cpp" />
     <ClCompile Include="techGame.cpp" />
     <ClCompile Include="techPlayer.cpp" />
     <ClCompile Include="techTestObject.cpp" />
@@ -169,6 +168,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="techEnemy.h" />
     <ClInclude Include="sources\Audio.h" />
     <ClInclude Include="sources\AudioBank.h" />
     <ClInclude Include="sources\AudioBus.h" />
@@ -186,9 +186,7 @@
     <ClInclude Include="sources\Slask.h" />
     <ClInclude Include="sources\SlaskEngine.h" />
     <ClInclude Include="sources\slasknamespace.h" />
-    <ClInclude Include="sources\SoundResource.h" />
     <ClInclude Include="sources\Sprite.h" />
-    <ClInclude Include="sources\SpriteResource.h" />
     <ClInclude Include="sources\SpriteSet.h" />
     <ClInclude Include="sources\SteamHandler.h" />
     <ClInclude Include="sources\Timer.h" />

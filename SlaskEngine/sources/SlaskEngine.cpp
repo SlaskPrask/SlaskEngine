@@ -28,6 +28,8 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	running = true;
 
+	srand((unsigned int)time(NULL));
+
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init("SlaskEngine");
 

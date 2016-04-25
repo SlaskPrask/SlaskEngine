@@ -17,6 +17,8 @@
 #include "Timer.h"
 #include "SpriteSet.h"
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 
 class SlaskEngine
 {

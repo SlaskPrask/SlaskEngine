@@ -58,8 +58,10 @@ void SpriteSet::unload()
 			delete s;
 		}
 		loads = 0;
+		break;
 	default:
 		loads--;
+		break;
 	}
 }
 
