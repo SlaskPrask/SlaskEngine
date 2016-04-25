@@ -8,7 +8,7 @@ Timer::Timer()
 	clock = NULL;
 }
 
-void Timer::startTimer()
+void Timer::start()
 {
 	if (clock == NULL)
 	{
@@ -20,7 +20,7 @@ void Timer::startTimer()
 		LogHandler::error("Timer", "Already running");
 }
 
-void Timer::unpauseTimer()
+void Timer::unpause()
 {
 	if (clock == NULL)
 	{
@@ -31,7 +31,7 @@ void Timer::unpauseTimer()
 		LogHandler::error("Timer", "Already running");
 }
 
-void Timer::pauseTimer()
+void Timer::pause()
 {
 	if (clock != NULL)
 	{
@@ -63,7 +63,7 @@ int Timer::getTime() //gives the elapsed time in milliseconds
 	}
 }
 
-void Timer::stopTimer()
+void Timer::stop()
 {
 	if (clock != NULL)
 	{
@@ -75,7 +75,7 @@ void Timer::stopTimer()
 		LogHandler::error("Timer", "Doesn't Exist");
 }
 
-bool Timer::isTimerRunning()
+bool Timer::isRunning()
 {
 	if (clock != NULL)
 	{

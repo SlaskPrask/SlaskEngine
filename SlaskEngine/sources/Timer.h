@@ -17,12 +17,12 @@ public:
 	Timer();
 	~Timer();
 
-	void startTimer();
-	void unpauseTimer();
+	void start();
+	void unpause();
 	int getTime();
-	bool isTimerRunning();
-	void stopTimer();
-	void pauseTimer();
+	bool isRunning();
+	void stop();
+	void pause();
 
 
 };
