@@ -62,47 +62,50 @@ namespace slask
 	//draw a triangle part of a sprite with all options, including color
 	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth);
 
-	void log(const char *str);
-	void logError(const char *str);
-	void logNotify(const char *str);
+	void log(const char *str);//undocced
+	void logError(const char *str);//undocced
+	void logNotify(const char *str);//undocced
 
-	int getKey(int i);
-	int getMouse(int i);
-	int getMousewheel_up();
-	int getMousewheel_down();
-	int getMouse_x();
-	int getMouse_y();
+	int getMousewheelUp();//undocced
+	int getMousewheelDown();//undocced
+	int getMouseX();//undocced
+	int getMouseY();//undocced
 
-	bool getKeyPress(int keyCode);
-	bool getKeyRelease(int keyCode);
-	bool getKeyHeld(int keyCode);
-	bool getKeyIdle(int keyCode);
+	bool getMousePress(int i);//undocced
+	bool getMouseRelease(int i);//undocced
+	bool getMouseHeld(int i);//undocced
+	bool getMouseIdle(int i);//undocced
 
-	void setSoundSampleDecompress(bool enabled);
-	void setSoundSampleASync(bool enabled);
-	void playSound(Audio* audio);
-	void stopSound(Audio* audio);
-	void pauseSound(Audio* audio);
-	void unpauseSound(Audio* audio);
-	void triggerSound(Audio* audio);
-	void releaseSound(Audio* audio);
+	bool getKeyPress(int keyCode);//undocced
+	bool getKeyRelease(int keyCode);//undocced
+	bool getKeyHeld(int keyCode);//undocced
+	bool getKeyIdle(int keyCode);//undocced
 
-	void setSoundVolume(Audio* audio, double vol);
-	void setSoundParameterValue(Audio* audio, const char* param, double value);
-	void setSoundPitch(Audio* audio, double pitch);
-	void setSoundTimePosition(Audio* audio, int position);
+	void setSoundSampleDecompress(bool enabled);//undocced
+	void setSoundSampleASync(bool enabled);//undocced
+	void playSound(Audio* audio);//undocced
+	void stopSound(Audio* audio);//undocced
+	void pauseSound(Audio* audio);//undocced
+	void unpauseSound(Audio* audio);//undocced
+	void triggerSound(Audio* audio);//undocced
+	void releaseSound(Audio* audio);//undocced
 
-	void setAudioBusVolume(AudioBus* bus, double vol);
-	double getAudioBusVolume(AudioBus* bus);
+	void setSoundVolume(Audio* audio, double vol);//undocced
+	void setSoundParameterValue(Audio* audio, const char* param, double value);//undocced
+	void setSoundPitch(Audio* audio, double pitch);//undocced
+	void setSoundTimePosition(Audio* audio, int position);//undocced
 
-	float getSoundParameterValue(Audio* audio, const char* param);
+	void setAudioBusVolume(AudioBus* bus, double vol);//undocced
+	double getAudioBusVolume(AudioBus* bus);//undocced
 
-	namespace Mouse
+	float getSoundParameterValue(Audio* audio, const char* param);//undocced
+
+	namespace Mouse//undocced
 	{
 		enum MouseButt { Mouse1, Mouse2, MouseMiddle, Mouse4, Mouse5 };
 	};
 
-	namespace Key
+	namespace Key//undocced
 	{
 		enum Key
 		{

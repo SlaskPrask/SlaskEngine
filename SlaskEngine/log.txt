@@ -1,27 +1,21 @@
-04/25/2016 17:38:01 0000000205 [Engine] Start
-04/25/2016 17:38:01 0000000209 [Graphics] Start
-04/25/2016 17:38:01 0000000222 [Graphics] Initialized
-04/25/2016 17:38:01 0000000224 [Audio] Start
-04/25/2016 17:38:02 0000000335 [Audio] Initialized
-04/25/2016 17:38:02 0000000338 [Steam] Start
-04/25/2016 17:38:02 0000000340 [Steam] Not in steam environment
-04/25/2016 17:38:02 0000000344 [Steam] Initialized
-04/25/2016 17:38:02 0000000348 [Input] Start
-04/25/2016 17:38:02 0000000351 [Input] Initialized
-04/25/2016 17:38:02 0000000353 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
-04/25/2016 17:38:02 0000000358 -------------------------------------
-04/25/2016 17:38:02 0000000834 [Graphics] Changed to window 1280x720
-04/25/2016 17:38:02 0000000926 [File] Saves/SAVE5 Slask.txt succesfully removed
-04/25/2016 17:38:02 0000000932 [File] Saves/SAVE5 created
-04/25/2016 17:38:02 0000000939 [File] Saves/SAVE3 Zas.txt succesfully removed
-04/25/2016 17:38:02 0000000944 [File] Saves/SAVE3 created
-04/25/2016 17:38:02 0000000948 [File] Saves/SAVE3 Zas.txt created succesfully
-04/25/2016 17:38:02 0000000955 [File] Saves/SAVE5 Slask.txt succesfully copied
-04/25/2016 17:38:16 0000015211 WindowCLosed
-04/25/2016 17:38:16 0000015213 [Engine] Stopping..
-04/25/2016 17:38:16 0000015219 -------------------------------------
-04/25/2016 17:38:16 0000015223 [Engine] Stopped
-04/25/2016 17:38:16 0000015243 [Graphics] Window closed.
-04/25/2016 17:38:16 0000015247 [Engine] End
-04/25/2016 17:38:16 0000015250 [Input] End
-04/25/2016 17:38:17 0000015344 [Graphics] End
+04/25/2016 18:00:36 0000000053 [Engine] Start
+04/25/2016 18:00:36 0000000055 [Graphics] Start
+04/25/2016 18:00:36 0000000065 [Graphics] Initialized
+04/25/2016 18:00:36 0000000067 [Audio] Start
+04/25/2016 18:00:36 0000000153 [Audio] Initialized
+04/25/2016 18:00:36 0000000155 [Steam] Start
+04/25/2016 18:00:36 0000000157 [Steam] Not in steam environment
+04/25/2016 18:00:36 0000000160 [Steam] Initialized
+04/25/2016 18:00:36 0000000162 [Input] Start
+04/25/2016 18:00:36 0000000164 [Input] Initialized
+04/25/2016 18:00:36 0000000166 [Engine] Initialized SlaskEngine Version: ALPHA1.000000
+04/25/2016 18:00:36 0000000170 -------------------------------------
+04/25/2016 18:00:36 0000000578 [Graphics] Changed to window 1280x720
+04/25/2016 18:00:53 0000017370 WindowCLosed
+04/25/2016 18:00:53 0000017372 [Engine] Stopping..
+04/25/2016 18:00:53 0000017374 -------------------------------------
+04/25/2016 18:00:53 0000017377 [Engine] Stopped
+04/25/2016 18:00:53 0000017437 [Graphics] Window closed.
+04/25/2016 18:00:53 0000017441 [Engine] End
+04/25/2016 18:00:53 0000017443 [Input] End
+04/25/2016 18:00:53 0000017539 [Graphics] End

@@ -15,18 +15,18 @@ player::player()
 
 void player::run()
 {
-	if (getKey(Key::Right))
+	if (getKeyHeld(Key::Right))
 		xvel = xvel + accel < maxspeed ? xvel + accel : maxspeed;
 	else
-		if (getKey(Key::Left))
+		if (getKeyHeld(Key::Left))
 			xvel = xvel - accel > -maxspeed ? xvel - accel : -maxspeed;
 		else
 			xvel = (xvel < 0 ? -xvel : xvel) < friction ? 0 : xvel - accel*(xvel < 0 ? -1 : 1);
 
-	if (getKey(Key::Down))
+	if (getKeyHeld(Key::Down))
 		yvel = yvel + accel < maxspeed ? yvel + accel : maxspeed;
 	else
-		if (getKey(Key::Up))
+		if (getKeyHeld(Key::Up))
 			yvel = yvel - accel > -maxspeed ? yvel - accel : -maxspeed;
 		else
 			yvel = (yvel < 0 ? -yvel : yvel) < friction ? 0 : yvel - accel*(yvel < 0 ? -1 : 1);

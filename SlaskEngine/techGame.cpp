@@ -15,7 +15,7 @@ void slask::start()
 	marioSprites->add("slask.png");//id 0
 
 	SpriteSet *enemySprites = createSpriteSet(new SpriteSet());//id 1
-	enemySprites->add("slask.png");//id 0
+	enemySprites->add("slask.png");//id 0 and this would ofc be some other png
 
 	//should be done in scene
 	marioSprites->load();

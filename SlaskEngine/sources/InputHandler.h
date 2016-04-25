@@ -43,9 +43,4 @@ public:
 	bool getSignalResize();
 	bool getFocus();
 	bool getSignalFocus();
-
-	bool getKeyPress(int keyCode);
-	bool getKeyRelease(int keyCode);
-	bool getKeyHeld(int keyCode);
-	bool getKeyIdle(int keyCode);
 };

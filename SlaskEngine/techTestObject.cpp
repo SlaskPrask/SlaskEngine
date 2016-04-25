@@ -15,7 +15,7 @@ TestObject::TestObject()
 	Team10=new Audio("Music");
 	Guitar=new Audio("Audio");
 
-	File file;
+	/*File file;
 
 	file.add("Hi");
 	file.add("Zas");
@@ -38,7 +38,7 @@ TestObject::TestObject()
 	file.deleteSave(3, "Saves/", "SAVE", "txt", "Zas");
 	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
 	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
-	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");
+	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");*/
 }
 
 void TestObject::run()

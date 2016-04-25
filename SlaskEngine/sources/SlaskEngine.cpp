@@ -152,7 +152,7 @@ void SlaskEngine::deleteAllObjects()
 {
 	while (objects.first())
 	{
-		delete (Object*)objects.first();
+		delete objects.first();
 	}
 }
 

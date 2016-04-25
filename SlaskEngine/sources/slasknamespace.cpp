@@ -150,46 +150,54 @@ void slask::logNotify(const char *str)
 	LogHandler::instance()->notify(str);
 }
 
-int slask::getKey(int i)
+bool slask::getMousePress(int i)
 {
-	return InputHandler::instance()->getkey(i);
+	return InputHandler::instance()->getmouse(i)==1;
 }
-int slask::getMouse(int i)
+bool slask::getMouseRelease(int i)
 {
-	return InputHandler::instance()->getmouse(i);
+	return InputHandler::instance()->getmouse(i)==-1;
 }
-int slask::getMousewheel_up()
+bool slask::getMouseHeld(int i)
+{
+	return InputHandler::instance()->getmouse(i)>0;
+}
+bool slask::getMouseIdle(int i)
+{
+	return InputHandler::instance()->getmouse(i)<=0;
+}
+int slask::getMousewheelUp()
 {
 	return InputHandler::instance()->getmousewheel_up();
 }
-int slask::getMousewheel_down()
+int slask::getMousewheelDown()
 {
 	return InputHandler::instance()->getmousewheel_down();
 }
-int slask::getMouse_x()
+int slask::getMouseX()
 {
 	return InputHandler::instance()->getmouse_x();
 }
-int slask::getMouse_y()
+int slask::getMouseY()
 {
 	return InputHandler::instance()->getmouse_y();
 }
 
 bool slask::getKeyPress(int keyCode)
 {
-	return InputHandler::instance()->getKeyPress(keyCode);
+	return InputHandler::instance()->getkey(keyCode)==1;
 }
 bool slask::getKeyRelease(int keyCode)
 {
-	return InputHandler::instance()->getKeyRelease(keyCode);
+	return InputHandler::instance()->getkey(keyCode)==-1;
 }
 bool slask::getKeyHeld(int keyCode)
 {
-	return InputHandler::instance()->getKeyHeld(keyCode);
+	return InputHandler::instance()->getkey(keyCode)>0;
 }
 bool slask::getKeyIdle(int keyCode)
 {
-	return InputHandler::instance()->getKeyIdle(keyCode);
+	return InputHandler::instance()->getkey(keyCode)<=0;
 }
 
 void slask::setSoundSampleDecompress(bool enabled)

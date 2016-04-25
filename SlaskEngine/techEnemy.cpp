@@ -24,7 +24,7 @@ void techEnemy::run()
 	x += xdir;
 	y += ydir;
 
-	if (getMouse(Mouse::Mouse1) && getMouse_x() <= x + 25 && getMouse_x() > x - 25 && getMouse_y() <= y + 25 && getMouse_y() > y - 25)
+	if (getMousePress(Mouse::Mouse1) && getMouseX() <= x + 25 && getMouseX() > x - 25 && getMouseY() <= y + 25 && getMouseY() > y - 25)
 		destroy();
 
 	if (blinkTimer.getTime() > 50)

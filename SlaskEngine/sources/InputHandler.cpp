@@ -211,23 +211,3 @@ bool InputHandler::getSignalFocus()
 	else
 		return 0;
 }
-
-bool InputHandler::getKeyPress(int keyCode)
-{
-	return key[keyCode] == 1;
-}
-
-bool InputHandler::getKeyRelease(int keyCode)
-{
-	return key[keyCode] == -1;
-}
-
-bool InputHandler::getKeyHeld(int keyCode)
-{
-	return key[keyCode] > 0;
-}
-
-bool InputHandler::getKeyIdle(int keyCode)
-{
-	return key[keyCode] <= 0;
-}
