@@ -39,5 +39,15 @@ FMOD::Studio::EventInstance* Audio::getInstance()
 
 Audio::~Audio()
 {
-	
+	if (eventInstance) 
+	{
+		eventInstance->release();
+		delete eventInstance;
+		eventInstance = NULL;
+	}
+	if (eventD)
+	{
+		delete eventD;
+		eventD = NULL;
+	}
 }
