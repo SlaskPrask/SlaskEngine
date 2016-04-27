@@ -6,9 +6,19 @@ Object* slask::createObject(Object *o)
 	return o;
 }
 
-SpriteSet* slask::createSpriteSet(SpriteSet *ss)
+SpriteSet* slask::createSpriteSet()
 {
-	return SlaskEngine::instance()->createSpriteSet(ss);
+	return SlaskEngine::instance()->createSpriteSet(new SpriteSet());
+}
+
+AudioSet* slask::createAudioSet()
+{
+	return SlaskEngine::instance()->createAudioSet(new AudioSet());
+}
+
+FontSet* slask::createFontSet()
+{
+	return SlaskEngine::instance()->createFontSet(new FontSet());
 }
 
 SpriteSet* slask::spriteSet(unsigned int i)
@@ -19,6 +29,26 @@ SpriteSet* slask::spriteSet(unsigned int i)
 Sprite* slask::spriteSetSprite(unsigned int i, unsigned int j)
 {
 	return SlaskEngine::instance()->spriteSet(i)->get(j);
+}
+
+AudioSet* slask::audioSet(unsigned int i)
+{
+	return SlaskEngine::instance()->audioSet(i);
+}
+
+Audio* slask::audioSetSound(unsigned int i, unsigned int j)
+{
+	return SlaskEngine::instance()->audioSet(i)->get(j);
+}
+
+FontSet* slask::fontSet(unsigned int i)
+{
+	return SlaskEngine::instance()->fontSet(i);
+}
+
+Font* slask::fontSetFont(unsigned int i, unsigned int j)
+{
+	return SlaskEngine::instance()->fontSet(i)->get(j);
 }
 
 void slask::deleteAllObjects()

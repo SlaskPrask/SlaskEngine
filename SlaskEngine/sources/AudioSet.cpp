@@ -6,6 +6,8 @@ AudioSet::AudioSet()
 {
 	loads = 0;
 	engine_id = -1;
+	bank = NULL;
+	bankFile = "";
 }
 
 
@@ -32,6 +34,12 @@ unsigned int AudioSet::id()
 
 void AudioSet::load()
 {
+	if (bankFile=="")
+	{
+		LogHandler::notify("Resources", "Attempting to load audio set without a bank.");
+		return;
+	}
+	
 	switch (loads)
 	{
 	case 0:
@@ -95,6 +103,11 @@ void AudioSet::setBank(const char* bank)
 	bankFile = bank;
 }
 
+AudioBank* AudioSet::getBank()
+{
+	return bank;
+}
+
 Audio* AudioSet::get(unsigned int i)
 {
 	if (i<0 || i >= file.size())
@@ -105,7 +118,7 @@ Audio* AudioSet::get(unsigned int i)
 	else
 	{
 		if (loads == 0)
-			LogHandler::notify("Resources", "Accessing an unloaded audio set.");
+		LogHandler::notify("Resources", "Accessing an unloaded audio set.");
 		return data[i];
 	}
 }

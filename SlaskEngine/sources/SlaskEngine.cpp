@@ -108,7 +108,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteAllObjects();
-	deleteAllSpriteSets();
+	deleteAllSets();
 	LogHandler::log("-------------------------------------");
 	LogHandler::log("Engine", "Stopped");
 
@@ -120,10 +120,25 @@ void SlaskEngine::createObject(Object *o)
 	objects.add(o);
 }
 
+
 SpriteSet* SlaskEngine::createSpriteSet(SpriteSet *ss)
 {
 	ss->engine_id = spritesets.size();
 	spritesets.push_back(ss);
+	return ss;
+}
+
+AudioSet* SlaskEngine::createAudioSet(AudioSet *ss)
+{
+	ss->engine_id = audiosets.size();
+	audiosets.push_back(ss);
+	return ss;
+}
+
+FontSet* SlaskEngine::createFontSet(FontSet *ss)
+{
+	ss->engine_id = fontsets.size();
+	fontsets.push_back(ss);
 	return ss;
 }
 
@@ -137,10 +152,42 @@ SpriteSet* SlaskEngine::spriteSet(unsigned int i)
 		int size = spritesets.size() - 1;
 		str += size;
 		str += " out of range. (Starting from 0.)";
-		LogHandler::error("File", str.c_str());
+		LogHandler::error("Engine", str.c_str());
 		return NULL;
 	}
 	return spritesets[i];
+}
+
+AudioSet* SlaskEngine::audioSet(unsigned int i)
+{
+	if (i < 0 || i >= audiosets.size())
+	{
+		std::string str = "Attempting to access audio set ";
+		str += i;
+		str += "/";
+		int size = audiosets.size() - 1;
+		str += size;
+		str += " out of range. (Starting from 0.)";
+		LogHandler::error("Engine", str.c_str());
+		return NULL;
+	}
+	return audiosets[i];
+}
+
+FontSet* SlaskEngine::fontSet(unsigned int i)
+{
+	if (i < 0 || i >= fontsets.size())
+	{
+		std::string str = "Attempting to access font set ";
+		str += i;
+		str += "/";
+		int size = fontsets.size() - 1;
+		str += size;
+		str += " out of range. (Starting from 0.)";
+		LogHandler::error("Engine", str.c_str());
+		return NULL;
+	}
+	return fontsets[i];
 }
 
 void SlaskEngine::gameEnd()
@@ -156,11 +203,19 @@ void SlaskEngine::deleteAllObjects()
 	}
 }
 
-void SlaskEngine::deleteAllSpriteSets()
+void SlaskEngine::deleteAllSets()
 {
 	for (unsigned int i = 0; i < spritesets.size(); i++)
 		delete spritesets[i];
 	spritesets.clear();
+
+	for (unsigned int i = 0; i < audiosets.size(); i++)
+		delete audiosets[i];
+	audiosets.clear();
+
+	for (unsigned int i = 0; i < fontsets.size(); i++)
+		delete fontsets[i];
+	fontsets.clear();
 }
 
 

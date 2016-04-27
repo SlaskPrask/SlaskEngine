@@ -16,12 +16,26 @@ namespace slask
 
 	//call
 	Object* createObject(Object *o);//undocced (change return type)
-	SpriteSet* createSpriteSet(SpriteSet *ss);//undocced
+	SpriteSet* createSpriteSet();//undocced
+	AudioSet* createAudioSet();//undocced
+	FontSet* createFontSet();//undocced
 	SpriteSet* spriteSet(unsigned int i);//undocced
 	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced
-	inline Sprite* getSprite(unsigned int i, unsigned int j)
+	inline Sprite* getSprite(unsigned int i, unsigned int j)//undocced
 	{
 		return spriteSetSprite(i,j);
+	}
+	AudioSet* audioSet(unsigned int i);//undocced
+	Audio* audioSetSound(unsigned int i, unsigned int j);//undocced
+	inline Audio* getSound(unsigned int i, unsigned int j)//undocced
+	{
+		return audioSetSound(i, j);
+	}
+	FontSet* fontSet(unsigned int i);//undocced
+	Font* fontSetFont(unsigned int i, unsigned int j);//undocced
+	inline Font* getFont(unsigned int i, unsigned int j)//undocced
+	{
+		return fontSetFont(i, j);
 	}
 	void deleteAllObjects();//undocced
 	void exitGame();

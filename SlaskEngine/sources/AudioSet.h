@@ -28,6 +28,7 @@ public:
 	void unload();
 	unsigned int id();
 	Audio* get(unsigned int i);
+	AudioBank* getBank();
 	void setBank(const char* bank);
 };
 

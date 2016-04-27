@@ -9,11 +9,11 @@ TestObject::TestObject()
 	position = 0;
 	sprite = getSprite(0, 0);
 
-	testF=new Font("Progandae.otf");
+	/*testF=new Font("Progandae.otf");
 	TestMB=new AudioBank("fmod/TestBank/Build/Desktop/Master Bank.bank");
 	TestMSB=new AudioBank("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
-	Team10=new Audio("Music");
-	Guitar=new Audio("Audio");
+	getSound(1,0)=new Audio("Music");
+	getSound(1,1)=new Audio("Audio");*/
 
 	/*File file;
 
@@ -52,55 +52,55 @@ void TestObject::run()
 
 	if (getKeyPress(Key::Num1))
 	{
-		playSound(Team10);
+		playSound(getSound(1,0));
 	}
 	if (getKeyPress(Key::Q))
 	{
-		stopSound(Team10);
+		stopSound(getSound(1,0));
 	}
 	if (getKeyPress(Key::A))
 	{
-		pauseSound(Team10);
+		pauseSound(getSound(1,0));
 	}
 	if (getKeyPress(Key::Z))
 	{
-		unpauseSound(Team10);
+		unpauseSound(getSound(1,0));
 	}
 	if (getKeyPress(Key::Num2))
 	{
-		playSound(Guitar);
+		playSound(getSound(1,1));
 	}
 	if (getKeyPress(Key::W))
 	{
-		stopSound(Guitar);
+		stopSound(getSound(1,1));
 	}
 	if (getKeyPress(Key::S))
 	{
-		pauseSound(Guitar);
+		pauseSound(getSound(1,1));
 	}
 	if (getKeyPress(Key::X))
 	{
-		unpauseSound(Guitar);
+		unpauseSound(getSound(1,1));
 	}
 	if (getKeyPress(Key::Num3))
 	{
-		setSoundPitch(Guitar, 2);
-		setSoundPitch(Team10, 2);
+		setSoundPitch(getSound(1,1), 2);
+		setSoundPitch(getSound(1,0), 2);
 	}
 	if (getKeyPress(Key::Num4))
 	{
-		setSoundPitch(Guitar, 0.5f);
-		setSoundPitch(Team10, 0.5f);
+		setSoundPitch(getSound(1,1), 0.5f);
+		setSoundPitch(getSound(1,0), 0.5f);
 	}
 	if (getKeyPress(Key::Num5))
 	{
-		setSoundPitch(Guitar, 1);
-		setSoundPitch(Team10, 1);
+		setSoundPitch(getSound(1,1), 1);
+		setSoundPitch(getSound(1,0), 1);
 	}
 	if (getKeyPress(Key::Num0))
 	{
 		//OH YEAH
-		setSoundTimePosition(Team10, 37678);
+		setSoundTimePosition(getSound(1,0), 37678);
 	}
 
 

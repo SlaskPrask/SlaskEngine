@@ -2,6 +2,7 @@
 #include <vector>
 #include "LogHandler.h"
 #include "Sprite.h"
+#include <string>
 
 class SlaskEngine;
 
