@@ -7,11 +7,9 @@ private:
 	int** block;
 
 public:
-
 	void load(const char* file);
 	Scene();
 	~Scene();
 
 	enum Blocks { Empty, Wall, andwhateverelsekindofblocktypesyouwant };
 };
-
