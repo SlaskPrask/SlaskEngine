@@ -146,6 +146,7 @@
     <ClCompile Include="sources\AudioSet.cpp" />
     <ClCompile Include="sources\File.cpp" />
     <ClCompile Include="sources\Font.cpp" />
+    <ClCompile Include="sources\FontSet.cpp" />
     <ClCompile Include="sources\GraphicsHandler.cpp" />
     <ClCompile Include="sources\Input.cpp" />
     <ClCompile Include="sources\InputHandler.cpp" />
@@ -172,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\AudioSet.h" />
+    <ClInclude Include="sources\FontSet.h" />
     <ClInclude Include="sources\TMXparser.h" />
     <ClInclude Include="techEnemy.h" />
     <ClInclude Include="sources\Audio.h" />

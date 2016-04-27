@@ -1,33 +1,27 @@
 #pragma once
 #include <vector>
 #include "LogHandler.h"
-#include "Audio.h"
-#include "AudioBank.h"
+#include "Font.h"
 
 class SlaskEngine;
 
-class AudioSet //undocced
+class FontSet //undocced
 {
 	friend class SlaskEngine;
 private:
-
-	AudioBank* bank;
-	std::vector<Audio*> data;
+	std::vector<Font*> data;
 	std::vector<std::string> file;
-	std::string bankFile;
 	unsigned int loads;
 	unsigned int engine_id;
 
 public:
 	unsigned int add(std::string str);
-	AudioSet();
-	~AudioSet();
+	FontSet();
+	~FontSet();
 	void load();
 	bool isLoaded();
 	int instances();
 	void unload();
 	unsigned int id();
-	Audio* get(unsigned int i);
-	void setBank(const char* bank);
+	Font* get(unsigned int i);
 };
-

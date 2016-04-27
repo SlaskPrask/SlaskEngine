@@ -36,10 +36,10 @@ void AudioSet::load()
 	{
 	case 0:
 		//TODO: multithreading
-		bank = new AudioBank(file[0].c_str());
+		bank = new AudioBank(bankFile.c_str());
 
-		for (unsigned int i = 1; i < data.size() + 1; i++)
-				data[i-1] = new Audio(file[i].c_str());
+		for (unsigned int i = 0; i < data.size(); i++)
+				data[i] = new Audio(file[i].c_str());
 		loads = 1;
 		break;
 	default:
@@ -56,14 +56,15 @@ void AudioSet::unload()
 		LogHandler::notify("Resources", "Attempting to unload an already unloaded audio set.");
 		break;
 	case 1:
-		delete bank;
-
 		for (unsigned int i = 0; i<data.size(); i++)
 		{
 			Audio *a = data[i];
 			data[i] = NULL;
 			delete a;
 		}
+		delete bank;
+		bank = NULL;
+
 		loads = 0;
 		break;
 	default:
@@ -87,6 +88,11 @@ unsigned int AudioSet::add(std::string str) //Make sure the bank path is in slot
 	data.push_back(NULL);
 	file.push_back(str);
 	return file.size() - 1;
+}
+
+void AudioSet::setBank(const char* bank)
+{
+	bankFile = bank;
 }
 
 Audio* AudioSet::get(unsigned int i)
