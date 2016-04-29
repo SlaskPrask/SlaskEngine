@@ -3,7 +3,7 @@
 #include <sstream>
 #include <ctime>
 #include <fstream>
-#include <SFML\System.hpp>
+#include <SFML/System.hpp>
 #include <iomanip>
 
 class LogHandler

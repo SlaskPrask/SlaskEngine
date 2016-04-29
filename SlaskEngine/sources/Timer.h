@@ -1,4 +1,4 @@
-#include <SFML/Main.hpp>
+#include <SFML/System.hpp>
 #include "LogHandler.h"
 #pragma once
 
