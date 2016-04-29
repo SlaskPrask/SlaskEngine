@@ -48,6 +48,15 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	std::string eVer = "Initialized SlaskEngine Version: ";
 	eVer += fullEngineVersion;
+	#ifdef WINDOWS
+	eVer += "-WIN";
+	#endif
+	#ifdef LINUX
+	eVer += "-LNX";
+	#endif
+	#ifdef MAC
+	eVer += "-MAC";
+	#endif
 
 	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");

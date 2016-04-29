@@ -58,7 +58,11 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 		time_t now;
 		struct tm timedata;
 		time(&now);
+		#ifdef LINUX
+		localtime_r(&now, &timedata);
+		#else
 		localtime_s(&timedata, &now);
+		#endif
 
 		long long elapsedTime=igt.getElapsedTime().asMilliseconds();
 		

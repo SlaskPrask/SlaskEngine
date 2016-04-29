@@ -40,7 +40,7 @@ public:
 
 	T *getFirst()
 	{
-		if (prevNode == 0)
+		if (_prevNode == 0)
 			return this;
 		else
 			return _prevNode->getFirst();

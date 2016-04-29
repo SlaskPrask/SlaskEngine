@@ -42,12 +42,12 @@ Audio::~Audio()
 	if (eventInstance) 
 	{
 		eventInstance->release();
-		delete eventInstance;
+		//delete eventInstance; //TODO: check if needed (crashes)
 		eventInstance = NULL;
 	}
 	if (eventD)
 	{
-		delete eventD;
+		//delete eventD; //TODO: check if needed (crashes)
 		eventD = NULL;
 	}
 }
