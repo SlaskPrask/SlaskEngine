@@ -236,7 +236,7 @@ void File::checkSaves(std::vector<std::string>*list, int amountSaves, const char
 	std::string type = ".";
 	type += fileType;
 
-	for (unsigned int i = 0; i < amountSaves; i++)
+	for (int i = 0; i < amountSaves; i++)
 	{
 		bool found = false;
 		std::string saveName = savename;

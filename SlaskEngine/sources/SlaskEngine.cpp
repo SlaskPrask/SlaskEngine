@@ -243,7 +243,7 @@ void SlaskEngine::objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv)
 {
 	if (t->detachObj(o))
 	{
-		std::vector<Tag*>::const_iterator it = std::find(tagv->begin(), tagv->end(), o);
+		std::vector<Tag*>::const_iterator it = std::find(tagv->begin(), tagv->end(), t);
 		tagv->erase(it);
 		o->_refreshTagRuns(1);
 		o->_refreshTagDraws(1);

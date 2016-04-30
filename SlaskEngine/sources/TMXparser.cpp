@@ -86,7 +86,7 @@ TMXMap* LoadTMXMap(char *xml)
 
 		rapidxml::xml_attribute<> *visibleattr = objectgroupnode->first_attribute("visible");
 		if (visibleattr) {
-			group->visible = atoi(visibleattr->value());
+			group->visible = atoi(visibleattr->value())?1:0;
 		}
 		else {
 			group->visible = true;
