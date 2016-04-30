@@ -58,7 +58,7 @@ void LogHandler::writeLog(const char *logger,const char *str,int type)
 		time_t now;
 		struct tm timedata;
 		time(&now);
-		#ifdef LINUX
+		#ifdef UNIX
 		localtime_r(&now, &timedata);
 		#else
 		localtime_s(&timedata, &now);
