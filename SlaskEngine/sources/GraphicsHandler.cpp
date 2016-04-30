@@ -282,11 +282,11 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 	}
 
 	glPushMatrix();
-	GLfloat d2d[] = { -w/2.0f, - h/2.0f,depth, + w/2.0f, - h / 2.0f,depth, - w / 2.0f, + h / 2.0f,depth, + w / 2.0f, + h / 2.0f,depth };
+	GLfloat d2d[] = { -(GLfloat)w/2.0f, -(GLfloat)h/2.0f,(GLfloat)depth, +(GLfloat)w/2.0f, -(GLfloat)h/2.0f,(GLfloat)depth, -(GLfloat)w/2.0f, +(GLfloat)h / 2.0f,(GLfloat)depth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,(GLfloat)depth };
 
 	glTranslated(x+w/2.0f, y + h / 2.0f, 0);
 	glRotated(rot, 0, 0, 1);
-	GLfloat d2d_tex[8] = { fromx,fromy,tox,fromy,fromx,toy,tox,toy };
+	GLfloat d2d_tex[8] = { (GLfloat)fromx,(GLfloat)fromy,(GLfloat)tox,(GLfloat)fromy,(GLfloat)fromx,(GLfloat)toy,(GLfloat)tox,(GLfloat)toy };
 	sprite->bind();
 	if (a != -1)
 		set_color(r, g, b, a);
@@ -312,11 +312,11 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 	glPushMatrix();
 	double cx = (x1 + x2 + x3) / 3;
 	double cy = (y1 + y2 + y3) / 3;
-	GLfloat d2d[] = { x1 - cx,y1 - cy,depth,x2 - cx,y2 - cy,depth,x3 - cx,y3 - cy,depth };
+	GLfloat d2d[] = { (GLfloat)x1 - (GLfloat)cx,(GLfloat)y1 - (GLfloat)cy,(GLfloat)depth,(GLfloat)x2 - (GLfloat)cx,(GLfloat)y2 - (GLfloat)cy,(GLfloat)depth,(GLfloat)x3 - (GLfloat)cx,(GLfloat)y3 - (GLfloat)cy,(GLfloat)depth };
 	glTranslated(cx,cy,0);
 	glRotated(rot, 0, 0, 1);
 	
-	GLfloat d2d_tex[8] = { texx1,texy1,texx2,texy2,texx3,texy3 };
+	GLfloat d2d_tex[8] = { (GLfloat)texx1,(GLfloat)texy1,(GLfloat)texx2,(GLfloat)texy2,(GLfloat)texx3,(GLfloat)texy3 };
 	sprite->bind();
 	if (a != -1)
 		set_color(r, g, b, a);
@@ -340,7 +340,7 @@ GraphicsHandler::~GraphicsHandler()
 
 inline void GraphicsHandler::set_color(double r, double g, double b, double a)
 {
-	glColor4f(r, g, b, a);
+	glColor4f((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
 }
 
 inline void GraphicsHandler::restore_color()

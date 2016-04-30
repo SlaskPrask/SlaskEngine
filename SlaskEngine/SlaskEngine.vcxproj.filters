@@ -189,5 +189,8 @@
     <ClInclude Include="sources\FontSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="sources\Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
