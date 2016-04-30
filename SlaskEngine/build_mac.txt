@@ -1,5 +1,6 @@
 echo "This will output to slask.mac"
 g++ \
+-ferror-limit=100 \
 -o slask.mac \
 -std=c++11 \
 -DNO_STEAM \
