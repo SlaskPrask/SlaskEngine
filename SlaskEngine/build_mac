@@ -15,8 +15,7 @@ g++ \
 -I/Programming/SFML/include/ \
 -I/Programming/ \
 -I/Programming/freeglut/include/ \
--framework OpenGL -lGLU \
+-framework OpenGL \
 -lsfml-window -lsfml-system -lsfml-graphics \
-
 -lfmodstudio -lfmod \
 
