@@ -1,10 +1,13 @@
+cppfiles=`ls *.cpp | sed 's/\s\+/\ /g'`
+sourcefiles=`ls sources/*.cpp | sed 's/\s\+/\ /g'`
 echo "This will output to slask.mac"
 g++ \
 -o slask.mac \
 -std=c++11 \
 -DNO_STEAM \
 -w \
-./*.cpp ./sources/*.cpp \
+-I"." \
+$cppfiles $sourcefiles
 -
 -L/Programming/FMODProgrammersAPI/api/studio/lib \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
