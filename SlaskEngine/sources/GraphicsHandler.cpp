@@ -116,7 +116,7 @@ bool GraphicsHandler::setWindowed(int w, int h)
 {
 	close();
 
-	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Default, settings);
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Default);
 
 	if (!window)
 	{
