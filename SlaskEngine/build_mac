@@ -7,7 +7,6 @@ g++ \
 -w \
 -I"." \
 *.cpp sources/*.cpp \
--static \
 -L/Programming/FMODProgrammersAPI/api/studio/lib \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
 -L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
