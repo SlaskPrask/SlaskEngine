@@ -7,11 +7,12 @@ g++ \
 -w \
 -I"." \
 *.cpp sources/*.cpp \
--L/Programming/FMODProgrammersAPI/api/studio/lib -static \
+-static \
+-L/Programming/FMODProgrammersAPI/api/studio/lib \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
--L/Programming/FMODProgrammersAPI/api/lowlevel/lib -static \
+-L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
 -I/Programming/FMODProgrammersAPI/api/lowlevel/inc \
--L/Programming/SFML/lib/ -static \
+-L/Programming/SFML/lib/ \
 -I/Programming/SFML/include/ \
 -I/Programming/ \
 -I/Programming/freeglut/include/ \
