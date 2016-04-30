@@ -11,8 +11,8 @@ g++ \
 -L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
 -I/Programming/FMODProgrammersAPI/api/lowlevel/inc \
 -L/Programming/SFML/lib/ \
--I/Programming/SFML/include/SFML/ \
--I/Programming/rapidxml/ \
+-I/Programming/SFML/include/ \
+-I/Programming/ \
 -I/Programming/freeglut/include/ \
 -lGL -lGLU \
 -lsfml-window -lsfml-system -lsfml-graphics \
