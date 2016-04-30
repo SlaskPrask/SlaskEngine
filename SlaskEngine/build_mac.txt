@@ -1,0 +1,21 @@
+echo "This will output to slask.mac"
+g++ \
+-o slask.mac \
+-std=c++11 \
+-DNO_STEAM \
+-w \
+*.cpp sources/*.cpp \
+-
+-L/Programming/FMOD Programmers API/api/studio/lib/x86/ \
+-I/Programming/FMOD Programmers API/api/studio/inc/ \
+-L/Programming/FMOD Programmers API/api/lowlevel/lib/x86/ \
+-I/Programming/FMOD Programmers API/api/lowlevel/inc/ \
+-L/Programming/SFML/lib/ \
+-I/Programming/SFML/include/SFML/ \
+-I/Programming/rapidxml/ \
+-I/Programming/freeglut/include/ \
+-lGL -lGLU \
+-lsfml-window -lsfml-system -lsfml-graphics \
+-lfmodstudio -lfmod \
+
+
