@@ -1,40 +1,22 @@
 echo "This will output to slask.mac"
 g++ \
-
 -ferror-limit=100 \
-
 -o slask.mac \
-
 -std=c++11 \
-
 -DNO_STEAM \
-
 -w \
-
 -I"." \
-
 *.cpp sources/*.cpp \
-
 -L/Programming/FMODProgrammersAPI/api/studio/lib \
-
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
-
 -L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
-
 -I/Programming/FMODProgrammersAPI/api/lowlevel/inc \
-
 -L/Programming/SFML/lib/ \
-
 -I/Programming/SFML/include/ \
-
 -I/Programming/ \
-
 -I/Programming/freeglut/include/ \
-
 -framework OpenGL -lGLU \
-
 -lsfml-window -lsfml-system -lsfml-graphics \
 
 -lfmodstudio -lfmod \
-
 
