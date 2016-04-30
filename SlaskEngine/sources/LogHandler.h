@@ -3,8 +3,9 @@
 #include <sstream>
 #include <ctime>
 #include <fstream>
-#include <SFML\System.hpp>
+#include <SFML/System.hpp>
 #include <iomanip>
+#include "Platform.h"
 
 class LogHandler
 {

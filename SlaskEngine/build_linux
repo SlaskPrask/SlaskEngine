@@ -1,0 +1,16 @@
+echo "This will output to slask.linux"
+g++ \
+-o slask.linux \
+-std=c++11 \
+-DNO_STEAM \
+-w \
+*.cpp sources/*.cpp \
+-L/home/zas/Downloads/fmodstudioapi10802linux/api/studio/lib/x86/ \
+-I/home/zas/Downloads/fmodstudioapi10802linux/api/studio/inc/ \
+-L/home/zas/Downloads/fmodstudioapi10802linux/api/lowlevel/lib/x86/ \
+-I/home/zas/Downloads/fmodstudioapi10802linux/api/lowlevel/inc/ \
+-lGL -lGLU \
+-lsfml-window -lsfml-system -lsfml-graphics \
+-lfmodstudio -lfmod \
+
+

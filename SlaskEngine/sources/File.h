@@ -5,7 +5,14 @@
 #include <sstream>
 #include <vector>
 #include "LogHandler.h"
-#include <io.h>
+#include "Platform.h"
+#ifdef UNIX
+ #include <sys/types.h>
+ #include <dirent.h>
+#endif
+#ifdef WINDOWS
+ #include <io.h>
+#endif
 
 class File //undocced
 {
@@ -19,8 +26,10 @@ private:
 	bool saveToFile(std::string file, std::string str);
 
 	std::vector<std::string> entry;
-
+	
+	#ifdef WINDOWS
 	_finddata32_t data32;
+	#endif
 	
 	std::string emptySave;
 

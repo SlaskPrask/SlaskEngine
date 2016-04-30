@@ -1,5 +1,5 @@
 #pragma once
-#include "sources\Slask.h"
+#include "sources/Slask.h"
 
 class player :public Object
 {

@@ -196,8 +196,8 @@ void File::searchFile(std::vector<std::string>*list, const char* path, const cha
 	str += type;
 	const char* filepath = str.c_str();
 
+	#ifdef WINDOWS
 	int ff = _findfirst32(filepath, &data32);
-
 	if (ff != -1)
 	{
 		int res = 0;
@@ -208,6 +208,27 @@ void File::searchFile(std::vector<std::string>*list, const char* path, const cha
 		}
 		_findclose(ff);
 	}
+	#endif
+
+	#ifdef UNIX
+	DIR *d;
+	struct dirent *dirpos;
+	if ((d=opendir(filepath))==NULL)
+	{
+		std::string msg="Unable open directory \"";
+		msg+=str;
+		msg+="\" for reading file listing.";
+		LogHandler::notify("File",msg.c_str());
+	}
+	else
+	{
+		while ((dirpos=readdir(d))!=NULL)
+		{
+			list->push_back(dirpos->d_name);
+		}
+		closedir(d);
+	}
+	#endif
 }
 
 void File::checkSaves(std::vector<std::string>*list, int amountSaves, const char* path, const char* savename, const char* fileType)

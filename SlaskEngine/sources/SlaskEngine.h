@@ -18,6 +18,7 @@
 #include "SpriteSet.h"
 #include "AudioSet.h"
 #include "FontSet.h"
+#include "Platform.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
