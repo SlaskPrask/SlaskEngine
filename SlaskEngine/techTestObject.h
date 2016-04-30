@@ -15,6 +15,8 @@ private:
 	std::vector<std::string> files;
 
 public:
+	Tag *taggy;
+
 	void run();
 	void draw();
 	TestObject();

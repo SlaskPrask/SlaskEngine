@@ -120,6 +120,14 @@ void TestObject::run()
 	{
 		setFullscreen(1920, 1080);
 	}
+
+	if (getKeyPress(Key::Pause))
+	{
+		if (taggy->runs())
+		taggy->disableRun();
+		else
+		taggy->enableRun();
+	}
 }
 
 void TestObject::draw()

@@ -82,6 +82,7 @@ void SlaskEngine::init(int argc, char *argv[])
 		LinkedList<Object> *obj=objects.first();
 		while (obj)
 		{
+			if (((Object*)obj)->_tagRuns())
 			((Object*)obj)->run();
 			if (((Object*)obj)->_getDestroyed())
 			{
@@ -106,6 +107,7 @@ void SlaskEngine::init(int argc, char *argv[])
 		obj = objects.first();
 		while (obj)
 		{
+			if (((Object*)obj)->_tagDraws())
 			((Object*)obj)->draw();
 			obj = obj->getNext();
 		}
@@ -227,6 +229,26 @@ void SlaskEngine::deleteAllSets()
 	fontsets.clear();
 }
 
+void SlaskEngine::objAddTag(Object* o, Tag* t, std::vector<Tag*>* tagv)
+{
+	if (t->attachObj(o))
+	{
+		tagv->push_back(t);
+		o->_refreshTagRuns(t->runs());
+		o->_refreshTagDraws(t->draws());
+	}
+}
+
+void SlaskEngine::objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv)
+{
+	if (t->detachObj(o))
+	{
+		std::vector<Tag*>::const_iterator it = std::find(tagv->begin(), tagv->end(), o);
+		tagv->erase(it);
+		o->_refreshTagRuns(1);
+		o->_refreshTagDraws(1);
+	}
+}
 
 SlaskEngine::~SlaskEngine()
 {

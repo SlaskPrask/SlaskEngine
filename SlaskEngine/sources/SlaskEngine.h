@@ -19,6 +19,7 @@
 #include "AudioSet.h"
 #include "FontSet.h"
 #include "Platform.h"
+#include "Tag.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
@@ -49,6 +50,16 @@ public:
 	FontSet* fontSet(unsigned int i);
 	void gameEnd();
 	void deleteAllObjects();
+	void objAddTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
+	void objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
+	inline void refreshObjTagDraws(Object *o, bool value)
+	{
+		o->_refreshTagDraws(value);
+	}
+	inline void refreshObjTagRuns(Object *o, bool value)
+	{
+		o->_refreshTagRuns(value);
+	}
 
 	void deleteAllSets();
 

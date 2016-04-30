@@ -160,6 +160,7 @@
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
+    <ClCompile Include="sources\Tag.cpp" />
     <ClCompile Include="sources\Timer.cpp" />
     <ClCompile Include="sources\TMXparser.cpp" />
     <ClCompile Include="techEnemy.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="sources\AudioSet.h" />
     <ClInclude Include="sources\FontSet.h" />
     <ClInclude Include="sources\Platform.h" />
+    <ClInclude Include="sources\Tag.h" />
     <ClInclude Include="sources\TMXparser.h" />
     <ClInclude Include="techEnemy.h" />
     <ClInclude Include="sources\Audio.h" />

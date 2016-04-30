@@ -33,10 +33,16 @@ void slask::start()
 	stringsAudio->load();
 	masterAudio->load();
 
-	createObject(new TestObject());
+	TestObject *bgObj = new TestObject;
+	bgObj->taggy = new Tag();
+	createObject(bgObj);
 	createObject(new player())->at(getWindowWidth()/2,getWindowHeight()/2);
 	for (int i = 0; i < 30; i++)
-	createObject(new techEnemy());
+	{
+		techEnemy *enemy = new techEnemy();
+		enemy->addTag(bgObj->taggy);
+		createObject(enemy);//TODO: remove createObject and just call it from constuctor
+	}
 	//
 }
 
