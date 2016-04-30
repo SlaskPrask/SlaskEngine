@@ -3,6 +3,7 @@
 
 class player :public Object
 {
+	SLASKOBJECT
 private:
 	double xvel, yvel;
 	double friction;
@@ -10,9 +11,6 @@ private:
 	double maxspeed;
 	Sprite *sprite;
 public:
-	void run();
-	void draw();
-
 	player();
 	~player();
 };

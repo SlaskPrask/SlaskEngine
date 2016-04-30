@@ -15,10 +15,10 @@ namespace slask
 	void end();
 
 	//call
-	Object* createObject(Object *o);//undocced (change return type)
+	/*Object* createObject(Object *o);//undocced (change return type) //removed
 	SpriteSet* createSpriteSet();//undocced
 	AudioSet* createAudioSet();//undocced
-	FontSet* createFontSet();//undocced
+	FontSet* createFontSet();//undocced*/
 	SpriteSet* spriteSet(unsigned int i);//undocced
 	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced
 	inline Sprite* getSprite(unsigned int i, unsigned int j)//undocced

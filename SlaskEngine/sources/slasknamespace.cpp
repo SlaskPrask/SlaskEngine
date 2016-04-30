@@ -1,5 +1,5 @@
 #include "slasknamespace.h"
-
+/*
 Object* slask::createObject(Object *o)
 {
 	SlaskEngine::instance()->createObject(o);
@@ -20,7 +20,7 @@ FontSet* slask::createFontSet()
 {
 	return SlaskEngine::instance()->createFontSet(new FontSet());
 }
-
+*/
 SpriteSet* slask::spriteSet(unsigned int i)
 {
 	return SlaskEngine::instance()->spriteSet(i);

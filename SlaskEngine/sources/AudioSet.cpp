@@ -1,5 +1,5 @@
 #include "AudioSet.h"
-
+#include "SlaskEngine.h"
 
 
 AudioSet::AudioSet()
@@ -8,6 +8,7 @@ AudioSet::AudioSet()
 	engine_id = -1;
 	bank = NULL;
 	bankFile = "";
+	SlaskEngine::instance()->createAudioSet(this);
 }
 
 

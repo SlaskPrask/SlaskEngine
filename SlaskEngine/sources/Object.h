@@ -3,6 +3,11 @@
 #include "LinkedList.h"
 #include "Tag.h"
 #include <vector>
+#define SLASKOBJECT \
+public: \
+	void run(); \
+	void draw(); \
+private:
 
 class SlaskEngine;
 
@@ -30,12 +35,11 @@ public:
 	double y;
 	Object();
 	virtual ~Object();
-
-	virtual void run();
-	virtual void draw();
-
-	void at(double xp,double yp);//undocced
+	void at(double xp, double yp);//undocced
 	void destroy();//undocced
 	void addTag(Tag *t);//undocced
 	void removeTag(Tag *t);//undocced
+
+	virtual void run();
+	virtual void draw();
 };

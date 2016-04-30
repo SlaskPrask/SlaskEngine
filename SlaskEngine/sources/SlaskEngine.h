@@ -52,6 +52,10 @@ public:
 	void deleteAllObjects();
 	void objAddTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
 	void objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
+	inline void objClearTag(Object *o, Tag* t)
+	{
+		t->detachObj(o);
+	}
 	inline void refreshObjTagDraws(Object *o, bool value)
 	{
 		o->_refreshTagDraws(value);

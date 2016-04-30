@@ -4,6 +4,8 @@
 
 class TestObject :public Object
 {
+	SLASKOBJECT
+
 private:
 	int windowHeight, windowWidth, position;
 	Sprite *sprite;
@@ -17,8 +19,6 @@ private:
 public:
 	Tag *taggy;
 
-	void run();
-	void draw();
 	TestObject();
 	~TestObject();
 };

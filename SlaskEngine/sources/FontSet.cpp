@@ -1,9 +1,11 @@
 #include "FontSet.h"
+#include "SlaskEngine.h"
 
 FontSet::FontSet()
 {
 	loads = 0;
 	engine_id = -1;
+	SlaskEngine::instance()->createFontSet(this);
 }
 
 FontSet::~FontSet()

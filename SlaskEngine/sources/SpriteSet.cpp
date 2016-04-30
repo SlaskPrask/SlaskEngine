@@ -1,9 +1,11 @@
 #include "SpriteSet.h"
+#include "SlaskEngine.h"
 
 SpriteSet::SpriteSet()
 {
 	loads = 0;
 	engine_id = -1;
+	SlaskEngine::instance()->createSpriteSet(this);
 }
 
 SpriteSet::~SpriteSet()

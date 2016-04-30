@@ -3,6 +3,7 @@
 
 class techEnemy: public Object
 {
+	SLASKOBJECT
 private:
 	int xdir,ydir;
 	Sprite *sprite;
@@ -12,8 +13,6 @@ private:
 	bool blink;
 
 public:
-	void run();
-	void draw();
 	techEnemy();
 	~techEnemy();
 };

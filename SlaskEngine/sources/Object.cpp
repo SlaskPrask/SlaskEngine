@@ -6,10 +6,13 @@ Object::Object()
 	_destroyed = 0;
 	_tagRunValue = 1;
 	_tagDrawValue = 1;
+	SlaskEngine::instance()->createObject(this);
 }
 
 Object::~Object()
 {
+	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
+	SlaskEngine::instance()->objClearTag(this, *it);
 }
 
 void Object::_refreshTagRuns(bool value)
