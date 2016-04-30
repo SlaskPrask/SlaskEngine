@@ -11,13 +11,10 @@ g++ \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
 -L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
 -I/Programming/FMODProgrammersAPI/api/lowlevel/inc \
--framework SFML \
--framework sfml-graphics \
--framework sfml-system \
--framework sfml-network \
+-L/Programming/SFML/lib/ \
 -I/Programming/SFML/include/ \
 -I/Programming/ \
 -I/Programming/freeglut/include/ \
 -framework OpenGL \
+-lsfml-window -lsfml-system -lsfml-graphics \
 -lfmodstudio -lfmod \
-

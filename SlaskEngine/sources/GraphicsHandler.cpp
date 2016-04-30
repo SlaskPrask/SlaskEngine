@@ -16,7 +16,12 @@ void GraphicsHandler::init(const char* title)
 	settings.stencilBits = 8;
 	settings.antialiasingLevel = 4;
 	settings.majorVersion = 3;
+
+#ifdef MAC
+	settings.minorVersion = 3;
+#else
 	settings.minorVersion = 0;
+#endif
 
 	resolutions = sf::VideoMode::getFullscreenModes();
 
