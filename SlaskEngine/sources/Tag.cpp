@@ -10,7 +10,7 @@ Tag::Tag()
 Tag::~Tag()
 {
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
-		(*it)->removeTag(this);
+	SlaskEngine::instance()->objUnlinkTag((*it), this);
 }
 
 bool Tag::detachObj(Object* o)

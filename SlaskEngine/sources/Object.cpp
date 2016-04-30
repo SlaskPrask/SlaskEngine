@@ -62,12 +62,12 @@ void Object::destroy()
 
 void Object::addTag(Tag *t)
 {
-	SlaskEngine::instance()->objAddTag(this, t, &_tags);
+	SlaskEngine::instance()->objAddTag(this, t);
 }
 
 void Object::removeTag(Tag *t)
 {
-	SlaskEngine::instance()->objRemoveTag(this, t, &_tags);
+	SlaskEngine::instance()->objRemoveTag(this, t);
 }
 
 void Object::at(double xp, double yp)

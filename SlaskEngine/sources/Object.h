@@ -35,10 +35,11 @@ public:
 	double y;
 	Object();
 	virtual ~Object();
-	void at(double xp, double yp);//undocced
-	void destroy();//undocced
+
 	void addTag(Tag *t);//undocced
 	void removeTag(Tag *t);//undocced
+	void at(double xp, double yp);//undocced
+	void destroy();//undocced
 
 	virtual void run();
 	virtual void draw();

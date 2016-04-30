@@ -47,60 +47,60 @@ void TestObject::run()
 	windowWidth = getWindowWidth();
 
 	position += 3;
-	if (position>360)
-	position -= 360;
+	if (position > 360)
+		position -= 360;
 
 	if (getKeyPress(Key::Num1))
 	{
-		playSound(getSound(1,0));
+		playSound(getSound(1, 0));
 	}
 	if (getKeyPress(Key::Q))
 	{
-		stopSound(getSound(1,0));
+		stopSound(getSound(1, 0));
 	}
 	if (getKeyPress(Key::A))
 	{
-		pauseSound(getSound(1,0));
+		pauseSound(getSound(1, 0));
 	}
 	if (getKeyPress(Key::Z))
 	{
-		unpauseSound(getSound(1,0));
+		unpauseSound(getSound(1, 0));
 	}
 	if (getKeyPress(Key::Num2))
 	{
-		playSound(getSound(1,1));
+		playSound(getSound(1, 1));
 	}
 	if (getKeyPress(Key::W))
 	{
-		stopSound(getSound(1,1));
+		stopSound(getSound(1, 1));
 	}
 	if (getKeyPress(Key::S))
 	{
-		pauseSound(getSound(1,1));
+		pauseSound(getSound(1, 1));
 	}
 	if (getKeyPress(Key::X))
 	{
-		unpauseSound(getSound(1,1));
+		unpauseSound(getSound(1, 1));
 	}
 	if (getKeyPress(Key::Num3))
 	{
-		setSoundPitch(getSound(1,1), 2);
-		setSoundPitch(getSound(1,0), 2);
+		setSoundPitch(getSound(1, 1), 2);
+		setSoundPitch(getSound(1, 0), 2);
 	}
 	if (getKeyPress(Key::Num4))
 	{
-		setSoundPitch(getSound(1,1), 0.5f);
-		setSoundPitch(getSound(1,0), 0.5f);
+		setSoundPitch(getSound(1, 1), 0.5f);
+		setSoundPitch(getSound(1, 0), 0.5f);
 	}
 	if (getKeyPress(Key::Num5))
 	{
-		setSoundPitch(getSound(1,1), 1);
-		setSoundPitch(getSound(1,0), 1);
+		setSoundPitch(getSound(1, 1), 1);
+		setSoundPitch(getSound(1, 0), 1);
 	}
 	if (getKeyPress(Key::Num0))
 	{
 		//OH YEAH
-		setSoundTimePosition(getSound(1,0), 37678);
+		setSoundTimePosition(getSound(1, 0), 37678);
 	}
 
 
@@ -121,12 +121,34 @@ void TestObject::run()
 		setFullscreen(1920, 1080);
 	}
 
-	if (getKeyPress(Key::Pause))
+	if (getKeyPress(Key::Pause))//pause first half of objects
 	{
 		if (taggy->runs())
-		taggy->disableRun();
+			taggy->disableRun();
 		else
-		taggy->enableRun();
+			taggy->enableRun();
+	}
+	if (taggy2 != NULL)
+	{
+		if (getKeyPress(Key::P))//pause 2nd half of objects
+		{
+			if (taggy2->runs())
+				taggy2->disableRun();
+			else
+				taggy2->enableRun();
+		}
+		if (getKeyPress(Key::O))//don't draw 2nd half of objects
+		{
+			if (taggy2->draws())
+				taggy2->disableDraw();
+			else
+				taggy2->enableDraw();
+		}
+		if (getKeyPress(Key::N))//delete 2nd half of object tag handling (should unpause and keep objects)
+		{
+			delete taggy2;
+			taggy2 = NULL;
+		}
 	}
 }
 

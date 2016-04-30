@@ -35,11 +35,14 @@ void slask::start()
 
 	TestObject *bgObj = new TestObject;
 	bgObj->taggy = new Tag();
+	bgObj->taggy2 = new Tag();
 	(new player())->at(getWindowWidth()/2,getWindowHeight()/2);
 	for (int i = 0; i < 30; i++)
 	{
 		techEnemy *enemy = new techEnemy();
 		enemy->addTag(bgObj->taggy);
+		if ((i / 2) * 2 == i)//every other also has taggy2
+		enemy->addTag(bgObj->taggy2);
 	}
 	//
 }

@@ -229,25 +229,33 @@ void SlaskEngine::deleteAllSets()
 	fontsets.clear();
 }
 
-void SlaskEngine::objAddTag(Object* o, Tag* t, std::vector<Tag*>* tagv)
+void SlaskEngine::objAddTag(Object* o, Tag* t)
 {
 	if (t->attachObj(o))
 	{
-		tagv->push_back(t);
+		o->_tags.push_back(t);
 		o->_refreshTagRuns(t->runs());
 		o->_refreshTagDraws(t->draws());
 	}
 }
 
-void SlaskEngine::objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv)
+void SlaskEngine::objRemoveTag(Object* o, Tag* t)
 {
 	if (t->detachObj(o))
 	{
-		std::vector<Tag*>::const_iterator it = std::find(tagv->begin(), tagv->end(), t);
-		tagv->erase(it);
+		std::vector<Tag*>::const_iterator it = std::find(o->_tags.begin(), o->_tags.end(), t);
+		o->_tags.erase(it);
 		o->_refreshTagRuns(1);
 		o->_refreshTagDraws(1);
 	}
+}
+
+void SlaskEngine::objUnlinkTag(Object* o, Tag* t)
+{
+	std::vector<Tag*>::const_iterator it = std::find(o->_tags.begin(), o->_tags.end(), t);
+	o->_tags.erase(it);
+	o->_refreshTagRuns(1);
+	o->_refreshTagDraws(1);
 }
 
 SlaskEngine::~SlaskEngine()

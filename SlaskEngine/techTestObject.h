@@ -17,7 +17,7 @@ private:
 	std::vector<std::string> files;
 
 public:
-	Tag *taggy;
+	Tag *taggy,*taggy2;
 
 	TestObject();
 	~TestObject();

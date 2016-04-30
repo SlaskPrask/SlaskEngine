@@ -50,8 +50,9 @@ public:
 	FontSet* fontSet(unsigned int i);
 	void gameEnd();
 	void deleteAllObjects();
-	void objAddTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
-	void objRemoveTag(Object* o, Tag* t, std::vector<Tag*>* tagv);
+	void objAddTag(Object* o, Tag* );
+	void objRemoveTag(Object* o, Tag* t);
+	void objUnlinkTag(Object* o, Tag* t);
 	inline void objClearTag(Object *o, Tag* t)
 	{
 		t->detachObj(o);
