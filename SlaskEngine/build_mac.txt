@@ -1,5 +1,5 @@
 cppfiles=`ls | grep ".cpp" | sed 's/\s\+/\ /g'`
-sourcefiles=`ls sources/ | grep ".cpp" | sed 's/\s\+/\ /g'`
+sourcefiles=`ls sources | grep ".cpp" | sed 's/\s\+/\ /g'`
 echo "This will output to slask.mac"
 g++ \
 -o slask.mac \
