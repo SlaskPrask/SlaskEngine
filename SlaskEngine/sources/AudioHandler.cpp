@@ -197,5 +197,5 @@ AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();
 	audioSys->release();
-	//LogHandler::log("Audio", "End");
+	LogHandler::log("Audio", "End");
 }
