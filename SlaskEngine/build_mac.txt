@@ -4,7 +4,7 @@ g++ \
 -std=c++11 \
 -DNO_STEAM \
 -w \
-*.cpp sources/*.cpp \
+./*.cpp ./sources/*.cpp \
 -
 -L/Programming/FMODProgrammersAPI/api/studio/lib \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
