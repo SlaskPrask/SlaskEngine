@@ -1,5 +1,5 @@
-cppfiles=`ls *.cpp | sed 's/\s\+/\ /g'`
-sourcefiles=`ls sources/*.cpp | sed 's/\s\+/\ /g'`
+cppfiles=`ls | grep ".cpp" | sed 's/\s\+/\ /g'`
+sourcefiles=`ls sources/ | grep ".cpp" | sed 's/\s\+/\ /g'`
 echo "This will output to slask.mac"
 g++ \
 -o slask.mac \
@@ -8,7 +8,6 @@ g++ \
 -w \
 -I"." \
 $cppfiles $sourcefiles
--
 -L/Programming/FMODProgrammersAPI/api/studio/lib \
 -I/Programming/FMODProgrammersAPI/api/studio/inc \
 -L/Programming/FMODProgrammersAPI/api/lowlevel/lib \
