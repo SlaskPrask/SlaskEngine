@@ -16,12 +16,7 @@ void GraphicsHandler::init(const char* title)
 	settings.stencilBits = 8;
 	settings.antialiasingLevel = 4;
 	settings.majorVersion = 3;
-
-#ifdef MAC
-	settings.minorVersion = 3;
-#else
 	settings.minorVersion = 0;
-#endif
 
 	resolutions = sf::VideoMode::getFullscreenModes();
 
@@ -86,7 +81,12 @@ bool GraphicsHandler::setFullscreen(int w, int h)
 		return false;
 	}
 
+
+#ifdef MAC
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Fullscreen);
+#else
 	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Fullscreen, settings);
+#endif
 
 	if (!window)
 	{
@@ -116,7 +116,12 @@ bool GraphicsHandler::setWindowed(int w, int h)
 {
 	close();
 
+
+#ifdef MAC
 	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Default);
+#else
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Default, settings);
+#endif
 
 	if (!window)
 	{
@@ -146,7 +151,12 @@ bool GraphicsHandler::setFullscreenWindowed(int w, int h)
 {
 	close();
 
+#ifdef MAC
+	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::None);
+#else
 	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::None, settings);
+#endif
+
 	window->setPosition(sf::Vector2i(0, 0));
 
 	if (!window)
