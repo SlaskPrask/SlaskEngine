@@ -1,4 +1,5 @@
 #include "GraphicsHandler.h"
+#include "Camera.h"
 
 //TODO: window checks
 
@@ -11,6 +12,10 @@ GraphicsHandler* GraphicsHandler::instance()
 void GraphicsHandler::init(const char* title)
 {
 	LogHandler::log("Graphics", "Start");
+
+	defaultCamera = new Camera();
+	activeCamera = defaultCamera;
+	queueCamera = 0;
 
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
@@ -57,6 +62,22 @@ void GraphicsHandler::initGL()
 	//todo drawing nice with culling maybe?
 	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+}
+
+Camera* GraphicsHandler::getCamera()
+{
+	if (activeCamera == defaultCamera)
+		return NULL;
+	else
+		return activeCamera;
+}
+
+void GraphicsHandler::setCamera(Camera *cam)
+{
+	if (cam == NULL)
+		activeCamera = defaultCamera;
+	else
+		activeCamera = cam;
 }
 
 bool GraphicsHandler::setFullscreen(int w, int h)
@@ -106,7 +127,6 @@ bool GraphicsHandler::setFullscreen(int w, int h)
 		LogHandler::log("Graphics", str.c_str());
 
 		setSize(w, h);
-		setRenderSize(w, h);
 		initGL();
 		return true;
 	}
@@ -141,7 +161,6 @@ bool GraphicsHandler::setWindowed(int w, int h)
 		LogHandler::log("Graphics", str.c_str());
 
 		setSize(w, h);
-		setRenderSize(w, h);
 		initGL();
 		return true;
 	}
@@ -177,7 +196,6 @@ bool GraphicsHandler::setFullscreenWindowed(int w, int h)
 		LogHandler::log("Graphics", str.c_str());
 
 		setSize(w, h);
-		setRenderSize(w, h);
 		initGL();
 		return true;
 	}
@@ -208,6 +226,9 @@ void GraphicsHandler::setSize(int w, int h)
 {
 	width = w;
 	height = h;
+	defaultCamera->setSize(w, h);
+	if (activeCamera == defaultCamera)
+		refreshCamera();
 }
 
 void GraphicsHandler::resize()
@@ -216,15 +237,16 @@ void GraphicsHandler::resize()
 		return;
 
 	setSize(window->getSize().x, window->getSize().y);
-	setRenderSize(window->getSize().x, window->getSize().y);
 }
 
-void GraphicsHandler::setRenderSize(int w, int h) 
+void GraphicsHandler::setRenderSize()
 {
-	glViewport(0,0,w,h);
+	queueCamera = 0;
+
+	glViewport(0, 0, width,height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, w,h, 0, DEPTHRANGE, -DEPTHRANGE);
+	glOrtho(0, activeCamera->getWidth(), activeCamera->getHeight(), 0, DEPTHRANGE, -DEPTHRANGE);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -259,10 +281,37 @@ sf::RenderWindow* GraphicsHandler::getWindow()
 	return window;
 }
 
+double GraphicsHandler::getCameraX()
+{
+	return activeCamera->getX();
+}
+
+double GraphicsHandler::getCameraY()
+{
+	return activeCamera->getY();
+}
+
+double GraphicsHandler::getCameraW()
+{
+	return activeCamera->getWidth();
+}
+
+double GraphicsHandler::getCameraH()
+{
+	return activeCamera->getHeight();
+}
+
 void GraphicsHandler::drawBegin()
 {
+	glLoadIdentity();
+	glTranslated(-activeCamera->getX(), -activeCamera->getY(), 0);
+	glPushMatrix();
+
 	if (!window)
 		return;
+
+	if (queueCamera)
+	setRenderSize();
 
 	window->clear();
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -270,6 +319,8 @@ void GraphicsHandler::drawBegin()
 
 void GraphicsHandler::drawEnd()
 {
+	glPopMatrix();
+
 	if (!window)
 		return;
 
@@ -350,12 +401,13 @@ GraphicsHandler::~GraphicsHandler()
 		window->close();
 		delete window;
 	}
+	delete defaultCamera;
 	LogHandler::log("Graphics", "End");
 }
 
 inline void GraphicsHandler::set_color(double r, double g, double b, double a)
 {
-	glColor4f((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
+	glColor4d((GLfloat)r, (GLfloat)g, (GLfloat)b, (GLfloat)a);
 }
 
 inline void GraphicsHandler::restore_color()

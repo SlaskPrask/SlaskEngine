@@ -27,6 +27,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	fullEngineVersion += std::to_string(engineVersion);
 
 	running = true;
+	Camera *cam = NULL;
 
 	srand((unsigned int)time(NULL));
 
@@ -101,6 +102,11 @@ void SlaskEngine::init(int argc, char *argv[])
 			else
 			obj = obj->getNext();
 		}
+
+		//camera bounds
+		cam = graphics->getCamera();
+		if (cam)
+		cam->doFollow();
 
 		//drawing
 		graphics->drawBegin();

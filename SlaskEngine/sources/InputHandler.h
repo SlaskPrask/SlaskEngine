@@ -9,8 +9,8 @@
 class InputHandler
 {
 private:
-	int mouse_x;
-	int mouse_y;
+	int mouse_x, mouse_y;
+	double mouse_cam_x,mouse_cam_y;
 	int mouse_butt[MAXMOUSEBUTTONS];
 	int mousewheel_up;
 	int mousewheel_down;
@@ -22,6 +22,8 @@ private:
 	bool signal_resize;
 	bool signal_focus;
 	bool window_focus;
+
+	void mousePosition(int mx, int my);
 
 	InputHandler() {}
 
@@ -35,10 +37,31 @@ public:
 
 	int getkey(int i);
 	int getmouse(int i);
-	int getmousewheel_up();
-	int getmousewheel_down();
-	int getmouse_x();
-	int getmouse_y();
+
+	inline int getmouse_x()
+	{
+		return mouse_x;
+	}
+	inline int getmouse_y()
+	{
+		return mouse_y;
+	}
+	inline int getmouse_camera_x()
+	{
+		return mouse_cam_x;
+	}
+	inline int getmouse_camera_y()
+	{
+		return mouse_cam_y;
+	}
+	inline int getmousewheel_up()
+	{
+		return mousewheel_up;
+	}
+	inline int getmousewheel_down()
+	{
+		return mousewheel_down;
+	}
 
 	bool getSignalResize();
 	bool getFocus();

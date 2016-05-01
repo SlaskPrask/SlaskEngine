@@ -10,6 +10,7 @@ private:
 	double accel;
 	double maxspeed;
 	Sprite *sprite;
+	Camera cam;
 public:
 	player();
 	~player();

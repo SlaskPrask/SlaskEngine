@@ -9,6 +9,8 @@
 
 #define DEPTHRANGE (10000)
 
+class Camera;
+
 class GraphicsHandler
 {
 private:
@@ -18,6 +20,9 @@ private:
 	bool vsync; 
 	int framespersecond;
 	const char* label;
+	Camera *defaultCamera;
+	Camera *activeCamera;
+	bool queueCamera;
 
 	int width;
 	int height;
@@ -41,7 +46,7 @@ public:
 	void setFPS(int fps);
 	void setVSync(bool enabled);
 	void setSize(int w, int h);
-	void setRenderSize(int w, int h);
+	void setRenderSize();
 	void resize();
 
 	const char* getTitle();
@@ -49,6 +54,17 @@ public:
 	bool getVSync();
 	int getWidth();
 	int getHeight();
+
+	Camera* getCamera();
+	void setCamera(Camera *cam);
+	double getCameraX();
+	double getCameraY();
+	double getCameraW();
+	double getCameraH();
+	inline void refreshCamera()
+	{
+		queueCamera = 1;
+	}
 
 	int getResolutions();
 	int getResolutionWidth(int i);

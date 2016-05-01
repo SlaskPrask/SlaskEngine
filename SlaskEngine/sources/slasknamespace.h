@@ -15,10 +15,7 @@ namespace slask
 	void end();
 
 	//call
-	/*Object* createObject(Object *o);//undocced (change return type) //removed
-	SpriteSet* createSpriteSet();//undocced
-	AudioSet* createAudioSet();//undocced
-	FontSet* createFontSet();//undocced*/
+	//Object* createObject(Object *o);//undocced (change return type) //removed
 	SpriteSet* spriteSet(unsigned int i);//undocced
 	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced
 	inline Sprite* getSprite(unsigned int i, unsigned int j)//undocced
@@ -39,6 +36,28 @@ namespace slask
 	}
 	void deleteAllObjects();//undocced
 	void exitGame();
+
+
+	inline Camera* getCamera()
+	{
+		return GraphicsHandler::instance()->getCamera();
+	}
+	inline double getCameraWidth()
+	{
+		return GraphicsHandler::instance()->getCameraW();
+	}
+	inline double getCameraHeight()
+	{
+		return GraphicsHandler::instance()->getCameraH();
+	}
+	inline double getCameraX()
+	{
+		return GraphicsHandler::instance()->getCameraX();
+	}
+	inline double getCameraY()
+	{
+		return GraphicsHandler::instance()->getCameraY();
+	}
 
 	void setTitle(const char* title);
 	void setFPS(int fps);
@@ -84,6 +103,8 @@ namespace slask
 	int getMousewheelDown();//undocced
 	int getMouseX();//undocced
 	int getMouseY();//undocced
+	int getMouseWindowX();//undocced
+	int getMouseWindowY();//undocced
 
 	bool getMousePress(int i);//undocced
 	bool getMouseRelease(int i);//undocced

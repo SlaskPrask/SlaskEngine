@@ -12,6 +12,7 @@ void InputHandler::init()
 
 	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
+	mouse_cam_y = mouse_cam_x = 0;
 	window_focus = true;
 	signal_focus = signal_resize = 0;
 	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
@@ -89,28 +90,24 @@ bool InputHandler::run()
 			else
 				mousewheel_up = event.mouseWheel.delta;
 
-			mouse_x = event.mouseWheel.x;
-			mouse_y = event.mouseWheel.y;
+			mousePosition(event.mouseWheel.x, event.mouseWheel.y);
 			break;
 		case sf::Event::MouseButtonPressed:
 			if (event.mouseButton.button>=0 && event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 1;
-				mouse_x = event.mouseButton.x;
-				mouse_y = event.mouseButton.y;
+				mousePosition(event.mouseButton.x, event.mouseButton.y);
 			}
 			break;
 		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button >= 0 && event.mouseButton.button < MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 0;
-				mouse_x = event.mouseButton.x;
-				mouse_y = event.mouseButton.y;
+				mousePosition(event.mouseButton.x, event.mouseButton.y);
 			}
 			break;
 		case sf::Event::MouseMoved:
-			mouse_x = event.mouseMove.x;
-			mouse_y = event.mouseMove.y;
+			mousePosition(event.mouseMove.x, event.mouseMove.y);
 			break;
 		case sf::Event::MouseEntered:
 			break;
@@ -129,6 +126,21 @@ bool InputHandler::run()
 		}
 	}
 	return close;
+}
+
+void InputHandler::mousePosition(int mx, int my)
+{
+	mouse_x = mx;
+	mouse_y = my;
+	GraphicsHandler *gh = GraphicsHandler::instance();
+	if (gh->getCameraW() == gh->getWidth())
+		mouse_cam_x = gh->getCameraX() + mouse_cam_x;
+	else
+		mouse_cam_x = gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*(double)gh->getCameraW();
+	if (gh->getCameraH() == gh->getHeight())
+		mouse_cam_y = gh->getCameraY() + mouse_cam_y;
+	else
+		mouse_cam_y = gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*(double)gh->getCameraH();
 }
 
 int InputHandler::getkey(int i)
@@ -157,26 +169,6 @@ int InputHandler::getmouse(int i)
 		LogHandler::notify("Input", unhandledKey.c_str());
 		return 0;
 	}
-}
-
-int InputHandler::getmouse_x()
-{
-	return mouse_x;
-}
-
-int InputHandler::getmouse_y()
-{
-	return mouse_y;
-}
-
-int InputHandler::getmousewheel_up()
-{
-	return mousewheel_up;
-}
-
-int InputHandler::getmousewheel_down()
-{
-	return mousewheel_down;
 }
 
 InputHandler::~InputHandler()

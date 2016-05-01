@@ -20,6 +20,7 @@
 #include "FontSet.h"
 #include "Platform.h"
 #include "Tag.h"
+#include "Camera.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>

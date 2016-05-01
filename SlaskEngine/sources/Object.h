@@ -38,8 +38,15 @@ public:
 
 	void addTag(Tag *t);//undocced
 	void removeTag(Tag *t);//undocced
-	void at(double xp, double yp);//undocced
-	void destroy();//undocced
+	void at(double xp, double yp)//undocced
+	{
+		x = xp;
+		y = yp;
+	}
+	inline void destroy()//undocced
+	{
+		_destroyed = true;
+	}
 
 	virtual void run();
 	virtual void draw();

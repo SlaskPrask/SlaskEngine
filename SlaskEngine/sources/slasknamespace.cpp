@@ -206,9 +206,17 @@ int slask::getMousewheelDown()
 }
 int slask::getMouseX()
 {
-	return InputHandler::instance()->getmouse_x();
+	return InputHandler::instance()->getmouse_camera_x();
 }
 int slask::getMouseY()
+{
+	return InputHandler::instance()->getmouse_camera_y();
+}
+int slask::getMouseWindowX()
+{
+	return InputHandler::instance()->getmouse_x();
+}
+int slask::getMouseWindowY()
 {
 	return InputHandler::instance()->getmouse_y();
 }

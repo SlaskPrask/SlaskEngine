@@ -11,10 +11,17 @@ player::player()
 	accel = 0.2;
 	maxspeed = 10;
 	sprite = getSprite(0,0);
+	cam.setSize(getWindowWidth() / 2, getWindowHeight() / 2);
+	cam.setPosition(getWindowWidth()/2 - cam.getWidth() / 2, getWindowHeight() / 2 - cam.getHeight() / 2);
+	cam.setBounds(250,140,250,140);
+	cam.setLimits(0, 0, getWindowWidth(), getWindowHeight());
+	cam.follow(&x, &y);
+	cam.activate();
 }
 
 void player::run()
 {
+
 	if (getKeyHeld(Key::Right))
 		xvel = xvel + accel < maxspeed ? xvel + accel : maxspeed;
 	else
@@ -42,4 +49,5 @@ void player::draw()
 
 player::~player()
 {
+	cam.unfollow();
 }

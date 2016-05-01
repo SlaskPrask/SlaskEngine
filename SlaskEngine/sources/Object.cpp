@@ -55,11 +55,6 @@ void Object::draw()
 {
 }
 
-void Object::destroy()
-{
-	_destroyed = true;
-}
-
 void Object::addTag(Tag *t)
 {
 	SlaskEngine::instance()->objAddTag(this, t);
@@ -68,12 +63,6 @@ void Object::addTag(Tag *t)
 void Object::removeTag(Tag *t)
 {
 	SlaskEngine::instance()->objRemoveTag(this, t);
-}
-
-void Object::at(double xp, double yp)
-{
-	x = xp;
-	y = yp;
 }
 
 bool Object::_getDestroyed()

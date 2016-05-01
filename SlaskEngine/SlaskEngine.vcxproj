@@ -144,6 +144,7 @@
     <ClCompile Include="sources\AudioBus.cpp" />
     <ClCompile Include="sources\AudioHandler.cpp" />
     <ClCompile Include="sources\AudioSet.cpp" />
+    <ClCompile Include="sources\Camera.cpp" />
     <ClCompile Include="sources\File.cpp" />
     <ClCompile Include="sources\Font.cpp" />
     <ClCompile Include="sources\FontSet.cpp" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\AudioSet.h" />
+    <ClInclude Include="sources\Camera.h" />
     <ClInclude Include="sources\FontSet.h" />
     <ClInclude Include="sources\Platform.h" />
     <ClInclude Include="sources\Tag.h" />
