@@ -1,0 +1,155 @@
+How to use SlaskEngine:
+
+*MAIN FILE*
+
+	#include "sources/SlaskEngine.h"
+	int main(int argc, char *argv[])
+	{
+		delete new SlaskEngine(argc,argv);
+		return 0;
+	}
+
+
+*OBJECT FILES*
+
+	#include "sources/Slask.h"
+	using namespace slask;
+
+
+
+
+SlaskEngine functions to implement in your game:
+
+	void slask::start()
+		Entry point of game code
+
+	void slask::end()
+		Called when the game has received a termination event such as alt+F4 or trying to close the window
+		Does not necessarily have to end the game
+
+
+
+
+SlaskEngine available functions for use:
+
+*GLOBAL FUNCTIONS*
+
+	slask::exitGame()
+		Terminates the program closing the window and shutting down.
+		Usually called in slask::end() or after handling that.
+
+	slask::createObject(Object*)
+		Creates the object within SlaskEngine environment.
+		Example: createObject(new Player());
+
+	setTitle(const char*)
+		Set's the title of the game window.
+
+	setFPS(int)
+		Set's the frames per second value of the game.
+
+	setVSync(bool)
+		Enables or disables vertical sync of the game window.
+
+	const char* getTitle()
+		Returns the title of the game window.
+
+	int getFPS();
+		Returns the frames per second value of the game.
+
+	bool getVSync()
+		Returns whether vertical sync is enabled for the game window.
+
+	int getWindowWidth()
+		Returns the width of the game window.
+
+	int getWindowHeight()
+		Returns the height of the game window.
+
+	int getResolutions()
+		Returns the number of available fullscreen resolutions.
+
+	int getResolutionWidth(int)
+		Returns the width of the resolution chosen from 0 to getResolutions().
+
+	int getResolutionHeight(int)
+		Returns the height of the resolution chosen from 0 to getResolutions().
+
+	bool setFullscreen(int width, int height)
+		Sets the game window to fullscreen mode with given width and height.
+		Returns whether successful.
+
+	bool setWindowed(int width, int height)
+		Sets the game window to window mode with given width and height.
+		Returns whether successful.
+
+	bool setFullscreenWindowed(int width, int height)
+		Sets the game window to borderless window mode with given width and height.
+		Returns whether successful.
+		
+	drawSprite(Sprite* sprite, double x, double y, double depth)
+		Draw sprite with it's default size.
+	
+	drawSprite(Sprite* sprite, double x, double y, double w, double h, double depth)
+		Draw sprite with size.
+	
+	drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double depth)
+		Draw a part of a sprite.
+	
+	drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot, double depth)
+		Draw a sprite rotated.
+	
+	drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
+		Draw a sprite with all possible options, including color.
+	
+	drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double depth)
+		Draw a triangle part of a sprite.
+	
+	drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double depth)
+		Draw a triangle part of a sprite rotated.
+	
+	drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth)
+		Draw a triangle part of a sprite with all options, including color.
+	
+
+	log(const char*)
+		Adds a line to the log file.
+
+	logError(const char*)
+		Adds a line to the log file with error notation.
+
+	logNotify(const char*)
+		Adds a line to the log file with notify notation.
+
+
+
+
+Making objects in SlaskEngine:
+
+	class player:public Object
+	{
+		public:
+		void run();
+		void draw();
+	}
+		This is how you create your own objects.
+		Add Object as their public parent.
+
+
+	*FUNCTIONS TO BE IMPLEMENTED IN OBJECTS*
+
+		void player::run()
+			This function is called every frame for the object and should be implemented containing it's code.
+			Should not contain drawing code.
+
+		void player::draw()
+			This function is called every drawn frame for the object and should be implemented containing only
+			code used for drawing. Putting game code inside this function can cause the object to not play
+			as expected.
+
+
+	*OBJECT FUNCTIONS THAT CAN BE CALLED*
+
+		destroy()
+			Destroys the object.
+			Use this instead of c++ delete in all cases.
