@@ -235,8 +235,7 @@ void GraphicsHandler::setSize(int w, int h)
 	width = w;
 	height = h;
 	defaultCamera->setSize(w, h);
-	if (activeCamera == defaultCamera)
-		refreshCamera();
+	refreshCamera();
 }
 
 void GraphicsHandler::resize()
