@@ -3,6 +3,8 @@
 #include "slasknamespace.h"
 
 SlaskEngine *SlaskEngine::slaskengine;
+void (*SlaskEngine::gameEndFunc)() = NULL;
+void (*SlaskEngine::gameStartFunc)() = NULL;
 
 SlaskEngine* SlaskEngine::instance()
 {
@@ -12,6 +14,16 @@ SlaskEngine* SlaskEngine::instance()
 SlaskEngine::SlaskEngine(int argc, char *argv[])
 {
 	init(argc,argv);
+}
+
+void SlaskEngine::setGameStartFunc(void (*func)())
+{
+	SlaskEngine::gameStartFunc = func;
+}
+
+void SlaskEngine::setGameEndFunc(void (*func)())
+{
+	SlaskEngine::gameEndFunc = func;
 }
 
 void SlaskEngine::init(int argc, char *argv[])
@@ -61,7 +73,8 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");
-	slask::start();//game initialization point
+	if (gameStartFunc)
+	gameStartFunc();//game initialization point
 	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
@@ -121,8 +134,8 @@ void SlaskEngine::init(int argc, char *argv[])
 		graphics->drawEnd();
 
 		//exit handle
-		if (exitHandle)
-		slask::end();
+		if (exitHandle && gameEndFunc)
+		gameEndFunc();
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteAllObjects();

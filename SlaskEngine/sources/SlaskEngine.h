@@ -38,8 +38,12 @@ private:
 	std::vector<AudioSet*> audiosets;
 	std::vector<FontSet*> fontsets;
 	static SlaskEngine *slaskengine;
+	static void (*gameStartFunc)();
+	static void (*gameEndFunc)();
 
 public:
+	static void setGameStartFunc(void(*func)());
+	static void setGameEndFunc(void(*func)());
 	static SlaskEngine* instance();
 
 	void createObject(Object *o);

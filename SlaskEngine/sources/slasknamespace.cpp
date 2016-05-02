@@ -40,6 +40,16 @@ void slask::exitGame()
 	SlaskEngine::instance()->gameEnd();
 }
 
+void slask::setGameStartFunction(void(*func)())
+{
+	SlaskEngine::setGameStartFunc(func);
+}
+
+void slask::setGameEndFunction(void(*func)())
+{
+	SlaskEngine::setGameEndFunc(func);
+}
+
 void slask::setTitle(const char* title)
 {
 	GraphicsHandler::instance()->setTitle(title);

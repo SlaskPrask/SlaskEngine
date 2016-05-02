@@ -7,7 +7,7 @@
 
 using namespace slask;
 
-void slask::start()
+void techGameStart()
 {
 	setTitle("SlaskEngine Tech Demo");
 	setWindowed(1280, 720);
@@ -53,7 +53,7 @@ void slask::start()
 	//
 }
 
-void slask::end()
+void techGameEnd()
 {
 	log("Window closed");
 

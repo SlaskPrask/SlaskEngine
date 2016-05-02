@@ -72,9 +72,6 @@
     <ClCompile Include="main.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
-    <ClCompile Include="techGame.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="sources\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -106,6 +103,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="techTestBG.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\Video.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="techGame.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
   </ItemGroup>
@@ -212,6 +215,9 @@
     </ClInclude>
     <ClInclude Include="techTestBG.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\Video.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

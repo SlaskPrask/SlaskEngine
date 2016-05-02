@@ -10,10 +10,6 @@ namespace slask
 	SteamHandler* steam();
 	File file();*/
 
-	//implement
-	void start();
-	void end();
-
 	//call
 	//Object* createObject(Object *o);//undocced (change return type) //removed
 	SpriteSet* spriteSet(unsigned int i);//undocced
@@ -37,6 +33,8 @@ namespace slask
 	void deleteAllObjects();//undocced
 	void exitGame();
 
+	void setGameStartFunction(void(*func)());//undocced
+	void setGameEndFunction(void(*func)());//undocced
 
 	inline Camera* getCamera()//undocced
 	{
