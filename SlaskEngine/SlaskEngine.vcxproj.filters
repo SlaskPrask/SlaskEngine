@@ -105,9 +105,6 @@
     <ClCompile Include="sources\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="techTestBG.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -206,12 +203,6 @@
     </ClInclude>
     <ClInclude Include="sources\Camera.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\FontChar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="techTestBG.h">
-      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
