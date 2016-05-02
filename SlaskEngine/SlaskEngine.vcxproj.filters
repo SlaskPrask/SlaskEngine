@@ -120,106 +120,106 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\File.h">
+    <ClInclude Include="include\File.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Font.h">
+    <ClInclude Include="include\Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\GraphicsHandler.h">
+    <ClInclude Include="include\GraphicsHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Input.h">
+    <ClInclude Include="include\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\InputHandler.h">
+    <ClInclude Include="include\InputHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\LogHandler.h">
+    <ClInclude Include="include\LogHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Object.h">
+    <ClInclude Include="include\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Scene.h">
+    <ClInclude Include="include\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\SlaskEngine.h">
+    <ClInclude Include="include\SlaskEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\slasknamespace.h">
+    <ClInclude Include="include\slasknamespace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Sprite.h">
+    <ClInclude Include="include\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Audio.h">
+    <ClInclude Include="include\Audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\AudioBank.h">
+    <ClInclude Include="include\AudioBank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\AudioBus.h">
+    <ClInclude Include="include\AudioBus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\AudioHandler.h">
+    <ClInclude Include="include\AudioHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\LinkedList.h">
+    <ClInclude Include="include\LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\SteamHandler.h">
+    <ClInclude Include="include\SteamHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Slask.h">
+    <ClInclude Include="include\Slask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techTestObject.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
-    <ClInclude Include="sources\ListHandle.h">
+    <ClInclude Include="include\ListHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Timer.h">
+    <ClInclude Include="include\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\SpriteSet.h">
+    <ClInclude Include="include\SpriteSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techEnemy.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Loader.h">
+    <ClInclude Include="include\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techPlayer.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
-    <ClInclude Include="sources\TMXparser.h">
+    <ClInclude Include="include\TMXparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\AudioSet.h">
+    <ClInclude Include="include\AudioSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\FontSet.h">
+    <ClInclude Include="include\FontSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Platform.h">
+    <ClInclude Include="include\Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Tag.h">
+    <ClInclude Include="include\Tag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Camera.h">
+    <ClInclude Include="include\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\FontChar.h">
+    <ClInclude Include="include\FontChar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Video.h">
+    <ClInclude Include="include\Video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Video.h">
+    <ClInclude Include="include\Video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="techTestBG.h">

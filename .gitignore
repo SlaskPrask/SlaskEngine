@@ -215,8 +215,12 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 SlaskEngine/log.txt
-SlaskEngine/Debug/SlaskEngine.tlog/
-SlaskEngine/Library/SlaskEngine.tlog/
-SlaskEngine/Release/SlaskEngine.tlog/
+SlaskEngine/Debug/
+SlaskEngine/Library/
+SlaskEngine/Release/
+SlaskEngine/X64/
 *.tlog
-*log.txt
+Debug/
+Library/
+Release/
+x64/

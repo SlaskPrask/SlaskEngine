@@ -253,39 +253,39 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\AudioSet.h" />
-    <ClInclude Include="sources\Camera.h" />
-    <ClInclude Include="sources\FontChar.h" />
-    <ClInclude Include="sources\FontSet.h" />
-    <ClInclude Include="sources\Platform.h" />
-    <ClInclude Include="sources\Tag.h" />
-    <ClInclude Include="sources\TMXparser.h" />
-    <ClInclude Include="sources\Video.h" />
+    <ClInclude Include="include\AudioSet.h" />
+    <ClInclude Include="include\Camera.h" />
+    <ClInclude Include="include\FontChar.h" />
+    <ClInclude Include="include\FontSet.h" />
+    <ClInclude Include="include\Platform.h" />
+    <ClInclude Include="include\Tag.h" />
+    <ClInclude Include="include\TMXparser.h" />
+    <ClInclude Include="include\Video.h" />
     <ClInclude Include="techEnemy.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="sources\Audio.h" />
-    <ClInclude Include="sources\AudioBank.h" />
-    <ClInclude Include="sources\AudioBus.h" />
-    <ClInclude Include="sources\AudioHandler.h" />
-    <ClInclude Include="sources\File.h" />
-    <ClInclude Include="sources\Font.h" />
-    <ClInclude Include="sources\GraphicsHandler.h" />
-    <ClInclude Include="sources\Input.h" />
-    <ClInclude Include="sources\InputHandler.h" />
-    <ClInclude Include="sources\LinkedList.h" />
-    <ClInclude Include="sources\ListHandle.h" />
-    <ClInclude Include="sources\Loader.h" />
-    <ClInclude Include="sources\LogHandler.h" />
-    <ClInclude Include="sources\Object.h" />
-    <ClInclude Include="sources\Scene.h" />
-    <ClInclude Include="sources\Slask.h" />
-    <ClInclude Include="sources\SlaskEngine.h" />
-    <ClInclude Include="sources\slasknamespace.h" />
-    <ClInclude Include="sources\Sprite.h" />
-    <ClInclude Include="sources\SpriteSet.h" />
-    <ClInclude Include="sources\SteamHandler.h" />
-    <ClInclude Include="sources\Timer.h" />
+    <ClInclude Include="include\Audio.h" />
+    <ClInclude Include="include\AudioBank.h" />
+    <ClInclude Include="include\AudioBus.h" />
+    <ClInclude Include="include\AudioHandler.h" />
+    <ClInclude Include="include\File.h" />
+    <ClInclude Include="include\Font.h" />
+    <ClInclude Include="include\GraphicsHandler.h" />
+    <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\InputHandler.h" />
+    <ClInclude Include="include\LinkedList.h" />
+    <ClInclude Include="include\ListHandle.h" />
+    <ClInclude Include="include\Loader.h" />
+    <ClInclude Include="include\LogHandler.h" />
+    <ClInclude Include="include\Object.h" />
+    <ClInclude Include="include\Scene.h" />
+    <ClInclude Include="include\Slask.h" />
+    <ClInclude Include="include\SlaskEngine.h" />
+    <ClInclude Include="include\slasknamespace.h" />
+    <ClInclude Include="include\Sprite.h" />
+    <ClInclude Include="include\SpriteSet.h" />
+    <ClInclude Include="include\SteamHandler.h" />
+    <ClInclude Include="include\Timer.h" />
     <ClInclude Include="techPlayer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
     </ClInclude>
@@ -313,7 +313,6 @@
     <Import Project="..\packages\rapidxml.1.13\build\native\rapidxml.targets" Condition="Exists('..\packages\rapidxml.1.13\build\native\rapidxml.targets')" />
     <Import Project="..\packages\freetype.redist.2.6.2.1\build\native\freetype.redist.targets" Condition="Exists('..\packages\freetype.redist.2.6.2.1\build\native\freetype.redist.targets')" />
     <Import Project="..\packages\freetype.2.6.2.1\build\native\freetype.targets" Condition="Exists('..\packages\freetype.2.6.2.1\build\native\freetype.targets')" />
-    <Import Project="..\packages\FFmpeg.Win10.2.7.1.1\build\native\FFmpeg.Win10.targets" Condition="Exists('..\packages\FFmpeg.Win10.2.7.1.1\build\native\FFmpeg.Win10.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -334,6 +333,5 @@
     <Error Condition="!Exists('..\packages\rapidxml.1.13\build\native\rapidxml.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rapidxml.1.13\build\native\rapidxml.targets'))" />
     <Error Condition="!Exists('..\packages\freetype.redist.2.6.2.1\build\native\freetype.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freetype.redist.2.6.2.1\build\native\freetype.redist.targets'))" />
     <Error Condition="!Exists('..\packages\freetype.2.6.2.1\build\native\freetype.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\freetype.2.6.2.1\build\native\freetype.targets'))" />
-    <Error Condition="!Exists('..\packages\FFmpeg.Win10.2.7.1.1\build\native\FFmpeg.Win10.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FFmpeg.Win10.2.7.1.1\build\native\FFmpeg.Win10.targets'))" />
   </Target>
 </Project>
