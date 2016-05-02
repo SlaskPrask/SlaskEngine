@@ -105,8 +105,8 @@
     <ClCompile Include="sources\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sources\Video.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="techTestBG.cpp">
+      <Filter>TechDemo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,8 +207,11 @@
     <ClInclude Include="sources\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sources\Video.h">
+    <ClInclude Include="sources\FontChar.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="techTestBG.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

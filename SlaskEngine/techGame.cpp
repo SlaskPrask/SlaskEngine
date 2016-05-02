@@ -3,6 +3,7 @@
 #include "techTestObject.h"
 #include "techPlayer.h"
 #include "techEnemy.h"
+#include "techTestBG.h"
 
 using namespace slask;
 
@@ -24,7 +25,7 @@ void slask::start()
 	masterAudio->add("Audio");
 
 	FontSet *basicFont = new FontSet();
-	basicFont->add("Propagandae.otf");
+	basicFont->add("Progandae.otf");
 
 	//should be done in scene
 	marioSprites->load();
@@ -33,30 +34,35 @@ void slask::start()
 	stringsAudio->load();
 	masterAudio->load();
 
-	TestObject *bgObj = new TestObject;
-	bgObj->taggy = new Tag();
-	bgObj->taggy2 = new Tag();
+	basicFont->load();
+
+	testBG *bgObj = new testBG();
+	Tag *tag1 = new Tag();
+	Tag *tag2 = new Tag();
 	(new player())->at(getWindowWidth()/2,getWindowHeight()/2);
 	for (int i = 0; i < 30; i++)
 	{
 		techEnemy *enemy = new techEnemy();
-		enemy->addTag(bgObj->taggy);
+		enemy->addTag(tag1);
 		if ((i / 2) * 2 == i)//every other also has taggy2
-		enemy->addTag(bgObj->taggy2);
+		enemy->addTag(tag2);
 	}
+	TestObject *testObj = new TestObject;
+	testObj->taggy = tag1;
+	testObj->taggy2 = tag2;
 	//
 }
 
 void slask::end()
 {
-	log("WindowCLosed");
+	log("Window closed");
 
 	//should be done in scene
 	spriteSet(0)->unload();//mario sprites
 	spriteSet(1)->unload();//enemy sprites
 	audioSet(1)->unload();//master
 	audioSet(0)->unload();//strings last
-	//fontSet(0)->unload();
+	fontSet(0)->unload();//font
 	//
 
 	exitGame();

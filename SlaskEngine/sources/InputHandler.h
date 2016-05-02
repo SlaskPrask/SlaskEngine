@@ -3,19 +3,19 @@
 #include "GraphicsHandler.h"
 #include "LogHandler.h"
 
-#define MAXMOUSEBUTTONS (5)
-#define MAXJOYSTICKS (8)
+#define _SLASK_MAXMOUSEBUTTONS (5)
+#define _SLASK_MAXJOYSTICKS (8)
 
 class InputHandler
 {
 private:
 	int mouse_x, mouse_y;
 	double mouse_cam_x,mouse_cam_y;
-	int mouse_butt[MAXMOUSEBUTTONS];
+	int mouse_butt[_SLASK_MAXMOUSEBUTTONS];
 	int mousewheel_up;
 	int mousewheel_down;
-	double deadzone[MAXJOYSTICKS];
-	double buttondeadzone[MAXJOYSTICKS];
+	double deadzone[_SLASK_MAXJOYSTICKS];
+	double buttondeadzone[_SLASK_MAXJOYSTICKS];
 
 	int* key;
 
@@ -40,27 +40,27 @@ public:
 
 	inline int getmouse_x()
 	{
-		return mouse_x;
+		return (int)mouse_x;
 	}
 	inline int getmouse_y()
 	{
-		return mouse_y;
+		return (int)mouse_y;
 	}
 	inline int getmouse_camera_x()
 	{
-		return mouse_cam_x;
+		return (int)mouse_cam_x;
 	}
 	inline int getmouse_camera_y()
 	{
-		return mouse_cam_y;
+		return (int)mouse_cam_y;
 	}
 	inline int getmousewheel_up()
 	{
-		return mousewheel_up;
+		return (int)mousewheel_up;
 	}
 	inline int getmousewheel_down()
 	{
-		return mousewheel_down;
+		return (int)mousewheel_down;
 	}
 
 	bool getSignalResize();

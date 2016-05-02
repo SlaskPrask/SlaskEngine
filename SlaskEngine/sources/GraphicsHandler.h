@@ -2,12 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <gl/freeglut.h>
+#include <ft2build.h>
+#include <freetype/freetype.h>
+#include <freetype/ftglyph.h>
+#include <freetype/ftoutln.h>
+#include <freetype/fttrigon.h>
 #include "Sprite.h"
 #include "Font.h"
 #include "LogHandler.h"
 #include <vector>
 
-#define DEPTHRANGE (10000)
+#define _SLASK_DEPTHRANGE (10000)
 
 class Camera;
 
@@ -17,6 +22,7 @@ private:
 	std::vector<sf::VideoMode> resolutions;
 	sf::RenderWindow* window;
 	sf::ContextSettings settings;
+	FT_Library *fontLib;
 	bool vsync; 
 	int framespersecond;
 	const char* label;
@@ -32,6 +38,8 @@ private:
 
 	void initGL();
 
+	sf::Text text;
+
 	GraphicsHandler() {}
 
 public:
@@ -41,6 +49,7 @@ public:
 	~GraphicsHandler();
 
 	sf::RenderWindow* getWindow();
+	FT_Library* getFontLib();
 	
 	void setTitle(const char* title);
 	void setFPS(int fps);
@@ -65,6 +74,7 @@ public:
 	{
 		queueCamera = 1;
 	}
+	void earlyCameraRefresh();
 
 	int getResolutions();
 	int getResolutionWidth(int i);
@@ -73,6 +83,7 @@ public:
 	bool setWindowed(int w, int h);
 	bool setFullscreenWindowed(int w, int h);
 
+	void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a, double depth);
 	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth);
 	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth);
 	void drawBegin();
