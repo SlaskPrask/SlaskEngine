@@ -16,12 +16,13 @@
 [Rr]elease/
 [Rr]eleases/
 [Dd]ebug/
+Debug/
 x64/
 x86/
 bld/
 [Bb]in/
 [Oo]bj/
-log.txt
+SlaskEngine/log.txt
 
 # Visual Studio 2015 cache/options directory
 .vs/
