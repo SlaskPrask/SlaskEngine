@@ -1,26 +1,5 @@
 #include "slasknamespace.h"
-/*
-Object* slask::createObject(Object *o)
-{
-	SlaskEngine::instance()->createObject(o);
-	return o;
-}
 
-SpriteSet* slask::createSpriteSet()
-{
-	return SlaskEngine::instance()->createSpriteSet(new SpriteSet());
-}
-
-AudioSet* slask::createAudioSet()
-{
-	return SlaskEngine::instance()->createAudioSet(new AudioSet());
-}
-
-FontSet* slask::createFontSet()
-{
-	return SlaskEngine::instance()->createFontSet(new FontSet());
-}
-*/
 SpriteSet* slask::spriteSet(unsigned int i)
 {
 	return SlaskEngine::instance()->spriteSet(i);
@@ -123,6 +102,11 @@ bool slask::setWindowed(int w, int h)
 bool slask::setFullscreenWindowed(int w, int h)
 {
 	return GraphicsHandler::instance()->setFullscreenWindowed(w,h);
+}
+
+void slask::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
+{
+	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, r, g, b, a, 0);
 }
 
 void slask::drawSprite(Sprite* sprite, double x, double y, double depth)

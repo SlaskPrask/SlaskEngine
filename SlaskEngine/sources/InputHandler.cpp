@@ -15,7 +15,7 @@ void InputHandler::init()
 	mouse_cam_y = mouse_cam_x = 0;
 	window_focus = true;
 	signal_focus = signal_resize = 0;
-	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
+	for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
 	{
 		mouse_butt[i] = 0;
 	}
@@ -43,7 +43,7 @@ bool InputHandler::run()
 			key[i] = 0;
 	}
 
-	for (int i = 0; i < MAXMOUSEBUTTONS; i++)
+	for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
 	{
 		if (mouse_butt[i] == 1)
 			mouse_butt[i] = 2;
@@ -93,14 +93,14 @@ bool InputHandler::run()
 			mousePosition(event.mouseWheel.x, event.mouseWheel.y);
 			break;
 		case sf::Event::MouseButtonPressed:
-			if (event.mouseButton.button>=0 && event.mouseButton.button < MAXMOUSEBUTTONS)
+			if (event.mouseButton.button>=0 && event.mouseButton.button < _SLASK_MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 1;
 				mousePosition(event.mouseButton.x, event.mouseButton.y);
 			}
 			break;
 		case sf::Event::MouseButtonReleased:
-			if (event.mouseButton.button >= 0 && event.mouseButton.button < MAXMOUSEBUTTONS)
+			if (event.mouseButton.button >= 0 && event.mouseButton.button < _SLASK_MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 0;
 				mousePosition(event.mouseButton.x, event.mouseButton.y);
@@ -134,11 +134,11 @@ void InputHandler::mousePosition(int mx, int my)
 	mouse_y = my;
 	GraphicsHandler *gh = GraphicsHandler::instance();
 	if (gh->getCameraW() == gh->getWidth())
-		mouse_cam_x = gh->getCameraX() + mouse_cam_x;
+		mouse_cam_x = gh->getCameraX() + mouse_x;
 	else
 		mouse_cam_x = gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*(double)gh->getCameraW();
 	if (gh->getCameraH() == gh->getHeight())
-		mouse_cam_y = gh->getCameraY() + mouse_cam_y;
+		mouse_cam_y = gh->getCameraY() + mouse_y;
 	else
 		mouse_cam_y = gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*(double)gh->getCameraH();
 }
@@ -159,7 +159,7 @@ int InputHandler::getkey(int i)
 
 int InputHandler::getmouse(int i)
 {
-	if (i >= 0 && i<MAXMOUSEBUTTONS)
+	if (i >= 0 && i<_SLASK_MAXMOUSEBUTTONS)
 		return mouse_butt[i];
 	else
 	{

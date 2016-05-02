@@ -38,23 +38,23 @@ namespace slask
 	void exitGame();
 
 
-	inline Camera* getCamera()
+	inline Camera* getCamera()//undocced
 	{
 		return GraphicsHandler::instance()->getCamera();
 	}
-	inline double getCameraWidth()
+	inline double getCameraWidth()//undocced
 	{
 		return GraphicsHandler::instance()->getCameraW();
 	}
-	inline double getCameraHeight()
+	inline double getCameraHeight()//undocced
 	{
 		return GraphicsHandler::instance()->getCameraH();
 	}
-	inline double getCameraX()
+	inline double getCameraX()//undocced
 	{
 		return GraphicsHandler::instance()->getCameraX();
 	}
-	inline double getCameraY()
+	inline double getCameraY()//undocced
 	{
 		return GraphicsHandler::instance()->getCameraY();
 	}
@@ -78,6 +78,19 @@ namespace slask
 	bool setWindowed(int w, int h);
 	bool setFullscreenWindowed(int w, int h);
 
+	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
+	inline void drawText(Font *font, std::string str, double x, double y, double size,double lineSpacing, double r, double g, double b, double a)//undocced
+	{
+		drawText(font, str.c_str(), x, y, size,lineSpacing, r, g, b, a);
+	}
+	inline void drawText(Font *font, const char* str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawText(font, str, x, y, size, 0, r, g, b, a);
+	}
+	inline void drawText(Font *font, std::string str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawText(font, str.c_str(), x, y, size, 0, r, g, b, a);
+	}
 	//draw sprite at position
 	void drawSprite(Sprite* sprite, double x, double y, double depth);
 	//draw sprite with size

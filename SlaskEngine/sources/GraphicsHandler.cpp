@@ -31,6 +31,14 @@ void GraphicsHandler::init(const char* title)
 	label = title;
 	width = height = 0;
 
+	fontLib=new FT_Library();
+	if (FT_Init_FreeType(fontLib))
+	{
+		fontLib = NULL;
+		LogHandler::error("Graphics", "Unable to initialize fonts.");
+		return;
+	}
+
 	LogHandler::log("Graphics", "Initialized");
 }
 
@@ -241,12 +249,15 @@ void GraphicsHandler::resize()
 
 void GraphicsHandler::setRenderSize()
 {
+	if (!window)
+		return;
+
 	queueCamera = 0;
 
 	glViewport(0, 0, width,height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, activeCamera->getWidth(), activeCamera->getHeight(), 0, DEPTHRANGE, -DEPTHRANGE);
+	glOrtho(0, activeCamera->getWidth(), activeCamera->getHeight(), 0, _SLASK_DEPTHRANGE, -_SLASK_DEPTHRANGE);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -279,6 +290,11 @@ const char* GraphicsHandler::getTitle()
 sf::RenderWindow* GraphicsHandler::getWindow()
 {
 	return window;
+}
+
+FT_Library* GraphicsHandler::getFontLib()
+{
+	return fontLib;
 }
 
 double GraphicsHandler::getCameraX()
@@ -317,6 +333,12 @@ void GraphicsHandler::drawBegin()
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
+void GraphicsHandler::earlyCameraRefresh()
+{
+	if (queueCamera)
+	setRenderSize();
+}
+
 void GraphicsHandler::drawEnd()
 {
 	glPopMatrix();
@@ -336,6 +358,52 @@ void GraphicsHandler::close()
 	LogHandler::log("Graphics", "Window closed.");
 }
 
+void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a, double depth)
+{
+	if (!window)
+		return;
+
+	if (!font)
+	{
+		LogHandler::notify("Graphics", "Attempting to draw unloaded font.");
+		return;
+	}
+
+	GLfloat lineHeight = (GLfloat)font->getSize();
+	GLfloat scale = (GLfloat)size/ lineHeight;
+	FontChar *ch;
+	GLfloat d2d_tex[8] = {0,0,1,0,0,1,1,1};
+	glTexCoordPointer(2, GL_FLOAT, 0, d2d_tex);
+	int line = 0;
+	glPushMatrix();
+	if (a != -1)
+		set_color(r, g, b, a);
+	glTranslated(x, y+size, 0);
+	for (unsigned int i = 0; str[i];i++)
+	{
+		ch = font->getChar(str[i]);
+		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,(GLfloat)depth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,(GLfloat)depth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,(GLfloat)depth,((GLfloat)ch->bw + (GLfloat)ch->w)*scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,(GLfloat)depth };
+		glVertexPointer(3, GL_FLOAT, 0, d2d);
+		if (str[i] == '\n')
+		{
+			glPopMatrix();
+			glPushMatrix();
+			line++;
+			glTranslated(x, y + size+line*(lineSpacing+lineHeight*scale), 0);
+			continue;
+		}
+		if (str[i] < 0)
+		continue;
+
+		glBindTexture(GL_TEXTURE_2D, ch->tex);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		glTranslated((ch->adv>>6)*scale, 0, 0);
+	}
+
+	if (a != -1)
+		restore_color();
+	glPopMatrix();
+}
 void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
 {
 	if (!window)
@@ -400,6 +468,11 @@ GraphicsHandler::~GraphicsHandler()
 	{
 		window->close();
 		delete window;
+	}
+	if (fontLib)
+	{
+		FT_Done_FreeType(*fontLib);
+		delete fontLib;
 	}
 	delete defaultCamera;
 	LogHandler::log("Graphics", "End");

@@ -62,6 +62,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::log("Engine", eVer.c_str());
 	LogHandler::log("-------------------------------------");
 	slask::start();//game initialization point
+	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
 
