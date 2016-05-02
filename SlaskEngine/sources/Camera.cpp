@@ -24,18 +24,30 @@ void Camera::doFollow()
 {
 	if (isFollowing())
 	{
+		if (boundsLeft+boundsRight>=w)
+		{
+			x = *followx - w/2;
+			checkXLimits();
+		}
+		else
 		if (*followx < x + boundsLeft)
 		{
 			x = *followx - boundsLeft;
 			checkXLimits();
 		}
 		else
-			if (*followx > x + w - boundsRight)
-			{
-				x = *followx - w + boundsRight;
-				checkXLimits();
-			}
+		if (*followx > x + w - boundsRight)
+		{
+			x = *followx - w + boundsRight;
+			checkXLimits();
+		}
 
+		if (boundsTop+ boundsBottom >= h)
+		{
+			h = *followy - h / 2;
+			checkYLimits();
+		}
+		else
 		if (*followy < y + boundsTop)
 		{
 			y = *followy - boundsTop;

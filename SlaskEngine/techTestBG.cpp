@@ -6,12 +6,12 @@ using namespace slask;
 testBG::testBG()
 {
 	sprite = getSprite(0, 0);
+	windowHeight = getWindowHeight();
+	windowWidth = getWindowWidth();
 }
 
 void testBG::run()
 {
-	windowHeight = getWindowHeight();
-	windowWidth = getWindowWidth();
 }
 
 void testBG::draw()
