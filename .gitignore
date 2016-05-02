@@ -213,3 +213,10 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+SlaskEngine/log.txt
+SlaskEngine/Debug/SlaskEngine.tlog/
+SlaskEngine/Library/SlaskEngine.tlog/
+SlaskEngine/Release/SlaskEngine.tlog/
+*.tlog
+*log.txt
