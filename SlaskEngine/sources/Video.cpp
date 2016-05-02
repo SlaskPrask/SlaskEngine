@@ -2,11 +2,15 @@
 
 
 
-Video::Video()
+Video::Video(const char* file)
 {
 }
 
 
 Video::~Video()
+{
+}
+
+void Video::registerCodec()
 {
 }
