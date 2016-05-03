@@ -6,8 +6,8 @@
 #include <freetype/fttrigon.h>
 #include <SFML/OpenGL.hpp>
 #include <gl/freeglut.h>
-#include "LogHandler.h"
-#include "FontChar.h"
+#include "../include/LogHandler.h"
+#include "../include/FontChar.h"
 
 #ifndef  GL_CLAMP_TO_EDGE
  #define  GL_CLAMP_TO_EDGE 0x812F

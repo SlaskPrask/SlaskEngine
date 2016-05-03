@@ -1,4 +1,4 @@
-#include "sources/Slask.h"
+#include "include/Slask.h"
 
 #include "techTestObject.h"
 #include "techPlayer.h"

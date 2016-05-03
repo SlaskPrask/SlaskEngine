@@ -1,5 +1,5 @@
-#include "AudioBank.h"
-#include "AudioHandler.h"
+#include "../include/AudioBank.h"
+#include "../include/AudioHandler.h"
 
 AudioBank::AudioBank(const char* file)
 {

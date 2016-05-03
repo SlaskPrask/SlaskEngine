@@ -1,4 +1,4 @@
-#include "slasknamespace.h"
+#include "../include/slasknamespace.h"
 
 SpriteSet* slask::spriteSet(unsigned int i)
 {

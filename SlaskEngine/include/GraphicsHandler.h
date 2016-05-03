@@ -7,9 +7,9 @@
 #include <freetype/ftglyph.h>
 #include <freetype/ftoutln.h>
 #include <freetype/fttrigon.h>
-#include "Sprite.h"
-#include "Font.h"
-#include "LogHandler.h"
+#include "../include/Sprite.h"
+#include "../include/Font.h"
+#include "../include/LogHandler.h"
 #include <vector>
 
 #define _SLASK_DEPTHRANGE (10000)

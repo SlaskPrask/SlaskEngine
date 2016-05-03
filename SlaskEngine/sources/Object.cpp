@@ -1,5 +1,5 @@
-#include "Object.h"
-#include "SlaskEngine.h"
+#include "../include/Object.h"
+#include "../include/SlaskEngine.h"
 
 Object::Object()
 {

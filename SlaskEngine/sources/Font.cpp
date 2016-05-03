@@ -1,5 +1,5 @@
-#include "Font.h"
-#include "GraphicsHandler.h"
+#include "../include/Font.h"
+#include "../include/GraphicsHandler.h"
 
 void Font::load(const char* file)
 {

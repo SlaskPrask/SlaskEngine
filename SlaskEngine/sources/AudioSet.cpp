@@ -1,5 +1,5 @@
-#include "AudioSet.h"
-#include "SlaskEngine.h"
+#include "../include/AudioSet.h"
+#include "../include/SlaskEngine.h"
 
 
 AudioSet::AudioSet()

@@ -1,5 +1,5 @@
 #pragma once
-#include "slasknamespace.h"
+#include "../include/slasknamespace.h"
 
 /*
 

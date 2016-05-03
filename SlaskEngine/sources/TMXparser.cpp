@@ -1,4 +1,4 @@
-#include "TMXparser.h"
+#include "../include/TMXparser.h"
 
 
 TMXparser::TMXparser()

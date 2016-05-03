@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "../include/Input.h"
 
 //Kappa pls check in
 
@@ -17,7 +17,7 @@ double Input::get()
 
 }
 
-double Input::getDeadZone()#include "Input.h"
+double Input::getDeadZone()#include "../include/Input.h"
 
 Input::Input()
 {
@@ -168,7 +168,7 @@ Input::~Input()
 }
 /*
 
-#include "Input.h"
+#include "../include/Input.h"
 
 Input::Input()
 {

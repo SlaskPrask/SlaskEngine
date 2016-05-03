@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/System.hpp>
-#include "GraphicsHandler.h"
-#include "LogHandler.h"
+#include "../include/GraphicsHandler.h"
+#include "../include/LogHandler.h"
 
 #define _SLASK_MAXMOUSEBUTTONS (5)
 #define _SLASK_MAXJOYSTICKS (8)

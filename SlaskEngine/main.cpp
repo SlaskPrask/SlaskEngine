@@ -1,4 +1,4 @@
-#include "sources/Slask.h"
+#include "include/Slask.h"
 
 void techGameStart();
 void techGameEnd();

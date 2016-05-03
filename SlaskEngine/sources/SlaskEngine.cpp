@@ -1,6 +1,6 @@
-#include "SlaskEngine.h"
+#include "../include/SlaskEngine.h"
 #include <iostream>
-#include "slasknamespace.h"
+#include "../include/slasknamespace.h"
 
 SlaskEngine *SlaskEngine::slaskengine;
 void (*SlaskEngine::gameEndFunc)() = NULL;

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "LinkedList.h"
-#include "Tag.h"
+#include "../include/LinkedList.h"
+#include "../include/Tag.h"
 #include <vector>
 #define SLASKOBJECT \
 public: \
