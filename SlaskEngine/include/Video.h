@@ -1,8 +1,6 @@
 #pragma once
 #include <fmod.hpp>
 #include <fmod_errors.h>
-#include "libavcodec/avcodec.h"
-#include "libavformat/avformat.h"
 
 class Video
 {

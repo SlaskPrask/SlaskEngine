@@ -1,5 +1,5 @@
-#include "GraphicsHandler.h"
-#include "Camera.h"
+#include "../include/GraphicsHandler.h"
+#include "../include/Camera.h"
 
 //TODO: window checks
 

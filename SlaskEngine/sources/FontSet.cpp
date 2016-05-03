@@ -1,5 +1,5 @@
-#include "FontSet.h"
-#include "SlaskEngine.h"
+#include "../include/FontSet.h"
+#include "../include/SlaskEngine.h"
 
 FontSet::FontSet()
 {

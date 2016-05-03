@@ -1,4 +1,4 @@
-#include "LogHandler.h"
+#include "../include/LogHandler.h"
 
 std::string LogHandler::log_file = "log.txt";
 sf::Clock LogHandler::igt;

@@ -1,6 +1,6 @@
-#include "Tag.h"
-#include "Object.h"
-#include "SlaskEngine.h"
+#include "../include/Tag.h"
+#include "../include/Object.h"
+#include "../include/SlaskEngine.h"
 
 Tag::Tag()
 {

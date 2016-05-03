@@ -1,4 +1,4 @@
-#include "InputHandler.h"
+#include "../include/InputHandler.h"
 
 InputHandler* InputHandler::instance()
 {

@@ -1,5 +1,5 @@
-#include "Camera.h"
-#include "GraphicsHandler.h"
+#include "../include/Camera.h"
+#include "../include/GraphicsHandler.h"
 
 void Camera::init()
 {

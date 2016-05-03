@@ -1,5 +1,5 @@
-#include "SpriteSet.h"
-#include "SlaskEngine.h"
+#include "../include/SpriteSet.h"
+#include "../include/SlaskEngine.h"
 
 SpriteSet::SpriteSet()
 {

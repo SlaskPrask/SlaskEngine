@@ -81,9 +81,6 @@
     <ClCompile Include="sources\SpriteSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="techEnemy.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="sources\Loader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -113,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="techTestBG.cpp">
       <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="techEnemy.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,9 +201,6 @@
     <ClInclude Include="include\AudioSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\FontSet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -224,6 +221,9 @@
     </ClInclude>
     <ClInclude Include="techTestBG.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FontSet.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

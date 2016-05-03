@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sources/Slask.h"
+#include "include/Slask.h"
 
 class TestObject :public Object
 {

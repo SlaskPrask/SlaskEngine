@@ -1,6 +1,6 @@
 #ifndef NO_STEAM
 
-#include "SteamHandler.h"
+#include "../include/SteamHandler.h"
 #include <iostream>
 
 
