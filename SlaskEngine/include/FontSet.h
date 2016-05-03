@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "LogHandler.h"
-#include "Font.h"
+#include "../include/LogHandler.h"
+#include "../include/Font.h"
 
 class SlaskEngine;
 

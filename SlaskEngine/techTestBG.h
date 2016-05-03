@@ -1,5 +1,5 @@
 #pragma once
-#include "include\Slask.h"
+#include "include/Slask.h"
 
 class testBG :public Object
 {

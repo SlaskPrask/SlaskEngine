@@ -1,5 +1,5 @@
 #pragma once
-#include "SlaskEngine.h"
+#include "../include/SlaskEngine.h"
 
 namespace slask
 {

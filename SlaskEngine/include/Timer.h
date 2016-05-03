@@ -1,5 +1,5 @@
 #include <SFML/System.hpp>
-#include "LogHandler.h"
+#include "../include/LogHandler.h"
 #pragma once
 
 class Timer //undocced
