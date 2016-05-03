@@ -112,7 +112,7 @@
       <Filter>TechDemo</Filter>
     </ClCompile>
     <ClCompile Include="techEnemy.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>TechDemo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

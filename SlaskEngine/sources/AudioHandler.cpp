@@ -186,7 +186,7 @@ double AudioHandler::getBusVolume(AudioBus* bus)
 {
 	float busvol = 0;
 	if (bus->getBus())
-		return bus->getBus()->getFaderLevel(&busvol);
+		bus->getBus()->getFaderLevel(&busvol);
 	else
 		LogHandler::notify("Audio", "Attempting to get volume of an unexisting bus.");
 
