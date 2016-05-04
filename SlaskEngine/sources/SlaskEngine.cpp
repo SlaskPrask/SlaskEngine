@@ -4,7 +4,8 @@
 
 SlaskEngine *SlaskEngine::slaskengine;
 void (*SlaskEngine::gameEndFunc)() = NULL;
-void (*SlaskEngine::gameStartFunc)() = NULL;
+void(*SlaskEngine::gameStartFunc)() = NULL;
+void(*SlaskEngine::gameWindowResizeFunc)() = NULL;
 
 SlaskEngine* SlaskEngine::instance()
 {
@@ -21,9 +22,14 @@ void SlaskEngine::setGameStartFunc(void (*func)())
 	SlaskEngine::gameStartFunc = func;
 }
 
-void SlaskEngine::setGameEndFunc(void (*func)())
+void SlaskEngine::setGameEndFunc(void(*func)())
 {
 	SlaskEngine::gameEndFunc = func;
+}
+
+void SlaskEngine::setGameWindowResizeFunc(void(*func)())
+{
+	SlaskEngine::gameWindowResizeFunc = func;
 }
 
 void SlaskEngine::init(int argc, char *argv[])
@@ -38,8 +44,9 @@ void SlaskEngine::init(int argc, char *argv[])
 	fullEngineVersion = engineBuild;
 	fullEngineVersion += std::to_string(engineVersion);
 
+	Camera *cam;
 	running = true;
-	Camera *cam = NULL;
+	firstDepth = NULL;
 
 	srand((unsigned int)time(NULL));
 
@@ -91,14 +98,16 @@ void SlaskEngine::init(int argc, char *argv[])
 		{
 			LogHandler::log("Engine", "Window resized.");
 			graphics->resize();
+			if (gameWindowResizeFunc)
+				gameWindowResizeFunc();
 		}
 
 		//running
-		LinkedList<Object> *obj=objects.first();
+		LinkedList<Object> *obj = objects.first();
 		while (obj)
 		{
 			if (((Object*)obj)->_tagRuns())
-			((Object*)obj)->run();
+				((Object*)obj)->run();
 			if (((Object*)obj)->_getDestroyed())
 			{
 				if (objects.last() == obj)
@@ -114,22 +123,31 @@ void SlaskEngine::init(int argc, char *argv[])
 				}
 			}
 			else
-			obj = obj->getNext();
+				obj = obj->getNext();
 		}
 
 		//camera bounds
 		cam = graphics->getCamera();
 		if (cam)
-		cam->doFollow();
+			cam->doFollow();
 
 		//drawing
+		resolveDepthQueue();
+		resolveDepthChangeQueue();
 		graphics->drawBegin();
-		obj = objects.first();
-		while (obj)
+		if (firstDepth)
 		{
-			if (((Object*)obj)->_tagDraws())
-			((Object*)obj)->draw();
-			obj = obj->getNext();
+			DepthItem *di = firstDepth;
+			Object *obj;
+			while (di)
+			{
+				obj = di->get();
+				if (obj->_tagDraws())
+				{
+					obj->draw();
+				}
+				di = di->getNext();
+			}
 		}
 		graphics->drawEnd();
 
@@ -224,6 +242,69 @@ FontSet* SlaskEngine::fontSet(unsigned int i)
 void SlaskEngine::gameEnd()
 {
 	running = false;
+}
+
+void SlaskEngine::resolveDepthQueue()
+{
+	while (depthQueue.size())
+	{
+		attachDepth(depthQueue.back());
+		depthQueue.pop_back();
+	}
+}
+
+void SlaskEngine::queueDepth(Object *o)
+{
+	std::vector<Object*>::const_iterator it = std::find(depthQueue.begin(), depthQueue.end(), o);
+	if (it == depthQueue.end())
+	{
+		depthQueue.push_back(o);
+	}
+}
+
+void SlaskEngine::resolveDepthChangeQueue()
+{
+	while (depthChangeQueue.size())
+	{
+		depthChangeQueue.back()->_performDepthMove();
+		depthChangeQueue.pop_back();
+	}
+}
+
+void SlaskEngine::queueDepthChange(Object *o)
+{
+	std::vector<Object*>::const_iterator it = std::find(depthChangeQueue.begin(), depthChangeQueue.end(), o);
+	if (it == depthChangeQueue.end())
+	{
+		depthChangeQueue.push_back(o);
+	}
+}
+
+void SlaskEngine::setFirstDepth(DepthItem *d)
+{
+	firstDepth = d;
+}
+
+void SlaskEngine::detachDepth(Object *o)
+{
+	for (std::vector<Object*>::iterator it = depthQueue.begin(); it != depthQueue.end(); ++it)
+	if (o == (*it))
+	{
+		depthQueue.erase(it);
+		return;
+	}
+
+	if (o->_depthItem == firstDepth)
+		firstDepth = o->_depthItem->getNext();
+	delete (o->_depthItem);
+}
+
+void SlaskEngine::attachDepth(Object *o)
+{
+	if (!firstDepth)
+	firstDepth = new DepthItem(o);
+	else
+	firstDepth->addBelow(new DepthItem(o));
 }
 
 void SlaskEngine::deleteAllObjects()

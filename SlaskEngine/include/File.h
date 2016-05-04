@@ -4,8 +4,8 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "../include/LogHandler.h"
-#include "../include/Platform.h"
+#include "LogHandler.h"
+#include "Platform.h"
 #ifdef UNIX
  #include <sys/types.h>
  #include <dirent.h>

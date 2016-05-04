@@ -27,9 +27,9 @@ protected:
 	{
 		_listHandle = 0;
 		if (_nextNode)
-		_nextNode->_removeHandleDown();
+			_nextNode->_removeHandleDown();
 	}
-	
+
 public:
 	LinkedList()
 	{
@@ -79,20 +79,20 @@ public:
 		else
 			_nextNode->_add(t);
 	}
-	
+
 	virtual ~LinkedList()
 	{
 		if (_prevNode != 0)
-		_prevNode->_next(_nextNode);
+			_prevNode->_next(_nextNode);
 		else
-		if (_listHandle)
-		_listHandle->setFirst(_nextNode);
-		
+			if (_listHandle)
+				_listHandle->setFirst(_nextNode);
+
 		if (_nextNode != 0)
-		_nextNode->_prev(_prevNode);
+			_nextNode->_prev(_prevNode);
 		else
-		if (_listHandle)
-		_listHandle->setLast(_prevNode);
+			if (_listHandle)
+				_listHandle->setLast(_prevNode);
 	}
 
 };

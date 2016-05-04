@@ -211,6 +211,7 @@
     <ClCompile Include="sources\AudioHandler.cpp" />
     <ClCompile Include="sources\AudioSet.cpp" />
     <ClCompile Include="sources\Camera.cpp" />
+    <ClCompile Include="sources\DepthItem.cpp" />
     <ClCompile Include="sources\File.cpp" />
     <ClCompile Include="sources\Font.cpp" />
     <ClCompile Include="sources\FontSet.cpp" />
@@ -225,7 +226,7 @@
     <ClCompile Include="sources\Object.cpp" />
     <ClCompile Include="sources\Scene.cpp" />
     <ClCompile Include="sources\SlaskEngine.cpp" />
-    <ClCompile Include="sources\slasknamespace.cpp" />
+    <ClCompile Include="sources\SlaskNamespace.cpp" />
     <ClCompile Include="sources\Sprite.cpp" />
     <ClCompile Include="sources\SpriteSet.cpp" />
     <ClCompile Include="sources\SteamHandler.cpp" />
@@ -256,6 +257,7 @@
   <ItemGroup>
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
+    <ClInclude Include="include\DepthItem.h" />
     <ClInclude Include="include\FontChar.h" />
     <ClInclude Include="include\FontSet.h" />
     <ClInclude Include="include\Platform.h" />
@@ -282,7 +284,7 @@
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\Slask.h" />
     <ClInclude Include="include\SlaskEngine.h" />
-    <ClInclude Include="include\slasknamespace.h" />
+    <ClInclude Include="include\SlaskNamespace.h" />
     <ClInclude Include="include\Sprite.h" />
     <ClInclude Include="include\SpriteSet.h" />
     <ClInclude Include="include\SteamHandler.h" />

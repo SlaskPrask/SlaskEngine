@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/System.hpp>
-#include "../include/GraphicsHandler.h"
-#include "../include/LogHandler.h"
+#include "GraphicsHandler.h"
+#include "LogHandler.h"
 
 #define _SLASK_MAXMOUSEBUTTONS (5)
 #define _SLASK_MAXJOYSTICKS (8)
@@ -14,10 +14,13 @@ private:
 	int mouse_butt[_SLASK_MAXMOUSEBUTTONS];
 	int mousewheel_up;
 	int mousewheel_down;
+	int anykeycount;
 	double deadzone[_SLASK_MAXJOYSTICKS];
 	double buttondeadzone[_SLASK_MAXJOYSTICKS];
 
 	int* key;
+	bool anykeyreleased,anykeypressed;
+	int anykeyheld;
 
 	bool signal_resize;
 	bool signal_focus;
@@ -37,7 +40,7 @@ public:
 
 	int getkey(int i);
 	int getmouse(int i);
-
+	bool getanykey(int state);
 	inline int getmouse_x()
 	{
 		return (int)mouse_x;

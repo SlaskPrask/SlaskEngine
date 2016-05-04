@@ -11,6 +11,7 @@ techEnemy::techEnemy()
 	y = 200 + random(getWindowHeight() - 400);
 	timerDistort = random(600);
 	blink = 0;
+	depth(20);
 }
 
 void techEnemy::changeDirection()
@@ -43,7 +44,7 @@ void techEnemy::run()
 
 void techEnemy::draw()
 {
-	drawSpriteExt(sprite, x - 25, y - 25, 50, 50, 0, 0, 1, 1, 0, 0, blink*0.2f, 1, 1, -99);
+	drawSpriteExt(sprite, x - 25, y - 25, 50, 50, 0, 0, 1, 1, 0, 0, blink*0.2f, 1, 1);
 }
 
 techEnemy::~techEnemy()
