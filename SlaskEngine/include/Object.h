@@ -20,6 +20,7 @@ private:
 	bool _tagRunValue, _tagDrawValue;
 	bool _destroyed;
 	bool _getDestroyed();
+	bool _persistent;
 	double _qdepth,_depth;
 	std::vector<Tag*> _tags;
 	inline bool _tagRuns()
@@ -40,6 +41,11 @@ public:
 	double y;
 	Object();
 	virtual ~Object();
+
+	inline bool isPersistent()
+	{
+		return _persistent;
+	}
 
 	void addTag(Tag *t);//undocced
 	void removeTag(Tag *t);//undocced

@@ -359,16 +359,6 @@ void GraphicsHandler::close()
 	LogHandler::log("Graphics", "Window closed.");
 }
 
-void GraphicsHandler::setDepth(int d)
-{
-	drawDepth = (GLfloat)d;
-}
-
-void GraphicsHandler::releaseDepth()
-{
-	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
-}
-
 void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
 {
 	if (!window)
