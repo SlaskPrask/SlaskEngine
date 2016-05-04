@@ -8,6 +8,7 @@ testBG::testBG()
 	sprite = getSprite(0, 0);
 	windowHeight = getWindowHeight();
 	windowWidth = getWindowWidth();
+	depth(1000);
 }
 
 void testBG::run()
@@ -17,7 +18,7 @@ void testBG::run()
 void testBG::draw()
 {
 	//the big at the back, stretched
-	drawSprite(sprite, 10, 10, windowWidth - 20, windowHeight - 20, 1000);
+	drawSprite(sprite, 10, 10, windowWidth - 20, windowHeight - 20);
 	/*//small not moving, static position
 	drawSprite(sprite, 100, 100, 1);
 	//rolling one, static position

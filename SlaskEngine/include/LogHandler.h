@@ -5,7 +5,7 @@
 #include <fstream>
 #include <SFML/System.hpp>
 #include <iomanip>
-#include "../include/Platform.h"
+#include "Platform.h"
 
 class LogHandler
 {

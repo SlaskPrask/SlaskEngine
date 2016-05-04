@@ -1,5 +1,5 @@
 #pragma once
-#include "../include/SlaskEngine.h"
+#include "SlaskEngine.h"
 
 namespace slask
 {
@@ -35,6 +35,7 @@ namespace slask
 
 	void setGameStartFunction(void(*func)());//undocced
 	void setGameEndFunction(void(*func)());//undocced
+	void setGameWindowResizeFunction(void(*func)());//undocced
 
 	inline Camera* getCamera()//undocced
 	{
@@ -90,21 +91,28 @@ namespace slask
 		drawText(font, str.c_str(), x, y, size, 0, r, g, b, a);
 	}
 	//draw sprite at position
-	void drawSprite(Sprite* sprite, double x, double y, double depth);
+	void drawSprite(Sprite* sprite, double x, double y);
 	//draw sprite with size
-	void drawSprite(Sprite* sprite, double x, double y, double w, double h, double depth);
+	void drawSprite(Sprite* sprite, double x, double y, double w, double h);
 	//draw a part of a sprite
-	void drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double depth);
+	void drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy);
 	//draw a sprite rotated
-	void drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot, double depth);
+	void drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot);
 	//draw a sprite with all possible options, including color
-	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth);
+	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a);
 	//draw a triangle part of a sprite
-	void drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double depth);
+	void drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3);
 	//draw a triangle part of a sprite rotated
-	void drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double depth);
+	void drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot);
 	//draw a triangle part of a sprite with all options, including color
-	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth);
+	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);
+
+	template<class T>
+	T* at(T* t, double x, double y)//undocced
+	{
+		t->at(x,y);
+		return t;
+	}
 
 	void log(const char *str);//undocced
 	void logError(const char *str);//undocced
@@ -122,6 +130,10 @@ namespace slask
 	bool getMouseHeld(int i);//undocced
 	bool getMouseIdle(int i);//undocced
 
+	bool getKeyPressAny();//undocced
+	bool getKeyReleaseAny();//undocced
+	bool getKeyHeldAny();//undocced
+	bool getKeyIdleAny();//undocced
 	bool getKeyPress(int keyCode);//undocced
 	bool getKeyRelease(int keyCode);//undocced
 	bool getKeyHeld(int keyCode);//undocced

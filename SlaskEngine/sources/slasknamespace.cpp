@@ -1,4 +1,4 @@
-#include "../include/slasknamespace.h"
+#include "../include/SlaskNamespace.h"
 
 SpriteSet* slask::spriteSet(unsigned int i)
 {
@@ -48,6 +48,11 @@ void slask::setGameStartFunction(void(*func)())
 void slask::setGameEndFunction(void(*func)())
 {
 	SlaskEngine::setGameEndFunc(func);
+}
+
+void slask::setGameWindowResizeFunction(void(*func)())
+{
+	SlaskEngine::setGameWindowResizeFunc(func);
 }
 
 void slask::setTitle(const char* title)
@@ -116,47 +121,47 @@ bool slask::setFullscreenWindowed(int w, int h)
 
 void slask::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
 {
-	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, r, g, b, a, 0);
+	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, r, g, b, a);
 }
 
-void slask::drawSprite(Sprite* sprite, double x, double y, double depth)
+void slask::drawSprite(Sprite* sprite, double x, double y)
 {
-	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, sprite->getWidth(), sprite->getHeight(), 0, 0, 1, 1, 0, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, sprite->getWidth(), sprite->getHeight(), 0, 0, 1, 1, 0, 1, 1, 1, -1);
 }
 
-void slask::drawSprite(Sprite* sprite, double x, double y, double w, double h, double depth)
+void slask::drawSprite(Sprite* sprite, double x, double y, double w, double h)
 {
-	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, 0, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, 0, 1, 1, 1, -1);
 }
 
-void slask::drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double depth)
+void slask::drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy)
 {
-	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, fromx, fromy, tox, toy, 0, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, fromx, fromy, tox, toy, 0, 1, 1, 1, -1);
 }
 
-void slask::drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot, double depth)
+void slask::drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot)
 {
-	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, rot, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, 0, 0, 1, 1, rot, 1, 1, 1, -1);
 }
 
-void slask::drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double depth)
+void slask::drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3)
 {
-	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, 0, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, 0, 1, 1, 1, -1);
 }
 
-void slask::drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double depth)
+void slask::drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot)
 {
-	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, 1, 1, 1, -1, depth);
+	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, 1, 1, 1, -1);
 }
 
-void slask::drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
+void slask::drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a)
 {
-	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, fromx, fromy, tox, toy, rot, r, g, b, a, depth);
+	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, w, h, fromx, fromy, tox, toy, rot, r, g, b, a);
 }
 
-void slask::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth)
+void slask::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a)
 {
-	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, r, g, b, a, depth);
+	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, r, g, b, a);
 }
 
 void slask::log(const char *str)
@@ -180,15 +185,15 @@ bool slask::getMousePress(int i)
 }
 bool slask::getMouseRelease(int i)
 {
-	return InputHandler::instance()->getmouse(i)==-1;
+	return (InputHandler::instance()->getmouse(i)==-1);
 }
 bool slask::getMouseHeld(int i)
 {
-	return InputHandler::instance()->getmouse(i)>0;
+	return (InputHandler::instance()->getmouse(i)>0);
 }
 bool slask::getMouseIdle(int i)
 {
-	return InputHandler::instance()->getmouse(i)<=0;
+	return (InputHandler::instance()->getmouse(i)<=0);
 }
 int slask::getMousewheelUp()
 {
@@ -215,21 +220,38 @@ int slask::getMouseWindowY()
 	return InputHandler::instance()->getmouse_y();
 }
 
+bool getKeyPressAny()
+{
+	return InputHandler::instance()->getanykey(1);
+}
+bool getKeyReleaseAny()
+{
+	return InputHandler::instance()->getanykey(-1);
+}
+bool getKeyHeldAny()
+{
+	return InputHandler::instance()->getanykey(2);
+}
+bool getKeyIdleAny()
+{
+	return InputHandler::instance()->getanykey(0);
+}
+
 bool slask::getKeyPress(int keyCode)
 {
-	return InputHandler::instance()->getkey(keyCode)==1;
+	return (InputHandler::instance()->getkey(keyCode)==1);
 }
 bool slask::getKeyRelease(int keyCode)
 {
-	return InputHandler::instance()->getkey(keyCode)==-1;
+	return (InputHandler::instance()->getkey(keyCode)==-1);
 }
 bool slask::getKeyHeld(int keyCode)
 {
-	return InputHandler::instance()->getkey(keyCode)>0;
+	return (InputHandler::instance()->getkey(keyCode)>0);
 }
 bool slask::getKeyIdle(int keyCode)
 {
-	return InputHandler::instance()->getkey(keyCode)<=0;
+	return (InputHandler::instance()->getkey(keyCode)<=0);
 }
 
 void slask::setSoundSampleDecompress(bool enabled)

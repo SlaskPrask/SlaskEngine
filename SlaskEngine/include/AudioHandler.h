@@ -1,10 +1,10 @@
 #pragma once
 #include <fmod_errors.h>
 #include <fmod_studio.hpp>
-#include "../include/Audio.h"
-#include "../include/AudioBank.h"
-#include "../include/AudioBus.h"
-#include "../include/LogHandler.h"
+#include "Audio.h"
+#include "AudioBank.h"
+#include "AudioBus.h"
+#include "LogHandler.h"
 
 class AudioHandler
 {

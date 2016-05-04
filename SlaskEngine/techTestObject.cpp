@@ -37,6 +37,8 @@ TestObject::TestObject()
 	file.checkSaves(&files, 5, "Saves/", "SAVE", "txt");
 	file.newSave(3, "Saves/", "SAVE", "txt", "Zas");
 	file.copySave(2, 5, "Saves/", "SAVE", "txt", "Slask");*/
+
+	depth(-10);
 }
 
 void TestObject::run()
@@ -148,6 +150,9 @@ void TestObject::run()
 			taggy2 = NULL;
 		}
 	}
+
+	if (getKeyPress(Key::S))
+		depth(depth() + 100);
 }
 
 void TestObject::draw()

@@ -1,26 +1,27 @@
 #pragma once
-#include "../include/GraphicsHandler.h"
-#include "../include/SteamHandler.h"
-#include "../include/InputHandler.h"
-#include "../include/Sprite.h"
-#include "../include/AudioHandler.h"
-#include "../include/LogHandler.h"
-#include "../include/File.h"
-#include "../include/Input.h"
-#include "../include/Object.h"
-#include "../include/Scene.h"
-#include "../include/Font.h"
-#include "../include/Audio.h"
-#include "../include/AudioBank.h"
-#include "../include/Sprite.h"
-#include "../include/ListHandle.h"
-#include "../include/Timer.h"
-#include "../include/SpriteSet.h"
-#include "../include/AudioSet.h"
-#include "../include/FontSet.h"
-#include "../include/Platform.h"
-#include "../include/Tag.h"
-#include "../include/Camera.h"
+#include "GraphicsHandler.h"
+#include "SteamHandler.h"
+#include "InputHandler.h"
+#include "Sprite.h"
+#include "AudioHandler.h"
+#include "LogHandler.h"
+#include "File.h"
+#include "Input.h"
+#include "Object.h"
+#include "Scene.h"
+#include "Font.h"
+#include "Audio.h"
+#include "AudioBank.h"
+#include "Sprite.h"
+#include "ListHandle.h"
+#include "Timer.h"
+#include "SpriteSet.h"
+#include "AudioSet.h"
+#include "FontSet.h"
+#include "Platform.h"
+#include "Tag.h"
+#include "Camera.h"
+#include "DepthItem.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
@@ -38,12 +39,17 @@ private:
 	std::vector<AudioSet*> audiosets;
 	std::vector<FontSet*> fontsets;
 	static SlaskEngine *slaskengine;
-	static void (*gameStartFunc)();
-	static void (*gameEndFunc)();
+	static void(*gameStartFunc)();
+	static void(*gameEndFunc)();
+	static void(*gameWindowResizeFunc)();
+	std::vector<Object*> depthQueue;
+	std::vector<Object*> depthChangeQueue;
+	DepthItem *firstDepth;
 
 public:
 	static void setGameStartFunc(void(*func)());
 	static void setGameEndFunc(void(*func)());
+	static void setGameWindowResizeFunc(void(*func)());
 	static SlaskEngine* instance();
 
 	void createObject(Object *o);
@@ -70,6 +76,14 @@ public:
 	{
 		o->_refreshTagRuns(value);
 	}
+	void queueDepth(Object *o);
+	void detachDepth(Object *o);
+	void attachDepth(Object *o);
+	void setFirstDepth(DepthItem *d);
+	void resolveDepthQueue();
+
+	void resolveDepthChangeQueue();
+	void queueDepthChange(Object *o);
 
 	void deleteAllSets();
 

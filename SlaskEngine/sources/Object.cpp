@@ -6,13 +6,17 @@ Object::Object()
 	_destroyed = 0;
 	_tagRunValue = 1;
 	_tagDrawValue = 1;
+	_qdepth = _depth = 0;
+	_depthItem = NULL;
 	SlaskEngine::instance()->createObject(this);
+	SlaskEngine::instance()->queueDepth(this);
 }
 
 Object::~Object()
 {
 	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
 	SlaskEngine::instance()->objClearTag(this, *it);
+	SlaskEngine::instance()->detachDepth(this);
 }
 
 void Object::_refreshTagRuns(bool value)
@@ -47,12 +51,33 @@ void Object::_refreshTagDraws(bool value)
 	_tagDrawValue = 1;
 }
 
+void Object::_performDepthMove()
+{
+	if (_qdepth > _depth)
+	{
+		_depth = _qdepth;
+		_depthItem->moveUp();
+	}
+	if (_qdepth < _depth)
+	{
+		_depth = _qdepth;
+		_depthItem->moveDown();
+	}
+}
+
 void Object::run()
 {
 }
 
 void Object::draw()
 {
+}
+
+double Object::depth(double d)
+{
+	_qdepth = d;
+	SlaskEngine::instance()->queueDepthChange(this);
+	return _qdepth;
 }
 
 void Object::addTag(Tag *t)

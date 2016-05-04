@@ -1,5 +1,5 @@
 #pragma once
-#include "../include/GraphicsHandler.h"
+#include "GraphicsHandler.h"
 
 class SlaskEngine;
 

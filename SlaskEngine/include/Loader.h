@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "../include/LogHandler.h"
-#include "../include/SpriteSet.h"
+#include "LogHandler.h"
+#include "SpriteSet.h"
 #include <thread>
 #include <mutex>
 

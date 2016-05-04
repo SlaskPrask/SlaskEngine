@@ -15,6 +15,8 @@ void InputHandler::init()
 	mouse_cam_y = mouse_cam_x = 0;
 	window_focus = true;
 	signal_focus = signal_resize = 0;
+	anykeyreleased = anykeypressed = 0;
+	anykeyheld = 0;
 	for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
 	{
 		mouse_butt[i] = 0;
@@ -38,8 +40,8 @@ bool InputHandler::run()
 	{
 		if (key[i] == 1)
 			key[i] = 2;
-
-		else if (key[i] == -1)
+		else
+		if (key[i] == -1)
 			key[i] = 0;
 	}
 
@@ -47,7 +49,13 @@ bool InputHandler::run()
 	{
 		if (mouse_butt[i] == 1)
 			mouse_butt[i] = 2;
+		else 
+		if (mouse_butt[i] == -1)
+			mouse_butt[i] = 0;
 	}
+
+	anykeyreleased = 0;
+	anykeypressed = 0;
 
 	mousewheel_up = mousewheel_down = 0;
 
@@ -75,14 +83,22 @@ bool InputHandler::run()
 		case sf::Event::TextEntered:
 			break;
 		case sf::Event::KeyPressed:
-			if (event.key.code>=0&&event.key.code<sf::Keyboard::Key::KeyCount)
-			if (key[event.key.code] <= 0)
-				key[event.key.code] = 1;
+			if (event.key.code >= 0 && event.key.code < sf::Keyboard::Key::KeyCount)
+				if (key[event.key.code] <= 0)
+				{
+					key[event.key.code] = 1;
+					anykeypressed = 1;
+					anykeyheld++;
+				}
 			break;
 		case sf::Event::KeyReleased:
 			if (event.key.code >= 0 && event.key.code<sf::Keyboard::Key::KeyCount)
-			if (key[event.key.code] > 0)
-				key[event.key.code] = -1;
+				if (key[event.key.code] > 0)
+				{
+					key[event.key.code] = -1;
+					anykeyreleased = 1;
+					anykeyheld--;
+				}
 			break;
 		case sf::Event::MouseWheelMoved:
 			if (event.mouseWheel.delta < 0)
@@ -102,7 +118,7 @@ bool InputHandler::run()
 		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button >= 0 && event.mouseButton.button < _SLASK_MAXMOUSEBUTTONS)
 			{
-				mouse_butt[event.mouseButton.button] = 0;
+				mouse_butt[event.mouseButton.button] = -1;
 				mousePosition(event.mouseButton.x, event.mouseButton.y);
 			}
 			break;
@@ -169,6 +185,24 @@ int InputHandler::getmouse(int i)
 		LogHandler::notify("Input", unhandledKey.c_str());
 		return 0;
 	}
+}
+
+bool InputHandler::getanykey(int state)
+{
+	switch (state)
+	{
+	default:
+		return 0;
+	case -1://release
+		return anykeyreleased;
+	case 0:
+		return (anykeyheld == 0);
+	case 1:
+		return anykeypressed;
+	case 2:
+		return (anykeyheld > 0);
+	}
+	return 0;
 }
 
 InputHandler::~InputHandler()

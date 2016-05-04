@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
-#include "../include/LogHandler.h"
+#include "LogHandler.h"
 
 class GraphicsHandler;
 

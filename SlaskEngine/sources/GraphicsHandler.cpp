@@ -31,6 +31,8 @@ void GraphicsHandler::init(const char* title)
 	label = title;
 	width = height = 0;
 
+	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
+
 	fontLib=new FT_Library();
 	if (FT_Init_FreeType(fontLib))
 	{
@@ -357,7 +359,17 @@ void GraphicsHandler::close()
 	LogHandler::log("Graphics", "Window closed.");
 }
 
-void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a, double depth)
+void GraphicsHandler::setDepth(int d)
+{
+	drawDepth = (GLfloat)d;
+}
+
+void GraphicsHandler::releaseDepth()
+{
+	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
+}
+
+void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
 {
 	if (!window)
 		return;
@@ -381,7 +393,7 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 	for (unsigned int i = 0; str[i];i++)
 	{
 		ch = font->getChar(str[i]);
-		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,(GLfloat)depth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,(GLfloat)depth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,(GLfloat)depth,((GLfloat)ch->bw + (GLfloat)ch->w)*scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,(GLfloat)depth };
+		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth };
 		glVertexPointer(3, GL_FLOAT, 0, d2d);
 		if (str[i] == '\n')
 		{
@@ -403,7 +415,7 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 		restore_color();
 	glPopMatrix();
 }
-void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth)
+void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a)
 {
 	if (!window)
 		return;
@@ -415,7 +427,7 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 	}
 
 	glPushMatrix();
-	GLfloat d2d[] = { -(GLfloat)w/2.0f, -(GLfloat)h/2.0f,(GLfloat)depth, +(GLfloat)w/2.0f, -(GLfloat)h/2.0f,(GLfloat)depth, -(GLfloat)w/2.0f, +(GLfloat)h / 2.0f,(GLfloat)depth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,(GLfloat)depth };
+	GLfloat d2d[] = { -(GLfloat)w/2.0f, -(GLfloat)h/2.0f,drawDepth, +(GLfloat)w/2.0f, -(GLfloat)h/2.0f,drawDepth, -(GLfloat)w/2.0f, +(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,drawDepth };
 
 	glTranslated(x+w/2.0f, y + h / 2.0f, 0);
 	glRotated(rot, 0, 0, 1);
@@ -431,7 +443,7 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 	glPopMatrix();
 }
 
-void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth)
+void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a)
 {
 	if (!window)
 		return;
@@ -445,7 +457,7 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 	glPushMatrix();
 	double cx = (x1 + x2 + x3) / 3;
 	double cy = (y1 + y2 + y3) / 3;
-	GLfloat d2d[] = { (GLfloat)x1 - (GLfloat)cx,(GLfloat)y1 - (GLfloat)cy,(GLfloat)depth,(GLfloat)x2 - (GLfloat)cx,(GLfloat)y2 - (GLfloat)cy,(GLfloat)depth,(GLfloat)x3 - (GLfloat)cx,(GLfloat)y3 - (GLfloat)cy,(GLfloat)depth };
+	GLfloat d2d[] = { (GLfloat)x1 - (GLfloat)cx,(GLfloat)y1 - (GLfloat)cy,drawDepth,(GLfloat)x2 - (GLfloat)cx,(GLfloat)y2 - (GLfloat)cy,drawDepth,(GLfloat)x3 - (GLfloat)cx,(GLfloat)y3 - (GLfloat)cy,drawDepth };
 	glTranslated(cx,cy,0);
 	glRotated(rot, 0, 0, 1);
 	

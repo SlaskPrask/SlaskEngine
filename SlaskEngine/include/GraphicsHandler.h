@@ -7,12 +7,13 @@
 #include <freetype/ftglyph.h>
 #include <freetype/ftoutln.h>
 #include <freetype/fttrigon.h>
-#include "../include/Sprite.h"
-#include "../include/Font.h"
-#include "../include/LogHandler.h"
+#include "Sprite.h"
+#include "Font.h"
+#include "LogHandler.h"
 #include <vector>
 
 #define _SLASK_DEPTHRANGE (10000)
+#define _SLASK_DEFAULT_DRAW_DEPTH (-10000)
 
 class Camera;
 
@@ -38,7 +39,7 @@ private:
 
 	void initGL();
 
-	sf::Text text;
+	double drawDepth;
 
 	GraphicsHandler() {}
 
@@ -83,9 +84,12 @@ public:
 	bool setWindowed(int w, int h);
 	bool setFullscreenWindowed(int w, int h);
 
-	void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a, double depth);
-	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a, double depth);
-	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a, double depth);
+	void GraphicsHandler::setDepth(int d);
+	void GraphicsHandler::releaseDepth();
+
+	void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);
+	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a);
+	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);
 	void drawBegin();
 	void drawEnd();
 	void close();

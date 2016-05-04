@@ -36,10 +36,8 @@ void techGameStart()
 
 	basicFont->load();
 
-	testBG *bgObj = new testBG();
 	Tag *tag1 = new Tag();
 	Tag *tag2 = new Tag();
-	(new player())->at(getWindowWidth()/2,getWindowHeight()/2);
 	for (int i = 0; i < 30; i++)
 	{
 		techEnemy *enemy = new techEnemy();
@@ -47,9 +45,11 @@ void techGameStart()
 		if ((i / 2) * 2 == i)//every other also has taggy2
 		enemy->addTag(tag2);
 	}
+	(new player())->at(getWindowWidth() / 2, getWindowHeight() / 2);
 	TestObject *testObj = new TestObject;
 	testObj->taggy = tag1;
 	testObj->taggy2 = tag2;
+	testBG *bgObj = new testBG();
 	//
 }
 

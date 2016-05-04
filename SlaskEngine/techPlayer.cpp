@@ -17,6 +17,7 @@ player::player()
 	cam.setLimits(0, 0, getWindowWidth(), getWindowHeight());
 	cam.follow(&x, &y);
 	cam.activate();
+	depth(10);
 }
 
 void player::run()
@@ -44,7 +45,7 @@ void player::run()
 
 void player::draw()
 {
-	drawSpriteExt(sprite, x - 50, y - 50, 100, 100, 0, 0, 1, 1, 0, 1, 1, 0, 1, -100);
+	drawSpriteExt(sprite, x - 50, y - 50, 100, 100, 0, 0, 1, 1, 0, 1, 1, 0, 1);
 }
 
 player::~player()

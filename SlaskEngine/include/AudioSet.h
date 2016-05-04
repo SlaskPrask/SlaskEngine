@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "../include/LogHandler.h"
-#include "../include/Audio.h"
-#include "../include/AudioBank.h"
+#include "LogHandler.h"
+#include "Audio.h"
+#include "AudioBank.h"
 
 class SlaskEngine;
 
