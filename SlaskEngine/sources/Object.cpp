@@ -25,7 +25,7 @@ Object::~Object()
 	SlaskEngine::instance()->untieObjectFromScene(_scene, this);
 }
 
-void Object::unsetPersistent()
+Object* Object::unsetPersistent()
 {
 	if (_persistent)
 	{
@@ -40,9 +40,10 @@ void Object::unsetPersistent()
 			LogHandler::notify("Engine","Unable to unset persistence of object, no active scene.");
 		}
 	}
+	return this;
 }
 
-void Object::setPersistent()
+Object* Object::setPersistent()
 {
 	if (!_persistent)
 	{
@@ -50,6 +51,7 @@ void Object::setPersistent()
 		_scene = NULL;
 		_persistent = 0;
 	}
+	return this;
 }
 
 void Object::_refreshTagRuns(bool value)
@@ -114,14 +116,16 @@ double Object::depth(double d)
 	return _qdepth;
 }
 
-void Object::addTag(Tag *t)
+Object* Object::addTag(Tag *t)
 {
 	SlaskEngine::instance()->objAddTag(this, t);
+	return this;
 }
 
-void Object::removeTag(Tag *t)
+Object* Object::removeTag(Tag *t)
 {
 	SlaskEngine::instance()->objRemoveTag(this, t);
+	return this;
 }
 
 bool Object::_getDestroyed()

@@ -164,8 +164,11 @@ void SlaskEngine::init(int argc, char *argv[])
 		graphics->drawEnd();
 
 		//exit handle
-		if (exitHandle && gameEndFunc)
-		gameEndFunc();
+		if (exitHandle)
+			if (gameEndFunc)
+				gameEndFunc();
+			else
+				gameEnd();
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteScene();

@@ -55,24 +55,26 @@ public:
 		return _persistent;
 	}
 
-	inline void setPersistent();
-	inline void unsetPersistent();
+	inline Object* setPersistent();
+	inline Object* unsetPersistent();
 
-	void addTag(Tag *tag);
-	void removeTag(Tag *tag);
-	inline void at(double xp, double yp)
+	Object* addTag(Tag *tag);
+	Object* removeTag(Tag *tag);
+	inline Object* at(double xp, double yp)
 	{
 		x = xp;
 		y = yp;
+		return this;
 	}
-	inline void setPosition(double xp, double yp)
+	inline Object* setPosition(double xp, double yp)
 	{
-		at(xp, yp);
+		return at(xp, yp);
 	}
-	inline void move(double xp, double yp)
+	inline Object* move(double xp, double yp)
 	{
 		x += xp;
 		y += yp;
+		return this;
 	}
 	inline double getDepth()
 	{

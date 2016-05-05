@@ -11,11 +11,13 @@ private:
 	double w, h;
 	double boundsLeft, boundsRight, boundsTop, boundsBottom;
 	double limitsLeft, limitsRight, limitsTop, limitsBottom;
+	bool limits, bounds;
 	double *followx, *followy;
 	void doFollow();
 	void init();
 	inline void checkXLimits()
 	{
+		if (limits)
 		if (x<limitsLeft)
 			x = limitsLeft;
 		else
@@ -24,6 +26,7 @@ private:
 	}
 	inline void checkYLimits()
 	{
+		if (limits)
 		if (y<limitsTop)
 			y = limitsTop;
 		else
@@ -35,11 +38,12 @@ public:
 
 	Camera();
 	Camera(double xp, double yp, double sw, double sh);
-
 	inline void at(double xp, double yp)
 	{
 		x = xp;
 		y = yp;
+		checkXLimits();
+		checkYLimits();
 	}
 	inline void setPosition(double xp, double yp)
 	{
@@ -146,6 +150,10 @@ public:
 	inline double getBottom()
 	{
 		return y+h;
+	}
+	inline void unsetLimits()
+	{
+		limits = 0;
 	}
 
 	~Camera();

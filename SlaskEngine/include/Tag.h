@@ -17,20 +17,20 @@ private:
 
 public:
 	Tag();
-	inline bool runs()//undocced
+	inline bool runs()
 	{
 		return run;
 	}
-	inline bool draws()//undocced
+	inline bool draws()
 	{
 		return draw;
 	}
-	void enableRun();//undocced
-	void disableRun();//undocced
-	void enableDraw();//undocced
-	void disableDraw();//undocced
-	inline void enable();//undocced
-	inline void disable();//undocced
+	Tag* enableRun();
+	Tag* disableRun();
+	Tag* enableDraw();
+	Tag* disableDraw();
+	Tag* enable();
+	Tag* disable();
 
 	virtual ~Tag();
 };

@@ -122,6 +122,11 @@ namespace slask
 
 	float getSoundParameterValue(Audio* audio, const char* param);//undocced
 
+	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
+	{
+		return (x >= left&&y >= top&&x < right&&y < bottom);
+	}
+
 	void destroyAllObjects();
 	void exitGame();
 
