@@ -6,6 +6,7 @@ TestObject::TestObject()
 {
 	position = 0;
 	sprite = getSprite(0, 0);
+	font = getFont(0, 0);
 
 	/*testF=new Font("Progandae.otf");
 	TestMB=new AudioBank("fmod/TestBank/Build/Desktop/Master Bank.bank");
@@ -120,44 +121,11 @@ void TestObject::run()
 	{
 		setFullscreen(1920, 1080);
 	}
-
-	if (getKeyPress(Key::Pause))//pause first half of objects
-	{
-		if (taggy->runs())
-			taggy->disableRun();
-		else
-			taggy->enableRun();
-	}
-	if (taggy2 != NULL)
-	{
-		if (getKeyPress(Key::P))//pause 2nd half of objects
-		{
-			if (taggy2->runs())
-				taggy2->disableRun();
-			else
-				taggy2->enableRun();
-		}
-		if (getKeyPress(Key::O))//don't draw 2nd half of objects
-		{
-			if (taggy2->draws())
-				taggy2->disableDraw();
-			else
-				taggy2->enableDraw();
-		}
-		if (getKeyPress(Key::N))//delete 2nd half of object tag handling (should unpause and keep objects)
-		{
-			delete taggy2;
-			taggy2 = NULL;
-		}
-	}
-
-	if (getKeyPress(Key::S))
-		depth(depth() + 100);
 }
 
 void TestObject::draw()
 {
-	drawText(getFont(0, 0), "I'm Slask\nI'm Slask\nI'm Slask\nKappa", getCameraX() + 5, getCameraY() + 5, 14,2, 1, 1, 1, 1);
+	//drawText(font, "I'm Slask\nI'm Slask\nI'm Slask\nKappa", getCameraX() + 5, getCameraY() + 5, 14,2, 1, 1, 1, 1);
 }
 
 TestObject::~TestObject()

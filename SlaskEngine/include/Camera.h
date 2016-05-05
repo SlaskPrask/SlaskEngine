@@ -1,4 +1,5 @@
 #pragma once
+#include "Object.h"
 #include "GraphicsHandler.h"
 
 class SlaskEngine;
@@ -7,7 +8,6 @@ class Camera
 {
 	friend class SlaskEngine;
 private:
-	double x, y;
 	double w, h;
 	double boundsLeft, boundsRight, boundsTop, boundsBottom;
 	double limitsLeft, limitsRight, limitsTop, limitsBottom;
@@ -31,113 +31,119 @@ private:
 				y = limitsBottom-h;
 	}
 public:
-	Camera();//undocced
-	Camera(double xp, double yp, double sw, double sh);//undocced
+	double x, y;
 
-	inline void at(double xp, double yp)//undocced
+	Camera();
+	Camera(double xp, double yp, double sw, double sh);
+
+	inline void at(double xp, double yp)
 	{
 		x = xp;
 		y = yp;
 	}
-	inline void setPosition(double xp, double yp)//undocced
+	inline void setPosition(double xp, double yp)
 	{
 		at(xp, yp);
 	}
-	inline void setX(double p)//undocced
+	inline void setPositionCentered(double xp, double yp)
 	{
-		x = p;
+		at(xp - w / 2, yp - h / 2);
 	}
-	inline void setY(double p)//undocced
+	inline void setPositionCentered(Object *obj)
 	{
-		y = p;
+		at(obj->x - w / 2, obj->y - h / 2);
 	}
-	inline void unfollow()//undocced
+	inline void unfollow()
 	{
 		followx = followy = NULL;
 	}
-	bool isFollowing()//undocced
+	inline bool isFollowing()
 	{
 		return (followx==NULL?0:1);
 	}
-	void follow(double *xpoint, double *ypoint)//undocced
+	inline void follow(double *xpoint, double *ypoint)
 	{
 		followx = xpoint;
 		followy = ypoint;
 	}
-	inline double getBoundsTop()//undocced
+	inline void follow(Object *obj)
+	{
+		followx = &(obj->x);
+		followy = &(obj->y);
+	}
+	inline double getBoundsTop()
 	{
 		return boundsTop;
 	}
-	inline double getBoundsLeft()//undocced
+	inline double getBoundsLeft()
 	{
 		return boundsLeft;
 	}
-	inline double getBoundsRight()//undocced
+	inline double getBoundsRight()
 	{
 		return boundsRight;
 	}
-	inline double getBoundsBottom()//undocced
+	inline double getBoundsBottom()
 	{
 		return boundsBottom;
 	}
-	inline double getLimitsTop()//undocced
+	inline double getLimitsTop()
 	{
 		return limitsTop;
 	}
-	inline double getLimitsLeft()//undocced
+	inline double getLimitsLeft()
 	{
 		return limitsLeft;
 	}
-	inline double getLimitsRight()//undocced
+	inline double getLimitsRight()
 	{
 		return limitsRight;
 	}
-	inline double getLimitsBottom()//undocced
+	inline double getLimitsBottom()
 	{
 		return limitsBottom;
 	}
-	void setBounds(double left, double top, double right, double bottom);//undocced
-	void setLimits(double left, double top, double right, double bottom);//undocced
-
-	void setSize(double sw, double sh);//undocced
+	void setBounds(double left, double top, double right, double bottom);
+	void setLimits(double left, double top, double right, double bottom);
+	inline void setBounds(double hor, double ver)
+	{
+		setBounds(hor, ver, hor, ver);
+	}
+	inline void setLimits(double right, double bottom)
+	{
+		setLimits(0, 0, right, bottom);
+	}
+	void setSize(double sw, double sh);
 	
-	inline bool isActive()//undocced
+	inline bool isActive()
 	{
 		return (GraphicsHandler::instance()->getCamera() == this);
 	}
-	inline void activate()//undocced
+	inline void activate()
 	{
 		GraphicsHandler::instance()->setCamera(this);
 	}
-	inline double getX()//undocced
+	inline double getLeft()
 	{
 		return x;
 	}
-	inline double getLeft()//undocced
-	{
-		return x;
-	}
-	inline double getY()//undocced
+	inline double getTop()
 	{
 		return y;
 	}
-	inline double getTop()//undocced
-	{
-		return y;
-	}
-	inline double getWidth()//undocced
+	inline double getWidth()
 	{
 		return w;
 	}
-	inline double getHeight()//undocced
+	inline double getHeight()
 	{
 		return h;
 	}
-	inline double getRight()//undocced
+	inline double getRight()
 	{
 		return x+w;
 	}
-	inline double getBottom()//undocced
+	inline double getBottom()
 	{
 		return y+h;
 	}

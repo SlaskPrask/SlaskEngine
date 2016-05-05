@@ -6,8 +6,8 @@ using namespace slask;
 testBG::testBG()
 {
 	sprite = getSprite(0, 0);
-	windowHeight = getWindowHeight();
-	windowWidth = getWindowWidth();
+	windowHeight = getSceneWidth();
+	windowWidth = getSceneHeight();
 	depth(1000);
 }
 

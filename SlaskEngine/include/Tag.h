@@ -5,7 +5,7 @@
 class SlaskEngine;
 class Object;
 
-class Tag
+class Tag//undocced
 {
 	friend class SlaskEngine;
 private:
@@ -25,10 +25,12 @@ public:
 	{
 		return draw;
 	}
-	void enableRun();
-	void disableRun();
-	void enableDraw();
-	void disableDraw();
+	void enableRun();//undocced
+	void disableRun();//undocced
+	void enableDraw();//undocced
+	void disableDraw();//undocced
+	inline void enable();//undocced
+	inline void disable();//undocced
 
 	virtual ~Tag();
 };

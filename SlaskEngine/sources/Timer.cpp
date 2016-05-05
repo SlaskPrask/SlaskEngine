@@ -17,7 +17,7 @@ void Timer::start()
 		run = true;
 	}
 	else
-		LogHandler::notify("Timer", "Already running");
+	LogHandler::notify("Timer", "Timer is already running.");
 }
 
 
@@ -31,7 +31,7 @@ void Timer::restart()
 		run = true;
 	}
 	else
-		LogHandler::notify("Timer", "Doesn't Exist");
+		start();
 }
 
 void Timer::unpause()
@@ -42,12 +42,12 @@ void Timer::unpause()
 		run = true;
 	}
 	else
-		LogHandler::notify("Timer", "Already running");
+		start();
 }
 
 void Timer::pause()
 {
-	if (clock != NULL)
+	if (clock != NULL && run == true)
 	{
 		pauseElapsed = clock->getElapsedTime();
 		pausedTime += pauseElapsed.asMilliseconds();
@@ -55,8 +55,6 @@ void Timer::pause()
 		clock = NULL;
 		run = false;
 	}
-	else
-		LogHandler::notify("Timer", "Doesn't Exist");
 }
 
 int Timer::getTime() //gives the elapsed time in milliseconds
@@ -72,7 +70,6 @@ int Timer::getTime() //gives the elapsed time in milliseconds
 	}
 	else
 	{
-		LogHandler::notify("Timer", "Doesn't Exist");
 		return 0;
 	}
 }
@@ -85,8 +82,6 @@ void Timer::stop()
 		clock = NULL;
 		run = false;
 	}
-	else
-		LogHandler::notify("Timer", "Doesn't Exist");
 }
 
 bool Timer::isRunning()
@@ -97,7 +92,6 @@ bool Timer::isRunning()
 	}
 	else
 	{
-		LogHandler::notify("Timer", "Doesn't Exist");
 		return false;
 	}
 }
@@ -105,8 +99,5 @@ bool Timer::isRunning()
 Timer::~Timer()
 {
 	if (clock != NULL)
-	{
-		delete clock;
-		clock = NULL;
-	}
+	delete clock;
 }

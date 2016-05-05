@@ -3,7 +3,7 @@ using namespace slask;
 
 techEnemy::techEnemy()
 {
-	sprite = getSprite(1, 0);
+	sprite = getSprite(0, 0);
 	changeDirection();
 	dirTimer.start();
 	blinkTimer.start();
@@ -23,7 +23,15 @@ void techEnemy::changeDirection()
 void techEnemy::run()
 {
 	x += xdir;
+	if (x<0)
+		x = 0;
+	if (x > getSceneWidth())
+		x = getSceneWidth();
 	y += ydir;
+	if (y<0)
+		y = 0;
+	if (y > getSceneHeight())
+		y = getSceneHeight();
 
 	if (getMousePress(Mouse::Mouse1) && getMouseX() <= x + 25 && getMouseX() > x - 25 && getMouseY() <= y + 25 && getMouseY() > y - 25)
 		destroy();

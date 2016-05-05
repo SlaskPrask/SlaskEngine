@@ -11,22 +11,22 @@ private:
 	LinkedList<T> *firstNode;
 	LinkedList<T> *lastNode;
 
-	void setFirst(T *t)
+	inline void setFirst(T *t)
 	{
 		firstNode = t;
 	}
 
-	void setLast(T *t)
+	inline void setLast(T *t)
 	{
 		lastNode = t;
 	}
 
 public:
-	LinkedList<T> *first()
+	inline LinkedList<T> *first()
 	{
 		return firstNode;
 	}
-	LinkedList<T> *last()
+	inline LinkedList<T> *last()
 	{
 		return lastNode;
 	}

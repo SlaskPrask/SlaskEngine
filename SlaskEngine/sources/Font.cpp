@@ -65,11 +65,11 @@ bool Font::charToGL(FT_Face face, char c)
 		LogHandler::error("Graphics", str.c_str());
 		return 0;
 	}
-
+	
 	FT_Glyph_To_Bitmap(&glyph, ft_render_mode_normal, 0, 1);
 	FT_BitmapGlyph bmpg = (FT_BitmapGlyph)glyph;
 	FT_Bitmap &bmp = bmpg->bitmap;
-
+	
 	unsigned int w = power2(bmp.width);
 	unsigned int h = power2(bmp.rows);
 	GLubyte *data = new GLubyte[2 * w*h];
@@ -113,6 +113,7 @@ bool Font::charToGL(FT_Face face, char c)
 	glTranslatef((GLfloat)(face->glyph->advance.x >> 6), 0, 0);
 	glEndList();
 
+	FT_Done_Glyph(glyph);
 	delete[] data;
 	return 1;
 }
@@ -121,6 +122,6 @@ Font::~Font()
 {
 	glDeleteLists(list, 128);
 	for (unsigned char i = 0; i < 128; i++)
-	glDeleteTextures(1, &(ch[i].tex));
+   	glDeleteTextures(1, &(ch[i].tex));
 	delete[] ch;
 }

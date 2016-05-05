@@ -119,7 +119,10 @@ Audio* AudioSet::get(unsigned int i)
 	else
 	{
 		if (loads == 0)
-		LogHandler::notify("Resources", "Accessing an unloaded audio set.");
+		{
+			LogHandler::notify("Resources", "Accessing an unloaded audio set.");
+			return NULL;
+		}		
 		return data[i];
 	}
 }

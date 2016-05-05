@@ -63,3 +63,26 @@ void Tag::disableDraw()
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
 	engine->refreshObjTagDraws(*it, 0);
 }
+
+void Tag::enable()
+{
+	SlaskEngine *engine = SlaskEngine::instance();
+	run = 1;
+	draw = 1;
+	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
+	{
+		engine->refreshObjTagRuns(*it, 1);
+		engine->refreshObjTagDraws(*it, 1);
+	}
+}
+void Tag::disable()
+{
+	SlaskEngine *engine = SlaskEngine::instance();
+	draw = 0;
+	run = 0;
+	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
+	{
+		engine->refreshObjTagRuns(*it, 0);
+		engine->refreshObjTagDraws(*it, 0);
+	}
+}

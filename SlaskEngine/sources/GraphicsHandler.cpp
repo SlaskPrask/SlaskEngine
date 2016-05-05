@@ -92,8 +92,6 @@ void GraphicsHandler::setCamera(Camera *cam)
 
 bool GraphicsHandler::setFullscreen(int w, int h)
 {
-	close();
-
 	bool valid = false;
 	for (unsigned int i = 0; i < resolutions.size();i++)
 	if (resolutions[i].width == w && resolutions[i].height == h)
@@ -112,6 +110,7 @@ bool GraphicsHandler::setFullscreen(int w, int h)
 		return false;
 	}
 
+	close();
 
 #ifdef MAC
 	window = new sf::RenderWindow(sf::VideoMode(w, h), getTitle(), sf::Style::Fullscreen);
@@ -300,12 +299,12 @@ FT_Library* GraphicsHandler::getFontLib()
 
 double GraphicsHandler::getCameraX()
 {
-	return activeCamera->getX();
+	return activeCamera->x;
 }
 
 double GraphicsHandler::getCameraY()
 {
-	return activeCamera->getY();
+	return activeCamera->y;
 }
 
 double GraphicsHandler::getCameraW()
@@ -321,7 +320,7 @@ double GraphicsHandler::getCameraH()
 void GraphicsHandler::drawBegin()
 {
 	glLoadIdentity();
-	glTranslated(-activeCamera->getX(), -activeCamera->getY(), 0);
+	glTranslated(-activeCamera->x, -activeCamera->y, 0);
 	glPushMatrix();
 
 	if (!window)
@@ -497,10 +496,30 @@ int GraphicsHandler::getResolutions()
 
 int GraphicsHandler::getResolutionWidth(int i)
 {
+	if (i < 0 || i >= resolutions.size())
+	{
+		std::string str = "Attempting to read supported resolution width ";
+		str += std::to_string(i);
+		str += "/";
+		str += std::to_string(resolutions.size());
+		str += " out of range.";
+		LogHandler::notify("Graphics", str.c_str());
+		return 0;
+	}
 	return resolutions[i].width;
 }
 
 int GraphicsHandler::getResolutionHeight(int i)
 {
+	if (i < 0 || i >= resolutions.size())
+	{
+		std::string str = "Attempting to read supported resolution height ";
+		str += std::to_string(i);
+		str += "/";
+		str += std::to_string(resolutions.size());
+		str += " out of range.";
+		LogHandler::notify("Graphics", str.c_str());
+		return 0;
+	}
 	return resolutions[i].height;
 }

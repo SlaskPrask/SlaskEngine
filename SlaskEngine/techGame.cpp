@@ -4,6 +4,7 @@
 #include "techPlayer.h"
 #include "techEnemy.h"
 #include "techTestBG.h"
+#include "techScene.h"
 
 using namespace slask;
 
@@ -14,8 +15,6 @@ void techGameStart()
 
 	SpriteSet *marioSprites = new SpriteSet();//id 0
 	marioSprites->add("slask.png");//id 0
-	SpriteSet *enemySprites = new SpriteSet();//id 1
-	enemySprites->add("slask.png");//id 0 and this would ofc be some other png
 
 	AudioSet *stringsAudio = new AudioSet();
 	stringsAudio->setBank("fmod/TestBank/Build/Desktop/Master Bank.strings.bank");
@@ -27,43 +26,16 @@ void techGameStart()
 	FontSet *basicFont = new FontSet();
 	basicFont->add("Progandae.otf");
 
-	//should be done in scene
-	marioSprites->load();
-	enemySprites->load();
-
 	stringsAudio->load();
 	masterAudio->load();
 
-	basicFont->load();
-
-	Tag *tag1 = new Tag();
-	Tag *tag2 = new Tag();
-	for (int i = 0; i < 30; i++)
-	{
-		techEnemy *enemy = new techEnemy();
-		enemy->addTag(tag1);
-		if ((i / 2) * 2 == i)//every other also has taggy2
-		enemy->addTag(tag2);
-	}
-	(new player())->at(getWindowWidth() / 2, getWindowHeight() / 2);
-	TestObject *testObj = new TestObject;
-	testObj->taggy = tag1;
-	testObj->taggy2 = tag2;
-	testBG *bgObj = new testBG();
-	//
+	new World();
 }
 
 void techGameEnd()
 {
-	log("Window closed");
-
-	//should be done in scene
-	spriteSet(0)->unload();//mario sprites
-	spriteSet(1)->unload();//enemy sprites
 	audioSet(1)->unload();//master
 	audioSet(0)->unload();//strings last
-	fontSet(0)->unload();//font
-	//
 
 	exitGame();
 }

@@ -1,32 +1,23 @@
 #include "../include/Scene.h"
-
-
+#include "../include/SlaskEngine.h"
 
 Scene::Scene()
 {
-	w = h = 0;
-	block = 0;
+	width = height = 1;
+	SlaskEngine::instance()->switchScene(this);
 }
 
-void Scene::load(const char* file)
+void Scene::_deleteObjects()
 {
-	w = 100;
-	h = 50;
-	block = new int*[w];
-	for (int i = 0; i<w; i++)
+	for (std::vector<Object*>::iterator it = _objects.begin(); it != _objects.end(); ++it)
 	{
-		block[i] = new int[h];
-		for (int j = 0; j<h; j++)
-			block[i][j] = (i == 0 || j == 0 || j == h - 1 || i == w - 1) ? Wall : Empty;
+		(*it)->_scene = NULL;
+		(*it)->_persistent = 1;
+		(*it)->destroy();
 	}
 }
 
 Scene::~Scene()
 {
-	if (block)
-	{
-		for (int i = 0; i<w; i++)
-			delete block[i];
-		delete block;
-	}
+	_deleteObjects();
 }

@@ -13,12 +13,12 @@ private:
 protected:
 	ListHandle<T> *_listHandle;
 
-	void _next(T *t)
+	inline void _next(T *t)
 	{
 		_nextNode = t;
 	}
 
-	void _prev(T *t)
+	inline void _prev(T *t)
 	{
 		_prevNode = t;
 	}

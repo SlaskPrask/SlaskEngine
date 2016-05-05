@@ -64,6 +64,8 @@ void Camera::doFollow()
 
 void Camera::setSize(double sw,double sh)
 {
+	if (w == sw&&h == sh)
+		return;
 	w = sw;
 	h = sh;
 	if (isActive())

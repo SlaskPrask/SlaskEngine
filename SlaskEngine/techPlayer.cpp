@@ -1,8 +1,9 @@
 #include "techPlayer.h"
+#include "techScene.h"
 
 using namespace slask;
 
-player::player()
+Player::Player()
 {
 	x = 100;
 	y = 100;
@@ -11,16 +12,11 @@ player::player()
 	accel = 0.2;
 	maxspeed = 10;
 	sprite = getSprite(0,0);
-	cam.setSize(getWindowWidth() / 2, getWindowHeight() / 2);
-	cam.setPosition(getWindowWidth()/2 - cam.getWidth() / 2, getWindowHeight() / 2 - cam.getHeight() / 2);
-	cam.setBounds(250,140,250,140);
-	cam.setLimits(0, 0, getWindowWidth(), getWindowHeight());
-	cam.follow(&x, &y);
-	cam.activate();
 	depth(10);
+	failsafe = 1;
 }
 
-void player::run()
+void Player::run()
 {
 
 	if (getKeyHeld(Key::Right))
@@ -41,14 +37,18 @@ void player::run()
 
 	x += xvel;
 	y += yvel;
+
+	if (!failsafe)
+	if (getKeyPress(Key::Space))
+		new World();
+	failsafe = 0;
 }
 
-void player::draw()
+void Player::draw()
 {
 	drawSpriteExt(sprite, x - 50, y - 50, 100, 100, 0, 0, 1, 1, 0, 1, 1, 0, 1);
 }
 
-player::~player()
+Player::~Player()
 {
-	cam.unfollow();
 }

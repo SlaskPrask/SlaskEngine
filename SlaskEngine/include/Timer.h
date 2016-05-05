@@ -2,7 +2,7 @@
 #include "LogHandler.h"
 #pragma once
 
-class Timer //undocced
+class Timer
 {
 private:
 
