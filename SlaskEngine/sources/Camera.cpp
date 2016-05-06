@@ -12,6 +12,7 @@ Camera::Camera()
 {
 	x = y = 0;
 	w = h = 1;
+	limits = 0;
 	init();
 }
 
@@ -86,6 +87,9 @@ void Camera::setLimits(double left, double top, double right, double bottom)
 	limitsRight = right;
 	limitsTop = top;
 	limitsBottom = bottom;
+	limits = 1;
+	checkXLimits();
+	checkYLimits();
 }
 
 Camera::~Camera()

@@ -122,6 +122,11 @@ namespace slask
 
 	float getSoundParameterValue(Audio* audio, const char* param);//undocced
 
+	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
+	{
+		return (x >= left&&y >= top&&x < right&&y < bottom);
+	}
+
 	void destroyAllObjects();
 	void exitGame();
 
@@ -199,8 +204,8 @@ namespace slask
 	bool setFullscreenWindowed(int w, int h);
 
 	int getResolutions();
-	int getResolutionWidth(int i);
-	int getResolutionHeight(int i);
+	int getResolutionWidth(unsigned int i);
+	int getResolutionHeight(unsigned int i);
 
 	namespace Mouse//undocced
 	{

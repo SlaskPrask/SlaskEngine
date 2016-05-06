@@ -138,11 +138,11 @@ int slask::getResolutions()
 {
 	return GraphicsHandler::instance()->getResolutions();
 }
-int slask::getResolutionWidth(int i)
+int slask::getResolutionWidth(unsigned int i)
 {
 	return GraphicsHandler::instance()->getResolutionWidth(i);
 }
-int slask::getResolutionHeight(int i)
+int slask::getResolutionHeight(unsigned int i)
 {
 	return GraphicsHandler::instance()->getResolutionHeight(i);
 }

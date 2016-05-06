@@ -382,7 +382,7 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 	for (unsigned int i = 0; str[i];i++)
 	{
 		ch = font->getChar(str[i]);
-		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth };
+		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth };
 		glVertexPointer(3, GL_FLOAT, 0, d2d);
 		if (str[i] == '\n')
 		{
@@ -494,9 +494,9 @@ int GraphicsHandler::getResolutions()
 	return resolutions.size();
 }
 
-int GraphicsHandler::getResolutionWidth(int i)
+int GraphicsHandler::getResolutionWidth(unsigned int i)
 {
-	if (i < 0 || i >= resolutions.size())
+	if (i >= resolutions.size())
 	{
 		std::string str = "Attempting to read supported resolution width ";
 		str += std::to_string(i);
@@ -509,9 +509,9 @@ int GraphicsHandler::getResolutionWidth(int i)
 	return resolutions[i].width;
 }
 
-int GraphicsHandler::getResolutionHeight(int i)
+int GraphicsHandler::getResolutionHeight(unsigned int i)
 {
-	if (i < 0 || i >= resolutions.size())
+	if (i >= resolutions.size())
 	{
 		std::string str = "Attempting to read supported resolution height ";
 		str += std::to_string(i);
