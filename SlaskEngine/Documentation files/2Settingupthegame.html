@@ -1,0 +1,128 @@
+﻿<html>
+	
+<head>
+	<title>2. Setting up the game</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("2Settingupthegame");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">2. Setting up the game</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; <a href="Objectsandscenes.html">Objects and scenes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Objectsandscenes.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="1Settinguptheengine.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="3Designingourfirstobject.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Setting up the game</span></p>
+<p class="rvps2"><span class="rvts6">Now we set up our game files. This is of course up to you how you want it set up.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">mygame.h</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include "world1.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include "world2.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include "player.h"</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameStart();</span></p>
+<p class="rvps2"><span class="rvts18">void gameEnd();</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span><br/><span class="rvts18">#include "world1.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include "world2.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include "player.h"</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Here we include the engine's header file and header files for the classes we will be designing in this tutorial. world1.h will contain our first scene and world2.h will contain our second scene. Our player object will be in player.h. The namespace contains the engine's built in functions.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">void gameStart();</span></p>
+<p class="rvps2"><span class="rvts18">void gameEnd();</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">We define the start and end point function references here and implement them in mygame.cpp.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create HTML Help documents</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

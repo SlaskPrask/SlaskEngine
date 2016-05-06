@@ -1,0 +1,224 @@
+﻿<html>
+	
+<head>
+	<title>Camera class</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Cameraclass");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Camera class</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="PredefinedClasses.html">Predefined Classes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="PredefinedClasses.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="PredefinedClasses.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Timerclass.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">class Camera</span></p>
+<p class="rvps2"><span class="rvts6">Cameras are used to crop out a part of the scene. It can be smaller than the scene to provide a zoom effect on the focused area or the same size as the scene. Defining an active camera makes it's view scale to the window. When no camera is active the window will display as much as it can in native scale. Inactive cameras can still be used for positioning purposes.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts26">Provided members and methods</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Public members</span></p>
+<p class="rvps2"><span class="rvts20">double x;</span></p>
+<p class="rvps5"><span class="rvts6">The camera's x position.</span></p>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double y;</span></p>
+<p class="rvps5"><span class="rvts6">The camera's y position.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Creating a camera</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Camera();</span></p>
+<p class="rvps2"><span class="rvts20">Camera(double xp,double yp,double sw,double sh);</span></p>
+<p class="rvps5"><span class="rvts6">Creates a new camera. Initial top left position can be given in </span><span class="rvts18">xp</span><span class="rvts6">,</span><span class="rvts18">yp</span><span class="rvts6"> and initial width/height size in </span><span class="rvts18">sw</span><span class="rvts6">,</span><span class="rvts18">sh</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Activating the camera</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void activate();</span></p>
+<p class="rvps5"><span class="rvts6">Makes the window show the view of this camera.</span></p>
+<p class="rvps5"><span class="rvts6">Deactivates all previous cameras.</span></p>
+<p class="rvps5"><span class="rvts6">If you wish to have no camera active you may call </span><span class="rvts30">slask::deactivateCamera()</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void isActive();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether the camera is currently active.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Moving the camera</span></p>
+<p class="rvps2"><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> values can be directly changed and read.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void at(double xp,double up);</span></p>
+<p class="rvps2"><span class="rvts20">void setPosition(double xp,double up);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the position of the camera to </span><span class="rvts18">xp</span><span class="rvts6">,</span><span class="rvts18">yp</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setPositionCentered(double xp,double up);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the position of the camera to center on </span><span class="rvts18">xp</span><span class="rvts6">,</span><span class="rvts18">yp</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">setPosition(xp-getWidth()/2,yp-getHeight()/2)</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setPositionCentered(Object *obj);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the position of the camera to center on </span><span class="rvts18">obj</span><span class="rvts6">'s </span><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">setPosition(obj-&gt;x-getWidth()/2,obj-&gt;y-getHeight()/2)</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getLeft();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the left edge of the camera. Same as </span><span class="rvts18">x</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getTop();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the top edge of the camera. Same as </span><span class="rvts18">y</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getRight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the right edge of the camera. Same as </span><span class="rvts18">x+getWidth()</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getBottom();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the bottom edge of the camera. Same as </span><span class="rvts18">y+getHeight()</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Resizing the camera</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setSize(double sw,double sh);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the width of the camera to </span><span class="rvts18">sw</span><span class="rvts6"> and the height to </span><span class="rvts18">sh</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getWidth();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the width of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getHeight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the height of the camera.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Making the camera automatically follow a point</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void follow(double *xpoint,double *ypoint);</span></p>
+<p class="rvps5"><span class="rvts6">Makes the camera automatically follow the given coordinate pointers.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void follow(Object *obj);</span></p>
+<p class="rvps5"><span class="rvts6">Makes the camera automatically follow the given object's </span><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> coordinates.</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">follow(&amp;(obj-&gt;x),&amp;(obj-&gt;y))</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts29"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void unfollow();</span></p>
+<p class="rvps5"><span class="rvts6">Stops the camera from automatically following the given coordinate pointers.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool isFollowing();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether the camera is actively following a set of coordinate pointers.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setBounds(double left,double top,double right,double bottom);</span></p>
+<p class="rvps5"><span class="rvts6">Defines close to the edges of the camera it will let the followed point get.</span></p>
+<p class="rvps5"><span class="rvts6">When the bounds are too large for the camera it will center itself on the camera.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setBounds(double hor,double ver);</span></p>
+<p class="rvps5"><span class="rvts6">Calls </span><span class="rvts18">setBounds(hor,ver,hor,ver)</span><span class="rvts6"> on the camera.</span></p>
+<p class="rvps5"><span class="rvts6">Fast way to set symmetrical boundaries.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setLimits(double left,double top,double right,double bottom);</span></p>
+<p class="rvps5"><span class="rvts6">Limits the camera's boundaries from going past the given limits.</span></p>
+<p class="rvps5"><span class="rvts6">This does not prevent the followed point from going past the limits and the point can reach the edges of the camera when the camera's position is at it's limits.</span></p>
+<p class="rvps5"><span class="rvts6">Usually the limits are set to match the size of the current scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setLimits(double right,double bottom);</span></p>
+<p class="rvps5"><span class="rvts6">Calls </span><span class="rvts18">setLimits(0,0,right,bottom)</span><span class="rvts6"> on the camera.</span></p>
+<p class="rvps5"><span class="rvts6">Fast way to set limits that start from 0,0 position.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void unsetLimits();</span></p>
+<p class="rvps5"><span class="rvts6">Removes the limits set to the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getBoundsLeft();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the left boundary of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getBoundsTop();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the top boundary of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getBoundsRight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the right boundary of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getBoundsBottom();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the bottom boundary of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getLimitsLeft();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the left limit of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getLimitsTop();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the top limit of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getLimitsRight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the right limit of the camera.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getLimitsBottom();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the bottom limit of the camera.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">cam=new Camera();</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;size(640,480);</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;setPositionCentered(player.x,player.y);</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;setBoundaries(140,100);</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;setLimits(0,0,getSceneWidth(),getSceneHeight())</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;follow(player);</span></p>
+<p class="rvps2"><span class="rvts18">cam-&gt;activate();</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpauthoringsoftware.com">News and information about help authoring tools and software</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,130 @@
+﻿<html>
+	
+<head>
+	<title>1. Setting up the engine</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("1Settinguptheengine");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">1. Setting up the engine</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; <a href="Objectsandscenes.html">Objects and scenes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Objectsandscenes.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Objectsandscenes.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="2Settingupthegame.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Setting up the engine</span></p>
+<p class="rvps2"><span class="rvts6">Similar to the Hello World tutorial we set up the engine.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">main.cpp</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts18">#include "mygame.h"</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void main(int argc,char *argv[])</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(&amp;gameStart);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameEndFunction(&amp;gameEnd);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;delete new SlaskEngine(argc,argv);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;return 0;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">#include "mygame.h"</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">We include a header file we will be writing in the process of this tutorial that includes all our game header files.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(</span><span class="rvts18">&amp;gameStart</span><span class="rvts21">);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameEndFunction(</span><span class="rvts18">&amp;gameEnd</span><span class="rvts21">);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Here we set the game's start and end event functions. We will be defining these in mygame.h and mygame.cpp.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpauthoringsoftware.com">What is a Help Authoring tool?</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

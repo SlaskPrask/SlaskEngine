@@ -60,7 +60,7 @@
 				
 				<a href="AvailableFunctions.html"><img src="img/arrow_left.png" alt="Previous"/></a>
 				
-				<a href="DrawingSprites.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				<a href="Objectmanagement.html"><img src="img/arrow_right.png" alt="Next"/></a>
 				
 				</div>
 			<div class="clear"></div>
@@ -68,77 +68,119 @@
 	<div id="topic_content">
 		
 <p></p>
-<p class="rvps2"><span class="rvts17">Window &amp; Display:</span></p>
-<p class="rvps2"><span class="rvts17"><br/></span></p>
-<p class="rvps2"><span class="rvts17"><br/></span></p>
-<p class="rvps2"><span class="rvts17"><br/></span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;slask::exitGame()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Terminates the program closing the window and shutting down.</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Usually called in slask::end() or after handling that.</span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
+<p class="rvps2"><span class="rvts19">Changing window size and settings</span></p>
+<p class="rvps2"><span class="rvts6">One of </span><span class="rvts18">setWindowed(w,h)</span><span class="rvts6">, </span><span class="rvts18">setFullscreen(w,h)</span><span class="rvts6"> or </span><span class="rvts18">setFullscreenWindow(w,h)</span><span class="rvts6"> should be called when the game starts.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;slask::createObject(Object*)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Creates the object within SlaskEngine environment.</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Example: createObject(new Player());</span></p>
+<p class="rvps2"><span class="rvts20">bool setWindowed(int w,int h);</span></p>
+<p class="rvps5"><span class="rvts6">Changes window size to given width and height.</span></p>
+<p class="rvps5"><span class="rvts6">Makes the game windowed.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable change to window </span><span class="rvts23">x</span><span class="rvts22">,</span><span class="rvts24">y</span></p>
+<p class="rvps6"><span class="rvts6">A fatal error occurred when creating or changing the window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;setTitle(const char*)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Set's the title of the game window.</span></p>
+<p class="rvps2"><span class="rvts20">bool setFullscreen(int w,int h);</span></p>
+<p class="rvps5"><span class="rvts6">Changes window size to given width and height.</span></p>
+<p class="rvps5"><span class="rvts6">Makes the game fullscreen.</span></p>
+<p class="rvps5"><span class="rvts6">This function should only use resolutions provided by the resolution functions described below.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable change to fullscreen resolution </span><span class="rvts23">x</span><span class="rvts22">,</span><span class="rvts24">y</span></p>
+<p class="rvps6"><span class="rvts6">A fatal error occurred when creating or changing the window.</span></p>
+<p class="rvps5"><span class="rvts22">Attempted to switch to unsupported resolution </span><span class="rvts23">x</span><span class="rvts22">,</span><span class="rvts24">y</span></p>
+<p class="rvps6"><span class="rvts6">Width and height given are not supported by the current display.</span></p>
+<p class="rvps6"><span class="rvts6">This error is not fatal and will keep the original window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;setFPS(int)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Set's the frames per second value of the game.</span></p>
+<p class="rvps2"><span class="rvts20">bool setWindowedFullscreen(int w,int h);</span></p>
+<p class="rvps5"><span class="rvts6">Changes window size to given width and height.</span></p>
+<p class="rvps5"><span class="rvts6">Makes the game a borderless fullscreen window.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable change to fullscreen windowed </span><span class="rvts23">x</span><span class="rvts22">,</span><span class="rvts24">y</span></p>
+<p class="rvps6"><span class="rvts6">A fatal error occurred when creating or changing the window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;setVSync(bool)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Enables or disables vertical sync of the game window.</span></p>
+<p class="rvps2"><span class="rvts20">int getWindowWidth();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current width of the window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;const char* getTitle()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the title of the game window.</span></p>
+<p class="rvps2"><span class="rvts20">int getWindowHeight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current height of the window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getFPS();</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the frames per second value of the game.</span></p>
-<p class="rvps2"><span class="rvts17"><br/></span></p>
-<p class="rvps2"><span class="rvts17"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;bool getVSync()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns whether vertical sync is enabled for the game window.</span></p>
+<p class="rvps2"><span class="rvts20">void setTitle(const char* str);</span></p>
+<p class="rvps2"><span class="rvts20">void setTitle(std::string str);</span></p>
+<p class="rvps5"><span class="rvts6">Set's the text shown in task bar and at the top of the window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getWindowWidth()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the width of the game window.</span></p>
+<p class="rvps2"><span class="rvts20">void setFPS(int fps);</span></p>
+<p class="rvps5"><span class="rvts6">Sets the current frames per second value of the game for both drawing and running.</span></p>
+<p class="rvps5"><span class="rvts6">Should be called when the game starts.</span></p>
+<p class="rvps5"><span class="rvts6">60 by default.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getWindowHeight()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the height of the game window.</span></p>
+<p class="rvps2"><span class="rvts20">void enableVSync();</span></p>
+<p class="rvps5"><span class="rvts6">Enables vertical syncing of the game window.</span></p>
+<p class="rvps5"><span class="rvts6">Enabled by default.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getResolutions()</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the number of available fullscreen resolutions.</span></p>
+<p class="rvps2"><span class="rvts20">void disableVSync();</span></p>
+<p class="rvps5"><span class="rvts6">Disables vertical syncing of the game window.</span></p>
+<p class="rvps5"><span class="rvts6">Enabled by default.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getResolutionWidth(int)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the width of the resolution chosen from 0 to getResolutions().</span></p>
+<p class="rvps2"><span class="rvts20">int getFPS();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the game's current frames per second value.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;int getResolutionHeight(int)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns the height of the resolution chosen from 0 to getResolutions().</span></p>
+<p class="rvps2"><span class="rvts20">bool getVSync();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether vertical syncing is enabled for the game window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;bool setFullscreen(int width, int height)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Sets the game window to fullscreen mode with given width and height.</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns whether successful.</span></p>
+<p class="rvps2"><span class="rvts20">const char* getTitle();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the title of the game window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts17"> &nbsp; &nbsp;bool setWindowed(int width, int height)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Sets the game window to window mode with given width and height.</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns whether successful.</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">setTitle("Hello World!");</span></p>
+<p class="rvps2"><span class="rvts21">setWindowed(640,480);</span></p>
+<p class="rvps2"><span class="rvts21">enableVSync();</span></p>
+<p class="rvps2"><span class="rvts21">setFPS(60);</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Obtaining supported resolutions</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts6"> </span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp;bool setFullscreenWindowed(int width, int height)</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Sets the game window to borderless window mode with given width and height.</span></p>
-<p class="rvps2"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;Returns whether successful.</span></p>
+<p class="rvps2"><span class="rvts20">int getResolutions();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the number of supported resolutions.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getResolutionWidth(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns the width of the resolution at index </span><span class="rvts18">i</span><span class="rvts6">.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Attempting to read supported resolution width </span><span class="rvts23">i</span><span class="rvts22">/</span><span class="rvts24">x </span><span class="rvts22">out of range.</span></p>
+<p class="rvps6"><span class="rvts6">A fatal error occurred when creating or changing the window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getResolutionHeight(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns the height of the resolution at index </span><span class="rvts18">i</span><span class="rvts6">.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Attempting to read supported resolution height </span><span class="rvts23">i</span><span class="rvts22">/</span><span class="rvts24">x </span><span class="rvts22">out of range.</span></p>
+<p class="rvps6"><span class="rvts6">A fatal error occurred when creating or changing the window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">int largestWidth,largestHeight;</span></p>
+<p class="rvps2"><span class="rvts21">int lastResolution=getResolutions()-1; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//index to the last supported resolution</span></p>
+<p class="rvps2"><span class="rvts21">largestWidth=getResolutionWidth(lastResolution); &nbsp; &nbsp;//get the width of the last resolution</span></p>
+<p class="rvps2"><span class="rvts21">largestHeight=getResolutionHeight(lastResolution); &nbsp;//get the height of the last resolution</span></p>
+<p class="rvps2"><span class="rvts18">setFullscreen(largestWidth,largestHeight); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//set the game to fullscreen mode</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/create-epub-ebooks">Free EPub producer</a></p>
 </div>

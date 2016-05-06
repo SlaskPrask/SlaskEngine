@@ -1,0 +1,174 @@
+﻿<html>
+	
+<head>
+	<title>4. Making the player object</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("4Makingtheplayerobject");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">4. Making the player object</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; <a href="Objectsandscenes.html">Objects and scenes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Objectsandscenes.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="3Designingourfirstobject.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="5Designingthefirstscene.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Designing our first object</span></p>
+<p class="rvps2"><span class="rvts6">Objects are everything showing up, moving and interacting in the game. Our player will be it's own object class. If you were to make an enemy, every enemy type will have it's own class in the game there can be multiple enemies of the same type and class.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">player.cpp</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include "player.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include "world1.h"</span><br/><span class="rvts18">#include "world2.h"</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">Player::Player()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;sprite=getSprite(0,0);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void Player::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyHeld(Key::Left))</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;x-=10;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyHeld(Key::Right))</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;x+=10;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::Num1))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new World1;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::Num2))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new World2;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void Player::draw()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;drawSprite(sprite,x,y);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">Player::Player()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;sprite=getSprite(0,0);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The player's constructor will load the player's sprite from our sprite set. Sprite, audio and font sets are used to store our game resources.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">void Player::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyHeld(Key::Left))</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;x-=1;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyHeld(Key::Right))</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;x+=1;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The engine asks for a </span><span class="rvts18">run()</span><span class="rvts6"> function in our objects for all it's actions. The </span><span class="rvts18">run()</span><span class="rvts6"> function should never contain any drawing functions. Our player will simply move on it's x axis whenever the left or right key on the keyboard are held down. the </span><span class="rvts18">x</span><span class="rvts6"> variable is provided by the engine.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::Num1))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new World1;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::Num2))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new World2;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The player can switch scenes by pressing 1 or 2 on the keyboard. To switch scenes you simply create a new instance and the engine will take care of destroying the previous one and starting the new one.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">void Player::draw()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;drawSprite(sprite,x,y);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The engine also wants a </span><span class="rvts18">draw()</span><span class="rvts6"> function from all our objects. This function will draw everything our object should draw and never contain any code that changes the object's state in any way. </span><span class="rvts18">drawSprite()</span><span class="rvts6"> will simply draw the sprite we obtained from our set earlier at the x and y coordinates of our player.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create PDF Help documents</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

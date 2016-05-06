@@ -1,0 +1,202 @@
+﻿<html>
+	
+<head>
+	<title>Object class</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Objectclass");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Object class</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="VirtualClasses.html">Virtual Classes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="VirtualClasses.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="VirtualClasses.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Sceneclass.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">class Object</span></p>
+<p class="rvps2"><span class="rvts22"><br/></span></p>
+<p class="rvps2"><span class="rvts6">Parent class for creating custom game objects. Game objects should always inherit this class to let the engine handle them as objects.</span></p>
+<p class="rvps2"><span class="rvts6">Do not call </span><span class="rvts18">delete</span><span class="rvts6"> on members of the object class to not disturb the engine. Use the provided </span><span class="rvts18">destroy()</span><span class="rvts6"> method instead.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include "Slask.h"</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">class Player:public Object</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;SLASKOBJECT</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;/*user variables and methods*/</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void Player::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span><br/><span class="rvts18"> &nbsp; &nbsp;//code for running this object, controlling, state changing, animating, AI</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void Player::draw()</span></p>
+<p class="rvps2"><span class="rvts18">{</span><br/><span class="rvts18"> &nbsp; &nbsp;//drawSprite() and other drawing calls</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts26">Making objects work with the engine</span></p>
+<p class="rvps2"><span class="rvts6">Example class </span><span class="rvts28">Player</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">class </span><span class="rvts27">Player</span><span class="rvts20">:public Object;</span></p>
+<p class="rvps5"><span class="rvts6">Parent class </span><span class="rvts18">Object</span><span class="rvts6"> needs to be used for game objects.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">SLASKOBJECT</span></p>
+<p class="rvps5"><span class="rvts18">SLASKOBJECT</span><span class="rvts6"> should be inserted at the top of all game objects.</span></p>
+<p class="rvps5"><span class="rvts6">This takes care of implementing necessary functions for game objects.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Implementing custom object functionality and code</span></p>
+<p class="rvps2"><span class="rvts20">virtual void run();</span></p>
+<p class="rvps5"><span class="rvts6">Run function should be implemented in the object.</span></p>
+<p class="rvps5"><span class="rvts18">run()</span><span class="rvts6"> is called by the engine each game frame and should contain the object's running code.</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts18">run</span><span class="rvts6"> function should not contain any code for drawing the visuals of this object.</span></p>
+<p class="rvps5"><span class="rvts6">Running can be affected by active tags.</span></p>
+<p class="rvps5"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">virtual void draw();</span></p>
+<p class="rvps5"><span class="rvts6">Draw function should be implemented in the object.</span></p>
+<p class="rvps5"><span class="rvts18">draw()</span><span class="rvts6"> is called by the engine each game frame after running all objects and should contain the object's drawing code.</span></p>
+<p class="rvps5"><span class="rvts6">The </span><span class="rvts18">draw</span><span class="rvts6"> function should not contain any code that changes the object's state or animations.</span></p>
+<p class="rvps5"><span class="rvts6">Drawing can be affected by active tags.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts26">Provided members and methods</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Public members</span></p>
+<p class="rvps2"><span class="rvts20">double x;</span></p>
+<p class="rvps5"><span class="rvts6">The object's x position.</span></p>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double y;</span></p>
+<p class="rvps5"><span class="rvts6">The object's y position.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Destroying the object</span></p>
+<p class="rvps2"><span class="rvts20">void destroy();</span></p>
+<p class="rvps5"><span class="rvts6">Destroys the object, calls it's destructors and frees it from the memory.</span></p>
+<p class="rvps5"><span class="rvts6">Use this method instead of manually calling </span><span class="rvts18">delete</span><span class="rvts6"> on objects to let the engine handle it's destruction.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Moving the object</span></p>
+<p class="rvps2"><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> values can be directly changed.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* at(double xp,double yp);</span></p>
+<p class="rvps2"><span class="rvts20">Object* setPosition(double xp,double yp);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the position of the object.</span></p>
+<p class="rvps5"><span class="rvts6">Sets x to xp and y to yp;</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* move(double xp,double yp);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the position of the object by the given amounts.</span></p>
+<p class="rvps5"><span class="rvts6">Adds xp to x and yp to y;</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Handling drawing depth</span></p>
+<p class="rvps2"><span class="rvts20">double depth();</span></p>
+<p class="rvps2"><span class="rvts20">double getDepth();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the depth of the object.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double depth(double d);</span></p>
+<p class="rvps2"><span class="rvts20">double setDepth(double d);</span></p>
+<p class="rvps5"><span class="rvts6">Changes the object's depth to given value.</span></p>
+<p class="rvps5"><span class="rvts6">Returns depth of the object.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Tagging objects together</span></p>
+<p class="rvps2"><span class="rvts20">Object* addTag(Tag *tag);</span></p>
+<p class="rvps5"><span class="rvts6">Adds this object to the given tag.</span></p>
+<p class="rvps5"><span class="rvts6">Object will follow the tags rules.</span></p>
+<p class="rvps5"><span class="rvts6">Multiple tags can be added to one object.</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* removeTag(Tag *tag);</span></p>
+<p class="rvps5"><span class="rvts6">Removes this object from the given tag and restores it's status to normal.</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Handling objects in scenes</span></p>
+<p class="rvps2"><span class="rvts6">By default objects are tied to the currently active scene and deleted when scenes are changed.</span></p>
+<p class="rvps2"><span class="rvts6">Making an object persistent will make it remain through scene changes.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool isPersistent();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether the object is persistent and not tied to the current scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* setPersistent();</span></p>
+<p class="rvps5"><span class="rvts6">Separates the object from the current scene.</span></p>
+<p class="rvps5"><span class="rvts6">Persistent objects will remain when scenes are changed.</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable to unset persistence of object, no active scene.</span></p>
+<p class="rvps6"><span class="rvts6">The engine doesn't have an active scene loaded. You should always have a scene before creating objects.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* unsetPersistent();</span></p>
+<p class="rvps5"><span class="rvts6">Ties the object to the current scene and it will get destroyed when scenes are changed.</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current object</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create CHM Help documents</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

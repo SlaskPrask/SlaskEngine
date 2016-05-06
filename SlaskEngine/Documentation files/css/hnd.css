@@ -94,6 +94,80 @@ span.rvts17
 {
  font-family: 'Cambria';
 }
+span.rvts18
+{
+ font-family: 'Consolas';
+}
+span.rvts19
+{
+ font-size: 14pt;
+ font-weight: bold;
+}
+span.rvts20
+{
+ font-size: 11pt;
+ font-family: 'Consolas';
+}
+span.rvts21
+{
+ font-family: 'Consolas';
+ font-weight: bold;
+}
+span.rvts22
+{
+ font-size: 9.5pt;
+ font-family: 'Consolas';
+ color: #a31515;
+ background-color: #ffffff;
+}
+span.rvts23
+{
+ font-size: 9.5pt;
+ font-family: 'Consolas';
+ color: #0000ff;
+}
+span.rvts24
+{
+ font-size: 9.5pt;
+ font-family: 'Consolas';
+ color: #0000ff;
+ background-color: #ffffff;
+}
+span.rvts25
+{
+ font-size: 11pt;
+ font-weight: bold;
+}
+span.rvts26
+{
+ font-size: 12pt;
+ font-weight: bold;
+}
+span.rvts27
+{
+ font-size: 11pt;
+ font-family: 'Consolas';
+ color: #7030a0;
+}
+span.rvts28
+{
+ color: #7030a0;
+}
+span.rvts29
+{
+ font-weight: bold;
+}
+span.rvts30
+{
+ font-size: 9.5pt;
+ font-family: 'Consolas';
+ color: #000000;
+ background-color: #ffffff;
+}
+span.rvts31
+{
+ font-size: 8pt;
+}
 /* ========== Para Styles ========== */
 p,ul,ol /* Paragraph Style */
 {
@@ -123,4 +197,12 @@ p,ul,ol /* Paragraph Style */
  border-left: none;
  padding: 2px 0px 2px 0px;
  margin: 7px 0px 7px 0px;
+}
+.rvps5
+{
+ margin: 0px 0px 0px 24px;
+}
+.rvps6
+{
+ margin: 0px 0px 0px 48px;
 }

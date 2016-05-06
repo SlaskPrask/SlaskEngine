@@ -1,0 +1,189 @@
+﻿<html>
+	
+<head>
+	<title>Hello World</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("HelloWorld");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Hello World</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Tutorials.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="SettinguptheAPI.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Objectsandscenes.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">First example</span></p>
+<p class="rvps2"><span class="rvts6">This tutorial will help you set up the first running instance of the game.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">main.cpp</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameStart()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">setWindow(640,480);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameEnd()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">exitGame();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void main(int argc,char *argv[])</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(&amp;gameStart);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameEndFunction(&amp;gameEnd);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;delete new SlaskEngine(argc,argv);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;return 0;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">This header file includes all that is needed to make the engine run.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The namespace contains all the functions to handle the engine's classes and functions.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">void gameStart()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">setWindow(640,480);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameEnd()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">exitGame();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">We define the custom </span><span class="rvts18">gameStart()</span><span class="rvts6"> function that we want to use for initializing our game. This function can contain loading your settings, resources, loading, and settings up the first scene of your game. For now we only create the game window with it. This function should always create a window. </span><span class="rvts18">setWindow(640,480)</span><span class="rvts6"> is used to create our game window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts18">gameEnd()</span><span class="rvts6"> function is defined as the exit point of your game. When you attempt to close the game window this function will be called. Here we can ask the player if he's sure he wants to exit and whether he would like to save or not. This function does not have to be the end of the game but should start a fast sequence to ending it. </span><span class="rvts18">exitGame()</span><span class="rvts6"> is used to instantly close the engine and the program. If you wish to have the player do actions when the game is being closed don't call </span><span class="rvts18">exitGame()</span><span class="rvts6"> instantly.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">void main(int argc,char *argv[])</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(</span><span class="rvts18">&amp;gameStart</span><span class="rvts21">);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameEndFunction(</span><span class="rvts18">&amp;gameEnd</span><span class="rvts21">);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Here is the main function of our game. We give the pointer to our gameStart function using the engine's </span><span class="rvts18">setGameStartFunction()</span><span class="rvts6"> function. We also give the pointer to the endGame function with </span><span class="rvts18">setGameEndFunction</span><span class="rvts6">().</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">delete new SlaskEngine(</span><span class="rvts18">argc,argv</span><span class="rvts21">);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">This creates the engine and runs it until the game flow ends and it is all that is needed to start the game.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;return 0;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Last we cleanly finish our program.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts6">When compiled and ran you should see a black window titled "Game" appear.</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour/create-help-files-for-the-qt-help-framework">Create help files for the Qt Help Framework</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+
