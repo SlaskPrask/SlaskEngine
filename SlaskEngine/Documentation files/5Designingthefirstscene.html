@@ -1,0 +1,145 @@
+﻿<html>
+	
+<head>
+	<title>5. Designing the first scene</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("5Designingthefirstscene");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">5. Designing the first scene</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; <a href="Objectsandscenes.html">Objects and scenes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Objectsandscenes.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="4Makingtheplayerobject.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="6Makingworld1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Our first scene</span></p>
+<p class="rvps2"><span class="rvts6">Scenes are essentially game screens or worlds. This scene will be our first world where the game starts in. Normally the first scene is a loading screen scene or the main menu scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">world1.h</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#ifndef WORLD1_H</span></p>
+<p class="rvps2"><span class="rvts18">#define WORLD1_H</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include "player.h"</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">class World1:public Scene</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;private:</span><br/><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">Camera cam;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;Player *player;</span><br/><span class="rvts18"> &nbsp; &nbsp;</span><br/><span class="rvts18"> &nbsp; &nbsp;public:</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;World1();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;~World1();</span></p>
+<p class="rvps2"><span class="rvts18">};</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#endif</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">class World1:public Scene</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">All our custom scene classes should inherit the public </span><span class="rvts18">Scene</span><span class="rvts6"> class.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;private:</span><br/><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">Camera cam;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;Player *player;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Our scene will have a camera that will follow our player object. A camera is essentially a small region of the scene shown at once. We want to keep track of our player object within this scene so we add it as a pointer to it.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;public:</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;World1();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;~World1();</span></p>
+<p class="rvps2"><span class="rvts18">};</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The constructor will contain setting up this scene and all the objects it contains. For more complex game scenes it can contain methods to load scene data from external files. The destructor will contain unloading the scene and it's resources.</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour/create-help-files-for-the-qt-help-framework">Produce online help for Qt applications</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

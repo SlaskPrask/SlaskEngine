@@ -1,0 +1,178 @@
+﻿<html>
+	
+<head>
+	<title>6. Making world 1</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("6Makingworld1");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">6. Making world 1</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Tutorials.html">Tutorials</a> &rsaquo;&rsaquo; <a href="Objectsandscenes.html">Objects and scenes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Objectsandscenes.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="5Designingthefirstscene.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="7Makingworld2.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Our first scene</span></p>
+<p class="rvps2"><span class="rvts6">Scenes are essentially game screens or worlds. This scene will be our first world where the game starts in. Normally the first scene is a loading screen scene or the main menu scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts26">world1.h</span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include "world1.h"</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">World1::World1()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;spriteSet(0)-&gt;load();</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setSize(1000,400);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;player=at(new Player(),200,200);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setSize(600,400);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setLimits(width,height);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setBounds(120,100);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.follow(player);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setPositionCentered(player);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.activate();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">World1::~World1()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;spriteSet(0)-&gt;unload();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts31">Functions and methods provided by the engine are in bold text.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;spriteSet(0)-&gt;load();</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">We need to load all the resource sets required by this scene here. Resource sets can also be loaded at the start and the end of the game but we want to manage them per scene. We'll design sprite set 0 to contain our player sprites. Resources should be loaded before any objects are created so they will be able to find the loaded resources.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setSize(1000,400);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">This sets the size of our scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;at(new Player(),200,200);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">Simply calling </span><span class="rvts18">new Player()</span><span class="rvts6"> would create us a player but we want him to start at the coordinates 200,200.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setSize(600,400);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setLimits(width,height);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setBounds(120,100);</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">We construct the camera for our scene here. The limits will determine how far the camera can move and here we restrict it to the size of our scene. The camera's bounds determine how close to our player will be able to get to the edges before the camera starts moving with it.This sets the size of our scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.follow(player);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.setPositionCentered(player);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;cam.activate();</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">The player object will be followed by our camera and we place it so that the player object is int it's center. Finally we activate this camera show the engine will show it in the game window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18">World1::~World1()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;spriteSet(0)-&gt;unload();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6">When the scene unloads we want to unload the resources it has loaded.</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com">Free PDF documentation generator</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

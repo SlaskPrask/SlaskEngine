@@ -39,7 +39,7 @@ private:
 
 	void initGL();
 
-	double drawDepth;
+	GLfloat drawDepth;
 
 	GraphicsHandler() {}
 
@@ -78,8 +78,8 @@ public:
 	void earlyCameraRefresh();
 
 	int getResolutions();
-	int getResolutionWidth(int i);
-	int getResolutionHeight(int i);
+	int getResolutionWidth(unsigned int i);
+	int getResolutionHeight(unsigned int i);
 	bool setFullscreen(int w,int h);
 	bool setWindowed(int w, int h);
 	bool setFullscreenWindowed(int w, int h);

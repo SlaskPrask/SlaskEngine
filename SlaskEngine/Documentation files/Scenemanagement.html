@@ -1,7 +1,7 @@
 ﻿<html>
 	
 <head>
-	<title>Drawing Sprites</title>
+	<title>Scene management</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
 	<meta name="keywords" content="">
@@ -35,7 +35,7 @@
 				{
 					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
 					{
-						top.FrameTOC.SelectTocItem("DrawingSprites");
+						top.FrameTOC.SelectTocItem("Scenemanagement");
 						bTocSelected = true;
 					}
 					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
@@ -50,7 +50,7 @@
 
 <div id="topic_header">
 			<div id="topic_header_content">
-				<h1 id="topic_header_text">Drawing Sprites</h1>
+				<h1 id="topic_header_text">Scene management</h1>
 				
 				<div id="topic_breadcrumb">
 					<a href="AvailableFunctions.html">Available Functions</a> &rsaquo;&rsaquo; </div>
@@ -58,9 +58,9 @@
 			<div id="topic_header_nav">
 				<a href="AvailableFunctions.html"><img src="img/arrow_up.png" alt="Parent"/></a>
 				
-				<a href="Scenemanagement.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				<a href="Cameramanagement.html"><img src="img/arrow_left.png" alt="Previous"/></a>
 				
-				<a href="Logging.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				<a href="DrawingSprites.html"><img src="img/arrow_right.png" alt="Next"/></a>
 				
 				</div>
 			<div class="clear"></div>
@@ -68,9 +68,23 @@
 	<div id="topic_content">
 		
 <p></p>
-<p class="rvps2"><span class="rvts17"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Reading the current scene</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getSceneWidth();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the width of the current scene.</span></p>
+<p class="rvps5"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable to obtain scene width, no active scene.</span></p>
+<p class="rvps6"><span class="rvts6">The engine doesn't have an active scene loaded yet.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getSceneHeight();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the height of the current scene.</span></p>
+<p class="rvps5"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Unable to obtain scene height, no active scene.</span></p>
+<p class="rvps6"><span class="rvts6">The engine doesn't have an active scene loaded yet.</span></p>
 <p></p>
-<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/create-epub-ebooks">Generate EPub eBooks with ease</a></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/help-authoring-tool">Full-featured multi-format Help generator</a></p>
 </div>
 	
 	<div id="topic_footer">

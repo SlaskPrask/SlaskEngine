@@ -1,0 +1,141 @@
+﻿<html>
+	
+<head>
+	<title>Game window</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Gamewindow");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Game window</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Gameevents.html">Game events</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Gameevents.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Gameevents.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Game entry and exit points</span></p>
+<p class="rvps2"><span class="rvts6">Optional functions that can be set to trigger on certain engine events.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setGameStartFunction(void(*func)(void));</span></p>
+<p class="rvps5"><span class="rvts6">Sets the given function pointer to be called when the game starts.</span></p>
+<p class="rvps5"><span class="rvts6">This function should set up the initial settings of your game including creating a window.</span></p>
+<p class="rvps5"><span class="rvts6">Use this function instead of settings them up in </span><span class="rvts18">main()</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps6"><span class="rvts22">No game entry point given.</span></p>
+<p class="rvps6"><span class="rvts6">No function was given with </span><span class="rvts18">setGameStartFunction()</span><span class="rvts6"> and the program will close.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setGameEndFunction(void(*func)(void));</span></p>
+<p class="rvps5"><span class="rvts6">Sets the given function pointer to be called when the player is attempting to close the game window.</span></p>
+<p class="rvps5"><span class="rvts6">In this function you can set up asking the player if he's sure he wants to quit or if he wants to save.</span></p>
+<p class="rvps5"><span class="rvts6">If this function is not defined then the program will simply close.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setGameWindowResizeFunction(void(*func)(void));</span></p>
+<p class="rvps5"><span class="rvts6">Sets the given function pointer to be called when the game window is resized.</span></p>
+<p class="rvps5"><span class="rvts6">New size can be obtained from </span><span class="rvts18">getWindowWidth()</span><span class="rvts6"> and </span><span class="rvts18">getWindowHeight()</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">#include &lt;Slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameStart()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;setWindow(640,480); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //set the initial game window</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void gameEnd()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;exitGame(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //close the program</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void windowResized()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;int windowWidth=getWindowWidth(); &nbsp; //obtain the new width</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;int windowHeight=getWindowHeight(); //obtain the new height</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void main(int argc,char *argv[])</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(&amp;gameStart);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(&amp;gameEnd);</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;setGameStartFunction(&amp;windowResized);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;delete new SlaskEngine(argc,argv);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;return 0;</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/create-epub-ebooks">Write EPub books for the iPad</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

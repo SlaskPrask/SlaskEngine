@@ -1,0 +1,135 @@
+﻿<html>
+	
+<head>
+	<title>Object management</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Objectmanagement");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Object management</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="AvailableFunctions.html">Available Functions</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="AvailableFunctions.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="WindowDisplay.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Cameramanagement.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Tagging multiple objects together fast</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void beginTag(Tag *tag);</span></p>
+<p class="rvps5"><span class="rvts6">All objects created after this function will automatically receive the given tag.</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">addTag(tag)</span><span class="rvts6"> individually on each object.</span></p>
+<p class="rvps5"><span class="rvts6">After creating the objects </span><span class="rvts18">endTag(tag)</span><span class="rvts6"> should be called.</span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Function beginTag() called twice on the same tag.</span></p>
+<p class="rvps6"><span class="rvts18">beginTag(tag)</span><span class="rvts6"> was already called on this tag.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void endTag(Tag *tag);</span></p>
+<p class="rvps5"><span class="rvts6">Stop tagging objects with the tag previously given with </span><span class="rvts18">beginTag(tag)</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Function endTag() called on a tag that is not active.</span></p>
+<p class="rvps6"><span class="rvts18">beginTag(tag)</span><span class="rvts6"> was not called for this tag before or </span><span class="rvts18">endTag(tag)</span><span class="rvts6"> was already called once on it.</span></p>
+<p class="rvps2"><span class="rvts22"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">Tag *pauseMenuTag=new Tag(); &nbsp; &nbsp; &nbsp; &nbsp;//create a tag</span><br/><span class="rvts21">beginTag(pauseMenuTag); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //begin tagging all future objects with pauseMenuTag</span><br/><span class="rvts18"> &nbsp; &nbsp;new playerObject(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //creating an object, it will receive pauseMenuTag as a tag</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new enemyObject(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//creating an object, it will receive pauseMenuTag as a tag</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;new enemyObject(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//creating an object, it will receive pauseMenuTag as a tag</span><br/><span class="rvts21">endTag(pauseMenuTag); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //end tagging all future objects with pauseMenuTag</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Creating an object at a given position</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void at(Camera *cam,double x,double y);</span></p>
+<p class="rvps5"><span class="rvts6">Returns the current camera's height.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">Player *player=at(new Player(),300,200);</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Destroying all objects</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void destroyAllObjects();</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">destroy()</span><span class="rvts6"> on all objects individually.</span></p>
+<p class="rvps5"><span class="rvts6">Also destroys all persistent objects.</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create EBooks</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,136 @@
+﻿<html>
+	
+<head>
+	<title>Timer class</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Timerclass");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Timer class</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="PredefinedClasses.html">Predefined Classes</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="PredefinedClasses.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Cameraclass.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Tagclass.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">class Timer</span></p>
+<p class="rvps2"><span class="rvts6">The timer class can be used to measure passing time in milliseconds. These timers run even when object tags are paused and are independent from the game flow.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void getTime();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the measured time in milliseconds.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void isRunning();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether the timer is not paused or stopped.</span></p>
+<p class="rvps2"><span class="rvts29"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void start();</span></p>
+<p class="rvps5"><span class="rvts6">Starts the timer. Initial time passed is set to 0ms.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Timer is already running.</span></p>
+<p class="rvps5"><span class="rvts22"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts6"> </span><span class="rvts18">start()</span><span class="rvts6"> was already called on this timer.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void stop();</span></p>
+<p class="rvps5"><span class="rvts6">Stops the timer. </span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void restart();</span></p>
+<p class="rvps5"><span class="rvts6">Resets a running timer's passed time to 0 and starts it.</span></p>
+<p class="rvps5"><span class="rvts6">If the timer is stopped it will call </span><span class="rvts18">start()</span><span class="rvts6"> on it.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void pause();</span></p>
+<p class="rvps5"><span class="rvts6">Pauses the current timer if it is running.</span></p>
+<p class="rvps5"><span class="rvts6">Does nothing to timers that aren't running.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void unpause();</span></p>
+<p class="rvps5"><span class="rvts6">Resumes paused timers.</span></p>
+<p class="rvps5"><span class="rvts6">Calls </span><span class="rvts18">start()</span><span class="rvts6"> on timers that aren't running.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void player::player()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;timer.start(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // start the timer</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void player::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">if (timer.getTime()&gt;1000) // check if one second has passed</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;x+=10; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // move x every second</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp;&nbsp;</span><span class="rvts21"> timer.restart(); &nbsp; &nbsp; &nbsp; // restart the timer</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;}</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/help-authoring-tool">Full-featured multi-format Help generator</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

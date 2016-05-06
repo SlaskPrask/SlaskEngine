@@ -204,8 +204,8 @@ namespace slask
 	bool setFullscreenWindowed(int w, int h);
 
 	int getResolutions();
-	int getResolutionWidth(int i);
-	int getResolutionHeight(int i);
+	int getResolutionWidth(unsigned int i);
+	int getResolutionHeight(unsigned int i);
 
 	namespace Mouse//undocced
 	{
