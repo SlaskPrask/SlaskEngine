@@ -59,6 +59,9 @@ public:
 	double getBusVolume(AudioBus* bus);
 
 
+	bool getBusMute(AudioBus* bus);
+	void setBusMute(AudioBus* bus, bool mute);
+
 	float getParameterValue(Audio* audio, const char* param);
 
 
