@@ -11,71 +11,39 @@ namespace slask
 	File file();*/
 
 	//call
-	//Object* createObject(Object *o);//undocced (change return type) //removed
 	SpriteSet* spriteSet(unsigned int i);//undocced
+	inline SpriteSet* getSpriteSet(unsigned int i)//undocced
+	{
+		return spriteSet(i);
+	}
 	Sprite* spriteSetSprite(unsigned int i,unsigned int j);//undocced
 	inline Sprite* getSprite(unsigned int i, unsigned int j)//undocced
 	{
 		return spriteSetSprite(i,j);
 	}
 	AudioSet* audioSet(unsigned int i);//undocced
+	inline AudioSet* getAudioSet(unsigned int i)//undocced
+	{
+		return audioSet(i);
+	}
 	Audio* audioSetSound(unsigned int i, unsigned int j);//undocced
 	inline Audio* getSound(unsigned int i, unsigned int j)//undocced
 	{
 		return audioSetSound(i, j);
 	}
 	FontSet* fontSet(unsigned int i);//undocced
+	inline FontSet* getFontSet(unsigned int i)//undocced
+	{
+		return fontSet(i);
+	}
 	Font* fontSetFont(unsigned int i, unsigned int j);//undocced
 	inline Font* getFont(unsigned int i, unsigned int j)//undocced
 	{
 		return fontSetFont(i, j);
 	}
-	void deleteAllObjects();//undocced
-	void exitGame();
 
-	void setGameStartFunction(void(*func)());//undocced
-	void setGameEndFunction(void(*func)());//undocced
-	void setGameWindowResizeFunction(void(*func)());//undocced
-
-	inline Camera* getCamera()//undocced
-	{
-		return GraphicsHandler::instance()->getCamera();
-	}
-	inline double getCameraWidth()//undocced
-	{
-		return GraphicsHandler::instance()->getCameraW();
-	}
-	inline double getCameraHeight()//undocced
-	{
-		return GraphicsHandler::instance()->getCameraH();
-	}
-	inline double getCameraX()//undocced
-	{
-		return GraphicsHandler::instance()->getCameraX();
-	}
-	inline double getCameraY()//undocced
-	{
-		return GraphicsHandler::instance()->getCameraY();
-	}
-
-	void setTitle(const char* title);
-	void setFPS(int fps);
-	void setVSync(bool enabled);
-
-	int random(int max);//undocced
-
-	const char* getTitle();
-	int getFPS();
-	bool getVSync();
-	int getWindowWidth();
-	int getWindowHeight();
-
-	int getResolutions();
-	int getResolutionWidth(int i);
-	int getResolutionHeight(int i);
-	bool setFullscreen(int w, int h);
-	bool setWindowed(int w, int h);
-	bool setFullscreenWindowed(int w, int h);
+	int getSceneWidth();
+	int getSceneHeight();
 
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
 	inline void drawText(Font *font, std::string str, double x, double y, double size,double lineSpacing, double r, double g, double b, double a)//undocced
@@ -110,13 +78,9 @@ namespace slask
 	template<class T>
 	T* at(T* t, double x, double y)//undocced
 	{
-		t->at(x,y);
+		t->at(x, y);
 		return t;
 	}
-
-	void log(const char *str);//undocced
-	void logError(const char *str);//undocced
-	void logNotify(const char *str);//undocced
 
 	int getMousewheelUp();//undocced
 	int getMousewheelDown();//undocced
@@ -157,6 +121,91 @@ namespace slask
 	double getAudioBusVolume(AudioBus* bus);//undocced
 
 	float getSoundParameterValue(Audio* audio, const char* param);//undocced
+
+	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
+	{
+		return (x >= left&&y >= top&&x < right&&y < bottom);
+	}
+
+	void destroyAllObjects();
+	void exitGame();
+
+	void setGameStartFunction(void(*func)(void));
+	void setGameEndFunction(void(*func)(void));
+	void setGameWindowResizeFunction(void(*func)(void));
+
+	int random(int max);
+
+	inline void beginTag(Tag *t)
+	{
+		SlaskEngine::instance()->beginTag(t);
+	}
+	inline void endTag(Tag *t)
+	{
+		SlaskEngine::instance()->endTag(t);
+	}
+
+	void log(const char *str);
+	inline void log(std::string str)
+	{
+		log(str.c_str());
+	}
+	void logError(const char *str);
+	inline void logError(std::string str)
+	{
+		logError(str.c_str());
+	}
+	void logNotify(const char *str);
+	inline void logNotify(std::string str)
+	{
+		logNotify(str.c_str());
+	}
+
+	inline void deactivateCamera()
+	{
+		GraphicsHandler::instance()->setCamera(NULL);
+	}
+	inline Camera* getCamera()
+	{
+		return GraphicsHandler::instance()->getCamera();
+	}
+	inline double getCameraWidth()
+	{
+		return GraphicsHandler::instance()->getCameraW();
+	}
+	inline double getCameraHeight()
+	{
+		return GraphicsHandler::instance()->getCameraH();
+	}
+	inline double getCameraX()
+	{
+		return GraphicsHandler::instance()->getCameraX();
+	}
+	inline double getCameraY()
+	{
+		return GraphicsHandler::instance()->getCameraY();
+	}
+
+	void setTitle(const char* str);
+	inline void setTitle(std::string str)
+	{
+		setTitle(str.c_str());
+	}
+	void setFPS(int fps);
+	void enableVSync();
+	void disableVSync();
+	const char* getTitle();
+	int getFPS();
+	bool getVSync();
+	int getWindowWidth();
+	int getWindowHeight();
+	bool setFullscreen(int w, int h);
+	bool setWindowed(int w, int h);
+	bool setFullscreenWindowed(int w, int h);
+
+	int getResolutions();
+	int getResolutionWidth(int i);
+	int getResolutionHeight(int i);
 
 	namespace Mouse//undocced
 	{

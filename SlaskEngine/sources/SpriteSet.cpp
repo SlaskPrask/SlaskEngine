@@ -94,7 +94,10 @@ Sprite* SpriteSet::get(unsigned int i)
 	else
 	{
 		if (loads == 0)
+		{
 			LogHandler::notify("Resources", "Accessing an unloaded sprite set.");
+			return NULL;
+		}
 		return data[i];
 	}
 }

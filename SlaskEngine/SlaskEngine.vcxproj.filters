@@ -117,10 +117,14 @@
     <ClCompile Include="sources\SlaskNamespace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="techScene.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ClassDiagram.cd" />
+    <None Include="Documentation files\SlaskEngine API Documentation.hnd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\File.h">
@@ -230,6 +234,9 @@
     </ClInclude>
     <ClInclude Include="include\SlaskNamespace.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="techScene.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

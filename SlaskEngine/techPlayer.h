@@ -1,7 +1,7 @@
 #pragma once
 #include "include/Slask.h"
 
-class player :public Object
+class Player :public Object
 {
 	SLASKOBJECT
 private:
@@ -11,8 +11,9 @@ private:
 	double maxspeed;
 	Sprite *sprite;
 	Camera cam;
+	bool failsafe;
 public:
-	player();
-	~player();
+	Player();
+	~Player();
 };
 

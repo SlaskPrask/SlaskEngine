@@ -7,7 +7,11 @@ SpriteSet* slask::spriteSet(unsigned int i)
 
 Sprite* slask::spriteSetSprite(unsigned int i, unsigned int j)
 {
-	return SlaskEngine::instance()->spriteSet(i)->get(j);
+	SpriteSet *ss = SlaskEngine::instance()->spriteSet(i);
+	if (ss)
+	return ss->get(j);
+	else
+	return NULL;
 }
 
 AudioSet* slask::audioSet(unsigned int i)
@@ -17,7 +21,11 @@ AudioSet* slask::audioSet(unsigned int i)
 
 Audio* slask::audioSetSound(unsigned int i, unsigned int j)
 {
-	return SlaskEngine::instance()->audioSet(i)->get(j);
+	AudioSet *ss = SlaskEngine::instance()->audioSet(i);
+	if (ss)
+		return ss->get(j);
+	else
+		return NULL;
 }
 
 FontSet* slask::fontSet(unsigned int i)
@@ -27,10 +35,38 @@ FontSet* slask::fontSet(unsigned int i)
 
 Font* slask::fontSetFont(unsigned int i, unsigned int j)
 {
-	return SlaskEngine::instance()->fontSet(i)->get(j);
+	FontSet *ss = SlaskEngine::instance()->fontSet(i);
+	if (ss)
+		return ss->get(j);
+	else
+		return NULL;
 }
 
-void slask::deleteAllObjects()
+int slask::getSceneWidth()
+{
+	Scene *s = SlaskEngine::instance()->getCurrentScene();
+	if (s)
+		return s->width;
+	else
+	{
+		LogHandler::notify("Engine", "Unable to obtain scene width, no active scene.");
+		return 1;
+	}
+}
+
+int slask::getSceneHeight()
+{
+	Scene *s = SlaskEngine::instance()->getCurrentScene();
+	if (s)
+		return s->height;
+	else
+	{
+		LogHandler::notify("Engine","Unable to obtain scene height, no active scene.");
+		return 1;
+	}
+}
+
+void slask::destroyAllObjects()
 {
 	SlaskEngine::instance()->deleteAllObjects();
 }
@@ -63,9 +99,13 @@ void slask::setFPS(int fps)
 {
 	GraphicsHandler::instance()->setFPS(fps);
 }
-void slask::setVSync(bool enabled)
+void slask::enableVSync()
 {
-	GraphicsHandler::instance()->setVSync(enabled);
+	GraphicsHandler::instance()->setVSync(1);
+}
+void slask::disableVSync()
+{
+	GraphicsHandler::instance()->setVSync(0);
 }
 
 int slask::random(int max)
@@ -220,19 +260,19 @@ int slask::getMouseWindowY()
 	return InputHandler::instance()->getmouse_y();
 }
 
-bool getKeyPressAny()
+bool slask::getKeyPressAny()
 {
 	return InputHandler::instance()->getanykey(1);
 }
-bool getKeyReleaseAny()
+bool slask::getKeyReleaseAny()
 {
 	return InputHandler::instance()->getanykey(-1);
 }
-bool getKeyHeldAny()
+bool slask::getKeyHeldAny()
 {
 	return InputHandler::instance()->getanykey(2);
 }
-bool getKeyIdleAny()
+bool slask::getKeyIdleAny()
 {
 	return InputHandler::instance()->getanykey(0);
 }

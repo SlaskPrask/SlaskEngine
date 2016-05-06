@@ -94,7 +94,10 @@ Font* FontSet::get(unsigned int i)
 	else
 	{
 		if (loads == 0)
+		{
 			LogHandler::notify("Resources", "Accessing an unloaded font set.");
+			return NULL;
+		}
 		return data[i];
 	}
 }

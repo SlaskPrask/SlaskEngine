@@ -7,11 +7,6 @@ void (*SlaskEngine::gameEndFunc)() = NULL;
 void(*SlaskEngine::gameStartFunc)() = NULL;
 void(*SlaskEngine::gameWindowResizeFunc)() = NULL;
 
-SlaskEngine* SlaskEngine::instance()
-{
-	return slaskengine;
-}
-
 SlaskEngine::SlaskEngine(int argc, char *argv[])
 {
 	init(argc,argv);
@@ -47,11 +42,13 @@ void SlaskEngine::init(int argc, char *argv[])
 	Camera *cam;
 	running = true;
 	firstDepth = NULL;
+	scene = NULL;
+	switchingScenes = 0;
 
 	srand((unsigned int)time(NULL));
 
 	GraphicsHandler* graphics = GraphicsHandler::instance();
-	graphics->init("SlaskEngine");
+	graphics->init("Game");
 
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
@@ -82,6 +79,11 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::log("-------------------------------------");
 	if (gameStartFunc)
 	gameStartFunc();//game initialization point
+	else
+	{
+		LogHandler::notify("Engine","No game entry point given.");
+		running = false;
+	}
 	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
@@ -96,17 +98,27 @@ void SlaskEngine::init(int argc, char *argv[])
 
 		if (input->getSignalResize())
 		{
-			LogHandler::log("Engine", "Window resized.");
+			if (graphics->getWindow())
+			{
+				std::ostringstream str;
+				str << "Window resized to " << graphics->getWindow()->getSize().x << "," << graphics->getWindow()->getSize().x;
+				LogHandler::log("Engine", str.str().c_str());
+			}
+			else
+			{
+				LogHandler::log("Engine", "Window resized, unknown window");
+			}
 			graphics->resize();
 			if (gameWindowResizeFunc)
 				gameWindowResizeFunc();
 		}
 
 		//running
+		switchingScenes = 0;
 		LinkedList<Object> *obj = objects.first();
 		while (obj)
 		{
-			if (((Object*)obj)->_tagRuns())
+			if (!switchingScenes&&((Object*)obj)->_tagRuns())
 				((Object*)obj)->run();
 			if (((Object*)obj)->_getDestroyed())
 			{
@@ -142,7 +154,7 @@ void SlaskEngine::init(int argc, char *argv[])
 			while (di)
 			{
 				obj = di->get();
-				if (obj->_tagDraws())
+				if (obj->_tagDraws()&&!obj->_getDestroyed())
 				{
 					obj->draw();
 				}
@@ -152,10 +164,14 @@ void SlaskEngine::init(int argc, char *argv[])
 		graphics->drawEnd();
 
 		//exit handle
-		if (exitHandle && gameEndFunc)
-		gameEndFunc();
+		if (exitHandle)
+			if (gameEndFunc)
+				gameEndFunc();
+			else
+				gameEnd();
 	}
 	LogHandler::log("Engine", "Stopping..");
+	deleteScene();
 	deleteAllObjects();
 	deleteAllSets();
 	LogHandler::log("-------------------------------------");
@@ -167,6 +183,16 @@ void SlaskEngine::init(int argc, char *argv[])
 void SlaskEngine::createObject(Object *o)
 {
 	objects.add(o);
+	//active tags
+	for (std::vector<Tag*>::iterator it = activeTags.begin(); it != activeTags.end(); ++it)
+		o->addTag(*it);
+
+	if (scene)
+	{
+		o->_persistent = 0;
+		o->_scene = scene;
+		tieObjectToScene(scene, o);
+	}
 }
 
 
@@ -239,16 +265,11 @@ FontSet* SlaskEngine::fontSet(unsigned int i)
 	return fontsets[i];
 }
 
-void SlaskEngine::gameEnd()
-{
-	running = false;
-}
-
 void SlaskEngine::resolveDepthQueue()
 {
 	while (depthQueue.size())
 	{
-		attachDepth(depthQueue.back());
+		attachDepth(depthQueue.back()->_copyDepth());
 		depthQueue.pop_back();
 	}
 }
@@ -280,11 +301,6 @@ void SlaskEngine::queueDepthChange(Object *o)
 	}
 }
 
-void SlaskEngine::setFirstDepth(DepthItem *d)
-{
-	firstDepth = d;
-}
-
 void SlaskEngine::detachDepth(Object *o)
 {
 	for (std::vector<Object*>::iterator it = depthQueue.begin(); it != depthQueue.end(); ++it)
@@ -307,11 +323,38 @@ void SlaskEngine::attachDepth(Object *o)
 	firstDepth->addBelow(new DepthItem(o));
 }
 
+void SlaskEngine::switchScene(Scene *scn)
+{
+	switchingScenes = 1;
+	if (scene)
+		delete scene;
+	scene = scn;
+}
+
+void SlaskEngine::beginTag(Tag *t) 
+{
+	std::vector<Tag*>::const_iterator it = std::find(activeTags.begin(), activeTags.end(), t);
+	if (it == activeTags.end())
+		activeTags.push_back(t);
+	else
+		LogHandler::notify("Engine","Function beginTag() called twice on the same tag.");
+}
+void SlaskEngine::endTag(Tag *t)
+{
+	std::vector<Tag*>::const_iterator it = std::find(activeTags.begin(), activeTags.end(), t);
+	if (it == activeTags.end())
+		LogHandler::notify("Engine", "Function endTag() called on a tag that is not active.");
+	else
+		activeTags.erase(it);
+}
+
 void SlaskEngine::deleteAllObjects()
 {
-	while (objects.first())
+	LinkedList<Object> *obj = objects.first();
+	while (obj)
 	{
-		delete objects.first();
+		delete obj;
+		obj = objects.first();
 	}
 }
 

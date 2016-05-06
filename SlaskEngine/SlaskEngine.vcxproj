@@ -245,6 +245,9 @@
     <ClCompile Include="techPlayer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="techScene.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="techTestBG.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -254,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Documentation files\SlaskEngine API Documentation.hnd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +296,9 @@
     <ClInclude Include="include\SteamHandler.h" />
     <ClInclude Include="include\Timer.h" />
     <ClInclude Include="techPlayer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="techScene.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="techTestBG.h">

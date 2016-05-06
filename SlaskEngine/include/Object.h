@@ -11,12 +11,15 @@ private:
 
 class SlaskEngine;
 class DepthItem;
+class Scene;
 
 class Object : public LinkedList<Object>
 {
 	friend class SlaskEngine;
-	friend DepthItem;
+	friend class DepthItem;
+	friend class Scene;
 private:
+	Scene *_scene;
 	bool _tagRunValue, _tagDrawValue;
 	bool _destroyed;
 	bool _getDestroyed();
@@ -35,6 +38,11 @@ private:
 	void _refreshTagDraws(bool value);
 	DepthItem *_depthItem;
 	void _performDepthMove();
+	inline Object* _copyDepth()
+	{
+		_depth = _qdepth;
+		return this;
+	}
 	
 public:
 	double x;
@@ -47,36 +55,41 @@ public:
 		return _persistent;
 	}
 
-	void addTag(Tag *t);//undocced
-	void removeTag(Tag *t);//undocced
-	inline void at(double xp, double yp)//undocced
+	inline Object* setPersistent();
+	inline Object* unsetPersistent();
+
+	Object* addTag(Tag *tag);
+	Object* removeTag(Tag *tag);
+	inline Object* at(double xp, double yp)
 	{
 		x = xp;
 		y = yp;
+		return this;
 	}
-	inline void setPosition(double xp, double yp)//undocced
+	inline Object* setPosition(double xp, double yp)
 	{
-		at(xp, yp);
+		return at(xp, yp);
 	}
-	inline void move(double xp, double yp)//undocced
+	inline Object* move(double xp, double yp)
 	{
 		x += xp;
 		y += yp;
+		return this;
 	}
-	inline double getDepth()//undocced
+	inline double getDepth()
 	{
 		return _qdepth;
 	}
-	inline double depth()//undocced
+	inline double depth()
 	{
 		return getDepth();
 	}
-	double depth(double d);//undocced
-	inline int setDepth(int d)//undocced
+	double depth(double d);
+	inline double setDepth(int d)
 	{
-		depth(d);
+		return depth(d);
 	}
-	inline void destroy()//undocced
+	inline void destroy()
 	{
 		_destroyed = true;
 	}

@@ -12,6 +12,7 @@ Camera::Camera()
 {
 	x = y = 0;
 	w = h = 1;
+	limits = 0;
 	init();
 }
 
@@ -64,6 +65,8 @@ void Camera::doFollow()
 
 void Camera::setSize(double sw,double sh)
 {
+	if (w == sw&&h == sh)
+		return;
 	w = sw;
 	h = sh;
 	if (isActive())
@@ -84,6 +87,9 @@ void Camera::setLimits(double left, double top, double right, double bottom)
 	limitsRight = right;
 	limitsTop = top;
 	limitsBottom = bottom;
+	limits = 1;
+	checkXLimits();
+	checkYLimits();
 }
 
 Camera::~Camera()
