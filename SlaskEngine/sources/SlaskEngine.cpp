@@ -34,7 +34,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::setFile("log.txt");
 	LogHandler::log("Engine", "Start");
 	
-	engineBuild = "ALPHA";
+	engineBuild = "BETA";
 	engineVersion = 1.0f;
 	fullEngineVersion = engineBuild;
 	fullEngineVersion += std::to_string(engineVersion);
