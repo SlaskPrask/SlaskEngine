@@ -351,6 +351,14 @@ double slask::getAudioBusVolume(AudioBus* bus)
 {
 	return AudioHandler::instance()->getBusVolume(bus);
 }
+void slask::setAudioBusMute(AudioBus* bus, bool mute)
+{
+	AudioHandler::instance()->setBusMute(bus, mute);
+}
+bool slask::getAudioBusMute(AudioBus* bus)
+{
+	return AudioHandler::instance()->getBusMute(bus);
+}
 float slask::getSoundParameterValue(Audio* audio, const char* param)
 {
 	return AudioHandler::instance()->getParameterValue(audio,param);
