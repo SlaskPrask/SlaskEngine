@@ -1,6 +1,8 @@
 #include "../include/SlaskEngine.h"
 #include <iostream>
 #include "../include/slasknamespace.h"
+#include "../include/Object.h"
+#include "../include/Scene.h"
 
 SlaskEngine *SlaskEngine::slaskengine;
 void (*SlaskEngine::gameEndFunc)() = NULL;
@@ -39,11 +41,15 @@ void SlaskEngine::init(int argc, char *argv[])
 	fullEngineVersion = engineBuild;
 	fullEngineVersion += std::to_string(engineVersion);
 
+	objIds = scnIds = 0;
+
 	Camera *cam;
 	running = true;
 	firstDepth = NULL;
 	scene = NULL;
 	switchingScenes = 0;
+	frameTime = 0;
+	fps = _SLASK_DEFAULT_FPS;
 
 	srand((unsigned int)time(NULL));
 
@@ -87,7 +93,8 @@ void SlaskEngine::init(int argc, char *argv[])
 	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
-
+	sf::Clock frameClock;
+	double passedMs=0;
 	while (running)
 	{
 		//audio
@@ -115,6 +122,9 @@ void SlaskEngine::init(int argc, char *argv[])
 
 		//running
 		switchingScenes = 0;
+		if (scene)
+		scene->run();
+
 		LinkedList<Object> *obj = objects.first();
 		while (obj)
 		{
@@ -169,6 +179,16 @@ void SlaskEngine::init(int argc, char *argv[])
 				gameEndFunc();
 			else
 				gameEnd();
+
+		//fps
+		double passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
+		if (fps > 0)
+		{
+			sf::sleep(sf::microseconds((sf::Int64)(1000000.0f / fps - passedMs)));
+			passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
+		}
+		frameTime=passedMs / 1000000.0f;
+		frameClock.restart();
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteScene();

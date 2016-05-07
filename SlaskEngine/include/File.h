@@ -37,6 +37,11 @@ public:
 	File();
 	~File();
 	
+	inline unsigned int entries()
+	{
+		return entry.size();
+	}
+
 	void save(std::string file, bool encrypted);
 	bool load(std::string file, bool encrypted);
 	

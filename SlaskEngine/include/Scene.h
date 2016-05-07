@@ -1,6 +1,19 @@
 #pragma once
 #include "Object.h"
+#include "EngineNamespace.h"
 #include <vector>
+#define SLASKSCENE \
+public: \
+	inline static unsigned int sceneId() \
+	{ \
+		static unsigned int _id=_engine::obtainScnId(); \
+		return _id; \
+	} \
+	virtual inline unsigned int id() \
+	{ \
+		return sceneId(); \
+	} \
+private:
 
 class SlaskEngine;
 
@@ -12,6 +25,7 @@ private:
 	void _deleteObjects();
 
 public:
+	virtual unsigned int id();
 	int width, height;
 	//void load(const char* file,int xoffset,int yoffset);
 	//void load(const char* file);
@@ -22,4 +36,6 @@ public:
 	}
 	Scene();
 	virtual ~Scene();
+
+	virtual void run();
 };

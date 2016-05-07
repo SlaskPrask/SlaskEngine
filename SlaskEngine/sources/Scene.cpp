@@ -17,7 +17,16 @@ void Scene::_deleteObjects()
 	}
 }
 
+unsigned int Scene::id()
+{
+	return 0;
+}
+
 Scene::~Scene()
 {
 	_deleteObjects();
+}
+
+void Scene::run()
+{
 }

@@ -25,6 +25,11 @@ Object::~Object()
 	SlaskEngine::instance()->untieObjectFromScene(_scene, this);
 }
 
+unsigned int Object::id()
+{
+	return 0;
+}
+
 Object* Object::unsetPersistent()
 {
 	if (_persistent)
@@ -58,32 +63,42 @@ void Object::_refreshTagRuns(bool value)
 {
 	if (value == 0)
 	{
+		if (_tagRunValue == 1 && !_getDestroyed())
+			runDisabled();
 		_tagRunValue = 0;
 		return;
 	}
-	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
+	if (_tagRunValue == 0)
+	{
+		for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
 		if (!(*it)->runs())
-		{
-			_tagRunValue = 0;
-			return;
-		}
-	_tagRunValue = 1;
+		return;
+
+		if (_tagRunValue == 0 && !_getDestroyed())
+			runEnabled();
+		_tagRunValue = 1;
+	}
 }
 
 void Object::_refreshTagDraws(bool value)
 {
 	if (value == 0)
 	{
+		if (_tagDrawValue == 1 && !_getDestroyed())
+			drawDisabled();
 		_tagDrawValue = 0;
 		return;
 	}
-	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
+	if (_tagDrawValue == 0)
+	{
+		for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
 		if (!(*it)->draws())
-		{
-			_tagDrawValue = 0;
-			return;
-		}
-	_tagDrawValue = 1;
+		return;
+
+		if (_tagDrawValue == 0 && !_getDestroyed())
+		drawEnabled();
+		_tagDrawValue = 1;
+	}
 }
 
 void Object::_performDepthMove()
@@ -128,7 +143,15 @@ Object* Object::removeTag(Tag *t)
 	return this;
 }
 
-bool Object::_getDestroyed()
+void Object::runEnabled()
 {
-	return _destroyed;
+}
+void Object::runDisabled()
+{
+}
+void Object::drawEnabled()
+{
+}
+void Object::drawDisabled()
+{
 }

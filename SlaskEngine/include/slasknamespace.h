@@ -3,14 +3,6 @@
 
 namespace slask
 {
-	/*GraphicsHandler* graphics();
-	InputHandler* input();
-	AudioHandler* audio();
-	LogHandler* log();
-	SteamHandler* steam();
-	File file();*/
-
-	//call
 	SpriteSet* spriteSet(unsigned int i);//undocced
 	inline SpriteSet* getSpriteSet(unsigned int i)//undocced
 	{
@@ -44,6 +36,14 @@ namespace slask
 
 	int getSceneWidth();
 	int getSceneHeight();
+	inline Scene* getScene()//undocced
+	{
+		return SlaskEngine::instance()->getCurrentScene();
+	}
+	inline double frameTime()//undocced
+	{
+		return SlaskEngine::instance()->getFrameTime();
+	}
 
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
 	inline void drawText(Font *font, std::string str, double x, double y, double size,double lineSpacing, double r, double g, double b, double a)//undocced
@@ -82,27 +82,6 @@ namespace slask
 		return t;
 	}
 
-	int getMousewheelUp();//undocced
-	int getMousewheelDown();//undocced
-	int getMouseX();//undocced
-	int getMouseY();//undocced
-	int getMouseWindowX();//undocced
-	int getMouseWindowY();//undocced
-
-	bool getMousePress(int i);//undocced
-	bool getMouseRelease(int i);//undocced
-	bool getMouseHeld(int i);//undocced
-	bool getMouseIdle(int i);//undocced
-
-	bool getKeyPressAny();//undocced
-	bool getKeyReleaseAny();//undocced
-	bool getKeyHeldAny();//undocced
-	bool getKeyIdleAny();//undocced
-	bool getKeyPress(int keyCode);//undocced
-	bool getKeyRelease(int keyCode);//undocced
-	bool getKeyHeld(int keyCode);//undocced
-	bool getKeyIdle(int keyCode);//undocced
-
 	void setSoundSampleDecompress(bool enabled);//undocced
 	void setSoundSampleASync(bool enabled);//undocced
 	void playSound(Audio* audio);//undocced
@@ -126,6 +105,27 @@ namespace slask
 	{
 		return (x >= left&&y >= top&&x < right&&y < bottom);
 	}
+
+	int getMouseWheelUp();
+	int getMouseWheelDown();
+	double getMouseX();
+	double getMouseY();
+	int getMouseWindowX();
+	int getMouseWindowY();
+
+	bool getMousePress(int i);
+	bool getMouseRelease(int i);
+	bool getMouseHeld(int i);
+	bool getMouseIdle(int i);
+
+	bool getKeyPressAny();
+	bool getKeyReleaseAny();
+	bool getKeyHeldAny();
+	bool getKeyIdleAny();
+	bool getKeyPress(int keyCode);
+	bool getKeyRelease(int keyCode);
+	bool getKeyHeld(int keyCode);
+	bool getKeyIdle(int keyCode);
 
 	void destroyAllObjects();
 	void exitGame();
@@ -191,6 +191,18 @@ namespace slask
 	{
 		setTitle(str.c_str());
 	}
+	inline void enableMouseCursor()
+	{
+		GraphicsHandler::instance()->setMouseCursor(1);
+	}
+	inline void disableMouseCursor()
+	{
+		GraphicsHandler::instance()->setMouseCursor(0);
+	}
+	inline bool getMouseCursor()
+	{
+		return GraphicsHandler::instance()->getMouseCursor();
+	}
 	void setFPS(int fps);
 	void enableVSync();
 	void disableVSync();
@@ -207,117 +219,51 @@ namespace slask
 	int getResolutionWidth(unsigned int i);
 	int getResolutionHeight(unsigned int i);
 
-	namespace Mouse//undocced
+	namespace Mouse
 	{
-		enum MouseButt { Mouse1, Mouse2, MouseMiddle, Mouse4, Mouse5 };
+		enum MouseButt { Mouse1, Mouse2, Mouse3, Mouse4, Mouse5 };
+	};
+	namespace Mouse
+	{
+		enum MouseButtNames { MouseLeft, MouseRight, MouseMiddle };
 	};
 
-	namespace Key//undocced
+	namespace Key
 	{
 		enum Key
 		{
-			Unknown = -1, ///< Unhandled key
-			A = 0,        ///< The A key
-			B,            ///< The B key
-			C,            ///< The C key
-			D,            ///< The D key
-			E,            ///< The E key
-			F,            ///< The F key
-			G,            ///< The G key
-			H,            ///< The H key
-			I,            ///< The I key
-			J,            ///< The J key
-			K,            ///< The K key
-			L,            ///< The L key
-			M,            ///< The M key
-			N,            ///< The N key
-			O,            ///< The O key
-			P,            ///< The P key
-			Q,            ///< The Q key
-			R,            ///< The R key
-			S,            ///< The S key
-			T,            ///< The T key
-			U,            ///< The U key
-			V,            ///< The V key
-			W,            ///< The W key
-			X,            ///< The X key
-			Y,            ///< The Y key
-			Z,            ///< The Z key
-			Num0,         ///< The 0 key
-			Num1,         ///< The 1 key
-			Num2,         ///< The 2 key
-			Num3,         ///< The 3 key
-			Num4,         ///< The 4 key
-			Num5,         ///< The 5 key
-			Num6,         ///< The 6 key
-			Num7,         ///< The 7 key
-			Num8,         ///< The 8 key
-			Num9,         ///< The 9 key
-			Escape,       ///< The Escape key
-			LControl,     ///< The left Control key
-			LShift,       ///< The left Shift key
-			LAlt,         ///< The left Alt key
-			LSystem,      ///< The left OS specific key: window (Windows and Linux), apple (MacOS X), ...
-			RControl,     ///< The right Control key
-			RShift,       ///< The right Shift key
-			RAlt,         ///< The right Alt key
-			RSystem,      ///< The right OS specific key: window (Windows and Linux), apple (MacOS X), ...
-			Menu,         ///< The Menu key
-			LBracket,     ///< The [ key
-			RBracket,     ///< The ] key
-			SemiColon,    ///< The ; key
-			Comma,        ///< The , key
-			Period,       ///< The . key
-			Quote,        ///< The ' key
-			Slash,        ///< The / key
-			BackSlash,    ///< The \ key
-			Tilde,        ///< The ~ key
-			Equal,        ///< The = key
-			Dash,         ///< The - key
-			Space,        ///< The Space key
-			Return,       ///< The Return key
-			BackSpace,    ///< The Backspace key
-			Tab,          ///< The Tabulation key
-			PageUp,       ///< The Page up key
-			PageDown,     ///< The Page down key
-			End,          ///< The End key
-			Home,         ///< The Home key
-			Insert,       ///< The Insert key
-			Delete,       ///< The Delete key
-			Add,          ///< The + key
-			Subtract,     ///< The - key
-			Multiply,     ///< The * key
-			Divide,       ///< The / key
-			Left,         ///< Left arrow
-			Right,        ///< Right arrow
-			Up,           ///< Up arrow
-			Down,         ///< Down arrow
-			Numpad0,      ///< The numpad 0 key
-			Numpad1,      ///< The numpad 1 key
-			Numpad2,      ///< The numpad 2 key
-			Numpad3,      ///< The numpad 3 key
-			Numpad4,      ///< The numpad 4 key
-			Numpad5,      ///< The numpad 5 key
-			Numpad6,      ///< The numpad 6 key
-			Numpad7,      ///< The numpad 7 key
-			Numpad8,      ///< The numpad 8 key
-			Numpad9,      ///< The numpad 9 key
-			F1,           ///< The F1 key
-			F2,           ///< The F2 key
-			F3,           ///< The F3 key
-			F4,           ///< The F4 key
-			F5,           ///< The F5 key
-			F6,           ///< The F6 key
-			F7,           ///< The F7 key
-			F8,           ///< The F8 key
-			F9,           ///< The F9 key
-			F10,          ///< The F10 key
-			F11,          ///< The F11 key
-			F12,          ///< The F12 key
-			F13,          ///< The F13 key
-			F14,          ///< The F14 key
-			F15,          ///< The F15 key
-			Pause         ///< The Pause key
+			A=0,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
+			Num0,Num1,Num2,Num3,Num4,Num5,Num6,Num7,Num8,Num9,
+			Escape,
+			LControl,LShift,LAlt,LSystem,
+			RControl,RShift,RAlt,RSystem,
+			Menu,
+			LBracket,RBracket,
+			SemiColon,
+			Comma,
+			Period,
+			Quote,
+			Slash,
+			BackSlash,
+			Tilde,
+			Equal,
+			Dash,
+			Space,
+			Return,
+			BackSpace,
+			Tab,
+			PageUp,PageDown,
+			End,Home,
+			Insert,
+			Delete,
+			Add,
+			Subtract,
+			Multiply,
+			Divide,
+			Left,Right,Up,Down,
+			Numpad0,Numpad1,Numpad2,Numpad3,Numpad4,Numpad5,Numpad6,Numpad7,Numpad8,Numpad9,
+			F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,F13,F14,F15,
+			Pause
 		};
 	};
 };

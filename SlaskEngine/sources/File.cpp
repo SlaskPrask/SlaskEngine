@@ -153,7 +153,7 @@ std::string File::get(int i)
 	else
 	{
 		std::string str = "Getting file entry ";
-		str += i;
+		str += std::to_string(i);
 		str += " out of range.";
 		LogHandler::error("File", str.c_str());
 	}
@@ -183,7 +183,7 @@ void File::set(int i, std::string val)
 	else
 	{
 		std::string str = "Setting file entry ";
-		str += i;
+		str += std::to_string(i);
 		str += " out of range.";
 		LogHandler::error("File", str.c_str());
 	}

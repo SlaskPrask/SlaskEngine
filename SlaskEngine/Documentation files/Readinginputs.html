@@ -1,0 +1,178 @@
+﻿<html>
+	
+<head>
+	<title>Reading inputs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.9.2.132">
+	<meta name="keywords" content="">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "SlaskEngine API Documentation.html?" + sTopicUrl;
+			}
+			else
+			{
+				var bTocSelected = false;
+				(function waitForTOC()
+				{
+					if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+					{
+						top.FrameTOC.SelectTocItem("Readinginputs");
+						bTocSelected = true;
+					}
+					if (!bTocSelected) setTimeout(function() { waitForTOC(); }, 300);
+				})();
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Reading inputs</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="AvailableFunctions.html">Available Functions</a> &rsaquo;&rsaquo; <a href="Inputhandling.html">Input handling</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Inputhandling.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Inputhandling.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Keyboardkeynames.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts19">Reading inputs</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Reading the keyboard</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyPress(int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this key was pressed down on the current frame.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading key </span><span class="rvts24">keycode</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given keycode is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyRelease(int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this key was released on the current frame.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading key </span><span class="rvts24">keycode</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given keycode is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyHeld(int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this key is currently held down.</span></p>
+<p class="rvps5"><span class="rvts6">This returns true on the frame the key was pressed down the same as </span><span class="rvts18">getKeyPress()</span><span class="rvts6"> but also on the frames after that until it is released.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading key </span><span class="rvts24">keycode</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given keycode is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyIdle(int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this key is not being held down.</span></p>
+<p class="rvps5"><span class="rvts6">This returns true on the frame the key was released the same as </span><span class="rvts18">getKeyRelease()</span><span class="rvts6"> but also on the frames after that until it is pressed down.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading key </span><span class="rvts24">keycode</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given keycode is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyPressAny();</span></p>
+<p class="rvps5"><span class="rvts6">Returns any new key was pressed down on this frame.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyReleaseAny();</span></p>
+<p class="rvps5"><span class="rvts6">Returns any new key was released on this frame.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyHeldAny();</span></p>
+<p class="rvps5"><span class="rvts6">Returns any keys are being held down on pressed down on this frame.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getKeyIdleAny();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether no key is pressed down at all.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Reading the mouse</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getMouseX();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the mouse cursor's x position in the current scene.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double getMouseY();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the mouse cursor's y position in the current scene.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getMouseWindowX();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the mouse cursor's x position in the window.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getMouseWindowY();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the mouse cursor's y position in the window.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getMousePress(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this button was pressed down on the current frame.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getMouseRelease(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this button was released on the current frame.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getMouseHeld(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this button is currently held down.</span></p>
+<p class="rvps5"><span class="rvts6">This returns true on the frame the mouse button was pressed down the same as </span><span class="rvts18">getMousePress()</span><span class="rvts6"> but also on the frames after that until it is released.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool getMouseIdle(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether this button is not being held down.</span></p>
+<p class="rvps5"><span class="rvts6">This returns true on the frame the key was released the same as </span><span class="rvts18">getMouseRelease()</span><span class="rvts6"> but also on the frames after that until it is pressed down.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getMouseWheelUp();</span></p>
+<p class="rvps5"><span class="rvts6">Returns how many ticks the mouse wheel moved up on this frame.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">int getMouseWheelDown();</span></p>
+<p class="rvps5"><span class="rvts6">Returns how many ticks the mouse wheel moved down on this frame.</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create EBooks</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; 2016 by Slask &amp; Zas. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+
