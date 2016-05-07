@@ -76,13 +76,16 @@
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">
 <td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
-<p class="rvps2"><span class="rvts18">#include "Slask.h"</span></p>
+<p class="rvps2"><span class="rvts18">#include &lt;Slask.h&gt;</span></p>
 <p class="rvps2"><span class="rvts18"><br/></span></p>
 <p class="rvps2"><span class="rvts21">class Player:public Object</span></p>
 <p class="rvps2"><span class="rvts18">{</span></p>
 <p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;SLASKOBJECT</span></p>
 <p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
 <p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;/*user variables and methods*/</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;void run();</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;void draw();</span></p>
 <p class="rvps2"><span class="rvts18">}</span></p>
 <p class="rvps2"><span class="rvts18"><br/></span></p>
 <p class="rvps2"><span class="rvts21">void Player::run()</span></p>
@@ -96,44 +99,95 @@
 </table>
 </div>
 <p class="rvps2"><span class="rvts20"><br/></span></p>
-<p class="rvps2"><span class="rvts26">Making objects work with the engine</span></p>
-<p class="rvps2"><span class="rvts6">Example class </span><span class="rvts28">Player</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts25">Making objects work with the engine</span></p>
+<p class="rvps2"><span class="rvts6">Example class </span><span class="rvts29">Player</span><span class="rvts6">.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">class </span><span class="rvts27">Player</span><span class="rvts20">:public Object;</span></p>
+<p class="rvps2"><span class="rvts20">class </span><span class="rvts28">Player</span><span class="rvts20">:public Object;</span></p>
 <p class="rvps5"><span class="rvts6">Parent class </span><span class="rvts18">Object</span><span class="rvts6"> needs to be used for game objects.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
 <p class="rvps2"><span class="rvts20">SLASKOBJECT</span></p>
 <p class="rvps5"><span class="rvts18">SLASKOBJECT</span><span class="rvts6"> should be inserted at the top of all game objects.</span></p>
-<p class="rvps5"><span class="rvts6">This takes care of implementing necessary functions for game objects.</span></p>
+<p class="rvps5"><span class="rvts6">This takes care of implementing necessary functionality in the engine for using game objects.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Creating an instance of an object</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts20">new </span><span class="rvts28">Player</span><span class="rvts20">();</span></p>
+<p class="rvps5"><span class="rvts6">Creates a new instance of this object. The pointer can be stored when you want to reference to this object elsewhere. Objects should always be made as pointers and never deleted with the </span><span class="rvts18">delete</span><span class="rvts6"> command. The engine will take care of tracking and deleting it.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Implementing custom object functionality and code</span></p>
+<p class="rvps2"><span class="rvts27">Implementing custom object functionality and code</span></p>
 <p class="rvps2"><span class="rvts20">virtual void run();</span></p>
 <p class="rvps5"><span class="rvts6">Run function should be implemented in the object.</span></p>
 <p class="rvps5"><span class="rvts18">run()</span><span class="rvts6"> is called by the engine each game frame and should contain the object's running code.</span></p>
 <p class="rvps5"><span class="rvts6">The </span><span class="rvts18">run</span><span class="rvts6"> function should not contain any code for drawing the visuals of this object.</span></p>
 <p class="rvps5"><span class="rvts6">Running can be affected by active tags.</span></p>
-<p class="rvps5"><span class="rvts25"><br/></span></p>
+<p class="rvps5"><span class="rvts27"><br/></span></p>
 <p class="rvps2"><span class="rvts20">virtual void draw();</span></p>
 <p class="rvps5"><span class="rvts6">Draw function should be implemented in the object.</span></p>
 <p class="rvps5"><span class="rvts18">draw()</span><span class="rvts6"> is called by the engine each game frame after running all objects and should contain the object's drawing code.</span></p>
 <p class="rvps5"><span class="rvts6">The </span><span class="rvts18">draw</span><span class="rvts6"> function should not contain any code that changes the object's state or animations.</span></p>
 <p class="rvps5"><span class="rvts6">Drawing can be affected by active tags.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Implementing extra object functionality</span></p>
+<p class="rvps2"><span class="rvts20">virtual void runDisabled();</span></p>
+<p class="rvps5"><span class="rvts6">This function is called when the object enters a state where it's running is disabled with a an instance of the tag class.</span></p>
+<p class="rvps5"><span class="rvts6">Will not be called a second time if running is already disabled.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">virtual void runEnabled();</span></p>
+<p class="rvps5"><span class="rvts6">This function is called when the object enters a state where it's running is enabled with a an instance of the tag class.</span></p>
+<p class="rvps5"><span class="rvts6">This happens when all attached tags have enabled running.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">virtual void drawDisabled();</span></p>
+<p class="rvps5"><span class="rvts6">This function is called when the object enters a state where it's drawing is disabled with a an instance of the tag class.</span></p>
+<p class="rvps5"><span class="rvts6">Will not be called a second time if drawing is already disabled.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">virtual void drawEnabled();</span></p>
+<p class="rvps5"><span class="rvts6">This function is called when the object enters a state where it's drawing is enabled with a an instance of the tag class.</span></p>
+<p class="rvps5"><span class="rvts6">This happens when all attached tags have enabled drawing.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Identifying objects</span></p>
+<p class="rvps2"><span class="rvts6">Object id numbers can be obtained from the class or instances of the class. These id numbers can be compared to identify the current object.</span></p>
+<p class="rvps2"><span class="rvts6">Id numbers may change every time the program is started again so it is not suggested to store them outside the running application.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">static unsigned int objectId();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the engine id for this object class.</span></p>
 <p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts26">Provided members and methods</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Public members</span></p>
+<p class="rvps2"><span class="rvts20">virtual unsigned int id();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the engine id for the object class of this scene.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">void Player::touch(Object *obj)</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">if (obj-&gt;id()==HealthPickup::objectId())</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;//the touched object is a health pickup</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;health+=10;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;((HealthPickup*)obj)-&gt;pickedUp();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;}</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">//this may not be the best way to use this but it makes for a good example</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Provided members and methods</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Public members</span></p>
 <p class="rvps2"><span class="rvts20">double x;</span></p>
 <p class="rvps5"><span class="rvts6">The object's x position.</span></p>
 <p class="rvps2"><span class="rvts20"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double y;</span></p>
 <p class="rvps5"><span class="rvts6">The object's y position.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Destroying the object</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Destroying the object</span></p>
 <p class="rvps2"><span class="rvts20">void destroy();</span></p>
 <p class="rvps5"><span class="rvts6">Destroys the object, calls it's destructors and frees it from the memory.</span></p>
 <p class="rvps5"><span class="rvts6">Use this method instead of manually calling </span><span class="rvts18">delete</span><span class="rvts6"> on objects to let the engine handle it's destruction.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Moving the object</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Moving the object</span></p>
 <p class="rvps2"><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> values can be directly changed.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">Object* at(double xp,double yp);</span></p>
@@ -146,18 +200,18 @@
 <p class="rvps5"><span class="rvts6">Changes the position of the object by the given amounts.</span></p>
 <p class="rvps5"><span class="rvts6">Adds xp to x and yp to y;</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Handling drawing depth</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Handling drawing depth</span></p>
 <p class="rvps2"><span class="rvts20">double depth();</span></p>
 <p class="rvps2"><span class="rvts20">double getDepth();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the depth of the object.</span></p>
-<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double depth(double d);</span></p>
 <p class="rvps2"><span class="rvts20">double setDepth(double d);</span></p>
 <p class="rvps5"><span class="rvts6">Changes the object's depth to given value.</span></p>
 <p class="rvps5"><span class="rvts6">Returns depth of the object.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Tagging objects together</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Tagging objects together</span></p>
 <p class="rvps2"><span class="rvts20">Object* addTag(Tag *tag);</span></p>
 <p class="rvps5"><span class="rvts6">Adds this object to the given tag.</span></p>
 <p class="rvps5"><span class="rvts6">Object will follow the tags rules.</span></p>
@@ -167,8 +221,8 @@
 <p class="rvps2"><span class="rvts20">Object* removeTag(Tag *tag);</span></p>
 <p class="rvps5"><span class="rvts6">Removes this object from the given tag and restores it's status to normal.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Handling objects in scenes</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Handling objects in scenes</span></p>
 <p class="rvps2"><span class="rvts6">By default objects are tied to the currently active scene and deleted when scenes are changed.</span></p>
 <p class="rvps2"><span class="rvts6">Making an object persistent will make it remain through scene changes.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>

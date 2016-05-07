@@ -76,17 +76,17 @@ void slask::exitGame()
 	SlaskEngine::instance()->gameEnd();
 }
 
-void slask::setGameStartFunction(void(*func)())
+void slask::setGameStartFunction(void(*func)(void))
 {
 	SlaskEngine::setGameStartFunc(func);
 }
 
-void slask::setGameEndFunction(void(*func)())
+void slask::setGameEndFunction(void(*func)(void))
 {
 	SlaskEngine::setGameEndFunc(func);
 }
 
-void slask::setGameWindowResizeFunction(void(*func)())
+void slask::setGameWindowResizeFunction(void(*func)(void))
 {
 	SlaskEngine::setGameWindowResizeFunc(func);
 }
@@ -98,6 +98,7 @@ void slask::setTitle(const char* title)
 void slask::setFPS(int fps)
 {
 	GraphicsHandler::instance()->setFPS(fps);
+	SlaskEngine::instance()->setFPS(fps);
 }
 void slask::enableVSync()
 {
@@ -235,19 +236,19 @@ bool slask::getMouseIdle(int i)
 {
 	return (InputHandler::instance()->getmouse(i)<=0);
 }
-int slask::getMousewheelUp()
+int slask::getMouseWheelUp()
 {
 	return InputHandler::instance()->getmousewheel_up();
 }
-int slask::getMousewheelDown()
+int slask::getMouseWheelDown()
 {
 	return InputHandler::instance()->getmousewheel_down();
 }
-int slask::getMouseX()
+double slask::getMouseX()
 {
 	return InputHandler::instance()->getmouse_camera_x();
 }
-int slask::getMouseY()
+double slask::getMouseY()
 {
 	return InputHandler::instance()->getmouse_camera_y();
 }

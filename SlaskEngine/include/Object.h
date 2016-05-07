@@ -2,11 +2,19 @@
 
 #include "LinkedList.h"
 #include "Tag.h"
+#include "EngineNamespace.h"
 #include <vector>
 #define SLASKOBJECT \
 public: \
-	void run(); \
-	void draw(); \
+	inline static unsigned int objectId() \
+	{ \
+		static unsigned int _id=_engine::obtainObjId(); \
+		return _id; \
+	} \
+	virtual inline unsigned int id() \
+	{ \
+		return objectId(); \
+	} \
 private:
 
 class SlaskEngine;
@@ -22,7 +30,10 @@ private:
 	Scene *_scene;
 	bool _tagRunValue, _tagDrawValue;
 	bool _destroyed;
-	bool _getDestroyed();
+	inline bool _getDestroyed()
+	{
+		return _destroyed;
+	}
 	bool _persistent;
 	double _qdepth,_depth;
 	std::vector<Tag*> _tags;
@@ -49,6 +60,8 @@ public:
 	double y;
 	Object();
 	virtual ~Object();
+
+	virtual unsigned int id();
 
 	inline bool isPersistent()
 	{
@@ -96,4 +109,8 @@ public:
 
 	virtual void run();
 	virtual void draw();
+	virtual void runEnabled();
+	virtual void runDisabled();
+	virtual void drawEnabled();
+	virtual void drawDisabled();
 };

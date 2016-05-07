@@ -122,7 +122,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmodL_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudioL_vc.lib;C:\Program Files (x86)\sdk\redistributable_bin\steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib;C:\Program Files (x86)\sdk\redistributable_bin\steam_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -148,6 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\Dependencies\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -155,6 +156,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>fmod_vc.lib;fmod64_vc.lib;fmodL_vc.lib;fmodL64_vc.lib;fmodstudio_vc.lib;fmodstudio64_vc.lib;fmodstudioL_vc.lib;fmodstudioL64_vc.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\lowlevel\lib\fmod_vc.lib;C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\fmodstudio_vc.lib;C:\Program Files (x86)\sdk\redistributable_bin\steam_api.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\Dependencies\lib</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">
@@ -207,6 +209,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
+    <ClCompile Include="data.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="mainmenu.cpp" />
+    <ClCompile Include="menubutton.cpp" />
     <ClCompile Include="sources\Audio.cpp" />
     <ClCompile Include="sources\AudioBank.cpp" />
     <ClCompile Include="sources\AudioBus.cpp" />
@@ -214,6 +221,7 @@
     <ClCompile Include="sources\AudioSet.cpp" />
     <ClCompile Include="sources\Camera.cpp" />
     <ClCompile Include="sources\DepthItem.cpp" />
+    <ClCompile Include="sources\EngineNamespace.cpp" />
     <ClCompile Include="sources\File.cpp" />
     <ClCompile Include="sources\Font.cpp" />
     <ClCompile Include="sources\FontSet.cpp" />
@@ -236,24 +244,6 @@
     <ClCompile Include="sources\Timer.cpp" />
     <ClCompile Include="sources\TMXparser.cpp" />
     <ClCompile Include="sources\Video.cpp" />
-    <ClCompile Include="techEnemy.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="techGame.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="techPlayer.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="techScene.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="techTestBG.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="techTestObject.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -261,18 +251,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="background.h" />
+    <ClInclude Include="data.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\DepthItem.h" />
+    <ClInclude Include="include\EngineNamespace.h" />
     <ClInclude Include="include\FontChar.h" />
     <ClInclude Include="include\FontSet.h" />
     <ClInclude Include="include\Platform.h" />
     <ClInclude Include="include\Tag.h" />
     <ClInclude Include="include\TMXparser.h" />
     <ClInclude Include="include\Video.h" />
-    <ClInclude Include="techEnemy.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="include\Audio.h" />
     <ClInclude Include="include\AudioBank.h" />
     <ClInclude Include="include\AudioBus.h" />
@@ -295,18 +286,8 @@
     <ClInclude Include="include\SpriteSet.h" />
     <ClInclude Include="include\SteamHandler.h" />
     <ClInclude Include="include\Timer.h" />
-    <ClInclude Include="techPlayer.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="techScene.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="techTestBG.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="techTestObject.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="mainmenu.h" />
+    <ClInclude Include="menubutton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

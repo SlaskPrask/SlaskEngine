@@ -150,11 +150,11 @@ void InputHandler::mousePosition(int mx, int my)
 	mouse_y = my;
 	GraphicsHandler *gh = GraphicsHandler::instance();
 	if (gh->getCameraW() == gh->getWidth())
-		mouse_cam_x = gh->getCameraX() + mouse_x;
+		mouse_cam_x = gh->getCameraX() + (double)mouse_x;
 	else
 		mouse_cam_x = gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*(double)gh->getCameraW();
 	if (gh->getCameraH() == gh->getHeight())
-		mouse_cam_y = gh->getCameraY() + mouse_y;
+		mouse_cam_y = gh->getCameraY() + (double)mouse_y;
 	else
 		mouse_cam_y = gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*(double)gh->getCameraH();
 }

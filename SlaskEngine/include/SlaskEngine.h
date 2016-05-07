@@ -7,8 +7,6 @@
 #include "LogHandler.h"
 #include "File.h"
 #include "Input.h"
-#include "Object.h"
-#include "Scene.h"
 #include "Font.h"
 #include "Audio.h"
 #include "AudioBank.h"
@@ -22,6 +20,8 @@
 #include "Tag.h"
 #include "Camera.h"
 #include "DepthItem.h"
+#include "Object.h"
+#include "Scene.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>
@@ -48,6 +48,9 @@ private:
 	DepthItem *firstDepth;
 	Scene *scene;
 	bool switchingScenes;
+	unsigned int objIds,scnIds;
+	double frameTime;
+	int fps;
 
 public:
 	static void setGameStartFunc(void(*func)());
@@ -57,6 +60,17 @@ public:
 	{
 		return slaskengine;
 	}
+
+	unsigned int obtainObjId()
+	{
+		return objIds++;
+	}
+
+	unsigned int obtainScnId()
+	{
+		return scnIds++;
+	}
+
 
 	void switchScene(Scene *scn);
 
@@ -127,7 +141,20 @@ public:
 		scn->_objects.erase(it);
 	}
 
+	inline double getFrameTime()
+	{
+		return frameTime;
+	}
+
+	inline void setFPS(int framesps)
+	{
+		fps = framesps;
+	}
+
 	void init(int argc, char *argv[]);
 	SlaskEngine(int argc, char *argv[]);
 	~SlaskEngine();
 };
+
+#include "Object.h"
+#include "Scene.h"

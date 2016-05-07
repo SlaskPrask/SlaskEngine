@@ -63,17 +63,11 @@
     <ClCompile Include="sources\SteamHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="techTestObject.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
     <ClCompile Include="sources\Timer.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="techPlayer.cpp">
-      <Filter>TechDemo</Filter>
     </ClCompile>
     <ClCompile Include="sources\SpriteSet.cpp">
       <Filter>Source Files</Filter>
@@ -102,23 +96,29 @@
     <ClCompile Include="sources\Video.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="techGame.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="techTestBG.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="techEnemy.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="sources\DepthItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sources\SlaskNamespace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="techScene.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="mainmenu.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="menubutton.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="data.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\EngineNamespace.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +178,6 @@
     <ClInclude Include="include\Slask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techTestObject.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\ListHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -190,14 +187,8 @@
     <ClInclude Include="include\SpriteSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techEnemy.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\Loader.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="techPlayer.h">
-      <Filter>TechDemo</Filter>
     </ClInclude>
     <ClInclude Include="include\TMXparser.h">
       <Filter>Header Files</Filter>
@@ -223,9 +214,6 @@
     <ClInclude Include="include\Video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techTestBG.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\FontSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -235,8 +223,23 @@
     <ClInclude Include="include\SlaskNamespace.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="techScene.h">
+    <ClInclude Include="game.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="mainmenu.h">
+      <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="menubutton.h">
+      <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="data.h">
+      <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
+      <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EngineNamespace.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,6 +12,8 @@
 #include "LogHandler.h"
 #include <vector>
 
+#define _SLASK_DEFAULT_FPS (60)
+
 #define _SLASK_DEPTHRANGE (10000)
 #define _SLASK_DEFAULT_DRAW_DEPTH (-10000)
 
@@ -26,6 +28,7 @@ private:
 	FT_Library *fontLib;
 	bool vsync; 
 	int framespersecond;
+	bool cursorOn;
 	const char* label;
 	Camera *defaultCamera;
 	Camera *activeCamera;
@@ -58,6 +61,12 @@ public:
 	void setSize(int w, int h);
 	void setRenderSize();
 	void resize();
+
+	void setMouseCursor(bool enabled);
+	inline bool getMouseCursor()
+	{
+		return cursorOn;
+	}
 
 	const char* getTitle();
 	int getFPS();

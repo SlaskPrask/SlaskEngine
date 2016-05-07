@@ -71,7 +71,7 @@
 <p class="rvps2"><span class="rvts19">Our first scene</span></p>
 <p class="rvps2"><span class="rvts6">Scenes are essentially game screens or worlds. This scene will be our first world where the game starts in. Normally the first scene is a loading screen scene or the main menu scene.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts26">world1.h</span></p>
+<p class="rvps2"><span class="rvts25">world1.h</span></p>
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">
 <td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
@@ -85,6 +85,8 @@
 <p class="rvps2"><span class="rvts18"><br/></span></p>
 <p class="rvps2"><span class="rvts21">class World1:public Scene</span></p>
 <p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">SLASKSCENE</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
 <p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;private:</span><br/><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">Camera cam;</span></p>
 <p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;Player *player;</span><br/><span class="rvts18"> &nbsp; &nbsp;</span><br/><span class="rvts18"> &nbsp; &nbsp;public:</span></p>
 <p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;World1();</span></p>
@@ -103,11 +105,12 @@
 <tr valign="top">
 <td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21">class World1:public Scene</span></p>
 <p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><span class="rvts21">SLASKSCENE</span></p>
 </td>
 </tr>
 </table>
 </div>
-<p class="rvps2"><span class="rvts6">All our custom scene classes should inherit the public </span><span class="rvts18">Scene</span><span class="rvts6"> class.</span></p>
+<p class="rvps2"><span class="rvts6">All our custom scene classes should inherit the public </span><span class="rvts18">Scene</span><span class="rvts6"> class and for the engine to handle your scenes you need to add the </span><span class="rvts18">SLASKSCENE</span><span class="rvts6"> definition at the beginning of the class.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">

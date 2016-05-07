@@ -26,9 +26,10 @@ void GraphicsHandler::init(const char* title)
 	resolutions = sf::VideoMode::getFullscreenModes();
 
 	window = 0;
-	framespersecond = 60;
+	framespersecond = _SLASK_DEFAULT_FPS;
 	vsync = true;
 	label = title;
+	cursorOn = 1;
 	width = height = 0;
 
 	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
@@ -47,12 +48,13 @@ void GraphicsHandler::init(const char* title)
 void GraphicsHandler::initGL()
 {
 	if (!window)
-		return;
+	{
+		setVSync(vsync);
+		setFPS(framespersecond);
+		setMouseCursor(cursorOn);
 
-	setVSync(vsync);
-	setFPS(framespersecond);
-
-	window->setActive();
+		window->setActive();
+	}
 
 	glDisable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
@@ -221,7 +223,14 @@ void GraphicsHandler::setFPS(int fps)
 {
 	framespersecond = fps;
 	if (window)
-	window->setFramerateLimit(fps);
+		window->setFramerateLimit(fps);
+}
+
+void GraphicsHandler::setMouseCursor(bool enabled)
+{
+	cursorOn = enabled;
+	if (window)
+		window->setMouseCursorVisible(enabled);
 }
 
 void GraphicsHandler::setVSync(bool enabled)

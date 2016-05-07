@@ -78,22 +78,23 @@
 <p class="rvps2"><span class="rvts20">void deactivateCamera();</span></p>
 <p class="rvps5"><span class="rvts6">Releases the currently active camera. Does not </span><span class="rvts18">delete</span><span class="rvts6"> it.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">void GetCameraX();</span></p>
+<p class="rvps2"><span class="rvts20">double getCameraX();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current camera's </span><span class="rvts18">x</span><span class="rvts6"> position.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">void GetCameraY();</span></p>
+<p class="rvps2"><span class="rvts20">double getCameraY();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current camera's </span><span class="rvts18">y</span><span class="rvts6"> position.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">void GetCameraWidth();</span></p>
+<p class="rvps2"><span class="rvts20">double getCameraWidth();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current camera's </span><span class="rvts18">width</span><span class="rvts6">.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">void GetCameraHeight();</span></p>
+<p class="rvps2"><span class="rvts20">double getCameraHeight();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current camera's height.</span></p>
 <p class="rvps2"><span class="rvts22"><br/></span></p>
 <p class="rvps2"><span class="rvts19">Creating a camera at a given position</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">void at(Camera *cam,double x,double y);</span></p>
-<p class="rvps5"><span class="rvts6">Returns the current camera's height.</span></p>
+<p class="rvps2"><span class="rvts20">Camera* at(Camera *cam,double x,double y);</span></p>
+<p class="rvps5"><span class="rvts6">Creates the camera at the given location.</span></p>
+<p class="rvps5"><span class="rvts6">Returns the created camera.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">

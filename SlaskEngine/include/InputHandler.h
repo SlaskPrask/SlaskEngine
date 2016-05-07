@@ -43,27 +43,27 @@ public:
 	bool getanykey(int state);
 	inline int getmouse_x()
 	{
-		return (int)mouse_x;
+		return mouse_x;
 	}
 	inline int getmouse_y()
 	{
-		return (int)mouse_y;
+		return mouse_y;
 	}
-	inline int getmouse_camera_x()
+	inline double getmouse_camera_x()
 	{
-		return (int)mouse_cam_x;
+		return mouse_cam_x;
 	}
-	inline int getmouse_camera_y()
+	inline double getmouse_camera_y()
 	{
-		return (int)mouse_cam_y;
+		return mouse_cam_y;
 	}
 	inline int getmousewheel_up()
 	{
-		return (int)mousewheel_up;
+		return mousewheel_up;
 	}
 	inline int getmousewheel_down()
 	{
-		return (int)mousewheel_down;
+		return mousewheel_down;
 	}
 
 	bool getSignalResize();

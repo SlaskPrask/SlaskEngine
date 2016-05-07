@@ -70,23 +70,23 @@
 <p></p>
 <p class="rvps2"><span class="rvts19">class Camera</span></p>
 <p class="rvps2"><span class="rvts6">Cameras are used to crop out a part of the scene. It can be smaller than the scene to provide a zoom effect on the focused area or the same size as the scene. Defining an active camera makes it's view scale to the window. When no camera is active the window will display as much as it can in native scale. Inactive cameras can still be used for positioning purposes.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts26">Provided members and methods</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Public members</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Provided members and methods</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Public members</span></p>
 <p class="rvps2"><span class="rvts20">double x;</span></p>
 <p class="rvps5"><span class="rvts6">The camera's x position.</span></p>
 <p class="rvps2"><span class="rvts20"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double y;</span></p>
 <p class="rvps5"><span class="rvts6">The camera's y position.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Creating a camera</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Creating a camera</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">Camera();</span></p>
 <p class="rvps2"><span class="rvts20">Camera(double xp,double yp,double sw,double sh);</span></p>
 <p class="rvps5"><span class="rvts6">Creates a new camera. Initial top left position can be given in </span><span class="rvts18">xp</span><span class="rvts6">,</span><span class="rvts18">yp</span><span class="rvts6"> and initial width/height size in </span><span class="rvts18">sw</span><span class="rvts6">,</span><span class="rvts18">sh</span><span class="rvts6">.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Activating the camera</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Activating the camera</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void activate();</span></p>
 <p class="rvps5"><span class="rvts6">Makes the window show the view of this camera.</span></p>
@@ -95,8 +95,8 @@
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void isActive();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether the camera is currently active.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Moving the camera</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Moving the camera</span></p>
 <p class="rvps2"><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> values can be directly changed and read.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void at(double xp,double up);</span></p>
@@ -122,8 +122,8 @@
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double getBottom();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the bottom edge of the camera. Same as </span><span class="rvts18">y+getHeight()</span><span class="rvts6">.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Resizing the camera</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Resizing the camera</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void setSize(double sw,double sh);</span></p>
 <p class="rvps5"><span class="rvts6">Changes the width of the camera to </span><span class="rvts18">sw</span><span class="rvts6"> and the height to </span><span class="rvts18">sh</span><span class="rvts6">.</span></p>
@@ -133,16 +133,16 @@
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double getHeight();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the height of the camera.</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
-<p class="rvps2"><span class="rvts25">Making the camera automatically follow a point</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Making the camera automatically follow a point</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void follow(double *xpoint,double *ypoint);</span></p>
 <p class="rvps5"><span class="rvts6">Makes the camera automatically follow the given coordinate pointers.</span></p>
-<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void follow(Object *obj);</span></p>
 <p class="rvps5"><span class="rvts6">Makes the camera automatically follow the given object's </span><span class="rvts18">x</span><span class="rvts6"> and </span><span class="rvts18">y</span><span class="rvts6"> coordinates.</span></p>
 <p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">follow(&amp;(obj-&gt;x),&amp;(obj-&gt;y))</span><span class="rvts6">.</span></p>
-<p class="rvps2"><span class="rvts29"><br/></span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void unfollow();</span></p>
 <p class="rvps5"><span class="rvts6">Stops the camera from automatically following the given coordinate pointers.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
