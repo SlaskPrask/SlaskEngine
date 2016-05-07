@@ -31,8 +31,25 @@ void GraphicsHandler::init(const char* title)
 	label = title;
 	cursorOn = 1;
 	width = height = 0;
+	regionW = regionH;
+
+	blackBarData[0] = 0;
+	blackBarData[1] = 0;
+	blackBarData[2] = _SLASK_DEFAULT_DRAW_DEPTH;
+	blackBarData[3] = 0;
+	blackBarData[4] = 0;
+	blackBarData[5] = _SLASK_DEFAULT_DRAW_DEPTH;
+	blackBarData[6] = 0;
+	blackBarData[7] = 0;
+	blackBarData[8] = _SLASK_DEFAULT_DRAW_DEPTH;
+	blackBarData[9] = 0;
+	blackBarData[10] = 0;
+	blackBarData[11] = _SLASK_DEFAULT_DRAW_DEPTH;
 
 	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
+
+	blackBars = 1;
+	horBars=verBars=0;
 
 	fontLib=new FT_Library();
 	if (FT_Init_FreeType(fontLib))
@@ -263,10 +280,44 @@ void GraphicsHandler::setRenderSize()
 
 	queueCamera = 0;
 
-	glViewport(0, 0, width,height);
+
+	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, activeCamera->getWidth(), activeCamera->getHeight(), 0, _SLASK_DEPTHRANGE, -_SLASK_DEPTHRANGE);
+	if (blackBars)
+	{
+		double camRatio = activeCamera->getWidth() / activeCamera->getHeight();
+		double winRatio = (double)width / (double)height;
+		if (camRatio > winRatio)//too wide
+		{
+			regionW = activeCamera->getWidth();
+			regionH = regionW / winRatio;
+			verBars = (regionH - activeCamera->getHeight()) / 2.0f;
+			horBars = 0;
+			blackBarData[3] = regionW;
+			blackBarData[7] = verBars;
+			blackBarData[9] = regionW;
+			blackBarData[10] = verBars;
+		}
+		else//too tall
+		{
+			regionH = activeCamera->getHeight();
+			regionW = regionH*winRatio;
+			verBars = 0;
+			horBars = (regionW - activeCamera->getWidth()) / 2.0f;
+			blackBarData[3] = horBars;
+			blackBarData[7] = regionH;
+			blackBarData[9] = horBars;
+			blackBarData[10] = regionH;
+		}
+		glOrtho(0, regionW, regionH, 0, _SLASK_DEPTHRANGE, -_SLASK_DEPTHRANGE);
+	}
+	else
+	{
+		glOrtho(0, activeCamera->getWidth(), activeCamera->getHeight(), 0, _SLASK_DEPTHRANGE, -_SLASK_DEPTHRANGE);
+		regionW = activeCamera->getWidth();
+		regionW = activeCamera->getHeight();
+	}
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
@@ -329,6 +380,9 @@ double GraphicsHandler::getCameraH()
 void GraphicsHandler::drawBegin()
 {
 	glLoadIdentity();
+	if (blackBars)
+	glTranslated(horBars-activeCamera->x,verBars-activeCamera->y, 0);
+	else
 	glTranslated(-activeCamera->x, -activeCamera->y, 0);
 	glPushMatrix();
 
@@ -351,6 +405,24 @@ void GraphicsHandler::earlyCameraRefresh()
 void GraphicsHandler::drawEnd()
 {
 	glPopMatrix();
+
+	if (window&&blackBars)
+	{
+		glPushMatrix();
+		glLoadIdentity();
+		glDisable(GL_TEXTURE_2D);
+		set_color(0, 0, 0, 1);
+		glVertexPointer(3, GL_FLOAT, 0, blackBarData);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		if (horBars<verBars)
+		glTranslated(0,activeCamera->getHeight()+verBars,0);
+		else
+		glTranslated(activeCamera->getWidth()+horBars,0,0);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+		restore_color();
+		glEnable(GL_TEXTURE_2D);
+		glPopMatrix();
+	}
 
 	if (!window)
 		return;
