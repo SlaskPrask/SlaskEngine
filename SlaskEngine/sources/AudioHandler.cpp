@@ -193,6 +193,24 @@ double AudioHandler::getBusVolume(AudioBus* bus)
 	return busvol;
 }
 
+void AudioHandler::setBusMute(AudioBus* bus, bool mute)
+{
+	if (bus->getBus())
+		bus->getBus()->setMute(mute);
+	else
+		LogHandler::notify("Audio", "Attempting to set mute on an unexisting bus.");
+}
+
+bool AudioHandler::getBusMute(AudioBus* bus)
+{
+	bool mute = false;
+	if (bus->getBus())
+		bus->getBus()->getMute(&mute);
+	else
+		LogHandler::notify("Audio", "Attempting to get mute of an unexisting bus.");
+	return mute;
+}
+
 AudioHandler::~AudioHandler()
 {
 	audioSys->unloadAll();

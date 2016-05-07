@@ -98,6 +98,8 @@ namespace slask
 
 	void setAudioBusVolume(AudioBus* bus, double vol);//undocced
 	double getAudioBusVolume(AudioBus* bus);//undocced
+	void setAudioBusMute(AudioBus* bus, bool mute);//undocced
+	bool getAudioBusMute(AudioBus* bus);//undocced
 
 	float getSoundParameterValue(Audio* audio, const char* param);//undocced
 
