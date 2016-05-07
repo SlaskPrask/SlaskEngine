@@ -63,8 +63,8 @@ public:
 	void checkSaves(std::vector<std::string>*list, int amountSaves, const char* path, const char* savename, const char* fileType);
 	void createSaves(std::string fileName, std::string fileEnd);
 
-	void newSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName);
-	void copySave(int sFile, int cToFile, const char* path, const char* savename, const char* fileType, const char* pName);
-	void deleteSave(int sFile, const char* path, const char* savename, const char* fileType, const char* pName);
+	//void newSave(int sFile, const char* path, const char* savename, const char* fileType);
+	//void copySave(int sFile, int cToFile, const char* path, const char* savename, const char* fileType, const char* pName);
+	void deleteSave(int sFile, const char* path, const char* savename, const char* fileType);
 };
 
