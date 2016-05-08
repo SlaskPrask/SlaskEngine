@@ -14,7 +14,11 @@ private:
 	
 
 public:
-	static SteamHandler* instance();
+	inline static SteamHandler* instance()
+	{
+		static SteamHandler steamhandler;
+		return &steamhandler;
+	}
 	void init();
 
 	std::string getUserName();

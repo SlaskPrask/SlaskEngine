@@ -1,12 +1,6 @@
 #include "../include/AudioHandler.h"
 #include <iostream>
 
-AudioHandler* AudioHandler::instance()
-{
-	static AudioHandler audiohandler;
-	return &audiohandler;
-}
-
 void AudioHandler::init(int channels)
 {
 	LogHandler::log("Audio", "Start");

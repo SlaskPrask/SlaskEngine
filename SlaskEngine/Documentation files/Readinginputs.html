@@ -163,6 +163,42 @@
 <p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">int getMouseWheelDown();</span></p>
 <p class="rvps5"><span class="rvts6">Returns how many ticks the mouse wheel moved down on this frame.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearMouse(int i);</span></p>
+<p class="rvps5"><span class="rvts6">Clears the given mouse button's state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's state.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Clearing mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void Button::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span><br/><span class="rvts21"> &nbsp; &nbsp;if (inside(getMouseX(),getMouseY(),x,y,x+width,y+height))</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getMousePress(Mouse::MouseLeft))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;//mark the mouse button as read and accepted so other objects won't get it's press</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp;clearMouse(Mouse::MouseLeft);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;clicked();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;}</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearMouseWheelUp();</span></p>
+<p class="rvps5"><span class="rvts6">Clears the given mouse's wheel up state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's up scrolling amount.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearMouseWheelUp();</span></p>
+<p class="rvps5"><span class="rvts6">Clears the given mouse's wheel up state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's up scrolling amount.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearMouseWheel();</span></p>
+<p class="rvps5"><span class="rvts6">Clears the given mouse's wheel state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's wheel state.</span></p>
+<p class="rvps5"><span class="rvts6">Same as calling both </span><span class="rvts18">clearMouseWheelUp()</span><span class="rvts6"> and </span><span class="rvts18">clearMouseWheelDown()</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create EBooks</a></p>
 </div>

@@ -51,7 +51,11 @@ private:
 	GraphicsHandler() {}
 
 public:
-	static GraphicsHandler* instance();
+	inline static GraphicsHandler* instance()
+	{
+		static GraphicsHandler graphicshandler;
+		return &graphicshandler;
+	}
 
 	void init(const char* title);
 	~GraphicsHandler();

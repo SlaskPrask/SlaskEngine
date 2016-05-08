@@ -222,28 +222,41 @@ void slask::logNotify(const char *str)
 
 bool slask::getMousePress(int i)
 {
+	if (InputHandler::instance()->clearedmouse(i))
+		return 0;
 	return InputHandler::instance()->getmouse(i)==1;
 }
 bool slask::getMouseRelease(int i)
 {
+	if (InputHandler::instance()->clearedmouse(i))
+		return 0;
 	return (InputHandler::instance()->getmouse(i)==-1);
 }
 bool slask::getMouseHeld(int i)
 {
+	if (InputHandler::instance()->clearedmouse(i))
+		return 0;
 	return (InputHandler::instance()->getmouse(i)>0);
 }
 bool slask::getMouseIdle(int i)
 {
+	if (InputHandler::instance()->clearedmouse(i))
+		return 0;
 	return (InputHandler::instance()->getmouse(i)<=0);
 }
 int slask::getMouseWheelUp()
 {
+	if (InputHandler::instance()->clearedmousewheel_up())
+		return 0;
 	return InputHandler::instance()->getmousewheel_up();
 }
 int slask::getMouseWheelDown()
 {
+	if (InputHandler::instance()->clearedmousewheel_down())
+		return 0;
 	return InputHandler::instance()->getmousewheel_down();
 }
+
 double slask::getMouseX()
 {
 	return InputHandler::instance()->getmouse_camera_x();

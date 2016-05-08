@@ -122,14 +122,14 @@
 <p class="rvps5"><span class="rvts6">Disables vertical syncing of the game window.</span></p>
 <p class="rvps5"><span class="rvts6">Enabled by default.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">const char* getTitle();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the title of the game window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">int getFPS();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the game's current frames per second value.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">bool getVSync();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether vertical syncing is enabled for the game window.</span></p>
-<p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">const char* getTitle();</span></p>
-<p class="rvps5"><span class="rvts6">Returns the title of the game window.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">
@@ -145,7 +145,17 @@
 </tr>
 </table>
 </div>
-<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Changing window scaling options</span></p>
+<p class="rvps2"><span class="rvts6">Window scaling when using a camera instance can be changed. This scaling does not apply when there is no camera, the game window will just show as much as it can. Custom scaling can also be done by settings a custom resize function with </span><span class="rvts18">setGameWindowResizeFunction</span><span class="rvts6"> and adjusting the active camera there. This way you can create nicer context outside the game region instead of having black borders.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void windowScalingFit();</span></p>
+<p class="rvps5"><span class="rvts6">Stretches the current camera to the window's size maintaining it's aspect ratio and adding black bars to the sides of the window.</span></p>
+<p class="rvps5"><span class="rvts6">This is the default scaling option.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void windowScalingStretch();</span></p>
+<p class="rvps5"><span class="rvts6">Stretches the current camera to fit the entire window.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts19">Obtaining supported resolutions</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">int getResolutions();</span></p>

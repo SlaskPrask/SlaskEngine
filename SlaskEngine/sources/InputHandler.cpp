@@ -1,11 +1,5 @@
 #include "../include/InputHandler.h"
 
-InputHandler* InputHandler::instance()
-{
-	static InputHandler inputhandler;
-	return &inputhandler;
-}
-
 void InputHandler::init()
 {
 	LogHandler::log("Input", "Start");
@@ -20,7 +14,9 @@ void InputHandler::init()
 	for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
 	{
 		mouse_butt[i] = 0;
+		mouse_clear[i] = 0;
 	}
+	mousewheelup_clear=mousewheeldown_clear = 0;
 	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
 	{
 		key[i] = 0;
@@ -52,12 +48,14 @@ bool InputHandler::run()
 		else 
 		if (mouse_butt[i] == -1)
 			mouse_butt[i] = 0;
+		mouse_clear[i] = 0;
 	}
 
 	anykeyreleased = 0;
 	anykeypressed = 0;
 
 	mousewheel_up = mousewheel_down = 0;
+	mousewheelup_clear = mousewheeldown_clear = 0;
 
 	if (window)
 	while (window->pollEvent(event))
@@ -157,16 +155,6 @@ void InputHandler::mousePosition(int mx, int my)
 		mouse_cam_y = gh->getCameraY() + (double)mouse_y;
 	else
 		mouse_cam_y = -gh->getVerBar() + gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*gh->getRegionH();
-	/*
-	if (gh->getCameraW() == gh->getWidth())
-		mouse_cam_x = gh->getCameraX() + (double)mouse_x;
-	else
-		mouse_cam_x = gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*(double)gh->getCameraW();
-	if (gh->getCameraH() == gh->getHeight())
-		mouse_cam_y = gh->getCameraY() + (double)mouse_y;
-	else
-		mouse_cam_y = gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*(double)gh->getCameraH();
-		*/
 }
 
 int InputHandler::getkey(int i)
@@ -219,6 +207,30 @@ InputHandler::~InputHandler()
 {
 	delete key;
 	LogHandler::log("Input", "End");
+}
+
+void InputHandler::clearmouse(int i)
+{
+	if (i < 0 || i >= _SLASK_MAXMOUSEBUTTONS)
+	{
+		std::string unhandledKey = "Clearing mouse button ";
+		unhandledKey += i;
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+	}
+	mouse_clear[i] = 1;
+}
+bool InputHandler::clearedmouse(int i)
+{
+	if (i < 0 || i >= _SLASK_MAXMOUSEBUTTONS)
+	{
+		std::string unhandledKey = "Reading mouse button ";
+		unhandledKey += i;
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
+	return mouse_clear[i];
 }
 
 bool InputHandler::getSignalResize()

@@ -3,12 +3,6 @@
 
 //TODO: window checks
 
-GraphicsHandler* GraphicsHandler::instance()
-{
-	static GraphicsHandler graphicshandler;
-	return &graphicshandler;
-}
-
 void GraphicsHandler::init(const char* title)
 {
 	LogHandler::log("Graphics", "Start");

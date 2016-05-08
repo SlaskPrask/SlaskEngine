@@ -120,6 +120,19 @@ namespace slask
 	bool getMouseHeld(int i);
 	bool getMouseIdle(int i);
 
+	inline void clearMouseWheelUp()//undocced
+	{
+		InputHandler::instance()->clearmousewheel_up();
+	}
+	inline void clearMouseWheelDown()//undocced
+	{
+		InputHandler::instance()->clearmousewheel_down();
+	}
+	inline void clearMouse(int i)//undocced
+	{
+		InputHandler::instance()->clearmouse(i);
+	}
+
 	bool getKeyPressAny();
 	bool getKeyReleaseAny();
 	bool getKeyHeldAny();

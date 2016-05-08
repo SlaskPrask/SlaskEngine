@@ -12,8 +12,9 @@ private:
 	int mouse_x, mouse_y;
 	double mouse_cam_x,mouse_cam_y;
 	int mouse_butt[_SLASK_MAXMOUSEBUTTONS];
-	int mousewheel_up;
-	int mousewheel_down;
+	bool mouse_clear[_SLASK_MAXMOUSEBUTTONS];
+	int mousewheel_up,mousewheel_down;
+	bool mousewheelup_clear,mousewheeldown_clear;
 	int anykeycount;
 	double deadzone[_SLASK_MAXJOYSTICKS];
 	double buttondeadzone[_SLASK_MAXJOYSTICKS];
@@ -31,12 +32,36 @@ private:
 	InputHandler() {}
 
 public:
-	static InputHandler* instance();
+	inline static InputHandler* instance()
+	{
+		static InputHandler inputhandler;
+		return &inputhandler;
+	}
 
 	void init();
 	~InputHandler();
 
 	bool run();
+
+	void clearmouse(int i);
+	bool clearedmouse(int i);
+
+	inline void clearmousewheel_up()
+	{
+		mousewheelup_clear = 1;
+	}
+	inline bool clearedmousewheel_up()
+	{
+		return mousewheelup_clear;
+	}
+	inline void clearmousewheel_down()
+	{
+		mousewheeldown_clear = 1;
+	}
+	inline bool clearedmousewheel_down()
+	{
+		return mousewheeldown_clear;
+	}
 
 	int getkey(int i);
 	int getmouse(int i);

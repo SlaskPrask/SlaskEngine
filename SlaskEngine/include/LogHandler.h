@@ -19,7 +19,11 @@ private:
 	bool enabled;
 
 public:
-	static LogHandler* instance();
+	inline static LogHandler* instance()
+	{
+		static LogHandler loghandler;
+		return &loghandler;
+	}
 	~LogHandler();
 
 	static void enablePrint();

@@ -3,13 +3,6 @@
 #include "../include/SteamHandler.h"
 #include <iostream>
 
-
-SteamHandler* SteamHandler::instance()
-{
-	static SteamHandler steamhandler;
-	return &steamhandler;
-}
-
 void SteamHandler::init()
 {
 	LogHandler::log("Steam", "Start");

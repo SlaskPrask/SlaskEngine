@@ -26,7 +26,11 @@ private:
 	AudioHandler() {}
 
 public:
-	static AudioHandler* instance();
+	inline static AudioHandler* instance()
+	{
+		static AudioHandler audiohandler;
+		return &audiohandler;
+	}
 
 	void init(int channels);
 	~AudioHandler();

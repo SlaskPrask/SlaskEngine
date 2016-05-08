@@ -28,12 +28,6 @@ void LogHandler::setFile(const char* str)
 	LogHandler::log_file = str;
 }
 
-LogHandler* LogHandler::instance()
-{
-	static LogHandler loghandler;
-	return &loghandler;
-}
-
 void LogHandler::writeLog(const char *logger,const char *str,int type)
 {
 	if (enabled)
