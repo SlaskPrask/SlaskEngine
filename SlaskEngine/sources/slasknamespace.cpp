@@ -114,9 +114,9 @@ int slask::random(int max)
 	return rand()%(max+1);
 }
 
-void slask::getTitle(char *title)
+void slask::getTitle(char *str)
 {
-	strcpy(title,GraphicsHandler::instance()->getTitle());
+	strcpy(str,GraphicsHandler::instance()->getTitle());
 }
 int slask::getFPS()
 {

@@ -228,6 +228,7 @@
     <ClCompile Include="sources\GraphicsHandler.cpp" />
     <ClCompile Include="sources\Input.cpp" />
     <ClCompile Include="sources\InputHandler.cpp" />
+    <ClCompile Include="sources\InputNames.cpp" />
     <ClCompile Include="sources\Loader.cpp" />
     <ClCompile Include="sources\LogHandler.cpp" />
     <ClCompile Include="main.cpp">

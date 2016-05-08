@@ -70,6 +70,34 @@
 <p></p>
 <p class="rvps2"><span class="rvts19">Keyboard key names</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Getting the name of a key</span></p>
+<p class="rvps2"><span class="rvts20">void getKeyName(char *str,int keycode);</span></p>
+<p class="rvps2"><span class="rvts20">void getKeyName(std::string *str,int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Inserts the name of the given key in </span><span class="rvts18">keycode</span><span class="rvts6"> to </span><span class="rvts18">str</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">If you wish to support other languages or implement your own key names you may write your own function.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading key </span><span class="rvts24">keycode</span><span class="rvts22"> name out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given keycode is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">int leftKey=Key::A; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //assign a key for moving left</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">char str[50];</span></p>
+<p class="rvps2"><span class="rvts21">drawText(font,"Move left:",0,0,16,1,1,1,1);</span></p>
+<p class="rvps2"><span class="rvts21">getKeyName(str,leftKey); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//get the name of the key currently assigned for moving left</span></p>
+<p class="rvps2"><span class="rvts21">drawText(font,"str,150,0,16,1,1,1,1);</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Key keycodes</span></p>
 <p class="rvps2"><span class="rvts20">enum Key::A;</span></p>
 <p class="rvps2"><span class="rvts20">enum Key::B;</span></p>
 <p class="rvps2"><span class="rvts20">enum Key::C;</span></p>
@@ -195,7 +223,7 @@
 <p class="rvps5"><span class="rvts6">Keyboard delete key.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">enum Key::Add;</span></p>
-<p class="rvps5"><span class="rvts6">Keyboard + key.nö</span></p>
+<p class="rvps5"><span class="rvts6">Keyboard + key.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">enum Key::Subtract;</span></p>
 <p class="rvps5"><span class="rvts6">Keyboard - key.</span></p>

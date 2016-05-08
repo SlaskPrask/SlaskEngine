@@ -58,6 +58,22 @@ namespace slask
 	{
 		drawText(font, str.c_str(), x, y, size, 0, r, g, b, a);
 	}
+
+	void getKeyName(std::string *str, int keycode);
+	void getMouseName(std::string *str, int i);
+	inline void getKeyName(char *str, int keycode)
+	{
+		std::string s;
+		getKeyName(&s, keycode);
+		strcpy(str, s.c_str());
+	}
+	inline void getMouseName(char *str, int i)
+	{
+		std::string s;
+		getMouseName(&s, i);
+		strcpy(str, s.c_str());
+	}
+
 	//draw sprite at position
 	void drawSprite(Sprite* sprite, double x, double y);
 	//draw sprite with size
@@ -250,7 +266,7 @@ namespace slask
 	void setFPS(int fps);
 	void enableVSync();
 	void disableVSync();
-	void getTitle(char *title);
+	void getTitle(char *str);
 	int getFPS();
 	bool getVSync();
 	int getWindowWidth();

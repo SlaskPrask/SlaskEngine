@@ -164,6 +164,9 @@
     <ClCompile Include="sources\AudioSet.cpp">
       <Filter>Source Files\Resource Sets</Filter>
     </ClCompile>
+    <ClCompile Include="sources\InputNames.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

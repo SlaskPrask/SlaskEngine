@@ -222,6 +222,14 @@
 <p class="rvps5"><span class="rvts6">Removes this object from the given tag and restores it's status to normal.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
 <p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Reading the object state</span></p>
+<p class="rvps2"><span class="rvts20">bool isRunEnabled();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether all tags allow this object to run.</span></p>
+<p class="rvps5"><span class="rvts6">Good for when you want to draw the object in a different way when it is disabled.</span></p>
+<p class="rvps5"><span class="rvts27"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool isDrawEnabled();</span></p>
+<p class="rvps5"><span class="rvts6">Returns whether all tags allow this object to draw.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Handling objects in scenes</span></p>
 <p class="rvps2"><span class="rvts6">By default objects are tied to the currently active scene and deleted when scenes are changed.</span></p>
 <p class="rvps2"><span class="rvts6">Making an object persistent will make it remain through scene changes.</span></p>
