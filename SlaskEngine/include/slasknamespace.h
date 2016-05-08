@@ -36,13 +36,17 @@ namespace slask
 
 	int getSceneWidth();
 	int getSceneHeight();
-	inline Scene* getScene()//undocced
+	inline Scene* getScene()
 	{
 		return SlaskEngine::instance()->getCurrentScene();
 	}
-	inline double frameTime()//undocced
+	inline double frameSeconds()
 	{
-		return SlaskEngine::instance()->getFrameTime();
+		return SlaskEngine::instance()->getFrameSeconds();
+	}
+	inline double frameTime()
+	{
+		return SlaskEngine::instance()->getFrameMultiplier();
 	}
 
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
@@ -58,6 +62,22 @@ namespace slask
 	{
 		drawText(font, str.c_str(), x, y, size, 0, r, g, b, a);
 	}
+
+	void getKeyName(std::string *str, int keycode);
+	void getMouseName(std::string *str, int i);
+	inline void getKeyName(char *str, int keycode)
+	{
+		std::string s;
+		getKeyName(&s, keycode);
+		strcpy(str, s.c_str());
+	}
+	inline void getMouseName(char *str, int i)
+	{
+		std::string s;
+		getMouseName(&s, i);
+		strcpy(str, s.c_str());
+	}
+
 	//draw sprite at position
 	void drawSprite(Sprite* sprite, double x, double y);
 	//draw sprite with size
@@ -250,7 +270,7 @@ namespace slask
 	void setFPS(int fps);
 	void enableVSync();
 	void disableVSync();
-	void getTitle(char *title);
+	void getTitle(char *str);
 	int getFPS();
 	bool getVSync();
 	int getWindowWidth();

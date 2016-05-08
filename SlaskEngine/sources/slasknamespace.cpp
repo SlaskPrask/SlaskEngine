@@ -97,6 +97,8 @@ void slask::setTitle(const char* title)
 }
 void slask::setFPS(int fps)
 {
+	if (fps < 0)
+		fps = 0;
 	GraphicsHandler::instance()->setFPS(fps);
 	SlaskEngine::instance()->setFPS(fps);
 }
@@ -114,9 +116,9 @@ int slask::random(int max)
 	return rand()%(max+1);
 }
 
-void slask::getTitle(char *title)
+void slask::getTitle(char *str)
 {
-	strcpy(title,GraphicsHandler::instance()->getTitle());
+	strcpy(str,GraphicsHandler::instance()->getTitle());
 }
 int slask::getFPS()
 {

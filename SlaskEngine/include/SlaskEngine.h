@@ -49,7 +49,7 @@ private:
 	Scene *scene;
 	bool switchingScenes;
 	unsigned int objIds,scnIds;
-	double frameTime;
+	double frameTime,frameSeconds;
 	int fps;
 
 public:
@@ -141,7 +141,11 @@ public:
 		scn->_objects.erase(it);
 	}
 
-	inline double getFrameTime()
+	inline double getFrameSeconds()
+	{
+		return frameSeconds;
+	}
+	inline double getFrameMultiplier()
 	{
 		return frameTime;
 	}

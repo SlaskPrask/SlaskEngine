@@ -68,6 +68,14 @@ public:
 		return _persistent;
 	}
 
+	inline bool isRunEnabled()
+	{
+		return _tagRuns();
+	}
+	inline bool isDrawEnabled()
+	{
+		return _tagDraws();
+	}
 	Object* setPersistent();
 	Object* unsetPersistent();
 

@@ -216,11 +216,13 @@ ModelManifest.xml
 
 SlaskEngine/log.txt
 SlaskEngine/Debug/
-SlaskEngine/Library/
+SlaskEngine/Library Debug/
+SlaskEngine/Library Release/
 SlaskEngine/Release/
 SlaskEngine/X64/
 *.tlog
 Debug/
-Library/
+Library Debug/
+Library Release/
 Release/
 x64/

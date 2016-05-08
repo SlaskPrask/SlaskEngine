@@ -70,6 +70,34 @@
 <p></p>
 <p class="rvps2"><span class="rvts19">Mouse button names</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Getting the name of a button</span></p>
+<p class="rvps2"><span class="rvts20">void getMouseName(char *str,int i);</span></p>
+<p class="rvps2"><span class="rvts20">void getMouseName(std::string *str,int i);</span></p>
+<p class="rvps5"><span class="rvts6">Inserts the name of the given mouse button in </span><span class="rvts18">i</span><span class="rvts6"> to </span><span class="rvts18">str</span><span class="rvts6">.</span></p>
+<p class="rvps5"><span class="rvts6">If you wish to support other languages or implement your own key names you may write your own function.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Reading mouse button </span><span class="rvts24">i</span><span class="rvts22"> name out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">int fireButton=Mouse::MouseLeft; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//assign a button for firing</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">char str[50];</span></p>
+<p class="rvps2"><span class="rvts21">drawText(font,"Fire:",0,0,16,1,1,1,1);</span></p>
+<p class="rvps2"><span class="rvts21">getKeyName(str,fireButton); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //get the name of the key currently assigned for firing</span></p>
+<p class="rvps2"><span class="rvts21">drawText(font,"str,150,0,16,1,1,1,1);</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Button number codes</span></p>
 <p class="rvps2"><span class="rvts20">enum Mouse::Mouse1;</span></p>
 <p class="rvps2"><span class="rvts20">enum Mouse::MouseLeft;</span></p>
 <p class="rvps5"><span class="rvts6">Left mouse button.</span></p>
@@ -83,10 +111,10 @@
 <p class="rvps5"><span class="rvts6">Left mouse button.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">enum Mouse::Mouse4;</span></p>
-<p class="rvps5"><span class="rvts6">Mouse button 4, browser forwards.</span></p>
+<p class="rvps5"><span class="rvts6">Mouse button 4, browser back.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">enum Mouse::Mouse5;</span></p>
-<p class="rvps5"><span class="rvts6">Mouse button 5, browser back.</span></p>
+<p class="rvps5"><span class="rvts6">Mouse button 5, browser forward.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour/create-ebooks-for-amazon-kindle">Free Kindle producer</a></p>

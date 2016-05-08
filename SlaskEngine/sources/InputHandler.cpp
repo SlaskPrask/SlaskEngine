@@ -137,6 +137,7 @@ bool InputHandler::run()
 			mousePosition(event.mouseWheel.x, event.mouseWheel.y);
 			break;
 		case sf::Event::MouseButtonPressed:
+			LogHandler::log((int)event.mouseButton.button);
 			if (touchTranslation&&event.mouseButton.button == 0)
 			{
 				touchClick = 1;
@@ -234,7 +235,7 @@ int InputHandler::getkey(int i)
 	else
 	{
 		std::string unhandledKey = "Reading key ";
-		unhandledKey += i;
+		unhandledKey += std::to_string(i);
 		unhandledKey += " out of range.";
 		LogHandler::notify("Input", unhandledKey.c_str());
 		return 0;
@@ -253,7 +254,7 @@ int InputHandler::getmouse(int i)
 	else
 	{
 		std::string unhandledKey = "Reading mouse button ";
-		unhandledKey += i;
+		unhandledKey += std::to_string(i);
 		unhandledKey += " out of range.";
 		LogHandler::notify("Input", unhandledKey.c_str());
 		return 0;
@@ -289,7 +290,7 @@ void InputHandler::clearmouse(int i)
 	if (i < 0 || i >= _SLASK_MAXMOUSEBUTTONS)
 	{
 		std::string unhandledKey = "Clearing mouse button ";
-		unhandledKey += i;
+		unhandledKey += std::to_string(i);
 		unhandledKey += " out of range.";
 		LogHandler::notify("Input", unhandledKey.c_str());
 	}
@@ -300,7 +301,7 @@ bool InputHandler::clearedmouse(int i)
 	if (i < 0 || i >= _SLASK_MAXMOUSEBUTTONS)
 	{
 		std::string unhandledKey = "Reading mouse button ";
-		unhandledKey += i;
+		unhandledKey += std::to_string(i);
 		unhandledKey += " out of range.";
 		LogHandler::notify("Input", unhandledKey.c_str());
 		return 0;
