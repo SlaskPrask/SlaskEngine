@@ -209,11 +209,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="background.cpp" />
-    <ClCompile Include="data.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="mainmenu.cpp" />
-    <ClCompile Include="menubutton.cpp" />
+    <ClCompile Include="background.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="data.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="mainmenu.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="menubutton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="sources\Audio.cpp" />
     <ClCompile Include="sources\AudioBank.cpp" />
     <ClCompile Include="sources\AudioBus.cpp" />
@@ -251,9 +261,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="background.h" />
-    <ClInclude Include="data.h" />
-    <ClInclude Include="game.h" />
+    <ClInclude Include="background.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="data.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\DepthItem.h" />
@@ -286,8 +302,12 @@
     <ClInclude Include="include\SpriteSet.h" />
     <ClInclude Include="include\SteamHandler.h" />
     <ClInclude Include="include\Timer.h" />
-    <ClInclude Include="mainmenu.h" />
-    <ClInclude Include="menubutton.h" />
+    <ClInclude Include="mainmenu.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="menubutton.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
