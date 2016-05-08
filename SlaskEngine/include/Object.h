@@ -76,8 +76,8 @@ public:
 	{
 		return _tagDraws();
 	}
-	inline Object* setPersistent();
-	inline Object* unsetPersistent();
+	Object* setPersistent();
+	Object* unsetPersistent();
 
 	Object* addTag(Tag *tag);
 	Object* removeTag(Tag *tag);
