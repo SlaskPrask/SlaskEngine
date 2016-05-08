@@ -152,11 +152,21 @@ void InputHandler::mousePosition(int mx, int my)
 	if (gh->getCameraW() == gh->getWidth())
 		mouse_cam_x = gh->getCameraX() + (double)mouse_x;
 	else
+		mouse_cam_x = -gh->getHorBar() + gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*gh->getRegionW();
+	if (gh->getCameraH() == gh->getHeight())
+		mouse_cam_y = gh->getCameraY() + (double)mouse_y;
+	else
+		mouse_cam_y = -gh->getVerBar() + gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*gh->getRegionH();
+	/*
+	if (gh->getCameraW() == gh->getWidth())
+		mouse_cam_x = gh->getCameraX() + (double)mouse_x;
+	else
 		mouse_cam_x = gh->getCameraX() + (double)mouse_x / (double)gh->getWidth()*(double)gh->getCameraW();
 	if (gh->getCameraH() == gh->getHeight())
 		mouse_cam_y = gh->getCameraY() + (double)mouse_y;
 	else
 		mouse_cam_y = gh->getCameraY() + (double)mouse_y / (double)gh->getHeight()*(double)gh->getCameraH();
+		*/
 }
 
 int InputHandler::getkey(int i)

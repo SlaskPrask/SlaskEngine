@@ -33,6 +33,10 @@ private:
 	Camera *defaultCamera;
 	Camera *activeCamera;
 	bool queueCamera;
+	bool blackBars;
+	double horBars, verBars;
+	GLfloat blackBarData[12];
+	double regionW, regionH;
 
 	int width;
 	int height;
@@ -62,6 +66,30 @@ public:
 	void setRenderSize();
 	void resize();
 
+	inline double getVerBar()
+	{
+		if (blackBars)
+			return verBars;
+		return 0;
+	}
+
+	inline double getHorBar()
+	{
+		if (blackBars)
+			return horBars;
+		else
+			return 0;
+	}
+
+	inline double getRegionW()
+	{
+		return regionW;
+	}
+	inline double getRegionH()
+	{
+		return regionH;
+	}
+
 	void setMouseCursor(bool enabled);
 	inline bool getMouseCursor()
 	{
@@ -85,6 +113,19 @@ public:
 		queueCamera = 1;
 	}
 	void earlyCameraRefresh();
+
+	inline void scaleFit()
+	{
+		if (!blackBars)
+			refreshCamera();
+		blackBars = 1;
+	}
+	inline void scaleStretch()
+	{
+		if (blackBars)
+			refreshCamera();
+		blackBars = 0;
+	}
 
 	int getResolutions();
 	int getResolutionWidth(unsigned int i);

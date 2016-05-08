@@ -163,6 +163,16 @@ namespace slask
 		logNotify(str.c_str());
 	}
 
+	inline void windowScalingFit()
+	{
+		GraphicsHandler::instance()->scaleFit();
+	}
+
+	inline void windowScalingStretch()
+	{
+		GraphicsHandler::instance()->scaleStretch();
+	}
+
 	inline void deactivateCamera()
 	{
 		GraphicsHandler::instance()->setCamera(NULL);
