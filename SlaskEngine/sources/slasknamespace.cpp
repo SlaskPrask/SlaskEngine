@@ -97,6 +97,8 @@ void slask::setTitle(const char* title)
 }
 void slask::setFPS(int fps)
 {
+	if (fps < 0)
+		fps = 0;
 	GraphicsHandler::instance()->setFPS(fps);
 	SlaskEngine::instance()->setFPS(fps);
 }

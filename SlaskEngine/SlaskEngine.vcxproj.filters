@@ -65,9 +65,6 @@
     <ClCompile Include="main.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
-    <ClCompile Include="sources\Video.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
@@ -167,6 +164,9 @@
     <ClCompile Include="sources\InputNames.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
+    <ClCompile Include="sources\Video.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -174,9 +174,6 @@
     <None Include="Documentation files\SlaskEngine API Documentation.hnd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Video.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="game.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
@@ -287,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="include\SlaskNamespace.h">
       <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Video.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

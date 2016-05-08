@@ -12,6 +12,10 @@
 #include "LogHandler.h"
 #include <vector>
 
+#ifndef  GL_CLAMP_TO_EDGE
+#define  GL_CLAMP_TO_EDGE 0x812F
+#endif
+
 #define _SLASK_DEFAULT_FPS (60)
 
 #define _SLASK_DEPTHRANGE (10000)

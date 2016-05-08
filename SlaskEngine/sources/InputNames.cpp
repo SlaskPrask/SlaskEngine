@@ -1,6 +1,6 @@
 #include "../include/SlaskNamespace.h"
 
-void getKeyName(std::string *str, int keycode)
+void slask::getKeyName(std::string *str, int keycode)
 {
 	if (keycode < 0 || keycode >= sf::Keyboard::Key::KeyCount)
 	{
@@ -317,7 +317,7 @@ void getKeyName(std::string *str, int keycode)
 	}
 }
 
-void getMouseName(std::string *str, int i)
+void slask::getMouseName(std::string *str, int i)
 {
 	if (i < 0 || i >= _SLASK_MAXMOUSEBUTTONS)
 	{

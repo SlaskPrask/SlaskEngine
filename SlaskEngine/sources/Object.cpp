@@ -54,7 +54,7 @@ Object* Object::setPersistent()
 	{
 		SlaskEngine::instance()->untieObjectFromScene(_scene,this);
 		_scene = NULL;
-		_persistent = 0;
+		_persistent = 1;
 	}
 	return this;
 }

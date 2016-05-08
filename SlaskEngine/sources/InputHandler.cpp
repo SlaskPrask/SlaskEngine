@@ -137,6 +137,7 @@ bool InputHandler::run()
 			mousePosition(event.mouseWheel.x, event.mouseWheel.y);
 			break;
 		case sf::Event::MouseButtonPressed:
+			LogHandler::log((int)event.mouseButton.button);
 			if (touchTranslation&&event.mouseButton.button == 0)
 			{
 				touchClick = 1;

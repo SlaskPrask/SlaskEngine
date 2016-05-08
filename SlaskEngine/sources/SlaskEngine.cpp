@@ -48,7 +48,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	firstDepth = NULL;
 	scene = NULL;
 	switchingScenes = 0;
-	frameTime = 0;
+	frameTime = frameSeconds = 0;
 	fps = _SLASK_DEFAULT_FPS;
 
 	srand((unsigned int)time(NULL));
@@ -187,7 +187,8 @@ void SlaskEngine::init(int argc, char *argv[])
 			sf::sleep(sf::microseconds((sf::Int64)(1000000.0f / fps - passedMs)));
 			passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
 		}
-		frameTime=passedMs / 1000000.0f;
+		frameSeconds=passedMs / 1000000.0f;
+		frameTime = frameSeconds*fps;
 		frameClock.restart();
 	}
 	LogHandler::log("Engine", "Stopping..");

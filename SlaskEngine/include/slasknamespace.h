@@ -36,13 +36,17 @@ namespace slask
 
 	int getSceneWidth();
 	int getSceneHeight();
-	inline Scene* getScene()//undocced
+	inline Scene* getScene()
 	{
 		return SlaskEngine::instance()->getCurrentScene();
 	}
-	inline double frameTime()//undocced
+	inline double frameSeconds()
 	{
-		return SlaskEngine::instance()->getFrameTime();
+		return SlaskEngine::instance()->getFrameSeconds();
+	}
+	inline double frameTime()
+	{
+		return SlaskEngine::instance()->getFrameMultiplier();
 	}
 
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
