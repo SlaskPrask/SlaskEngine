@@ -108,6 +108,25 @@ namespace slask
 		return (x >= left&&y >= top&&x < right&&y < bottom);
 	}
 
+	inline void enableTouchTranslation()
+	{
+		InputHandler::instance()->setTouchTranslation(1);
+	}
+
+	inline void disableTouchTranslation()
+	{
+		InputHandler::instance()->setTouchTranslation(0);
+	}
+
+	inline void setNoTouchPosition(int x, int y)
+	{
+		InputHandler::instance()->setNoTouchPosition(x, y);
+	}
+	inline void unsetNoTouchPosition()
+	{
+		InputHandler::instance()->unsetNoTouchPosition();
+	}
+
 	int getMouseWheelUp();
 	int getMouseWheelDown();
 	double getMouseX();
@@ -120,15 +139,15 @@ namespace slask
 	bool getMouseHeld(int i);
 	bool getMouseIdle(int i);
 
-	inline void clearMouseWheelUp()//undocced
+	inline void clearMouseWheelUp()
 	{
 		InputHandler::instance()->clearmousewheel_up();
 	}
-	inline void clearMouseWheelDown()//undocced
+	inline void clearMouseWheelDown()
 	{
 		InputHandler::instance()->clearmousewheel_down();
 	}
-	inline void clearMouse(int i)//undocced
+	inline void clearMouse(int i)
 	{
 		InputHandler::instance()->clearmouse(i);
 	}
@@ -231,7 +250,7 @@ namespace slask
 	void setFPS(int fps);
 	void enableVSync();
 	void disableVSync();
-	const char* getTitle();
+	void getTitle(char *title);
 	int getFPS();
 	bool getVSync();
 	int getWindowWidth();

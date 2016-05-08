@@ -6,8 +6,13 @@ void InputHandler::init()
 
 	key = new int[sf::Keyboard::Key::KeyCount];
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
-	mouse_cam_y = mouse_cam_x = 0;
-	window_focus = true;
+	mouse_cam_y = mouse_cam_x = mouse_cam_moved_x = mouse_cam_moved_y = mouse_cam_prev_x = mouse_cam_prev_y = 0;
+	window_focus = 1;
+	touchClick = 0;
+	touchTranslation = 0;
+	touchNoPosition = 0;
+	touchNoPositionX = -1;
+	touchNoPositionY = -1;
 	signal_focus = signal_resize = 0;
 	anykeyreleased = anykeypressed = 0;
 	anykeyheld = 0;
@@ -15,6 +20,7 @@ void InputHandler::init()
 	{
 		mouse_butt[i] = 0;
 		mouse_clear[i] = 0;
+		mouse_ignore[i] = 0;
 	}
 	mousewheelup_clear=mousewheeldown_clear = 0;
 	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
@@ -31,6 +37,27 @@ bool InputHandler::run()
 	bool close = false;
 	sf::Event event;
 	
+	if (touchTranslation)
+		switch (touchClick)
+		{
+		case 1:
+			if (mouse_butt[0] <= 0)
+				touchClick = -1;
+			else
+				touchClick = 2;
+			break;
+		case -1:
+			touchClick = 0;
+			//TODO: issue with clicking again on this frame?
+			break;
+		case 2:
+			if (mouse_butt[0] <= 0)
+				touchClick = -1;
+			break;
+		default:
+			break;
+		}
+
 	//0 is not pressed, 1 is initial press, 2 is held down, -1 is initial release
 	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
 	{
@@ -56,6 +83,9 @@ bool InputHandler::run()
 
 	mousewheel_up = mousewheel_down = 0;
 	mousewheelup_clear = mousewheeldown_clear = 0;
+
+	mouse_cam_prev_x = mouse_cam_x;
+	mouse_cam_prev_y = mouse_cam_y;
 
 	if (window)
 	while (window->pollEvent(event))
@@ -107,6 +137,10 @@ bool InputHandler::run()
 			mousePosition(event.mouseWheel.x, event.mouseWheel.y);
 			break;
 		case sf::Event::MouseButtonPressed:
+			if (touchTranslation&&event.mouseButton.button == 0)
+			{
+				touchClick = 1;
+			}
 			if (event.mouseButton.button>=0 && event.mouseButton.button < _SLASK_MAXMOUSEBUTTONS)
 			{
 				mouse_butt[event.mouseButton.button] = 1;
@@ -116,6 +150,7 @@ bool InputHandler::run()
 		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button >= 0 && event.mouseButton.button < _SLASK_MAXMOUSEBUTTONS)
 			{
+				if (mouse_butt[event.mouseButton.button]>0)
 				mouse_butt[event.mouseButton.button] = -1;
 				mousePosition(event.mouseButton.x, event.mouseButton.y);
 			}
@@ -126,6 +161,9 @@ bool InputHandler::run()
 		case sf::Event::MouseEntered:
 			break;
 		case sf::Event::MouseLeft:
+			break;
+		case sf::Event::TouchBegan:
+			LogHandler::log((int)event.touch.finger);
 			break;
 		case sf::Event::JoystickButtonPressed:
 			break;
@@ -138,6 +176,38 @@ bool InputHandler::run()
 		case sf::Event::JoystickDisconnected:
 			break;
 		}
+	}
+
+	//ignore presses outside the camera (black bar region)
+	if (mouse_cam_x < GraphicsHandler::instance()->getCameraX() ||
+		mouse_cam_x >= GraphicsHandler::instance()->getCameraX() + GraphicsHandler::instance()->getCameraW() ||
+		mouse_cam_y < GraphicsHandler::instance()->getCameraY() ||
+		mouse_cam_y >= GraphicsHandler::instance()->getCameraY() + GraphicsHandler::instance()->getCameraH())
+	{
+		if (touchClick == 1)
+			touchClick = 0;
+		for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
+		{
+			if (mouse_butt[i] == 1)
+				mouse_butt[i] = 0;
+		}
+	}
+
+	mouse_cam_moved_x = mouse_cam_x - mouse_cam_prev_x;
+	mouse_cam_moved_y = mouse_cam_y - mouse_cam_prev_y;
+	if (touchTranslation)
+	{
+		if (mouse_butt[0] == 1 || touchClick == 1)
+		mouse_cam_moved_x = mouse_cam_moved_y = 0;
+		if (touchNoPosition&&touchClick == 0)
+		mousePosition(touchNoPositionX, touchNoPositionY);
+	}
+
+	if (touchClick != 0)
+	{
+		std::ostringstream s;
+		s << mouse_x << "," << mouse_y << " " << mouse_cam_moved_x << "," << mouse_cam_moved_y << " " << touchClick;
+		LogHandler::log(s.str().c_str());
 	}
 	return close;
 }
@@ -173,8 +243,13 @@ int InputHandler::getkey(int i)
 
 int InputHandler::getmouse(int i)
 {
-	if (i >= 0 && i<_SLASK_MAXMOUSEBUTTONS)
+	if (i >= 0 && i < _SLASK_MAXMOUSEBUTTONS)
+	{
+		if (touchTranslation&&i == 0)
+		return touchClick;
+		else
 		return mouse_butt[i];
+	}
 	else
 	{
 		std::string unhandledKey = "Reading mouse button ";

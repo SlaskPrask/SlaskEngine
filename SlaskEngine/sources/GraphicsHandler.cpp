@@ -45,6 +45,8 @@ void GraphicsHandler::init(const char* title)
 	blackBars = 1;
 	horBars=verBars=0;
 
+	initGL();
+
 	fontLib=new FT_Library();
 	if (FT_Init_FreeType(fontLib))
 	{
@@ -58,7 +60,7 @@ void GraphicsHandler::init(const char* title)
 
 void GraphicsHandler::initGL()
 {
-	if (!window)
+	if (window)
 	{
 		setVSync(vsync);
 		setFPS(framespersecond);
@@ -288,10 +290,10 @@ void GraphicsHandler::setRenderSize()
 			regionH = regionW / winRatio;
 			verBars = (regionH - activeCamera->getHeight()) / 2.0f;
 			horBars = 0;
-			blackBarData[3] = regionW;
-			blackBarData[7] = verBars;
-			blackBarData[9] = regionW;
-			blackBarData[10] = verBars;
+			blackBarData[3] = (GLfloat)regionW;
+			blackBarData[7] = (GLfloat)verBars;
+			blackBarData[9] = (GLfloat)regionW;
+			blackBarData[10] = (GLfloat)verBars;
 		}
 		else//too tall
 		{
@@ -299,10 +301,10 @@ void GraphicsHandler::setRenderSize()
 			regionW = regionH*winRatio;
 			verBars = 0;
 			horBars = (regionW - activeCamera->getWidth()) / 2.0f;
-			blackBarData[3] = horBars;
-			blackBarData[7] = regionH;
-			blackBarData[9] = horBars;
-			blackBarData[10] = regionH;
+			blackBarData[3] = (GLfloat)horBars;
+			blackBarData[7] = (GLfloat)regionH;
+			blackBarData[9] = (GLfloat)horBars;
+			blackBarData[10] = (GLfloat)regionH;
 		}
 		glOrtho(0, regionW, regionH, 0, _SLASK_DEPTHRANGE, -_SLASK_DEPTHRANGE);
 	}

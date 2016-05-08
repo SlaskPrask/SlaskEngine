@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/System.hpp>
+#include <SFML/Window/Touch.hpp>
 #include "GraphicsHandler.h"
 #include "LogHandler.h"
 
@@ -10,8 +11,11 @@ class InputHandler
 {
 private:
 	int mouse_x, mouse_y;
-	double mouse_cam_x,mouse_cam_y;
+	double mouse_cam_prev_x, mouse_cam_prev_y;
+	double mouse_cam_x, mouse_cam_y;
+	double mouse_cam_moved_x, mouse_cam_moved_y;
 	int mouse_butt[_SLASK_MAXMOUSEBUTTONS];
+	bool mouse_ignore[_SLASK_MAXMOUSEBUTTONS];
 	bool mouse_clear[_SLASK_MAXMOUSEBUTTONS];
 	int mousewheel_up,mousewheel_down;
 	bool mousewheelup_clear,mousewheeldown_clear;
@@ -26,6 +30,11 @@ private:
 	bool signal_resize;
 	bool signal_focus;
 	bool window_focus;
+
+	bool touchTranslation;
+	int touchClick;
+	bool touchNoPosition;
+	int touchNoPositionX,touchNoPositionY;
 
 	void mousePosition(int mx, int my);
 
@@ -43,8 +52,27 @@ public:
 
 	bool run();
 
+	inline void setTouchTranslation(bool enabled)
+	{
+		touchTranslation = enabled;
+	}
+
 	void clearmouse(int i);
 	bool clearedmouse(int i);
+
+	inline void setNoTouchPosition(int x, int y)
+	{
+		touchNoPosition = 1;
+		touchNoPositionX = x;
+		touchNoPositionY = y;
+	}
+
+	inline void unsetNoTouchPosition()
+	{
+		touchNoPosition = 0;
+		touchNoPositionX = -1;
+		touchNoPositionY = -1;
+	}
 
 	inline void clearmousewheel_up()
 	{

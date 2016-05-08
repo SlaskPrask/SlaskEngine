@@ -198,7 +198,40 @@
 <p class="rvps2"><span class="rvts20">void clearMouseWheel();</span></p>
 <p class="rvps5"><span class="rvts6">Clears the given mouse's wheel state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's wheel state.</span></p>
 <p class="rvps5"><span class="rvts6">Same as calling both </span><span class="rvts18">clearMouseWheelUp()</span><span class="rvts6"> and </span><span class="rvts18">clearMouseWheelDown()</span><span class="rvts6">.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Touch input</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Mouse to touch</span></p>
+<p class="rvps2"><span class="rvts20">void enableTouchTranslation();</span></p>
+<p class="rvps5"><span class="rvts6">Tells the engine to handle the mouse cursor as a touch input.</span></p>
+<p class="rvps5"><span class="rvts6">Disables mouse warping on click.</span></p>
+<p class="rvps5"><span class="rvts6">This is a quick way to implement one point touch input in your game.</span></p>
+<p class="rvps5"><span class="rvts6">Disabled by default.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void disableTouchTranslation();</span></p>
+<p class="rvps5"><span class="rvts6">Disables the touch translation and tells the engine to handle mouse inputs as a mouse again.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setNoTouchPosition(int x,int y);</span></p>
+<p class="rvps5"><span class="rvts6">With this function you can set where the mouse cursor goes when touch is released.</span></p>
+<p class="rvps5"><span class="rvts6">Useful for preventing hovering effects happening where the screen was touched last.</span></p>
+<p class="rvps2"><span class="rvts26"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void unsetNoTouchPosition();</span></p>
+<p class="rvps5"><span class="rvts6">Disables mouse cursor repositioning when touch is released.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">enableTouchTranslation(); &nbsp; &nbsp; &nbsp;//enable touch mouse translation</span></p>
+<p class="rvps2"><span class="rvts21">disableMouseCursor(); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/*hide the mouse cursor for our touch device</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; some operating systems hide it upon touch</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; and display it when mouse is used instead*/</span></p>
+<p class="rvps2"><span class="rvts21">setNoTouchPosition(-1,-1); &nbsp; &nbsp; //set the cursor barely off scene when touch is released</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create EBooks</a></p>
 </div>

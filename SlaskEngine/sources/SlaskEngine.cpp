@@ -108,7 +108,7 @@ void SlaskEngine::init(int argc, char *argv[])
 			if (graphics->getWindow())
 			{
 				std::ostringstream str;
-				str << "Window resized to " << graphics->getWindow()->getSize().x << "," << graphics->getWindow()->getSize().x;
+				str << "Window resized to " << graphics->getWindow()->getSize().x << "," << graphics->getWindow()->getSize().y;
 				LogHandler::log("Engine", str.str().c_str());
 			}
 			else
@@ -242,7 +242,7 @@ SpriteSet* SlaskEngine::spriteSet(unsigned int i)
 	if (i < 0 || i >= spritesets.size())
 	{
 		std::string str = "Attempting to access sprite set ";
-		str += i;
+		str += std::to_string(i);
 		str += "/";
 		int size = spritesets.size() - 1;
 		str += size;
@@ -258,7 +258,7 @@ AudioSet* SlaskEngine::audioSet(unsigned int i)
 	if (i < 0 || i >= audiosets.size())
 	{
 		std::string str = "Attempting to access audio set ";
-		str += i;
+		str += std::to_string(i);
 		str += "/";
 		int size = audiosets.size() - 1;
 		str += size;
@@ -274,10 +274,10 @@ FontSet* SlaskEngine::fontSet(unsigned int i)
 	if (i < 0 || i >= fontsets.size())
 	{
 		std::string str = "Attempting to access font set ";
-		str += i;
+		str += std::to_string(i);
 		str += "/";
 		int size = fontsets.size() - 1;
-		str += size;
+		str += std::to_string(size);
 		str += " out of range. (Starting from 0.)";
 		LogHandler::error("Engine", str.c_str());
 		return NULL;
