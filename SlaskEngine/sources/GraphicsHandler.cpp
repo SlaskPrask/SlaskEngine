@@ -493,10 +493,15 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 	}
 
 	glPushMatrix();
-	GLfloat d2d[] = { -(GLfloat)w/2.0f, -(GLfloat)h/2.0f,drawDepth, +(GLfloat)w/2.0f, -(GLfloat)h/2.0f,drawDepth, -(GLfloat)w/2.0f, +(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,drawDepth };
+	GLfloat d2d[] = {0,0,drawDepth,(GLfloat)w,0,drawDepth,0,(GLfloat)h,drawDepth,(GLfloat)w,(GLfloat)h,drawDepth };
 
-	glTranslated(x+w/2.0f, y + h / 2.0f, 0);
+	glTranslated(x + w / 2.0f, y + h / 2.0f, 0);
 	glRotated(rot, 0, 0, 1);
+	glTranslated(- w / 2.0f,- h / 2.0f, 0);
+	/*GLfloat d2d[] = { -(GLfloat)w / 2.0f, -(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, -(GLfloat)h / 2.0f,drawDepth, -(GLfloat)w / 2.0f, +(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,drawDepth };
+
+	glTranslated(x + w / 2.0f, y + h / 2.0f, 0);
+	glRotated(rot, 0, 0, 1);*/
 	GLfloat d2d_tex[8] = { (GLfloat)fromx,(GLfloat)fromy,(GLfloat)tox,(GLfloat)fromy,(GLfloat)fromx,(GLfloat)toy,(GLfloat)tox,(GLfloat)toy };
 	sprite->bind();
 	if (a != -1)
