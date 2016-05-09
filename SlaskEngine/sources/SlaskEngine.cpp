@@ -41,8 +41,6 @@ void SlaskEngine::init(int argc, char *argv[])
 	fullEngineVersion = engineBuild;
 	fullEngineVersion += std::to_string(engineVersion);
 
-	objIds = scnIds = 0;
-
 	Camera *cam;
 	running = true;
 	firstDepth = NULL;

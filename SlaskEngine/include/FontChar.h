@@ -4,7 +4,7 @@
 struct FontChar
 {
 	GLuint tex;
-	int w, h;
-	int bw, bh;
-	int adv;
+	GLfloat w, h;
+	GLfloat bw, bh;
+	GLfloat adv;
 };

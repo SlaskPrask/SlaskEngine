@@ -6,6 +6,8 @@ void Font::load(const char* file)
 	fileName = file;
 	height = 0;
 	ch = new FontChar[128];
+	lineSize = 0;
+	yOffset = 0;
 
 	FT_Library *lib = GraphicsHandler::instance()->getFontLib();
 
@@ -24,6 +26,8 @@ void Font::load(const char* file)
 
 	FT_Set_Char_Size(face, loadSize << 6, loadSize << 6, 96, 96);
 	height = loadSize;
+	yOffset = face->size->metrics.ascender >> 6;
+	lineSize = face->size->metrics.height >> 6;
 	list = glGenLists(128);
 	for (unsigned char i = 0; i < 128; i++)
 	glGenTextures(1, &(ch[i].tex));
@@ -80,11 +84,11 @@ bool Font::charToGL(FT_Face face, char c)
 		}
 
 	FT_Render_Glyph(face->glyph, ft_render_mode_normal);
-	ch[c].adv = face->glyph->advance.x;
-	ch[c].w = w;
-	ch[c].h = h;
-	ch[c].bw = face->glyph->bitmap_left;
-	ch[c].bh = face->glyph->bitmap_top;
+	ch[c].adv = (GLfloat)(face->glyph->advance.x>>6);
+	ch[c].w = (GLfloat)w;
+	ch[c].h = (GLfloat)h;
+	ch[c].bw = (GLfloat)face->glyph->bitmap_left;
+	ch[c].bh = (GLfloat)face->glyph->bitmap_top;
 	
 	glBindTexture(GL_TEXTURE_2D, ch[c].tex);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

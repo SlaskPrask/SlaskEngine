@@ -50,9 +50,9 @@ namespace slask
 	}
 
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
-	inline void drawText(Font *font, std::string str, double x, double y, double size,double lineSpacing, double r, double g, double b, double a)//undocced
+	inline void drawText(Font *font, std::string str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)//undocced
 	{
-		drawText(font, str.c_str(), x, y, size,lineSpacing, r, g, b, a);
+		drawText(font, str.c_str(), x, y, size, lineSpacing, r, g, b, a);
 	}
 	inline void drawText(Font *font, const char* str, double x, double y, double size, double r, double g, double b, double a)//undocced
 	{
@@ -61,6 +61,34 @@ namespace slask
 	inline void drawText(Font *font, std::string str, double x, double y, double size, double r, double g, double b, double a)//undocced
 	{
 		drawText(font, str.c_str(), x, y, size, 0, r, g, b, a);
+	}
+
+	void drawTextCenter(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
+	inline void drawTextCenter(Font *font, std::string str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)//undocced
+	{
+		drawTextCenter(font, str.c_str(), x, y, size, lineSpacing, r, g, b, a);
+	}
+	inline void drawTextCenter(Font *font, const char* str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawTextCenter(font, str, x, y, size, 0, r, g, b, a);
+	}
+	inline void drawTextCenter(Font *font, std::string str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawTextCenter(font, str.c_str(), x, y, size, 0, r, g, b, a);
+	}
+
+	void drawTextRight(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
+	inline void drawTextRight(Font *font, std::string str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)//undocced
+	{
+		drawTextRight(font, str.c_str(), x, y, size, lineSpacing, r, g, b, a);
+	}
+	inline void drawTextRight(Font *font, const char* str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawTextRight(font, str, x, y, size, 0, r, g, b, a);
+	}
+	inline void drawTextRight(Font *font, std::string str, double x, double y, double size, double r, double g, double b, double a)//undocced
+	{
+		drawTextRight(font, str.c_str(), x, y, size, 0, r, g, b, a);
 	}
 
 	void getKeyName(std::string *str, int keycode);

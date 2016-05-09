@@ -23,6 +23,8 @@ private:
 	GLuint list;
 	FontChar *ch;
 	unsigned int loadSize;
+	unsigned int lineSize;
+	unsigned int yOffset;
 	void load(const char* file);
 	std::string fileName;
 	unsigned int height;
@@ -44,6 +46,14 @@ public:
 	inline unsigned int getSize()
 	{
 		return loadSize;
+	}
+	inline unsigned int getLineSize()
+	{
+		return lineSize;
+	}
+	inline unsigned int getOffset()
+	{
+		return yOffset;
 	}
 	~Font();
 };

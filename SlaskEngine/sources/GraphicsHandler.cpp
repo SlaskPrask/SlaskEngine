@@ -435,7 +435,7 @@ void GraphicsHandler::close()
 	LogHandler::log("Graphics", "Window closed.");
 }
 
-void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
+void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, int align, double r, double g, double b, double a)
 {
 	if (!window)
 		return;
@@ -446,37 +446,75 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 		return;
 	}
 
-	GLfloat lineHeight = (GLfloat)font->getSize();
-	GLfloat scale = (GLfloat)size/ lineHeight;
+	GLfloat lineHeight = (GLfloat)font->getLineSize();
+	GLfloat yOffset = (GLfloat)font->getOffset();
+	GLfloat scale = (GLfloat)size / (GLfloat)font->getSize();
 	FontChar *ch;
-	GLfloat d2d_tex[8] = {0,0,1,0,0,1,1,1};
+	GLfloat d2d_tex[8] = { 0,0,1,0,0,1,1,1 };
 	glTexCoordPointer(2, GL_FLOAT, 0, d2d_tex);
+
+	int lines = 0;
+	std::string ln(str);
+	std::string *curstr = &ln;
+	std::vector<std::string> linetext;
+	std::vector<GLfloat> lineoffset;
+	if (ln.find('\n'))
+	{
+		std::stringstream ss(ln);
+		while (std::getline(ss, ln, '\n'))
+		{
+			GLfloat offset = 0;
+			for (unsigned int i = 0; i < ln.size(); i++)
+			{
+				offset += font->getChar(ln[i])->adv;
+			}
+			lineoffset.push_back(offset*scale);
+			linetext.push_back(ln);
+			lines++;
+		}
+		curstr = &(linetext[0]);
+	}
+
 	int line = 0;
 	glPushMatrix();
 	if (a != -1)
 		set_color(r, g, b, a);
-	glTranslated(x, y+size, 0);
-	for (unsigned int i = 0; str[i];i++)
+	if (lines)
+		glTranslated(align == -1 ? x - lineoffset[0] : (align == 0 ? x - lineoffset[0] / 2.0f : x), y + scale*yOffset, 0);
+	else
+		glTranslated(x, y + scale*yOffset, 0);
+	for (unsigned int i = 0; (lines||(*curstr)[i]); i++)
 	{
-		ch = font->getChar(str[i]);
+		if ((*curstr)[i] < 0)
+			continue;
+
+		ch = font->getChar((*curstr)[i]);
 		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth };
 		glVertexPointer(3, GL_FLOAT, 0, d2d);
-		if (str[i] == '\n')
+
+		if (lines && !(*curstr)[i])
 		{
-			glPopMatrix();
-			glPushMatrix();
-			line++;
-			glTranslated(x, y + size+line*(lineSpacing+lineHeight*scale), 0);
-			continue;
+			if (line < lines - 1)
+			{
+				glPopMatrix();
+				glPushMatrix();
+				line++;
+				curstr = &(linetext[line]);
+				i = -1;
+				glTranslated(align == -1 ? x - lineoffset[line] : (align == 0 ? x - lineoffset[line] / 2.0f : x), y + yOffset*scale + line*(lineSpacing + (lineHeight)*scale), 0);
+				continue;
+			}
+			else
+				line = lines;
 		}
-		if (str[i] < 0)
-		continue;
+
+		if (lines&&line == lines)
+			break;
 
 		glBindTexture(GL_TEXTURE_2D, ch->tex);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-		glTranslated((ch->adv>>6)*scale, 0, 0);
+		glTranslated(ch->adv*scale, 0, 0);
 	}
-
 	if (a != -1)
 		restore_color();
 	glPopMatrix();

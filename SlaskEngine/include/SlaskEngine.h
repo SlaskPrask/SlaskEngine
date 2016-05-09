@@ -130,7 +130,7 @@ public:
 		scn->_objects.erase(it);
 	}
 
-	inline void forceUnpersistent(Object *obj)
+	inline void forcePersistent(Object *obj)
 	{
 		obj->_scene = NULL;
 		obj->_persistent = 1;

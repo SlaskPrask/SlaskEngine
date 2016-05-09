@@ -164,7 +164,17 @@ bool slask::setFullscreenWindowed(int w, int h)
 
 void slask::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
 {
-	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, r, g, b, a);
+	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, 1, r, g, b, a);
+}
+
+void slask::drawTextCenter(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
+{
+	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, 0, r, g, b, a);
+}
+
+void slask::drawTextRight(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)
+{
+	return GraphicsHandler::instance()->drawText(font, str, x, y, size, lineSpacing, -1, r, g, b, a);
 }
 
 void slask::drawSprite(Sprite* sprite, double x, double y)
