@@ -13,6 +13,7 @@ private:
 	std::vector<std::string> file;
 	unsigned int loads;
 	unsigned int engine_id;
+	bool _deathMark;
 
 public:
 	unsigned int add(std::string str);

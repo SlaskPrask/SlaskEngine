@@ -10,6 +10,7 @@ Object::Object()
 	_qdepth = _depth = 0;
 	_depthItem = NULL;
 	_persistent = 1;
+	_deathMark = 0;
 	_scene = NULL;
 	x = y = 0;
 	SlaskEngine::instance()->createObject(this);
@@ -18,6 +19,9 @@ Object::Object()
 
 Object::~Object()
 {
+	if (!_deathMark)
+	LogHandler::error("Engine", "delete called on an Object. Use ->destroy() instead.");
+	
 	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
 	SlaskEngine::instance()->objClearTag(this, *it);
 	SlaskEngine::instance()->detachDepth(this);

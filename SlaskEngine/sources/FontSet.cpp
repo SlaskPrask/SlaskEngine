@@ -5,11 +5,15 @@ FontSet::FontSet()
 {
 	loads = 0;
 	engine_id = -1;
+	_deathMark = 0;
 	SlaskEngine::instance()->createFontSet(this);
 }
 
 FontSet::~FontSet()
 {
+	if (!_deathMark)
+		LogHandler::error("Engine", "delete called on a font set. Do not delete sets manually.");
+
 	switch (loads)
 	{
 	case 0:

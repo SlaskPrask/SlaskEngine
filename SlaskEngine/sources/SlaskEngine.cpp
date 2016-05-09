@@ -134,6 +134,7 @@ void SlaskEngine::init(int argc, char *argv[])
 			{
 				if (objects.last() == obj)
 				{
+					((Object*)obj)->_deathMark = 1;
 					delete obj;
 					break;
 				}
@@ -141,6 +142,7 @@ void SlaskEngine::init(int argc, char *argv[])
 				{
 					LinkedList<Object> *obj2 = obj;
 					obj = obj->getNext();
+					((Object*)obj2)->_deathMark = 1;
 					delete obj2;
 				}
 			}
@@ -348,7 +350,10 @@ void SlaskEngine::switchScene(Scene *scn)
 {
 	switchingScenes = 1;
 	if (scene)
+	{
+		scene->_deathMark = 1;
 		delete scene;
+	}
 	scene = scn;
 }
 
@@ -374,6 +379,7 @@ void SlaskEngine::deleteAllObjects()
 	LinkedList<Object> *obj = objects.first();
 	while (obj)
 	{
+		((Object*)obj)->_deathMark = 1;
 		delete obj;
 		obj = objects.first();
 	}
@@ -382,15 +388,24 @@ void SlaskEngine::deleteAllObjects()
 void SlaskEngine::deleteAllSets()
 {
 	for (unsigned int i = 0; i < spritesets.size(); i++)
+	{
+		spritesets[i]->_deathMark = 1;
 		delete spritesets[i];
+	}
 	spritesets.clear();
 
 	for (unsigned int i = 0; i < audiosets.size(); i++)
+	{
+		audiosets[i]->_deathMark = 1;
 		delete audiosets[i];
+	}
 	audiosets.clear();
 
 	for (unsigned int i = 0; i < fontsets.size(); i++)
+	{
+		fontsets[i]->_deathMark = 1;
 		delete fontsets[i];
+	}
 	fontsets.clear();
 }
 

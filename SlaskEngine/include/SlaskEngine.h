@@ -48,7 +48,6 @@ private:
 	DepthItem *firstDepth;
 	Scene *scene;
 	bool switchingScenes;
-	unsigned int objIds,scnIds;
 	double frameTime,frameSeconds;
 	int fps;
 
@@ -60,17 +59,6 @@ public:
 	{
 		return slaskengine;
 	}
-
-	unsigned int obtainObjId()
-	{
-		return objIds++;
-	}
-
-	unsigned int obtainScnId()
-	{
-		return scnIds++;
-	}
-
 
 	void switchScene(Scene *scn);
 
@@ -119,6 +107,7 @@ public:
 	{
 		if (scene)
 		{
+			scene->_deathMark = 1;
 			delete scene;
 			scene = NULL;
 		}
@@ -139,6 +128,12 @@ public:
 	{
 		std::vector<Object*>::const_iterator it = std::find(scn->_objects.begin(), scn->_objects.end(), obj);
 		scn->_objects.erase(it);
+	}
+
+	inline void forceUnpersistent(Object *obj)
+	{
+		obj->_scene = NULL;
+		obj->_persistent = 1;
 	}
 
 	inline double getFrameSeconds()

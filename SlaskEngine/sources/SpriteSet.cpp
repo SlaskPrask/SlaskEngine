@@ -5,11 +5,15 @@ SpriteSet::SpriteSet()
 {
 	loads = 0;
 	engine_id = -1;
+	_deathMark = 0;
 	SlaskEngine::instance()->createSpriteSet(this);
 }
 
 SpriteSet::~SpriteSet()
 {
+	if (!_deathMark)
+		LogHandler::error("Engine", "delete called on a sprite set. Do not delete sets manually.");
+
 	switch (loads)
 	{
 	case 0:

@@ -23,6 +23,7 @@ class Scene
 private:
 	std::vector<Object*> _objects;
 	void _deleteObjects();
+	bool _deathMark;
 
 public:
 	virtual unsigned int id();

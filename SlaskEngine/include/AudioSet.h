@@ -17,6 +17,7 @@ private:
 	std::string bankFile;
 	unsigned int loads;
 	unsigned int engine_id;
+	bool _deathMark;
 
 public:
 	unsigned int add(std::string str);

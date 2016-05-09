@@ -25,11 +25,11 @@ class Object : public LinkedList<Object>
 {
 	friend class SlaskEngine;
 	friend class DepthItem;
-	friend class Scene;
 private:
 	Scene *_scene;
 	bool _tagRunValue, _tagDrawValue;
 	bool _destroyed;
+	bool _deathMark;
 	inline bool _getDestroyed()
 	{
 		return _destroyed;
