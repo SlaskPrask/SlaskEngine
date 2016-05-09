@@ -23,7 +23,7 @@ Object::~Object()
 	LogHandler::error("Engine", "delete called on an Object. Use ->destroy() instead.");
 	
 	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
-	SlaskEngine::instance()->objClearTag(this, *it);
+	SlaskEngine::instance()->objClearTag(this,*it);
 	SlaskEngine::instance()->detachDepth(this);
 	if (_scene)
 	SlaskEngine::instance()->untieObjectFromScene(_scene, this);
