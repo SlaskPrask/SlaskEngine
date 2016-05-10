@@ -68,12 +68,27 @@
 	<div id="topic_content">
 		
 <p></p>
-<p class="rvps2"><span class="rvts19">Ending the game</span></p>
+<p class="rvps2"><span class="rvts19">Game handling</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Game settings</span></p>
+<p class="rvps2"><span class="rvts20">void setFPS(int fps);</span></p>
+<p class="rvps5"><span class="rvts6">Sets the current frames per second value of the game for both drawing and running.</span></p>
+<p class="rvps5"><span class="rvts6">Should be called when the game starts.</span></p>
+<p class="rvps5"><span class="rvts6">60 by default.</span></p>
+<p class="rvps5"><span class="rvts6">Settings FPS to 0 will unlimit the fps. Use </span><span class="rvts18">frameTime()</span><span class="rvts6"> to scale your game with passing time.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Closing the game</span></p>
 <p class="rvps2"><span class="rvts20">void exitGame();</span></p>
 <p class="rvps5"><span class="rvts6">Closes the game window and ends the program.</span></p>
 <p class="rvps5"><span class="rvts6">Suggested to make sure you do all end game actions and saving before calling this.</span></p>
-<p class="rvps5"><span class="rvts6"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Getting time passed in frames</span></p>
+<p class="rvps2"><span class="rvts20">double frameTime();</span></p>
+<p class="rvps5"><span class="rvts6">Returns how long the current frame was compared to the current FPS.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">double frameSeconds();</span></p>
+<p class="rvps5"><span class="rvts6">Returns how many seconds passed during a frame.</span></p>
+<p class="rvps5"><span class="rvts6">Can be used as a multiplier when using variable FPS.</span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com">Free HTML Help documentation generator</a></p>
 </div>

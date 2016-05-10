@@ -164,7 +164,7 @@ void SlaskEngine::init(int argc, char *argv[])
 			while (di)
 			{
 				obj = di->get();
-				if (obj->_tagDraws()&&!obj->_getDestroyed())
+				if (obj->_tagDraws()&&!obj->_getDestroyed()&&obj->visible)
 				{
 					obj->draw();
 				}

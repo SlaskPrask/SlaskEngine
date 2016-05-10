@@ -294,6 +294,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="highscores.cpp" />
+    <ClCompile Include="hsplace.cpp" />
     <ClCompile Include="mainmenu.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
@@ -353,6 +355,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="highscores.h" />
+    <ClInclude Include="hsplace.h" />
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\DepthItem.h" />

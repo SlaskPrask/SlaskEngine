@@ -5,6 +5,17 @@
 #include "EngineNamespace.h"
 #include <vector>
 #define SLASKOBJECT \
+private: \
+	static std::vector<Object*>* _instance() \
+	{ \
+		static std::vector<Object*> i; \
+		return &i; \
+	} \
+	static unsigned int _instPos(bool f) \
+	{ \
+		static unsigned int i; \
+		return (f?++i:i=0); \
+	} \
 public: \
 	inline static unsigned int objectId() \
 	{ \
@@ -15,7 +26,30 @@ public: \
 	{ \
 		return objectId(); \
 	} \
-private:
+	static Object* instance() \
+	{ \
+		if (_instance()->empty()) \
+		return NULL; \
+		return (*_instance())[_instPos(0)]; \
+	} \
+	static Object* nextInstance() \
+	{ \
+		unsigned int _pos=_instPos(1); \
+		if (_pos>=_instance()->size()) \
+		return NULL; \
+		return (*(_instance()))[_pos]; \
+	} \
+private: \
+	virtual void _addInstance(Object *inst) \
+	{ \
+		_instance()->push_back(inst); \
+std::cout << "adding\n"; \
+	} \
+	virtual void _removeInstance(Object *inst) \
+	{ \
+		std::vector<Object*>::const_iterator it = std::find(_instance()->begin(), _instance()->end(), inst); \
+		_instance()->erase(it); \
+	}
 
 class SlaskEngine;
 class DepthItem;
@@ -26,6 +60,8 @@ class Object : public LinkedList<Object>
 	friend class SlaskEngine;
 	friend class DepthItem;
 private:
+	virtual void _addInstance(Object *inst);
+	virtual void _removeInstance(Object *inst);
 	Scene *_scene;
 	bool _tagRunValue, _tagDrawValue;
 	bool _destroyed;
@@ -56,6 +92,7 @@ private:
 	}
 	
 public:
+	bool visible;
 	double x;
 	double y;
 	Object();

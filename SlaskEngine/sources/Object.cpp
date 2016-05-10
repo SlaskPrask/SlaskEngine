@@ -13,8 +13,11 @@ Object::Object()
 	_deathMark = 0;
 	_scene = NULL;
 	x = y = 0;
+	visible = 1;
 	SlaskEngine::instance()->createObject(this);
 	SlaskEngine::instance()->queueDepth(this);
+
+	_addInstance(this);
 }
 
 Object::~Object()
@@ -27,6 +30,8 @@ Object::~Object()
 	SlaskEngine::instance()->detachDepth(this);
 	if (_scene)
 	SlaskEngine::instance()->untieObjectFromScene(_scene, this);
+
+	_removeInstance(this);
 }
 
 unsigned int Object::id()
@@ -145,6 +150,13 @@ Object* Object::removeTag(Tag *t)
 {
 	SlaskEngine::instance()->objRemoveTag(this, t);
 	return this;
+}
+
+void Object::_addInstance(Object *inst)
+{
+}
+void Object::_removeInstance(Object *inst)
+{
 }
 
 void Object::runEnabled()
