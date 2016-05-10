@@ -167,6 +167,12 @@
     <ClCompile Include="sources\Video.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="highscores.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
+    <ClCompile Include="hsplace.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -287,6 +293,12 @@
     </ClInclude>
     <ClInclude Include="include\Video.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="highscores.h">
+      <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="hsplace.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

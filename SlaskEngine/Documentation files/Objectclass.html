@@ -124,7 +124,7 @@
 <p class="rvps5"><span class="rvts6">Draw function should be implemented in the object.</span></p>
 <p class="rvps5"><span class="rvts18">draw()</span><span class="rvts6"> is called by the engine each game frame after running all objects and should contain the object's drawing code.</span></p>
 <p class="rvps5"><span class="rvts6">The </span><span class="rvts18">draw</span><span class="rvts6"> function should not contain any code that changes the object's state or animations.</span></p>
-<p class="rvps5"><span class="rvts6">Drawing can be affected by active tags.</span></p>
+<p class="rvps5"><span class="rvts6">Drawing can be affected by active tags and the </span><span class="rvts18">visible</span><span class="rvts6"> variable.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Implementing extra object functionality</span></p>
 <p class="rvps2"><span class="rvts20">virtual void runDisabled();</span></p>
@@ -181,6 +181,11 @@
 <p class="rvps2"><span class="rvts20"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double y;</span></p>
 <p class="rvps5"><span class="rvts6">The object's y position.</span></p>
+<p class="rvps2"><span class="rvts20"><br/></span></p>
+<p class="rvps2"><span class="rvts20">bool visible;</span></p>
+<p class="rvps5"><span class="rvts6">Whether the object draws. This does not include tags disabling the object's draw.</span></p>
+<p class="rvps5"><span class="rvts6">It's simply whether the object allows itself to draw.</span></p>
+<p class="rvps5"><span class="rvts6">Enabled by default</span></p>
 <p class="rvps2"><span class="rvts25"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Destroying the object</span></p>
 <p class="rvps2"><span class="rvts20">void destroy();</span></p>
@@ -222,7 +227,7 @@
 <p class="rvps5"><span class="rvts6">Removes this object from the given tag and restores it's status to normal.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current object.</span></p>
 <p class="rvps2"><span class="rvts25"><br/></span></p>
-<p class="rvps2"><span class="rvts27">Reading the object state</span></p>
+<p class="rvps2"><span class="rvts27">Reading the object's state</span></p>
 <p class="rvps2"><span class="rvts20">bool isRunEnabled();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether all tags allow this object to run.</span></p>
 <p class="rvps5"><span class="rvts6">Good for when you want to draw the object in a different way when it is disabled.</span></p>
@@ -232,7 +237,7 @@
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Handling objects in scenes</span></p>
 <p class="rvps2"><span class="rvts6">By default objects are tied to the currently active scene and deleted when scenes are changed.</span></p>
-<p class="rvps2"><span class="rvts6">Making an object persistent will make it remain through scene changes.</span></p>
+<p class="rvps2"><span class="rvts6">Making an object persistent will make it remain through scene changes. Be careful when creating persistent objects as you might create multiple copies of it since the previous ones still exist too.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">bool isPersistent();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether the object is persistent and not tied to the current scene.</span></p>

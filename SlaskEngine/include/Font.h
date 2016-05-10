@@ -39,14 +39,6 @@ private:
 	{
 		return &(ch[c]);
 	}
-
-public:
-	Font(const char* file);
-	Font(const char* file,unsigned int size);
-	inline unsigned int getSize()
-	{
-		return loadSize;
-	}
 	inline unsigned int getLineSize()
 	{
 		return lineSize;
@@ -54,6 +46,18 @@ public:
 	inline unsigned int getOffset()
 	{
 		return yOffset;
+	}
+
+public:
+	Font(const char* file);//undocced
+	Font(const char* file,unsigned int size);//undocced
+	inline unsigned int getSize()//undocced
+	{
+		return loadSize;
+	}
+	inline double getLineHeight(unsigned int fontsize)//undocced
+	{
+		return (double)lineSize*(double)loadSize/(double)fontsize;
 	}
 	~Font();
 };

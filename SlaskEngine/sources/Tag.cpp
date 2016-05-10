@@ -37,6 +37,9 @@ bool Tag::attachObj(Object* o)
 
 Tag* Tag::enableRun()
 {
+	if (run == 1)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	run = 1;
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
@@ -45,6 +48,9 @@ Tag* Tag::enableRun()
 }
 Tag* Tag::disableRun()
 {
+	if (run == 0)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	run = 0;
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
@@ -53,6 +59,9 @@ Tag* Tag::disableRun()
 }
 Tag* Tag::enableDraw()
 {
+	if (draw == 1)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	draw = 1;
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
@@ -62,6 +71,9 @@ Tag* Tag::enableDraw()
 
 Tag* Tag::disableDraw()
 {
+	if (draw == 0)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	draw = 0;
 	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
@@ -71,6 +83,9 @@ Tag* Tag::disableDraw()
 
 Tag* Tag::enable()
 {
+	if (run == 1 && draw == 1)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	run = 1;
 	draw = 1;
@@ -84,6 +99,9 @@ Tag* Tag::enable()
 
 Tag* Tag::disable()
 {
+	if (run == 0 && draw == 0)
+		return this;
+
 	SlaskEngine *engine = SlaskEngine::instance();
 	draw = 0;
 	run = 0;
