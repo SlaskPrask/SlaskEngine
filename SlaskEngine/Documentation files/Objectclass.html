@@ -234,6 +234,7 @@
 <p class="rvps5"><span class="rvts27"><br/></span></p>
 <p class="rvps2"><span class="rvts20">bool isDrawEnabled();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether all tags allow this object to draw.</span></p>
+<p class="rvps5"><span class="rvts6">This does not take </span><span class="rvts18">visible</span><span class="rvts6"> into consideration to check both use </span><span class="rvts18">(isDrawEnabled()&amp;&amp;visible)</span><span class="rvts6">.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Handling objects in scenes</span></p>
 <p class="rvps2"><span class="rvts6">By default objects are tied to the currently active scene and deleted when scenes are changed.</span></p>
@@ -254,6 +255,36 @@
 <p class="rvps2"><span class="rvts20">Object* unsetPersistent();</span></p>
 <p class="rvps5"><span class="rvts6">Ties the object to the current scene and it will get destroyed when scenes are changed.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current object</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Listing objects</span></p>
+<p class="rvps2"><span class="rvts6">The engine stores a list of each object instance. You can iterate through this list for each object class.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* instance();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the first existing instance of this class.</span></p>
+<p class="rvps5"><span class="rvts6">Returns </span><span class="rvts18">NULL</span><span class="rvts6"> if no instances exist. This returns a type of </span><span class="rvts18">Object*</span><span class="rvts6"> so you need to manually cast to your class.</span></p>
+<p class="rvps5"><span class="rvts6">This can also be used to get the only instance existing for this object.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* nextInstance();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the next existing instance of this class.</span></p>
+<p class="rvps5"><span class="rvts6">Returns </span><span class="rvts18">NULL</span><span class="rvts6"> if no instances exist. This returns a type of </span><span class="rvts18">Object*</span><span class="rvts6"> so you need to manually to your class.</span></p>
+<p class="rvps5"><span class="rvts6">You should always call instance() before starting any </span><span class="rvts18">nextInstance()</span><span class="rvts6"> calls to reset the listing to start from the beginning.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">//loop through all instances of the Enemy class</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">Enemy *e=static_cast&lt;Enemy*&gt;(Enemy::instance()); &nbsp; //obtain the first enemy and cast it</span></p>
+<p class="rvps2"><span class="rvts18">while(e) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //if there are enemies loop them</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;e-&gt;destroy();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><br/><span class="rvts21"> &nbsp; &nbsp;e=static_cast&lt;Enemy*&gt;(Enemy::nextInstance()); &nbsp;//get the next enemy instance</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create CHM Help documents</a></p>
 </div>

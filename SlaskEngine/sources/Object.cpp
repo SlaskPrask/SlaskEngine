@@ -31,6 +31,8 @@ Object::~Object()
 	if (_scene)
 	SlaskEngine::instance()->untieObjectFromScene(_scene, this);
 
+	SlaskEngine::instance()->checkDeletedObject(this);
+
 	_removeInstance(this);
 }
 
