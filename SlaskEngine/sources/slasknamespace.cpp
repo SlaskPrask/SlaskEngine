@@ -253,7 +253,7 @@ bool slask::getMouseHeld(int i)
 bool slask::getMouseIdle(int i)
 {
 	if (InputHandler::instance()->clearedmouse(i))
-		return 0;
+		return 1;
 	return (InputHandler::instance()->getmouse(i)<=0);
 }
 int slask::getMouseWheelUp()
@@ -288,35 +288,51 @@ int slask::getMouseWindowY()
 
 bool slask::getKeyPressAny()
 {
+	if (InputHandler::instance()->clearedkeyany())
+		return 0;
 	return InputHandler::instance()->getanykey(1);
 }
 bool slask::getKeyReleaseAny()
 {
+	if (InputHandler::instance()->clearedkeyany())
+		return 0;
 	return InputHandler::instance()->getanykey(-1);
 }
 bool slask::getKeyHeldAny()
 {
+	if (InputHandler::instance()->clearedkeyany())
+		return 0;
 	return InputHandler::instance()->getanykey(2);
 }
 bool slask::getKeyIdleAny()
 {
+	if (InputHandler::instance()->clearedkeyany())
+		return 1;
 	return InputHandler::instance()->getanykey(0);
 }
 
 bool slask::getKeyPress(int keyCode)
 {
+	if (InputHandler::instance()->clearedkey(keyCode))
+		return 0;
 	return (InputHandler::instance()->getkey(keyCode)==1);
 }
 bool slask::getKeyRelease(int keyCode)
 {
+	if (InputHandler::instance()->clearedkey(keyCode))
+		return 0;
 	return (InputHandler::instance()->getkey(keyCode)==-1);
 }
 bool slask::getKeyHeld(int keyCode)
 {
+	if (InputHandler::instance()->clearedkey(keyCode))
+		return 0;
 	return (InputHandler::instance()->getkey(keyCode)>0);
 }
 bool slask::getKeyIdle(int keyCode)
 {
+	if (InputHandler::instance()->clearedkey(keyCode))
+		return 1;
 	return (InputHandler::instance()->getkey(keyCode)<=0);
 }
 

@@ -1,5 +1,7 @@
 #pragma once
 
+class Object;
+
 namespace _engine
 {
 	inline unsigned int obtainObjId()
@@ -12,4 +14,5 @@ namespace _engine
 		static unsigned int id = 1;
 		return id++;
 	}
+	bool isObjectDestroyed(Object* o);
 }

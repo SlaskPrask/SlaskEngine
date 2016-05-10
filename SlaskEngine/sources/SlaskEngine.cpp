@@ -35,11 +35,6 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	LogHandler::setFile("log.txt");
 	LogHandler::log("Engine", "Start");
-	
-	engineBuild = "BETA";
-	engineVersion = 1.0f;
-	fullEngineVersion = engineBuild;
-	fullEngineVersion += std::to_string(engineVersion);
 
 	Camera *cam;
 	running = true;
@@ -48,6 +43,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	switchingScenes = 0;
 	frameTime = frameSeconds = 0;
 	fps = _SLASK_DEFAULT_FPS;
+	handleObjDeleted = 0;
 
 	srand((unsigned int)time(NULL));
 
@@ -66,20 +62,22 @@ void SlaskEngine::init(int argc, char *argv[])
 	InputHandler* input = InputHandler::instance();
 	input->init();
 
-
-	std::string eVer = "Initialized SlaskEngine Version: ";
-	eVer += fullEngineVersion;
+	std::ostringstream version;
+	version << _SLASK_BUILDNAME << " Version " << _SLASK_BUILDRELEASE << _SLASK_BUILDVERSION <<
 	#ifdef WINDOWS
-	eVer += "-WIN";
+		"-WIN";
 	#endif
 	#ifdef LINUX
-	eVer += "-LNX";
+		"-LNX";
 	#endif
 	#ifdef MAC
-	eVer += "-MAC";
+		"-MAC";
+	#else
+		"";
 	#endif
 
-	LogHandler::log("Engine", eVer.c_str());
+	LogHandler::log("Engine", "Initialized");
+	LogHandler::log("Engine", version.str().c_str());
 	LogHandler::log("-------------------------------------");
 	if (gameStartFunc)
 	gameStartFunc();//game initialization point
@@ -93,6 +91,8 @@ void SlaskEngine::init(int argc, char *argv[])
 	bool exitHandle=0;
 	sf::Clock frameClock;
 	double passedMs=0;
+	LinkedList<Object> *objI, *nextObjI;
+	DepthItem *di,*diNext;
 	while (running)
 	{
 		//audio
@@ -123,29 +123,22 @@ void SlaskEngine::init(int argc, char *argv[])
 		if (scene)
 		scene->run();
 
-		LinkedList<Object> *obj = objects.first();
-		while (obj)
+		objI = objects.first();
+		while (objI)
 		{
-			if (!switchingScenes&&((Object*)obj)->_tagRuns())
-				((Object*)obj)->run();
-			if (((Object*)obj)->_getDestroyed())
+			handleObj = (Object*)objI;
+			handleObjDeleted = 0;
+			nextObjI = objI->getNext();
+			if (!switchingScenes&&handleObj->isRunEnabled())
+				handleObj->run();
+			
+			if (!handleObjDeleted&&handleObj->_getDestroyed())
 			{
-				if (objects.last() == obj)
-				{
-					((Object*)obj)->_deathMark = 1;
-					delete obj;
-					break;
-				}
-				else
-				{
-					LinkedList<Object> *obj2 = obj;
-					obj = obj->getNext();
-					((Object*)obj2)->_deathMark = 1;
-					delete obj2;
-				}
+				handleObj->_deathMark = 1;
+				delete handleObj;
 			}
-			else
-				obj = obj->getNext();
+
+			objI = nextObjI;
 		}
 
 		//camera bounds
@@ -157,19 +150,15 @@ void SlaskEngine::init(int argc, char *argv[])
 		resolveDepthQueue();
 		resolveDepthChangeQueue();
 		graphics->drawBegin();
-		if (firstDepth)
+		if (di = firstDepth)
+		while (di)
 		{
-			DepthItem *di = firstDepth;
-			Object *obj;
-			while (di)
-			{
-				obj = di->get();
-				if (obj->_tagDraws()&&!obj->_getDestroyed()&&obj->visible)
-				{
-					obj->draw();
-				}
-				di = di->getNext();
-			}
+			diNext = di->getNext();
+			handleObj = di->get();
+			handleObjDeleted = 0;
+			if (handleObj->isDrawEnabled()&&handleObj->visible&&!handleObj->_getDestroyed()&&!handleObjDeleted)
+				handleObj->draw();
+			di = diNext;
 		}
 		graphics->drawEnd();
 
@@ -181,7 +170,7 @@ void SlaskEngine::init(int argc, char *argv[])
 				gameEnd();
 
 		//fps
-		double passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
+		passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
 		if (fps > 0)
 		{
 			sf::sleep(sf::microseconds((sf::Int64)(1000000.0f / fps - passedMs)));
