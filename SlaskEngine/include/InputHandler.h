@@ -17,13 +17,14 @@ private:
 	int mouse_butt[_SLASK_MAXMOUSEBUTTONS];
 	bool mouse_ignore[_SLASK_MAXMOUSEBUTTONS];
 	bool mouse_clear[_SLASK_MAXMOUSEBUTTONS];
+	bool *key_clear, anykeyclear;
 	int mousewheel_up,mousewheel_down;
 	bool mousewheelup_clear,mousewheeldown_clear;
 	int anykeycount;
 	double deadzone[_SLASK_MAXJOYSTICKS];
 	double buttondeadzone[_SLASK_MAXJOYSTICKS];
 
-	int* key;
+	int *key;
 	bool anykeyreleased,anykeypressed;
 	int anykeyheld;
 
@@ -59,6 +60,16 @@ public:
 
 	void clearmouse(int i);
 	bool clearedmouse(int i);
+	void clearkey(int i);
+	bool clearedkey(int i);
+	inline bool clearedkeyany()
+	{
+		return anykeyclear;
+	}
+	inline bool clearkeyany()
+	{
+		anykeyclear = 1;
+	}
 
 	inline void setNoTouchPosition(int x, int y)
 	{

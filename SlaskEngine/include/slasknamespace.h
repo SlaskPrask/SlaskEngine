@@ -199,6 +199,14 @@ namespace slask
 	{
 		InputHandler::instance()->clearmouse(i);
 	}
+	inline void clearKey(int i)
+	{
+		InputHandler::instance()->clearkey(i);
+	}
+	inline void clearKeyAny()
+	{
+		InputHandler::instance()->clearkeyany();
+	}
 
 	bool getKeyPressAny();
 	bool getKeyReleaseAny();

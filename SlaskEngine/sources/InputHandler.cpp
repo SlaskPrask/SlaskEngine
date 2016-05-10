@@ -5,6 +5,8 @@ void InputHandler::init()
 	LogHandler::log("Input", "Start");
 
 	key = new int[sf::Keyboard::Key::KeyCount];
+	key_clear = new bool[sf::Keyboard::Key::KeyCount];
+	anykeyclear = 0;
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
 	mouse_cam_y = mouse_cam_x = mouse_cam_moved_x = mouse_cam_moved_y = mouse_cam_prev_x = mouse_cam_prev_y = 0;
 	window_focus = 1;
@@ -26,6 +28,7 @@ void InputHandler::init()
 	for (int i = 0; i < sf::Keyboard::Key::KeyCount; i++)
 	{
 		key[i] = 0;
+		key_clear[i] = 0;
 	}
 
 	LogHandler::log("Input", "Initialized");
@@ -66,6 +69,7 @@ bool InputHandler::run()
 		else
 		if (key[i] == -1)
 			key[i] = 0;
+		key_clear[i] = 0;
 	}
 
 	for (int i = 0; i < _SLASK_MAXMOUSEBUTTONS; i++)
@@ -78,8 +82,8 @@ bool InputHandler::run()
 		mouse_clear[i] = 0;
 	}
 
-	anykeyreleased = 0;
-	anykeypressed = 0;
+	anykeyreleased = anykeypressed = 0;
+	anykeyclear = 0;
 
 	mousewheel_up = mousewheel_down = 0;
 	mousewheelup_clear = mousewheeldown_clear = 0;
@@ -281,6 +285,7 @@ bool InputHandler::getanykey(int state)
 InputHandler::~InputHandler()
 {
 	delete key;
+	delete key_clear;
 	LogHandler::log("Input", "End");
 }
 
@@ -306,6 +311,30 @@ bool InputHandler::clearedmouse(int i)
 		return 0;
 	}
 	return mouse_clear[i];
+}
+
+void InputHandler::clearkey(int i)
+{
+	if (i < 0 || i >= sf::Keyboard::Key::KeyCount)
+	{
+		std::string unhandledKey = "Clearing key ";
+		unhandledKey += std::to_string(i);
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+	}
+	key_clear[i] = 1;
+}
+bool InputHandler::clearedkey(int i)
+{
+	if (i < 0 || i >= sf::Keyboard::Key::KeyCount)
+	{
+		std::string unhandledKey = "Reading key ";
+		unhandledKey += std::to_string(i);
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
+	return key_clear[i];
 }
 
 bool InputHandler::getSignalResize()
