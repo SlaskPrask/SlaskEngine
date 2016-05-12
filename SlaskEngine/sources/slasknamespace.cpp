@@ -413,3 +413,103 @@ float slask::getSoundParameterValue(Audio* audio, const char* param)
 {
 	return AudioHandler::instance()->getParameterValue(audio,param);
 }
+
+double slask::textWidth(Font *font,const char* str,double size,double lineSpacing)
+{
+	if (!font)
+	{
+		LogHandler::notify("Graphics","Attempting to use unloaded font.");
+		return 0;
+	}
+
+	GLfloat lineHeight = (GLfloat)font->getLineSize();
+	GLfloat yOffset = (GLfloat)font->getOffset();
+	GLfloat scale = (GLfloat)size / (GLfloat)font->getSize();
+	double maxw=0;
+
+	int lines = 0;
+	std::string ln(str);
+	std::vector<std::string> linetext;
+	std::vector<GLfloat> lineoffset;
+	if (ln.find('\n'))
+	{
+		std::stringstream ss(ln);
+		while (std::getline(ss,ln,'\n'))
+		{
+			GLfloat offset = 0;
+			for (unsigned int i = 0; i < ln.size(); i++)
+			{
+				offset += font->getChar(ln[i])->adv;
+			}
+			if (offset*scale>maxw)
+				maxw=offset*scale;
+		}
+	}
+
+	return maxw;
+}
+
+double slask::textHeight(Font *font,const char* str,double size,double lineSpacing)
+{
+	if (!font)
+	{
+		LogHandler::notify("Graphics","Attempting to use unloaded font.");
+		return 0;
+	}
+
+	std::string ln(str);
+	if (ln.length()==0)
+		return 0;
+
+	GLfloat lineHeight = (GLfloat)font->getLineSize();
+	GLfloat yOffset = (GLfloat)font->getOffset();
+	GLfloat scale = (GLfloat)size / (GLfloat)font->getSize();
+	double maxw=0;
+
+	int lines = 0;
+	std::vector<std::string> linetext;
+	std::vector<GLfloat> lineoffset;
+	if (ln.find('\n'))
+	{
+		std::stringstream ss(ln);
+		while (std::getline(ss,ln,'\n'))
+		{
+			lines++;
+		}
+	}
+	else
+		lines=1;
+
+	return yOffset*scale + (lines-1)*(lineSpacing + (lineHeight)*scale);
+}
+
+void slask::dumpObjects()
+{
+	#ifdef SLASKDEBUG
+	SlaskEngine::instance()->dumpObjects();
+	#endif
+}
+void slask::dumpDepths()
+{
+	#ifdef SLASKDEBUG
+	SlaskEngine::instance()->dumpDepths();
+	#endif
+}
+void slask::dumpDepthQueue()
+{
+	#ifdef SLASKDEBUG
+	SlaskEngine::instance()->dumpDepthQueue();
+	#endif
+}
+void slask::dumpDepthChangeQueue()
+{
+	#ifdef SLASKDEBUG
+	SlaskEngine::instance()->dumpDepthChangeQueue();
+	#endif
+}
+void slask::dumpObj(Object *obj)
+{
+	#ifdef SLASKDEBUG
+	SlaskEngine::instance()->dumpObj(obj);
+	#endif
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include "SlaskEngine.h"
 
+#define forInstances(OBJECT,CLASS) for(CLASS* OBJECT=static_cast<CLASS*>(CLASS::instance());OBJECT;OBJECT=static_cast<CLASS*>(CLASS::nextInstance())
+
 namespace slask
 {
 	SpriteSet* spriteSet(unsigned int i);//undocced
@@ -109,6 +111,18 @@ namespace slask
 		return t;
 	}
 
+	template<class T>
+	T* getInstance()//undocced
+	{
+		return static_cast<T*>(T::instance());
+	}
+
+	template<class T>
+	T* getNextInstance()//undocced
+	{
+		return static_cast<T*>(T::nextInstance());
+	}
+
 	void setSoundSampleDecompress(bool enabled);//undocced
 	void setSoundSampleASync(bool enabled);//undocced
 	void playSound(Audio* audio);//undocced
@@ -142,6 +156,17 @@ namespace slask
 	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
 	{
 		return (x >= left&&y >= top&&x < right&&y < bottom);
+	}
+
+	double textWidth(Font *font,const char* str,double size,double lineSpacing=0);
+	inline double textWidth(Font *font,const std::string &str,double size,double lineSpacing=0)
+	{
+		textWidth(font,str.c_str(),size,lineSpacing);
+	}
+	double textHeight(Font *font,const char* str,double size,double lineSpacing=0);
+	inline double textHeight(Font *font,const std::string &str,double size,double lineSpacing=0)
+	{
+		textHeight(font,str.c_str(),size,lineSpacing);
 	}
 
 	int getSceneWidth();
@@ -371,4 +396,10 @@ namespace slask
 			Pause
 		};
 	};
+
+	void dumpObjects();//undocced
+	void dumpDepths();//undocced
+	void dumpDepthQueue();//undocced
+	void dumpDepthChangeQueue();//undocced
+	void dumpObj(Object *obj);//undocced
 };

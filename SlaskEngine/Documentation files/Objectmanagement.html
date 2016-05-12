@@ -122,6 +122,35 @@
 <p class="rvps2"><span class="rvts20">void destroyAllObjects();</span></p>
 <p class="rvps5"><span class="rvts6">Same as calling </span><span class="rvts18">destroy()</span><span class="rvts6"> on all objects individually.</span></p>
 <p class="rvps5"><span class="rvts6">Also destroys all persistent objects.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts19">Listing objects</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Template* getInstance&lt;Template*&gt;();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the first existing instance of this class.</span></p>
+<p class="rvps5"><span class="rvts6">Returns </span><span class="rvts18">NULL</span><span class="rvts6"> if no instances exist. This returns a type of </span><span class="rvts18">Object*</span><span class="rvts6"> so you need to manually cast to your class.</span></p>
+<p class="rvps5"><span class="rvts6">This can also be used to get the only instance existing for this object.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Template* getNextInstance&lt;Template*&gt;();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the next existing instance of this class.</span></p>
+<p class="rvps5"><span class="rvts6">Returns </span><span class="rvts18">NULL</span><span class="rvts6"> if no instances exist. This returns a type of </span><span class="rvts18">Object*</span><span class="rvts6"> so you need to manually to your class.</span></p>
+<p class="rvps5"><span class="rvts6">You should always call </span><span class="rvts18">getInstance()</span><span class="rvts6"> before starting any </span><span class="rvts18">getNextInstance()</span><span class="rvts6"> calls to reset the listing to start from the beginning.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts18">//loop through all instances of the Enemy class</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">Enemy *e=getInstance&lt;Enemy&gt;(); &nbsp; //obtain the first enemy and cast it</span></p>
+<p class="rvps2"><span class="rvts18">while(e) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //if there are enemies loop them</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;e-&gt;destroy();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span><br/><span class="rvts21"> &nbsp; &nbsp;e=getNextInstance&lt;Enemy&gt;(); &nbsp;//get the next enemy instance</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour">Easily create EBooks</a></p>
 </div>

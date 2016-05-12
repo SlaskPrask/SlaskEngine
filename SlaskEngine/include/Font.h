@@ -35,18 +35,6 @@ private:
 		return val;
 	}
 	bool charToGL(FT_Face face, char c);
-	inline FontChar *getChar(char c)
-	{
-		return &(ch[c]);
-	}
-	inline unsigned int getLineSize()
-	{
-		return lineSize;
-	}
-	inline unsigned int getOffset()
-	{
-		return yOffset;
-	}
 
 public:
 	Font(const char* file);//undocced
@@ -58,6 +46,18 @@ public:
 	inline double getLineHeight(unsigned int fontsize)//undocced
 	{
 		return (double)lineSize*(double)loadSize/(double)fontsize;
+	}
+	inline FontChar *getChar(char c)
+	{
+		return &(ch[c]);
+	}
+	inline unsigned int getLineSize()
+	{
+		return lineSize;
+	}
+	inline unsigned int getOffset()
+	{
+		return yOffset;
 	}
 	~Font();
 };

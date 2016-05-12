@@ -372,7 +372,6 @@
     </ClInclude>
     <ClInclude Include="include\AnimationData.h" />
     <ClInclude Include="include\AnimFrame.h" />
-    </ClInclude>
     <ClInclude Include="hsplace.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>

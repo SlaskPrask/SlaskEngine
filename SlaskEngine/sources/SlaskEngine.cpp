@@ -86,7 +86,6 @@ void SlaskEngine::init(int argc, char *argv[])
 		LogHandler::notify("Engine","No game entry point given.");
 		running = false;
 	}
-	int first=1;/////////////////////////////////////////////////////////////
 	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
@@ -119,25 +118,6 @@ void SlaskEngine::init(int argc, char *argv[])
 				gameWindowResizeFunc();
 		}
 
-		if (slask::getKeyPress(slask::Key::A))
-		{
-			dumpObjects();
-			dumpDepths();
-			dumpDepthQueue();
-			dumpDepthChangeQueue();
-		}
-		if (slask::getKeyPress(slask::Key::B))
-		{
-			objI = objects.first();
-			while (objI)
-			{
-				nextObjI = objI->getNext();
-				((Object*)objI)->depth(((Object*)objI)->depth()+1);
-				objI = nextObjI;
-			}
-			first=1;
-		}
-
 		//running
 		switchingScenes = 0;
 		if (scene)
@@ -167,29 +147,8 @@ void SlaskEngine::init(int argc, char *argv[])
 			cam->doFollow();
 
 		//drawing
-		if (first)
-		{
-			dumpObjects();
-			dumpDepths();
-			dumpDepthQueue();
-			dumpDepthChangeQueue();
-		}
 		resolveDepthQueue();
-		if (first)
-		{
-			dumpObjects();
-			dumpDepths();
-			dumpDepthQueue();
-			dumpDepthChangeQueue();
-		}
 		resolveDepthChangeQueue();
-		if (first)
-		{
-			dumpObjects();
-			dumpDepths();
-			dumpDepthQueue();
-			dumpDepthChangeQueue();
-		}
 		graphics->drawBegin();
 		if (di = firstDepth)
 		while (di)
@@ -220,8 +179,6 @@ void SlaskEngine::init(int argc, char *argv[])
 		frameSeconds=passedMs / 1000000.0f;
 		frameTime = frameSeconds*fps;
 		frameClock.restart();
-
-		first=0;
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteScene();

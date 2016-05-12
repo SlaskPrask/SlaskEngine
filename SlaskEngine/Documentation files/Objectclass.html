@@ -257,7 +257,7 @@
 <p class="rvps5"><span class="rvts6">Returns the current object</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts27">Listing objects</span></p>
-<p class="rvps2"><span class="rvts6">The engine stores a list of each object instance. You can iterate through this list for each object class.</span></p>
+<p class="rvps2"><span class="rvts6">The engine stores a list of each object instance. You can iterate through this list for each object class. A more user friendly version of this is provided with </span><span class="rvts18">getInstance()</span><span class="rvts6"> and </span><span class="rvts18">getNextInstance()</span><span class="rvts6">.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">Object* instance();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the first existing instance of this class.</span></p>
@@ -267,7 +267,7 @@
 <p class="rvps2"><span class="rvts20">Object* nextInstance();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the next existing instance of this class.</span></p>
 <p class="rvps5"><span class="rvts6">Returns </span><span class="rvts18">NULL</span><span class="rvts6"> if no instances exist. This returns a type of </span><span class="rvts18">Object*</span><span class="rvts6"> so you need to manually to your class.</span></p>
-<p class="rvps5"><span class="rvts6">You should always call instance() before starting any </span><span class="rvts18">nextInstance()</span><span class="rvts6"> calls to reset the listing to start from the beginning.</span></p>
+<p class="rvps5"><span class="rvts6">You should always call </span><span class="rvts18">instance()</span><span class="rvts6"> before starting any </span><span class="rvts18">nextInstance()</span><span class="rvts6"> calls to reset the listing to start from the beginning.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
 <tr valign="top">
