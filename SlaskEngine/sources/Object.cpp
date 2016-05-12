@@ -119,6 +119,7 @@ void Object::_performDepthMove()
 		_depth = _qdepth;
 		_depthItem->moveUp();
 	}
+	else
 	if (_qdepth < _depth)
 	{
 		_depth = _qdepth;

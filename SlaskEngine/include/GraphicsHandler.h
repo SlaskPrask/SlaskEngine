@@ -33,13 +33,13 @@ private:
 	bool vsync; 
 	int framespersecond;
 	bool cursorOn;
-	const char* label;
+	std::string label;
 	Camera *defaultCamera;
 	Camera *activeCamera;
 	bool queueCamera;
 	bool blackBars;
 	double horBars, verBars;
-	GLfloat blackBarData[12];
+	GLfloat blackBarData[12],squareData[12];
 	double regionW, regionH;
 
 	int width;
@@ -64,8 +64,45 @@ public:
 	void init(const char* title);
 	~GraphicsHandler();
 
-	sf::RenderWindow* getWindow();
-	FT_Library* getFontLib();
+	inline int getWidth()
+	{
+		return width;
+	}
+
+	inline int getHeight()
+	{
+		return height;
+	}
+
+	inline int getFPS()
+	{
+		return framespersecond;
+	}
+
+	inline bool getVSync()
+	{
+		return vsync;
+	}
+
+	inline std::string getTitle()
+	{
+		return label;
+	}
+
+	inline sf::RenderWindow* getWindow()
+	{
+		return window;
+	}
+
+	inline FT_Library* getFontLib()
+	{
+		return fontLib;
+	}
+
+	double getCameraX();
+	double getCameraY();
+	double getCameraW();
+	double getCameraH();
 	
 	void setTitle(const char* title);
 	void setFPS(int fps);
@@ -104,18 +141,8 @@ public:
 		return cursorOn;
 	}
 
-	const char* getTitle();
-	int getFPS();
-	bool getVSync();
-	int getWidth();
-	int getHeight();
-
 	Camera* getCamera();
 	void setCamera(Camera *cam);
-	double getCameraX();
-	double getCameraY();
-	double getCameraW();
-	double getCameraH();
 	inline void refreshCamera()
 	{
 		queueCamera = 1;
@@ -145,6 +172,7 @@ public:
 	void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing,int align, double r, double g, double b, double a);
 	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a);
 	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);
+	void drawRectangle(double x, double y, double w, double h, double r, double g, double b, double a);
 	void drawBegin();
 	void drawEnd();
 	void close();

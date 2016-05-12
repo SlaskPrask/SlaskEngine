@@ -24,6 +24,8 @@ private:
 	double deadzone[_SLASK_MAXJOYSTICKS];
 	double buttondeadzone[_SLASK_MAXJOYSTICKS];
 
+	std::string keyboardstr;
+
 	int *key;
 	bool anykeyreleased,anykeypressed;
 	int anykeyheld;
@@ -57,6 +59,8 @@ public:
 	{
 		touchTranslation = enabled;
 	}
+
+	void addKeyboardChar(std::string *s, bool newlines = 0);
 
 	void clearmouse(int i);
 	bool clearedmouse(int i);

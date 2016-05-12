@@ -1,5 +1,18 @@
 #include "../include/SlaskNamespace.h"
 
+void slask::getKeyName(char *str, int keycode)
+{
+	std::string s;
+	getKeyName(&s, keycode);
+	strcpy(str, s.c_str());
+}
+void slask::getMouseName(char *str, int i)
+{
+	std::string s;
+	getMouseName(&s, i);
+	strcpy(str, s.c_str());
+}
+
 void slask::getKeyName(std::string *str, int keycode)
 {
 	if (keycode < 0 || keycode >= sf::Keyboard::Key::KeyCount)

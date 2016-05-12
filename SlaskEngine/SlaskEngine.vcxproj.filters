@@ -173,6 +173,9 @@
     <ClCompile Include="hsplace.cpp">
       <Filter>TechDemo</Filter>
     </ClCompile>
+    <ClCompile Include="sources\AnimationData.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -214,9 +217,6 @@
       <Filter>Header Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="include\Font.h">
-      <Filter>Header Files\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="include\FontChar.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="include\DepthItem.h">
@@ -299,6 +299,15 @@
     </ClInclude>
     <ClInclude Include="hsplace.h">
       <Filter>TechDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FontChar.h">
+      <Filter>Header Files\Class Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AnimFrame.h">
+      <Filter>Header Files\Class Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AnimationData.h">
+      <Filter>Header Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

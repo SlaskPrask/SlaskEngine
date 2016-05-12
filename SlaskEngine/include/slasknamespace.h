@@ -34,21 +34,6 @@ namespace slask
 		return fontSetFont(i, j);
 	}
 
-	int getSceneWidth();
-	int getSceneHeight();
-	inline Scene* getScene()
-	{
-		return SlaskEngine::instance()->getCurrentScene();
-	}
-	inline double frameSeconds()
-	{
-		return SlaskEngine::instance()->getFrameSeconds();
-	}
-	inline double frameTime()
-	{
-		return SlaskEngine::instance()->getFrameMultiplier();
-	}
-
 	void drawText(Font *font, const char* str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a);//undocced
 	inline void drawText(Font *font, const std::string str, double x, double y, double size, double lineSpacing, double r, double g, double b, double a)//undocced
 	{
@@ -93,35 +78,29 @@ namespace slask
 
 	void getKeyName(std::string *str, int keycode);
 	void getMouseName(std::string *str, int i);
-	inline void getKeyName(char *str, int keycode)
-	{
-		std::string s;
-		getKeyName(&s, keycode);
-		strcpy(str, s.c_str());
-	}
-	inline void getMouseName(char *str, int i)
-	{
-		std::string s;
-		getMouseName(&s, i);
-		strcpy(str, s.c_str());
-	}
+	void getKeyName(char *str, int keycode);
+	void getMouseName(char *str, int i);
 
 	//draw sprite at position
-	void drawSprite(Sprite* sprite, double x, double y);
+	void drawSprite(Sprite* sprite, double x, double y);//undocced
 	//draw sprite with size
-	void drawSprite(Sprite* sprite, double x, double y, double w, double h);
+	void drawSprite(Sprite* sprite, double x, double y, double w, double h);//undocced
 	//draw a part of a sprite
-	void drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy);
+	void drawSpritePart(Sprite* sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy);//undocced
 	//draw a sprite rotated
-	void drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot);
+	void drawSpriteRot(Sprite* sprite, double x, double y, double w, double h, double rot);//undocced
 	//draw a sprite with all possible options, including color
-	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a);
+	void drawSpriteExt(Sprite *sprite, double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a);//undocced
 	//draw a triangle part of a sprite
-	void drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3);
+	void drawSpritePoly(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3);//undocced
 	//draw a triangle part of a sprite rotated
-	void drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot);
+	void drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot);//undocced
 	//draw a triangle part of a sprite with all options, including color
-	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);
+	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);//undocced
+	inline void drawRectangle(double x, double y, double w, double h, double r, double g, double b, double a)//undocced
+	{
+		GraphicsHandler::instance()->drawRectangle(x, y, w, h, r, g, b, a);
+	}
 
 	template<class T>
 	T* at(T* t, double x, double y)//undocced
@@ -149,11 +128,35 @@ namespace slask
 	void setAudioBusMute(AudioBus* bus, bool mute);//undocced
 	bool getAudioBusMute(AudioBus* bus);//undocced
 
+	inline void clearKey(int keycode)//undocced
+	{
+		InputHandler::instance()->clearkey(keycode);
+	}
+	inline void clearKeyAny()//undocced
+	{
+		InputHandler::instance()->clearkeyany();
+	}
+
 	float getSoundParameterValue(Audio* audio, const char* param);//undocced
 
 	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
 	{
 		return (x >= left&&y >= top&&x < right&&y < bottom);
+	}
+
+	int getSceneWidth();
+	int getSceneHeight();
+	inline Scene* getScene()
+	{
+		return SlaskEngine::instance()->getCurrentScene();
+	}
+	inline double frameSeconds()
+	{
+		return SlaskEngine::instance()->getFrameSeconds();
+	}
+	inline double frameTime()
+	{
+		return SlaskEngine::instance()->getFrameMultiplier();
 	}
 
 	inline void enableTouchTranslation()
@@ -174,6 +177,12 @@ namespace slask
 	{
 		InputHandler::instance()->unsetNoTouchPosition();
 	}
+
+	inline void keyboardTextBuffer(std::string *str, bool newlines = 0)
+	{
+		InputHandler::instance()->addKeyboardChar(str, newlines);
+	}
+	void keyboardTextBuffer(char *str, bool newlines = 0);
 
 	int getMouseWheelUp();
 	int getMouseWheelDown();
@@ -198,14 +207,6 @@ namespace slask
 	inline void clearMouse(int i)
 	{
 		InputHandler::instance()->clearmouse(i);
-	}
-	inline void clearKey(int i)
-	{
-		InputHandler::instance()->clearkey(i);
-	}
-	inline void clearKeyAny()
-	{
-		InputHandler::instance()->clearkeyany();
 	}
 
 	bool getKeyPressAny();
@@ -306,6 +307,10 @@ namespace slask
 	void setFPS(int fps);
 	void enableVSync();
 	void disableVSync();
+	inline void getTitle(std::string *str)
+	{
+		*str = GraphicsHandler::instance()->getTitle();
+	}
 	void getTitle(char *str);
 	int getFPS();
 	bool getVSync();

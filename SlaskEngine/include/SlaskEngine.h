@@ -228,6 +228,15 @@ public:
 	//new
 	SlaskEngine(int argc, char *argv[]);
 	~SlaskEngine();
+
+	//debug
+	#ifdef SLASKDEBUG
+	void dumpObjects();
+	void dumpDepths();
+	void dumpDepthQueue();
+	void dumpDepthChangeQueue();
+	void dumpObj(Object *obj);
+	#endif
 };
 
 #include "Object.h"

@@ -10,6 +10,7 @@ void InputHandler::init()
 	mouse_y = mouse_x = mousewheel_up = mousewheel_down = 0;
 	mouse_cam_y = mouse_cam_x = mouse_cam_moved_x = mouse_cam_moved_y = mouse_cam_prev_x = mouse_cam_prev_y = 0;
 	window_focus = 1;
+	keyboardstr = "";
 	touchClick = 0;
 	touchTranslation = 0;
 	touchNoPosition = 0;
@@ -91,6 +92,8 @@ bool InputHandler::run()
 	mouse_cam_prev_x = mouse_cam_x;
 	mouse_cam_prev_y = mouse_cam_y;
 
+	keyboardstr = "";
+
 	if (window)
 	while (window->pollEvent(event))
 	{
@@ -113,6 +116,8 @@ bool InputHandler::run()
 			signal_focus = true;
 			break;
 		case sf::Event::TextEntered:
+			if (event.text.unicode < 128)
+			keyboardstr+=(char)event.text.unicode;
 			break;
 		case sf::Event::KeyPressed:
 			if (event.key.code >= 0 && event.key.code < sf::Keyboard::Key::KeyCount)
@@ -167,7 +172,6 @@ bool InputHandler::run()
 		case sf::Event::MouseLeft:
 			break;
 		case sf::Event::TouchBegan:
-			LogHandler::log((int)event.touch.finger);
 			break;
 		case sf::Event::JoystickButtonPressed:
 			break;
@@ -280,6 +284,37 @@ bool InputHandler::getanykey(int state)
 		return (anykeyheld > 0);
 	}
 	return 0;
+}
+
+void InputHandler::addKeyboardChar(std::string *s,bool newlines)
+{
+	for (unsigned int i = 0; i < keyboardstr.size(); i++)
+	{
+		if (keyboardstr[i] < 32)
+			switch (keyboardstr[i])
+			{
+			default:
+				break;
+			case '\n'://newline
+			case '\r'://carriage return
+				if (newlines)
+					*s += '\n';
+				break;
+			case '\b'://backspace
+				if (!s->empty())
+					*s = s->substr(0, s->size() - 1);
+				break;
+			}
+		else
+			switch (keyboardstr[i])
+			{
+			case 127://delete
+				break;
+			default:
+				*s += keyboardstr[i];
+				break;
+			}
+	}
 }
 
 InputHandler::~InputHandler()

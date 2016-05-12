@@ -39,6 +39,18 @@ void GraphicsHandler::init(const char* title)
 	blackBarData[9] = 0;
 	blackBarData[10] = 0;
 	blackBarData[11] = _SLASK_DEFAULT_DRAW_DEPTH;
+	squareData[0] = 0;
+	squareData[1] = 0;
+	squareData[2] = _SLASK_DEFAULT_DRAW_DEPTH;
+	squareData[3] = 1;
+	squareData[4] = 0;
+	squareData[5] = _SLASK_DEFAULT_DRAW_DEPTH;
+	squareData[6] = 0;
+	squareData[7] = 1;
+	squareData[8] = _SLASK_DEFAULT_DRAW_DEPTH;
+	squareData[9] = 1;
+	squareData[10] = 1;
+	squareData[11] = _SLASK_DEFAULT_DRAW_DEPTH;
 
 	drawDepth = _SLASK_DEFAULT_DRAW_DEPTH;
 
@@ -99,10 +111,14 @@ Camera* GraphicsHandler::getCamera()
 
 void GraphicsHandler::setCamera(Camera *cam)
 {
-	if (cam == NULL)
-		activeCamera = defaultCamera;
-	else
-		activeCamera = cam;
+	if (cam != activeCamera)
+	{
+		refreshCamera();
+		if (cam == NULL)
+			activeCamera = defaultCamera;
+		else
+			activeCamera = cam;
+	}
 }
 
 bool GraphicsHandler::setFullscreen(int w, int h)
@@ -318,56 +334,19 @@ void GraphicsHandler::setRenderSize()
 	glLoadIdentity();
 }
 
-int GraphicsHandler::getWidth()
-{
-	return width;
-}
-
-int GraphicsHandler::getHeight()
-{
-	return height;
-}
-
-int GraphicsHandler::getFPS()
-{
-	return framespersecond;
-}
-
-bool GraphicsHandler::getVSync()
-{
-	return vsync;
-}
-
-const char* GraphicsHandler::getTitle()
-{
-	return label;
-}
-
-sf::RenderWindow* GraphicsHandler::getWindow()
-{
-	return window;
-}
-
-FT_Library* GraphicsHandler::getFontLib()
-{
-	return fontLib;
-}
 
 double GraphicsHandler::getCameraX()
 {
 	return activeCamera->x;
 }
-
 double GraphicsHandler::getCameraY()
 {
 	return activeCamera->y;
 }
-
 double GraphicsHandler::getCameraW()
 {
 	return activeCamera->getWidth();
 }
-
 double GraphicsHandler::getCameraH()
 {
 	return activeCamera->getHeight();
@@ -489,6 +468,7 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 			continue;
 
 		ch = font->getChar((*curstr)[i]);
+		//TODO: dataSquare
 		GLfloat d2d[] = { (GLfloat)ch->bw*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,-(GLfloat)ch->bh*(GLfloat)scale,drawDepth,(GLfloat)ch->bw*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth,((GLfloat)ch->bw + (GLfloat)ch->w)*(GLfloat)scale,(-(GLfloat)ch->bh + (GLfloat)ch->h)*(GLfloat)scale,drawDepth };
 		glVertexPointer(3, GL_FLOAT, 0, d2d);
 
@@ -531,20 +511,17 @@ void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w,
 	}
 
 	glPushMatrix();
-	GLfloat d2d[] = {0,0,drawDepth,(GLfloat)w,0,drawDepth,0,(GLfloat)h,drawDepth,(GLfloat)w,(GLfloat)h,drawDepth };
-
+	
 	glTranslated(x + w / 2.0f, y + h / 2.0f, 0);
 	glRotated(rot, 0, 0, 1);
 	glTranslated(- w / 2.0f,- h / 2.0f, 0);
-	/*GLfloat d2d[] = { -(GLfloat)w / 2.0f, -(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, -(GLfloat)h / 2.0f,drawDepth, -(GLfloat)w / 2.0f, +(GLfloat)h / 2.0f,drawDepth, +(GLfloat)w / 2.0f, (GLfloat)h / 2.0f,drawDepth };
-
-	glTranslated(x + w / 2.0f, y + h / 2.0f, 0);
-	glRotated(rot, 0, 0, 1);*/
+	glScaled(w,h,1);
+	
 	GLfloat d2d_tex[8] = { (GLfloat)fromx,(GLfloat)fromy,(GLfloat)tox,(GLfloat)fromy,(GLfloat)fromx,(GLfloat)toy,(GLfloat)tox,(GLfloat)toy };
 	sprite->bind();
 	if (a != -1)
 		set_color(r, g, b, a);
-	glVertexPointer(3, GL_FLOAT, 0, d2d);
+	glVertexPointer(3, GL_FLOAT, 0, squareData);
 	glTexCoordPointer(2, GL_FLOAT, 0, d2d_tex);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	if (a != -1)
@@ -579,6 +556,27 @@ void GraphicsHandler::drawSpritePolyExt(Sprite *sprite, double x1, double y1, do
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
 	if (a != -1)
 		restore_color();
+	glPopMatrix();
+}
+
+void GraphicsHandler::drawRectangle(double x, double y, double w, double h, double r, double g, double b, double a)
+{
+	if (!window)
+		return;
+
+	glPushMatrix();
+	glDisable(GL_TEXTURE_2D);
+
+	glTranslated(x, y, 0);
+	glScaled(w, h, 1);
+
+	set_color(r, g, b, a);
+
+	glVertexPointer(3, GL_FLOAT, 0, squareData);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+	restore_color();
+	glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
 

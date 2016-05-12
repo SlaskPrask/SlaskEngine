@@ -118,7 +118,15 @@ int slask::random(int max)
 
 void slask::getTitle(char *str)
 {
-	strcpy(str,GraphicsHandler::instance()->getTitle());
+	std::string s;
+	getTitle(&s);
+	strcpy(str, s.c_str());
+}
+void slask::keyboardTextBuffer(char *str, bool newlines)
+{
+	std::string s;
+	InputHandler::instance()->addKeyboardChar(&s,newlines);
+	strcpy(str, s.c_str());
 }
 int slask::getFPS()
 {

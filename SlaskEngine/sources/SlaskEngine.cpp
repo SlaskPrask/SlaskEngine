@@ -86,6 +86,7 @@ void SlaskEngine::init(int argc, char *argv[])
 		LogHandler::notify("Engine","No game entry point given.");
 		running = false;
 	}
+	int first=1;/////////////////////////////////////////////////////////////
 	graphics->earlyCameraRefresh();
 
 	bool exitHandle=0;
@@ -118,6 +119,25 @@ void SlaskEngine::init(int argc, char *argv[])
 				gameWindowResizeFunc();
 		}
 
+		if (slask::getKeyPress(slask::Key::A))
+		{
+			dumpObjects();
+			dumpDepths();
+			dumpDepthQueue();
+			dumpDepthChangeQueue();
+		}
+		if (slask::getKeyPress(slask::Key::B))
+		{
+			objI = objects.first();
+			while (objI)
+			{
+				nextObjI = objI->getNext();
+				((Object*)objI)->depth(((Object*)objI)->depth()+1);
+				objI = nextObjI;
+			}
+			first=1;
+		}
+
 		//running
 		switchingScenes = 0;
 		if (scene)
@@ -147,8 +167,29 @@ void SlaskEngine::init(int argc, char *argv[])
 			cam->doFollow();
 
 		//drawing
+		if (first)
+		{
+			dumpObjects();
+			dumpDepths();
+			dumpDepthQueue();
+			dumpDepthChangeQueue();
+		}
 		resolveDepthQueue();
+		if (first)
+		{
+			dumpObjects();
+			dumpDepths();
+			dumpDepthQueue();
+			dumpDepthChangeQueue();
+		}
 		resolveDepthChangeQueue();
+		if (first)
+		{
+			dumpObjects();
+			dumpDepths();
+			dumpDepthQueue();
+			dumpDepthChangeQueue();
+		}
 		graphics->drawBegin();
 		if (di = firstDepth)
 		while (di)
@@ -179,6 +220,8 @@ void SlaskEngine::init(int argc, char *argv[])
 		frameSeconds=passedMs / 1000000.0f;
 		frameTime = frameSeconds*fps;
 		frameClock.restart();
+
+		first=0;
 	}
 	LogHandler::log("Engine", "Stopping..");
 	deleteScene();
@@ -429,3 +472,101 @@ SlaskEngine::~SlaskEngine()
 {
 	LogHandler::log("Engine", "End");
 }
+
+#ifdef SLASKDEBUG
+void SlaskEngine::dumpObjects()
+{
+	LogHandler::log("DUMP","OBJECTS:");
+	int i=0;
+	LinkedList<Object> *obj = objects.first();
+	while (obj)
+	{
+		LinkedList<Object> *nextObj= obj->getNext();
+		std::ostringstream s;
+		s << std::to_string(i) << ": " << (Object*)obj;
+		LogHandler::log("DUMP",s.str().c_str());
+		i++;
+		obj = nextObj;
+	}
+
+	LogHandler::log("DUMP","");
+}
+void SlaskEngine::dumpDepths()
+{
+	LogHandler::log("DUMP","DEPTHS:");
+	DepthItem *di,*diNext;
+	int i=0;
+	if (di = firstDepth)
+	while (di)
+	{
+		diNext = di->getNext();
+		std::ostringstream s;
+		s << std::to_string(i) << ": ";
+		
+		if (di->getPrevious())
+		s << di->getPrevious() << "(" << di->getPrevious()->get() << ":" << di->getPrevious()->getDepth() << ") -> ";
+		else
+		s << ((Object*)NULL) << "(" << ((Object*)NULL) << ":-) -> ";
+
+		s << di << "(" << di->get() << ":" << di->getDepth() << ")";
+		
+		if (di->getNext())
+		s << " -> " << di->getNext() << "(" << di->getNext()->get() << ":" << di->getNext()->getDepth() << ")";
+		else
+		s << " -> " << ((Object*)NULL) << "(" << ((Object*)NULL) << ":-)";
+		
+		LogHandler::log("DUMP",s.str().c_str());
+		i++;
+
+		di = diNext;
+	}
+
+	LogHandler::log("DUMP","");
+}
+void SlaskEngine::dumpDepthQueue()
+{
+	LogHandler::log("DUMP","DEPTH QUEUE:");
+	for(unsigned int i=0;i<depthQueue.size();i++)
+	{
+		std::ostringstream s;
+		s << std::to_string(i) << ": " << depthQueue[i] << " " << depthQueue[i]->_depth << "->" << depthQueue[i]->_qdepth;
+		LogHandler::log("DUMP",s.str().c_str());
+		depthQueue[i];
+	}
+
+	LogHandler::log("DUMP","");
+}
+void SlaskEngine::dumpDepthChangeQueue()
+{
+	LogHandler::log("DUMP","DEPTH CHANGE QUEUE:");
+	for (unsigned int i=0;i<depthChangeQueue.size();i++)
+	{
+		std::ostringstream s;
+		s << std::to_string(i) << ": " << depthChangeQueue[i] << " " << depthChangeQueue[i]->_depth << "->" << depthChangeQueue[i]->_qdepth;
+		LogHandler::log("DUMP",s.str().c_str());
+		depthChangeQueue[i];
+	}
+
+	LogHandler::log("DUMP","");
+}
+void SlaskEngine::dumpObj(Object *obj)
+{
+	std::ostringstream s;
+	s << "OBJECT: " << obj;
+	LogHandler::log("DUMP",s.str().c_str());
+	s.str("");
+	s << "DEPTH OBJ: " << obj->_depthItem;
+	LogHandler::log("DUMP",s.str().c_str());
+	s.str("");
+	s << "DEPTH: " << std::to_string(obj->_depth) << "->" << std::to_string(obj->_qdepth);
+	LogHandler::log("DUMP",s.str().c_str());
+	s.str("");
+	s << "X,Y: " << std::to_string(obj->x) << "," << std::to_string(obj->y);
+	LogHandler::log("DUMP",s.str().c_str());
+	s.str("");
+	s << (obj->visible?"VISIBLE":"INVISIBLE");
+	LogHandler::log("DUMP",s.str().c_str());
+
+	LogHandler::log("DUMP","");
+}
+#endif

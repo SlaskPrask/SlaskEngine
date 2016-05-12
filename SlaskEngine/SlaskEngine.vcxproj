@@ -153,7 +153,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SLASKDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -202,7 +202,7 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\Dependencies\include</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SLASKDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -294,8 +294,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="highscores.cpp" />
-    <ClCompile Include="hsplace.cpp" />
+    <ClCompile Include="highscores.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="hsplace.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mainmenu.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
@@ -304,6 +310,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sources\AnimationData.cpp" />
     <ClCompile Include="sources\Audio.cpp" />
     <ClCompile Include="sources\AudioBank.cpp" />
     <ClCompile Include="sources\AudioBus.cpp" />
@@ -355,8 +362,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="highscores.h" />
-    <ClInclude Include="hsplace.h" />
+    <ClInclude Include="highscores.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="hsplace.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="include\AnimationData.h" />
+    <ClInclude Include="include\AnimFrame.h" />
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\DepthItem.h" />
