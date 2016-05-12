@@ -122,9 +122,10 @@
 <p class="rvps2"><span class="rvts20">void disableVSync();</span></p>
 <p class="rvps5"><span class="rvts6">Disables vertical syncing of the game window.</span></p>
 <p class="rvps5"><span class="rvts6">Enabled by default.</span></p>
-<p class="rvps2"><span class="rvts6"><br/></span></p>
-<p class="rvps2"><span class="rvts20">const char* getTitle();</span></p>
-<p class="rvps5"><span class="rvts6">Returns the title of the game window.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void getTitle(char *str);</span></p>
+<p class="rvps2"><span class="rvts20">void getTitle(std::string *str);</span></p>
+<p class="rvps5"><span class="rvts6">Sets the title of the game window to </span><span class="rvts18">str</span><span class="rvts6">.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">int getFPS();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the game's current frames per second value.</span></p>

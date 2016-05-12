@@ -7,7 +7,7 @@ private:
 	DepthItem *nextNode;
 	DepthItem *prevNode;
 	Object *item;
-
+	void detach();
 protected:
 	inline void next(DepthItem *t)
 	{

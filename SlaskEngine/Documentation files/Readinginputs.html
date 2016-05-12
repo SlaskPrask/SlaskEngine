@@ -71,7 +71,6 @@
 <p class="rvps2"><span class="rvts19">Reading inputs</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts25">Reading the keyboard</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">bool getKeyPress(int keycode);</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether this key was pressed down on the current frame.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
@@ -113,9 +112,85 @@
 <p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">bool getKeyIdleAny();</span></p>
 <p class="rvps5"><span class="rvts6">Returns whether no key is pressed down at all.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Reserving keyboard inputs</span></p>
+<p class="rvps2"><span class="rvts6">Sometimes you want only one object to receive inputs. Once an object has handled your keys you can deny all other objects this information with clearing functions. After calling a clear the input appears idle to everyone else on that frame.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearKey(int keycode);</span></p>
+<p class="rvps5"><span class="rvts6">Clears the given key's state for the rest of this frame as idle. Can be used when you want only one object to receive the key's state.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps5"><span class="rvts6">Generated errors:</span></p>
+<p class="rvps5"><span class="rvts22">Clearing key </span><span class="rvts24">keycode</span><span class="rvts22"> out of range.</span></p>
+<p class="rvps6"><span class="rvts6">The given key, keycode, is not a recognized key.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void GameHandler::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::Escape))</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;{</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;/*mark the key as read and accepted so</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;other objects such as our unpausing object</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; won't get it's press*/</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp;clearKey(Key::Escape);</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;pauseGame();</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;}</span><br/><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void clearKeyAny();</span></p>
+<p class="rvps5"><span class="rvts6">Clears the any key inputs. This does not clear all individual keys.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts27">Reading keyboard text input</span></p>
+<p class="rvps2"><span class="rvts6">The engine stores the current text input</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void keyboardTextBuffer(char *str,bool newlines=0);</span></p>
+<p class="rvps2"><span class="rvts20">void keyboardTextBuffer(std::string *str,bool newlines=0);</span></p>
+<p class="rvps5"><span class="rvts6">Applies keyboard inputs to the given string.</span></p>
+<p class="rvps5"><span class="rvts6">The string should contain any previously obtained input already.</span></p>
+<p class="rvps5"><span class="rvts18">newlines</span><span class="rvts6"> determines whether the enter key is allowed to enter a new line in the string, otherwise it is ignored. Usually you want only one line of text like for entering a name and rarely want a block of text to be entered.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">#include &lt;slask.h&gt;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">using namespace slask;</span></p>
+<p class="rvps2"><span class="rvts21"><br/></span></p>
+<p class="rvps2"><span class="rvts21">class TextBox:public Object</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;SLASKOBJECT</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;private:</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;std::string input;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;public:</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;void run();</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;void draw();</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void TextBox::run()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;keyboardTextBuffer(&amp;input,1); &nbsp; &nbsp; //update our string with new inputs</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getKeyPress(Key::ESCAPE)) &nbsp; &nbsp; //clear our inputs on escape</span></p>
+<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;input="";</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+<p class="rvps2"><span class="rvts21">void TextBox::draw()</span></p>
+<p class="rvps2"><span class="rvts18">{</span></p>
+<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;drawText(getFont(0,0),input,x,y,16,0,0,0,1);</span></p>
+<p class="rvps2"><span class="rvts18">}</span></p>
+<p class="rvps2"><span class="rvts18"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts25">Reading the mouse</span></p>
-<p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">double getMouseX();</span></p>
 <p class="rvps5"><span class="rvts6">Returns the mouse cursor's x position in the current scene.</span></p>
 <p class="rvps2"><span class="rvts26"><br/></span></p>
@@ -163,6 +238,8 @@
 <p class="rvps2"><span class="rvts26"><br/></span></p>
 <p class="rvps2"><span class="rvts20">int getMouseWheelDown();</span></p>
 <p class="rvps5"><span class="rvts6">Returns how many ticks the mouse wheel moved down on this frame.</span></p>
+<p class="rvps2"><span class="rvts27">Reserving mouse inputs</span></p>
+<p class="rvps2"><span class="rvts6">Mouse inputs may be reserved the same way as keyboard inputs above.</span></p>
 <p class="rvps5"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void clearMouse(int i);</span></p>
 <p class="rvps5"><span class="rvts6">Clears the given mouse button's state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's state.</span></p>
@@ -170,25 +247,7 @@
 <p class="rvps5"><span class="rvts6">Generated errors:</span></p>
 <p class="rvps5"><span class="rvts22">Clearing mouse button </span><span class="rvts24">i</span><span class="rvts22"> out of range.</span></p>
 <p class="rvps6"><span class="rvts6">The given button, i, is not a recognized mouse button.</span></p>
-<p class="rvps2"><span class="rvts25"><br/></span></p>
-<div class="rvps2"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid; border-spacing: 2px;">
-<tr valign="top">
-<td style="border-color: #000000; border-style: solid; padding: 1px;"><p class="rvps2"><span class="rvts18"><br/></span></p>
-<p class="rvps2"><span class="rvts21">void Button::run()</span></p>
-<p class="rvps2"><span class="rvts18">{</span><br/><span class="rvts21"> &nbsp; &nbsp;if (inside(getMouseX(),getMouseY(),x,y,x+width,y+height))</span></p>
-<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp;if (getMousePress(Mouse::MouseLeft))</span></p>
-<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;{</span></p>
-<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;//mark the mouse button as read and accepted so other objects won't get it's press</span></p>
-<p class="rvps2"><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp;clearMouse(Mouse::MouseLeft);</span></p>
-<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp; &nbsp; &nbsp;clicked();</span></p>
-<p class="rvps2"><span class="rvts18"> &nbsp; &nbsp;}</span><br/><span class="rvts18">}</span></p>
-<p class="rvps2"><span class="rvts18"><br/></span></p>
-</td>
-</tr>
-</table>
-</div>
-<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps6"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void clearMouseWheelUp();</span></p>
 <p class="rvps5"><span class="rvts6">Clears the given mouse's wheel up state for the rest of this frame as idle. Can be used when you want only one object to receive the mouse's up scrolling amount.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>

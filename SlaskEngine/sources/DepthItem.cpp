@@ -9,105 +9,96 @@ DepthItem::DepthItem(Object* i)
 	item->_depthItem = this;
 }
 
+//goes down on the list attempting to be before the given node
 void DepthItem::addAbove(DepthItem *t)
 {
-	if (t->getDepth() > getDepth())
+	if (getDepth()>=t->getDepth())
 	{
-		if (prevNode == 0)
-		{
-			SlaskEngine::instance()->setFirstDepth(t);
-			prevNode = t;
-			t->next(this);
-		}
-		else
-		{
-			t->next(this);
-			t->prev(prevNode);
-			prevNode->next(t);
-			prev(t);
-		}
+		prevNode=t->getPrevious();
+		nextNode=t;
+		if (prevNode)
+		prevNode->next(this);
+		nextNode->prev(this);
 	}
 	else
+	if (t->getNext())
 	{
-		if (nextNode)
-			nextNode->addAbove(t);
-		else
-		{
-			t->next(nextNode);//0 end
-			next(t);
-			t->prev(this);
-		}
+		addAbove(t->getNext());
+	}
+	else
+	{//highest depth, bottom node
+		nextNode=0;
+		prevNode=t;
+		t->next(this);
 	}
 }
 
+//goes up on the list attempting to be after the given node
 void DepthItem::addBelow(DepthItem *t)
 {
-	if (t->getDepth() < getDepth())
+	if (getDepth()<=t->getDepth())
 	{
-		if (nextNode == 0)
-		{
-			nextNode = t;
-			t->prev(this);
-		}
-		else
-		{
-			t->prev(this);
-			t->next(nextNode);
-			nextNode->prev(t);
-			next(t);
-		}
+		nextNode=t->getNext();
+		prevNode=t;
+		if (nextNode)
+		nextNode->prev(this);
+		prevNode->next(this);
 	}
 	else
+	if (t->getPrevious())
 	{
-		if (prevNode)
-			prevNode->addBelow(t);
-		else
-		{
-			SlaskEngine::instance()->setFirstDepth(t);
-			t->prev(prevNode);//0 begin
-			prev(t);
-			t->next(this);
-		}
+		addBelow(t->getPrevious());
+	}
+	else
+	{//lowest depth, top node
+		prevNode=0;
+		nextNode=t;
+		t->prev(this);
 	}
 }
 
+//my depth got larger ++++
 void DepthItem::moveUp()
 {
 	if (prevNode)
 	{
-		if (prevNode->getDepth() < getDepth())
+		if (prevNode->getDepth()<getDepth())//move required
 		{
-			prevNode->next(nextNode);
-			if (nextNode)
-				nextNode->prev(prevNode);
-			prevNode->addBelow(this);
+			detach();
+			addBelow(prevNode);//causes a second if but i guess it's ok
 		}
 	}
+	//else, already top
 }
 
+//my depth got lesser ----
 void DepthItem::moveDown()
 {
 	if (nextNode)
 	{
-		if (nextNode->getDepth() > getDepth())
+		if (nextNode->getDepth()>getDepth())//move required
 		{
-			nextNode->prev(prevNode);
-			if (prevNode)
-				prevNode->next(nextNode);
-			else
-				SlaskEngine::instance()->setFirstDepth(nextNode);
-			nextNode->addAbove(this);
+			detach();
+			addAbove(nextNode);//causes a second if but i guess it's ok
 		}
 	}
+	//else, already bottom
+}
+
+void DepthItem::detach()
+{
+	if (prevNode)
+	prevNode->next(nextNode);
+	else
+	{//detach from top
+		SlaskEngine::instance()->setFirstDepth(nextNode);
+	}
+	if (nextNode)
+	nextNode->prev(prevNode);
+	//leaves this node with loose ends
 }
 
 DepthItem::~DepthItem()
 {
-	if (prevNode != 0)
-		prevNode->next(nextNode);
-	else
-		SlaskEngine::instance()->setFirstDepth(nextNode);
-
-	if (nextNode != 0)
-		nextNode->prev(prevNode);
+	detach();
 }

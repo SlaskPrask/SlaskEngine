@@ -373,7 +373,7 @@ void SlaskEngine::attachDepth(Object *o)
 	if (!firstDepth)
 	firstDepth = new DepthItem(o);
 	else
-	firstDepth->addBelow(new DepthItem(o));
+	(new DepthItem(o))->addAbove(firstDepth);
 }
 
 void SlaskEngine::switchScene(Scene *scn)
