@@ -112,3 +112,10 @@ Tag* Tag::disable()
 	}
 	return this;
 }
+
+Object* Tag::get(unsigned int i)
+{
+	if (i>=_tagObjs.size())
+		return NULL;
+	return _tagObjs[i];
+}

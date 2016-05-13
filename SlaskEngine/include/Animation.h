@@ -10,7 +10,7 @@ class Animation
 	AnimationData *data;
 	Sprite *sprite;
 	double pos;
-	Animation();
+	double speed;
 	inline void updateFrame(int f)
 	{
 		frame=f;
@@ -48,7 +48,15 @@ class Animation
 	}
 	void setPosition(double p);
 	Animation(Sprite *s,AnimationData *d);
+	Animation();
+	void setSprite(Sprite *s);
+	void setData(AnimationData *d);
 	void run();
 	double getPosition();
 	int getFrame();
+	void setSpeed(double s);
+	inline double getSpeed()
+	{
+		return speed;
+	}
 };

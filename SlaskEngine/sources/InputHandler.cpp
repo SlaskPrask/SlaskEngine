@@ -319,8 +319,8 @@ void InputHandler::addKeyboardChar(std::string *s,bool newlines)
 
 InputHandler::~InputHandler()
 {
-	delete key;
-	delete key_clear;
+	delete[] key;
+	delete[] key_clear;
 	LogHandler::log("Input", "End");
 }
 

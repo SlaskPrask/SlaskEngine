@@ -48,6 +48,14 @@ struct AnimationData//undocced
 	{
 		loop=0;
 	}
+	inline void setRealTime()
+	{
+		realTime=1;
+	}
+	inline void unsetRealTime()
+	{
+		realTime=0;
+	}
 	inline bool getLoop()
 	{
 		return loop;

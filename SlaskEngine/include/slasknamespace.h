@@ -101,10 +101,7 @@ namespace slask
 	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);//undocced
 
 	void drawAnimationExt(Animation* anim,double x,double y,double w,double h,double rot,double r,double g,double b,double a);//undocced
-	inline void drawAnimation(Animation* anim,double x,double y)//undocced
-	{
-		drawAnimationExt(anim,x,y,anim->getWidth(),anim->getHeight(),0,1,1,1,1);
-	}
+	void drawAnimation(Animation* anim,double x,double y);//undocced
 	inline void drawAnimation(Animation* anim,double x,double y,double w,double h)//undocced
 	{
 		drawAnimationExt(anim,x,y,w,h,0,1,1,1,1);
@@ -236,6 +233,11 @@ namespace slask
 	bool getMouseHeld(int i);
 	bool getMouseIdle(int i);
 
+	inline bool getMouse(int i)
+	{
+		return getMouseHeld(i);
+	}
+
 	inline void clearMouseWheelUp()
 	{
 		InputHandler::instance()->clearmousewheel_up();
@@ -257,6 +259,16 @@ namespace slask
 	bool getKeyRelease(int keyCode);
 	bool getKeyHeld(int keyCode);
 	bool getKeyIdle(int keyCode);
+
+	inline bool getKey(int keyCode)
+	{
+		return getKeyHeld(keyCode);
+	}
+
+	inline bool getKeyAny()
+	{
+		return getKeyHeldAny();
+	}
 
 	void destroyAllObjects();
 	void exitGame();

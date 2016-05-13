@@ -230,6 +230,11 @@ void slask::drawAnimationExt(Animation* anim,double x,double y,double w,double h
 	GraphicsHandler::instance()->drawSpriteExt(anim->getSprite(),x,y,w,h,anim->getFromX(),anim->getFromY(),anim->getToX(),anim->getToY(),rot,r,g,b,a);
 }
 
+void slask::drawAnimation(Animation* anim,double x,double y)
+{
+	drawAnimationExt(anim,x,y,anim->getWidth(),anim->getHeight(),0,1,1,1,1);
+}
+
 void slask::log(const char *str)
 {
 	LogHandler::instance()->log(str);

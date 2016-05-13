@@ -368,17 +368,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="hsplace.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\AnimationData.h" />
     <ClInclude Include="include\AnimFrame.h" />
-    <ClInclude Include="hsplace.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="include\AudioSet.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\DepthItem.h" />
