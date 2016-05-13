@@ -67,7 +67,7 @@ public: \
 	void operator delete(void *p) \
 	{ \
 		_removeInstance(static_cast<Object*>(p)); \
-		free(p); \
+		std::free(p); \
 	} \
 private:
 
