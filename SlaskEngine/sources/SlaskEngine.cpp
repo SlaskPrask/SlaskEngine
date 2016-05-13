@@ -93,6 +93,7 @@ void SlaskEngine::init(int argc, char *argv[])
 	double passedMs=0;
 	LinkedList<Object> *objI, *nextObjI;
 	DepthItem *di,*diNext;
+
 	while (running)
 	{
 		//audio

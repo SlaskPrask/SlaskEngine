@@ -176,6 +176,12 @@
     <ClCompile Include="sources\AnimationData.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="sources\Animation.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="tanim.cpp">
+      <Filter>TechDemo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -308,6 +314,15 @@
     </ClInclude>
     <ClInclude Include="include\AnimationData.h">
       <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="hsplace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="tanim.h">
+      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

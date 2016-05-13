@@ -18,6 +18,11 @@ void DepthItem::addAbove(DepthItem *t)
 		nextNode=t;
 		if (prevNode)
 		prevNode->next(this);
+		else
+		{
+			prevNode=0;
+			SlaskEngine::instance()->setFirstDepth(this);
+		}
 		nextNode->prev(this);
 	}
 	else
@@ -53,6 +58,7 @@ void DepthItem::addBelow(DepthItem *t)
 	{//lowest depth, top node
 		prevNode=0;
 		nextNode=t;
+		SlaskEngine::instance()->setFirstDepth(this);
 		t->prev(this);
 	}
 }

@@ -225,6 +225,11 @@ void slask::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, d
 	GraphicsHandler::instance()->drawSpritePolyExt(sprite, x1, y1, x2, y2, x3, y3, texx1, texy1, texx2, texy2, texx3, texy3, rot, r, g, b, a);
 }
 
+void slask::drawAnimationExt(Animation* anim,double x,double y,double w,double h,double rot,double r,double g,double b,double a)
+{
+	GraphicsHandler::instance()->drawSpriteExt(anim->getSprite(),x,y,w,h,anim->getFromX(),anim->getFromY(),anim->getToX(),anim->getToY(),rot,r,g,b,a);
+}
+
 void slask::log(const char *str)
 {
 	LogHandler::instance()->log(str);

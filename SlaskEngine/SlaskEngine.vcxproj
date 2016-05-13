@@ -310,6 +310,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sources\Animation.cpp" />
     <ClCompile Include="sources\AnimationData.cpp" />
     <ClCompile Include="sources\Audio.cpp" />
     <ClCompile Include="sources\AudioBank.cpp" />
@@ -343,6 +344,7 @@
     <ClCompile Include="sources\Timer.cpp" />
     <ClCompile Include="sources\TMXparser.cpp" />
     <ClCompile Include="sources\Video.cpp" />
+    <ClCompile Include="tanim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -370,6 +372,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\AnimationData.h" />
     <ClInclude Include="include\AnimFrame.h" />
     <ClInclude Include="hsplace.h">
@@ -416,6 +419,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="tanim.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

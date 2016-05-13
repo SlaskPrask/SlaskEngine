@@ -22,6 +22,7 @@
 #include "DepthItem.h"
 #include "Object.h"
 #include "Scene.h"
+#include "Animation.h"
 #include <cmath>
 #include <ctime>
 #include <cstdlib>

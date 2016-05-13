@@ -395,7 +395,7 @@ void GraphicsHandler::drawEnd()
 		glTranslated(activeCamera->getWidth()+horBars,0,0);
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		restore_color();
-		glEnable(GL_TEXTURE_2D);
+		glEnable(GL_TEXTURE_2D); 
 		glPopMatrix();
 	}
 

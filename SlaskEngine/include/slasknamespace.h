@@ -99,6 +99,21 @@ namespace slask
 	void drawSpritePolyRot(Sprite* sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot);//undocced
 	//draw a triangle part of a sprite with all options, including color
 	void drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, double y2, double x3, double y3, double texx1, double texy1, double texx2, double texy2, double texx3, double texy3, double rot, double r, double g, double b, double a);//undocced
+
+	void drawAnimationExt(Animation* anim,double x,double y,double w,double h,double rot,double r,double g,double b,double a);//undocced
+	inline void drawAnimation(Animation* anim,double x,double y)//undocced
+	{
+		drawAnimationExt(anim,x,y,anim->getWidth(),anim->getHeight(),0,1,1,1,1);
+	}
+	inline void drawAnimation(Animation* anim,double x,double y,double w,double h)//undocced
+	{
+		drawAnimationExt(anim,x,y,w,h,0,1,1,1,1);
+	}
+	inline void drawAnimationRot(Animation* anim,double x,double y,double w,double h,double rot)//undocced
+	{
+		drawAnimationExt(anim,x,y,w,h,rot,1,1,1,1);
+	}
+
 	inline void drawRectangle(double x, double y, double w, double h, double r, double g, double b, double a)//undocced
 	{
 		GraphicsHandler::instance()->drawRectangle(x, y, w, h, r, g, b, a);
