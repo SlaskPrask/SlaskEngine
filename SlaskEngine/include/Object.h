@@ -41,12 +41,6 @@ public: \
 	{ \
 		return objectId(); \
 	} \
-	static Object* instance() \
-	{ \
-		if (_instance()->empty()) \
-		return NULL; \
-		return (*_instance())[_instPos(0)]; \
-	} \
 	static Object* nextInstance() \
 	{ \
 		unsigned int _pos=_instPos(1); \
@@ -55,6 +49,15 @@ public: \
 		if (_engine::isObjectDestroyed((*(_instance()))[_pos])) \
 		return nextInstance(); \
 		return (*(_instance()))[_pos]; \
+	} \
+	static Object* instance() \
+	{ \
+		if (_instance()->empty()) \
+		return NULL; \
+		if (_engine::isObjectDestroyed((*(_instance()))[0])) \
+		return nextInstance(); \
+		else \
+		return (*_instance())[_instPos(0)]; \
 	} \
 	void* operator new(size_t size) \
 	{ \
