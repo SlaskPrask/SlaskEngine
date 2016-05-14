@@ -54,7 +54,7 @@ public: \
 	{ \
 		if (_instance()->empty()) \
 		return NULL; \
-		if (_engine::isObjectDestroyed((*(_instance()))[0])) \
+		if (_engine::isObjectDestroyed((*_instance())[_instPos(0)]) \
 		return nextInstance(); \
 		else \
 		return (*_instance())[_instPos(0)]; \
