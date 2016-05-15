@@ -22,11 +22,16 @@ void Animation::setSprite(Sprite *s)
 	sprite=s;
 }
 
-void Animation::setData(AnimationData *d)
+void Animation::setData(AnimationData *d,int reset)
 {
 	data=d;
-	pos=0;
-	frame=0;
+	if (reset)
+	{
+		pos=0;
+		frame=0;
+	}
+	else
+	setPosition(pos);
 }
 
 void Animation::setPosition(double p)
@@ -43,7 +48,7 @@ void Animation::setPosition(double p)
 			while (pos>=data->getDuration())
 				pos-=data->getDuration();
 
-		//TODO: optimize, store earlier frames duration check if pos-that is above next
+		//TODO: optimize, store earlier frames duration check if pos-that is above next, also change it to setData()
 		frame=data->getFrameAt(pos);
 	}
 }
