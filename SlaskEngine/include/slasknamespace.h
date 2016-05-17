@@ -276,6 +276,7 @@ namespace slask
 	void setGameStartFunction(void(*func)(void));
 	void setGameEndFunction(void(*func)(void));
 	void setGameWindowResizeFunction(void(*func)(void));
+	void setGameCloseFunction(void(*func)(void));
 
 	int random(int max);
 

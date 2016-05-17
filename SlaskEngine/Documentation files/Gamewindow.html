@@ -79,6 +79,10 @@
 <p class="rvps6"><span class="rvts6">No function was given with </span><span class="rvts18">setGameStartFunction()</span><span class="rvts6"> and the program will close.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">void setGameEndFunction(void(*func)(void));</span></p>
+<p class="rvps5"><span class="rvts6">Sets the given function pointer to be called when the game ends.</span></p>
+<p class="rvps5"><span class="rvts6">The engine has already deleted the scene and objects before calling this function.</span></p>
+<p class="rvps2"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts20">void setGameCloseFunction(void(*func)(void));</span></p>
 <p class="rvps5"><span class="rvts6">Sets the given function pointer to be called when the player is attempting to close the game window.</span></p>
 <p class="rvps5"><span class="rvts6">In this function you can set up asking the player if he's sure he wants to quit or if he wants to save.</span></p>
 <p class="rvps5"><span class="rvts6">If this function is not defined then the program will simply close.</span></p>

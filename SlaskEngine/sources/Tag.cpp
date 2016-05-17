@@ -113,9 +113,25 @@ Tag* Tag::disable()
 	return this;
 }
 
+unsigned int Tag::size()
+{
+	unsigned int count=0;
+	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
+	if (!SlaskEngine::instance()->isObjectDestroyed(*it))
+	count++;
+	return count;
+}
+
 Object* Tag::get(unsigned int i)
 {
-	if (i>=_tagObjs.size())
-		return NULL;
-	return _tagObjs[i];
+	unsigned int count=-1;
+	for (std::vector<Object*>::iterator it = _tagObjs.begin(); it != _tagObjs.end(); ++it)
+	if (!SlaskEngine::instance()->isObjectDestroyed(*it))
+	{
+		count++;
+		if (count==i)
+		return *it;
+	}
+
+	return NULL;
 }

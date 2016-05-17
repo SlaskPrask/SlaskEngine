@@ -54,6 +54,8 @@ private:
 	static void(*gameEndFunc)();
 	//game window resize function
 	static void(*gameWindowResizeFunc)();
+	//game window close function
+	static void(*gameCloseFunc)();
 	//queue of newly added objects
 	std::vector<Object*> depthQueue;
 	//queue of objects changing depth
@@ -82,6 +84,8 @@ public:
 	static void setGameEndFunc(void(*func)());
 	//setting the game window resize function in namespace
 	static void setGameWindowResizeFunc(void(*func)());
+	//setting the game window close function in namespace
+	static void setGameCloseFunc(void(*func)());
 	//getting the dynamic instance
 
 	inline static SlaskEngine* instance()

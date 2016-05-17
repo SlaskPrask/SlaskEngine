@@ -31,10 +31,7 @@ public:
 	Tag* disableDraw();
 	Tag* enable();
 	Tag* disable();
-	unsigned int size()
-	{
-		return _tagObjs.size();
-	}
+	unsigned int size();
 	Object* get(unsigned int i);
 
 	virtual ~Tag();

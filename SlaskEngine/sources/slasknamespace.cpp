@@ -91,6 +91,11 @@ void slask::setGameWindowResizeFunction(void(*func)(void))
 	SlaskEngine::setGameWindowResizeFunc(func);
 }
 
+void slask::setGameCloseFunction(void(*func)(void))
+{
+	SlaskEngine::setGameCloseFunc(func);
+}
+
 void slask::setTitle(const char* title)
 {
 	GraphicsHandler::instance()->setTitle(title);

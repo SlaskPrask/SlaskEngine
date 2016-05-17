@@ -77,6 +77,7 @@ void AudioSet::unload()
 			Audio *a = data[i];
 			if (a)
 			{
+				AudioHandler::instance()->stop(a);
 				data[i] = NULL;
 				delete a;
 			}

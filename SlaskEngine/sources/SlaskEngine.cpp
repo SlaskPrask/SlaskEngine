@@ -5,7 +5,8 @@
 #include "../include/Scene.h"
 
 SlaskEngine *SlaskEngine::slaskengine;
-void (*SlaskEngine::gameEndFunc)() = NULL;
+void(*SlaskEngine::gameEndFunc)() = NULL;
+void(*SlaskEngine::gameCloseFunc)() = NULL;
 void(*SlaskEngine::gameStartFunc)() = NULL;
 void(*SlaskEngine::gameWindowResizeFunc)() = NULL;
 
@@ -27,6 +28,11 @@ void SlaskEngine::setGameEndFunc(void(*func)())
 void SlaskEngine::setGameWindowResizeFunc(void(*func)())
 {
 	SlaskEngine::gameWindowResizeFunc = func;
+}
+
+void SlaskEngine::setGameCloseFunc(void(*func)())
+{
+	SlaskEngine::gameCloseFunc = func;
 }
 
 void SlaskEngine::init(int argc, char *argv[])
@@ -165,8 +171,8 @@ void SlaskEngine::init(int argc, char *argv[])
 
 		//exit handle
 		if (exitHandle)
-			if (gameEndFunc)
-				gameEndFunc();
+			if (gameCloseFunc)
+				gameCloseFunc();
 			else
 				gameEnd();
 
@@ -184,6 +190,8 @@ void SlaskEngine::init(int argc, char *argv[])
 	LogHandler::log("Engine", "Stopping..");
 	deleteScene();
 	deleteAllObjects();
+	if (gameEndFunc)
+		gameEndFunc();
 	deleteAllSets();
 	LogHandler::log("-------------------------------------");
 	LogHandler::log("Engine", "Stopped");

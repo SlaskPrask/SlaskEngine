@@ -98,13 +98,22 @@
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">Tag* disable();</span></p>
 <p class="rvps5"><span class="rvts6">Forbids the objects of this tag from both running and drawing.</span></p>
-<p class="rvps5"><span class="rvts6">This is the same as calling both disableDraw() and disableRun(). Drawing and Running can still be managed separately.</span></p>
+<p class="rvps5"><span class="rvts6">This is the same as calling both </span><span class="rvts18">disableDraw()</span><span class="rvts6"> and </span><span class="rvts18">disableRun()</span><span class="rvts6">. Drawing and Running can still be managed separately.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current tag.</span></p>
 <p class="rvps2"><span class="rvts6"><br/></span></p>
 <p class="rvps2"><span class="rvts20">Tag* enable();</span></p>
 <p class="rvps5"><span class="rvts6">Allows the objects of this tag to both run and draw.</span></p>
-<p class="rvps5"><span class="rvts6">This is the same as calling both enableDraw() and enableRun(). Drawing and Running can still be managed separately.</span></p>
+<p class="rvps5"><span class="rvts6">This is the same as calling both </span><span class="rvts18">enableDraw()</span><span class="rvts6"> and </span><span class="rvts18">enableRun()</span><span class="rvts6">. Drawing and Running can still be managed separately.</span></p>
 <p class="rvps5"><span class="rvts6">Returns the current tag.</span></p>
+<p class="rvps5"><span class="rvts6"><br/></span></p>
+<p class="rvps2"><span class="rvts25">Getting attached objects</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">unsigned int size();</span></p>
+<p class="rvps5"><span class="rvts6">Returns the amount of objects attached to this tag.</span></p>
+<p class="rvps2"><span class="rvts25"><br/></span></p>
+<p class="rvps2"><span class="rvts20">Object* get(unsigned int i);</span></p>
+<p class="rvps5"><span class="rvts6">Returns the object at given position.</span></p>
+<p class="rvps5"><span class="rvts6">Returns NULL out of range.</span></p>
 <p></p>
 <p class="rvps4"><span class="rvts12">Created with the Personal Edition of HelpNDoc: </span><a class="rvts13" href="http://www.helpndoc.com/feature-tour/create-help-files-for-the-qt-help-framework">Produce online help for Qt applications</a></p>
 </div>
