@@ -437,7 +437,11 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 	std::string *curstr = &ln;
 	std::vector<std::string> linetext;
 	std::vector<GLfloat> lineoffset;
-	if (ln.find('\n'))
+
+	if (ln.length()==0)
+	return;
+
+	if (ln.find('\n')!=std::string::npos)
 	{
 		std::stringstream ss(ln);
 		while (std::getline(ss, ln, '\n'))
@@ -499,6 +503,7 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 		restore_color();
 	glPopMatrix();
 }
+
 void GraphicsHandler::drawSpriteExt(Sprite *sprite,double x, double y, double w, double h, double fromx, double fromy, double tox, double toy, double rot, double r, double g, double b, double a)
 {
 	if (!window)
