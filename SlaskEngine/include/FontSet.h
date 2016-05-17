@@ -16,7 +16,7 @@ private:
 	bool _deathMark;
 
 public:
-	unsigned int add(std::string str);
+	unsigned int add(std::string str="");
 	FontSet();
 	~FontSet();
 	void load();

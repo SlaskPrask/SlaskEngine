@@ -50,7 +50,7 @@ class Animation
 	Animation(Sprite *s,AnimationData *d);
 	Animation();
 	void setSprite(Sprite *s);
-	void setData(AnimationData *d);
+	void setData(AnimationData *d,bool reset=1);
 	void run();
 	double getPosition();
 	int getFrame();

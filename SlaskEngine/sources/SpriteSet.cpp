@@ -40,7 +40,10 @@ void SpriteSet::load()
 	case 0:
 		//TODO: multithreading
 		for (unsigned int i = 0; i<data.size(); i++)
+		if (file[i].length()>0)
 			data[i] = new Sprite(file[i].c_str());
+		else
+			data[i] = NULL;
 		loads = 1;
 		break;
 	default:
@@ -60,8 +63,11 @@ void SpriteSet::unload()
 		for (unsigned int i = 0; i<data.size(); i++)
 		{
 			Sprite *s = data[i];
-			data[i] = NULL;
-			delete s;
+			if (s)
+			{
+				data[i] = NULL;
+				delete s;
+			}
 		}
 		loads = 0;
 		break;

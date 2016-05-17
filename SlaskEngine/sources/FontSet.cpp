@@ -40,7 +40,10 @@ void FontSet::load()
 	case 0:
 		//TODO: multithreading
 		for (unsigned int i = 0; i<data.size(); i++)
-			data[i] = new Font(file[i].c_str());
+			if (file[i].length()>0)
+				data[i] = new Font(file[i].c_str());
+			else
+				data[i] = NULL;
 		loads = 1;
 		break;
 	default:
@@ -60,8 +63,11 @@ void FontSet::unload()
 		for (unsigned int i = 0; i<data.size(); i++)
 		{
 			Font *f = data[i];
-			data[i] = NULL;
-			delete f;
+			if (f)
+			{
+				data[i] = NULL;
+				delete f;
+			}
 		}
 		loads = 0;
 		break;

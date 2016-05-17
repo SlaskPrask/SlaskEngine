@@ -52,7 +52,10 @@ void AudioSet::load()
 		bank = new AudioBank(bankFile.c_str());
 
 		for (unsigned int i = 0; i < data.size(); i++)
+			if (file[i].length()>0)
 				data[i] = new Audio(file[i].c_str());
+			else
+				data[i] = NULL;
 		loads = 1;
 		break;
 	default:
@@ -72,8 +75,11 @@ void AudioSet::unload()
 		for (unsigned int i = 0; i<data.size(); i++)
 		{
 			Audio *a = data[i];
-			data[i] = NULL;
-			delete a;
+			if (a)
+			{
+				data[i] = NULL;
+				delete a;
+			}
 		}
 		delete bank;
 		bank = NULL;

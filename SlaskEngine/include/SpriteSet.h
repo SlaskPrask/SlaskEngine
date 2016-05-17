@@ -17,7 +17,7 @@ private:
 	bool _deathMark;
 
 public:
-	unsigned int add(std::string str);
+	unsigned int add(std::string str="");
 	SpriteSet();
 	~SpriteSet();
 	void load();

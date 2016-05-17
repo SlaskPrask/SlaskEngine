@@ -22,7 +22,7 @@ void Animation::setSprite(Sprite *s)
 	sprite=s;
 }
 
-void Animation::setData(AnimationData *d,int reset)
+void Animation::setData(AnimationData *d,bool reset)
 {
 	data=d;
 	if (reset)
