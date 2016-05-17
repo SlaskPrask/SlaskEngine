@@ -441,22 +441,20 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 	if (ln.length()==0)
 	return;
 
-	if (ln.find('\n')!=std::string::npos)
+	std::stringstream ss(ln);
+	while (std::getline(ss, ln, '\n'))
 	{
-		std::stringstream ss(ln);
-		while (std::getline(ss, ln, '\n'))
+		GLfloat offset = 0;
+		for (unsigned int i = 0; i < ln.size(); i++)
 		{
-			GLfloat offset = 0;
-			for (unsigned int i = 0; i < ln.size(); i++)
-			{
-				offset += font->getChar(ln[i])->adv;
-			}
-			lineoffset.push_back(offset*scale);
-			linetext.push_back(ln);
-			lines++;
+			offset += font->getChar(ln[i])->adv;
 		}
-		curstr = &(linetext[0]);
+		lineoffset.push_back(offset*scale);
+		linetext.push_back(ln);
+		lines++;
 	}
+
+	curstr = &(linetext[0]);
 
 	int line = 0;
 	glPushMatrix();
