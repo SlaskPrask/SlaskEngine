@@ -222,3 +222,21 @@ int AudioHandler::getTimePosition(Audio* audio)
 		LogHandler::notify("Audio", "Attempting to set time position of an unloaded sound.");
 	return pos;
 }
+
+bool AudioHandler::getIsPlaying(Audio *audio)
+{
+	bool playin;
+	FMOD_STUDIO_PLAYBACK_STATE state;
+	if (audio->getInstance())
+	{
+		audio->getInstance()->getPlaybackState(&state);
+		if (state == FMOD_STUDIO_PLAYBACK_PLAYING)
+			playin = true;
+		else
+			playin = false;
+	}
+	else
+		LogHandler::notify("Audio", "Attempting to get playstate of an unloaded sound.");
+
+	return playin;
+}

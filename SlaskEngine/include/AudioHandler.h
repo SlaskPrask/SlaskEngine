@@ -68,7 +68,7 @@ public:
 
 	float getParameterValue(Audio* audio, const char* param);
 	int getTimePosition(Audio* audio);
-
+	bool getIsPlaying(Audio* audio);
 
 
 	FMOD::Studio::System* getSystem();

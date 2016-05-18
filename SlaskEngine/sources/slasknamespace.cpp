@@ -434,6 +434,11 @@ int slask::getTimePosition(Audio* audio)
 	return AudioHandler::instance()->getTimePosition(audio);
 }
 
+bool slask::getAudioIsPlaying(Audio* audio)
+{
+	return AudioHandler::instance()->getIsPlaying(audio);
+}
+
 double slask::textWidth(Font *font,const char* str,double size,double lineSpacing)
 {
 	if (!font)
