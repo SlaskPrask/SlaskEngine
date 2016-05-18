@@ -5,6 +5,7 @@ Scene::Scene()
 {
 	width = height = 1;
 	_deathMark = 0;
+	_deleted=0;
 	SlaskEngine::instance()->switchScene(this);
 }
 
@@ -26,6 +27,7 @@ Scene::~Scene()
 {
 	if (!_deathMark)
 		LogHandler::error("Engine", "delete called on a Scene. Do not delete scenes, to switch to a new one simply create a new instance.");
+	_deleted=1;
 
 	_deleteObjects();
 }

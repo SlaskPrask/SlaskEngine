@@ -348,6 +348,7 @@ void SlaskEngine::switchScene(Scene *scn)
 	if (scene)
 	{
 		scene->_deathMark = 1;
+		scene->_deleted=1;
 		delete scene;
 	}
 	scene = scn;

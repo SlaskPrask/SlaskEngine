@@ -168,6 +168,7 @@ public:
 		if (scene)
 		{
 			scene->_deathMark = 1;
+			scene->_deleted=1;
 			delete scene;
 			scene = NULL;
 		}
@@ -233,6 +234,12 @@ public:
 	//new
 	SlaskEngine(int argc, char *argv[]);
 	~SlaskEngine();
+
+	//check if the scene is exiting in object
+	inline bool sceneExiting(Scene *scn)
+	{
+		return (scn&&scn->_getDeleted());
+	}
 
 	//debug
 	#ifdef SLASKDEBUG

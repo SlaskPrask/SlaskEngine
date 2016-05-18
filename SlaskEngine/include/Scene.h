@@ -24,6 +24,11 @@ private:
 	std::vector<Object*> _objects;
 	void _deleteObjects();
 	bool _deathMark;
+	bool _deleted;
+	virtual bool _getDeleted()
+	{
+		return _deleted;
+	}
 
 public:
 	virtual unsigned int id();

@@ -70,7 +70,7 @@ public:
 	{
 		return anykeyclear;
 	}
-	inline bool clearkeyany()
+	inline void clearkeyany()
 	{
 		anykeyclear = 1;
 	}

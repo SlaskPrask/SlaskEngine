@@ -74,7 +74,7 @@ void Object::_refreshTagRuns(bool value)
 {
 	if (value == 0)
 	{
-		if (_tagRunValue == 1 && !_getDestroyed())
+		if (_tagRunValue == 1 && !_getDestroyed() && !SlaskEngine::instance()->sceneExiting(_scene))
 			runDisabled();
 		_tagRunValue = 0;
 		return;
@@ -85,7 +85,7 @@ void Object::_refreshTagRuns(bool value)
 		if (!(*it)->runs())
 		return;
 
-		if (_tagRunValue == 0 && !_getDestroyed())
+		if (_tagRunValue == 0 && !_getDestroyed() && !SlaskEngine::instance()->sceneExiting(_scene))
 			runEnabled();
 		_tagRunValue = 1;
 	}
@@ -95,7 +95,7 @@ void Object::_refreshTagDraws(bool value)
 {
 	if (value == 0)
 	{
-		if (_tagDrawValue == 1 && !_getDestroyed())
+		if (_tagDrawValue == 1 && !_getDestroyed() && !SlaskEngine::instance()->sceneExiting(_scene))
 			drawDisabled();
 		_tagDrawValue = 0;
 		return;
@@ -106,7 +106,7 @@ void Object::_refreshTagDraws(bool value)
 		if (!(*it)->draws())
 		return;
 
-		if (_tagDrawValue == 0 && !_getDestroyed())
+		if (_tagDrawValue == 0 && !_getDestroyed() && !SlaskEngine::instance()->sceneExiting(_scene))
 		drawEnabled();
 		_tagDrawValue = 1;
 	}

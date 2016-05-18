@@ -303,9 +303,6 @@
     <ClInclude Include="highscores.h">
       <Filter>TechDemo</Filter>
     </ClInclude>
-    <ClInclude Include="hsplace.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\FontChar.h">
       <Filter>Header Files\Class Resources</Filter>
     </ClInclude>
