@@ -312,9 +312,6 @@
     <ClInclude Include="include\AnimationData.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="hsplace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Animation.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>

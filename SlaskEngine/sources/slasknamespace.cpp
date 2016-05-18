@@ -429,6 +429,11 @@ float slask::getSoundParameterValue(Audio* audio, const char* param)
 	return AudioHandler::instance()->getParameterValue(audio,param);
 }
 
+int slask::getTimePosition(Audio* audio)
+{
+	return AudioHandler::instance()->getTimePosition(audio);
+}
+
 double slask::textWidth(Font *font,const char* str,double size,double lineSpacing)
 {
 	if (!font)

@@ -67,6 +67,7 @@ public:
 	void setBusMute(AudioBus* bus, bool mute);
 
 	float getParameterValue(Audio* audio, const char* param);
+	int getTimePosition(Audio* audio);
 
 
 

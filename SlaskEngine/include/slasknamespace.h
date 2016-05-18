@@ -153,6 +153,7 @@ namespace slask
 	double getAudioBusVolume(AudioBus* bus);//undocced
 	void setAudioBusMute(AudioBus* bus, bool mute);//undocced
 	bool getAudioBusMute(AudioBus* bus);//undocced
+	int getTimePosition(Audio* audio);
 
 	inline void clearKey(int keycode)//undocced
 	{

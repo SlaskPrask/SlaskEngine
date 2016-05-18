@@ -211,3 +211,14 @@ AudioHandler::~AudioHandler()
 	audioSys->release();
 	LogHandler::log("Audio", "End");
 }
+
+int AudioHandler::getTimePosition(Audio* audio)
+{
+	int pos;
+	//Timeline position in milliseconds
+	if (audio->getInstance())
+		audio->getInstance()->getTimelinePosition(&pos);
+	else
+		LogHandler::notify("Audio", "Attempting to set time position of an unloaded sound.");
+	return pos;
+}
