@@ -457,28 +457,25 @@ double slask::textWidth(Font *font,const char* str,double size,double lineSpacin
 		return 0;
 	}
 
+	std::string ln(str);
+	if (ln.length()==0)
+		return 0;
+
 	GLfloat lineHeight = (GLfloat)font->getLineSize();
 	GLfloat yOffset = (GLfloat)font->getOffset();
 	GLfloat scale = (GLfloat)size / (GLfloat)font->getSize();
 	double maxw=0;
 
-	int lines = 0;
-	std::string ln(str);
-	std::vector<std::string> linetext;
-	std::vector<GLfloat> lineoffset;
-	if (ln.find('\n')!=std::string::npos)//TODO: no text checks, match graphicshandler
+	std::stringstream ss(ln);
+	while (std::getline(ss,ln,'\n'))
 	{
-		std::stringstream ss(ln);
-		while (std::getline(ss,ln,'\n'))
+		GLfloat offset = 0;
+		for (unsigned int i = 0; i < ln.size(); i++)
 		{
-			GLfloat offset = 0;
-			for (unsigned int i = 0; i < ln.size(); i++)
-			{
-				offset += font->getChar(ln[i])->adv;
-			}
-			if (offset*scale>maxw)
-				maxw=offset*scale;
+			offset += font->getChar(ln[i])->adv;
 		}
+		if (offset*scale>maxw)
+			maxw=offset*scale;
 	}
 
 	return maxw;
@@ -501,19 +498,12 @@ double slask::textHeight(Font *font,const char* str,double size,double lineSpaci
 	GLfloat scale = (GLfloat)size / (GLfloat)font->getSize();
 	double maxw=0;
 
-	int lines = 0;
-	std::vector<std::string> linetext;
-	std::vector<GLfloat> lineoffset;
-	if (ln.find('\n')!=std::string::npos)//TODO: no text checks, match graphicshandler
+	int lines=0;
+	std::stringstream ss(ln);
+	while (std::getline(ss,ln,'\n'))
 	{
-		std::stringstream ss(ln);
-		while (std::getline(ss,ln,'\n'))
-		{
-			lines++;
-		}
+		lines++;
 	}
-	else
-		lines=1;
 
 	return yOffset*scale + (lines-1)*(lineSpacing + (lineHeight)*scale);
 }
