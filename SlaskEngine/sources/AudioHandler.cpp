@@ -225,12 +225,12 @@ int AudioHandler::getTimePosition(Audio* audio)
 
 bool AudioHandler::getIsPlaying(Audio *audio)
 {
-	bool playin;
+	bool playin=false;
 	FMOD_STUDIO_PLAYBACK_STATE state;
 	if (audio->getInstance())
 	{
 		audio->getInstance()->getPlaybackState(&state);
-		if (state == FMOD_STUDIO_PLAYBACK_PLAYING)
+		if (state != FMOD_STUDIO_PLAYBACK_STOPPED)
 			playin = true;
 		else
 			playin = false;
