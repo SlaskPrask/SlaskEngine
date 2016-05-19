@@ -192,6 +192,11 @@ void slask::drawTextRight(Font *font, const char* str, double x, double y, doubl
 
 void slask::drawSprite(Sprite* sprite, double x, double y)
 {
+	if (!sprite)
+	{
+		LogHandler::notify("Graphics","Attempting to draw unloaded sprite.");
+		return;
+	}
 	GraphicsHandler::instance()->drawSpriteExt(sprite, x, y, sprite->getWidth(), sprite->getHeight(), 0, 0, 1, 1, 0, 1, 1, 1, -1);
 }
 
@@ -232,6 +237,11 @@ void slask::drawSpritePolyExt(Sprite *sprite, double x1, double y1, double x2, d
 
 void slask::drawAnimationExt(Animation* anim,double x,double y,double w,double h,double rot,double r,double g,double b,double a)
 {
+	if (!anim->getSprite())
+	{
+		LogHandler::notify("Graphics","Attempting to draw unloaded sprite for animation.");
+		return;
+	}
 	GraphicsHandler::instance()->drawSpriteExt(anim->getSprite(),x,y,w,h,anim->getFromX(),anim->getFromY(),anim->getToX(),anim->getToY(),rot,r,g,b,a);
 }
 
@@ -456,7 +466,7 @@ double slask::textWidth(Font *font,const char* str,double size,double lineSpacin
 	std::string ln(str);
 	std::vector<std::string> linetext;
 	std::vector<GLfloat> lineoffset;
-	if (ln.find('\n'))
+	if (ln.find('\n')!=std::string::npos)//TODO: no text checks, match graphicshandler
 	{
 		std::stringstream ss(ln);
 		while (std::getline(ss,ln,'\n'))
@@ -494,7 +504,7 @@ double slask::textHeight(Font *font,const char* str,double size,double lineSpaci
 	int lines = 0;
 	std::vector<std::string> linetext;
 	std::vector<GLfloat> lineoffset;
-	if (ln.find('\n'))
+	if (ln.find('\n')!=std::string::npos)//TODO: no text checks, match graphicshandler
 	{
 		std::stringstream ss(ln);
 		while (std::getline(ss,ln,'\n'))
