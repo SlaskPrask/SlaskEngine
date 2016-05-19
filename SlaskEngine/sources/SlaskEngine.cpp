@@ -104,10 +104,10 @@ void SlaskEngine::init(int argc, char *argv[])
 	{
 		//audio
 		audio->run();
-
+		
 		//input
 		exitHandle = input->run();
-
+		
 		if (input->getSignalResize())
 		{
 			if (graphics->getWindow())
@@ -124,12 +124,12 @@ void SlaskEngine::init(int argc, char *argv[])
 			if (gameWindowResizeFunc)
 				gameWindowResizeFunc();
 		}
-
+		
 		//running
 		switchingScenes = 0;
 		if (scene)
 		scene->run();
-
+		
 		objI = objects.first();
 		while (objI)
 		{
@@ -168,14 +168,14 @@ void SlaskEngine::init(int argc, char *argv[])
 			di = diNext;
 		}
 		graphics->drawEnd();
-
+		
 		//exit handle
 		if (exitHandle)
 			if (gameCloseFunc)
 				gameCloseFunc();
 			else
 				gameEnd();
-
+		
 		//fps
 		passedMs = (double)frameClock.getElapsedTime().asMicroseconds();
 		if (fps > 0)

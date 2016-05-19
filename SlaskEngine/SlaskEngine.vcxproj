@@ -345,7 +345,8 @@
     <ClCompile Include="sources\TMXparser.cpp" />
     <ClCompile Include="sources\Video.cpp" />
     <ClCompile Include="tanim.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Library Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
   </ItemGroup>

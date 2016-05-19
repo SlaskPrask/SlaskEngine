@@ -175,12 +175,12 @@ namespace slask
 	double textWidth(Font *font,const char* str,double size,double lineSpacing=0);
 	inline double textWidth(Font *font,const std::string &str,double size,double lineSpacing=0)
 	{
-		textWidth(font,str.c_str(),size,lineSpacing);
+		return textWidth(font,str.c_str(),size,lineSpacing);
 	}
 	double textHeight(Font *font,const char* str,double size,double lineSpacing=0);
 	inline double textHeight(Font *font,const std::string &str,double size,double lineSpacing=0)
 	{
-		textHeight(font,str.c_str(),size,lineSpacing);
+		return textHeight(font,str.c_str(),size,lineSpacing);
 	}
 
 	int getSceneWidth();

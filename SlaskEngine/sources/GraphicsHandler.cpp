@@ -354,18 +354,18 @@ double GraphicsHandler::getCameraH()
 
 void GraphicsHandler::drawBegin()
 {
-	glLoadIdentity();
-	if (blackBars)
-	glTranslated(horBars-activeCamera->x,verBars-activeCamera->y, 0);
-	else
-	glTranslated(-activeCamera->x, -activeCamera->y, 0);
-	glPushMatrix();
-
 	if (!window)
 		return;
 
 	if (queueCamera)
 	setRenderSize();
+
+	glLoadIdentity();
+	if (blackBars)
+		glTranslated(horBars-activeCamera->x,verBars-activeCamera->y,0);
+	else
+		glTranslated(-activeCamera->x,-activeCamera->y,0);
+	glPushMatrix();
 
 	window->clear();
 	glClear(GL_DEPTH_BUFFER_BIT);

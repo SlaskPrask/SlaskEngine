@@ -26,7 +26,13 @@ unsigned int Scene::id()
 Scene::~Scene()
 {
 	if (!_deathMark)
-		LogHandler::error("Engine", "delete called on a Scene. Do not delete scenes, to switch to a new one simply create a new instance.");
+	{
+		std::ostringstream s;
+		s << "delete called on an Scene[";
+		s << this;
+		s << "].  Do not delete scenes, to switch to a new one simply create a new instance.";
+		LogHandler::error("Engine",s.str().c_str());
+	}
 	_deleted=1;
 
 	_deleteObjects();

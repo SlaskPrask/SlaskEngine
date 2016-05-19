@@ -93,7 +93,7 @@ bool InputHandler::run()
 	mouse_cam_prev_y = mouse_cam_y;
 
 	keyboardstr = "";
-
+	
 	if (window)
 	while (window->pollEvent(event))
 	{
@@ -185,7 +185,7 @@ bool InputHandler::run()
 			break;
 		}
 	}
-
+	
 	//ignore presses outside the camera (black bar region)
 	if (mouse_cam_x < GraphicsHandler::instance()->getCameraX() ||
 		mouse_cam_x >= GraphicsHandler::instance()->getCameraX() + GraphicsHandler::instance()->getCameraW() ||

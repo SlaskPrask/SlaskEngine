@@ -23,7 +23,13 @@ Object::Object()
 Object::~Object()
 {
 	if (!_deathMark)
-	LogHandler::error("Engine", "delete called on an Object. Use ->destroy() instead.");
+	{
+		std::ostringstream s;
+		s << "delete called on an Object[";
+		s << this;
+		s << "]. Use ->destroy() instead.";
+		LogHandler::error("Engine", s.str().c_str());
+	}
 	
 	for (std::vector<Tag*>::iterator it = _tags.begin(); it != _tags.end(); ++it)
 	SlaskEngine::instance()->objClearTag(this,*it);
