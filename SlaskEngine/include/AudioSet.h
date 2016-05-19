@@ -18,6 +18,7 @@ private:
 	unsigned int loads;
 	unsigned int engine_id;
 	bool _deathMark;
+	void _unload();
 
 public:
 	unsigned int add(std::string str="");

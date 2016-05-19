@@ -17,13 +17,21 @@ private:
 
 public:
 	Tag();
-	inline bool runs()
+	inline bool isRunning()
 	{
 		return run;
 	}
-	inline bool draws()
+	inline bool isDrawing()
 	{
 		return draw;
+	}
+	inline bool runs()//TODO: deprecated
+	{
+		return isRunning();
+	}
+	inline bool draws()//TODO: deprecated
+	{
+		return isDrawing();
 	}
 	Tag* enableRun();
 	Tag* disableRun();

@@ -46,6 +46,12 @@ private:
 	std::vector<AudioSet*> audiosets;
 	//font set list
 	std::vector<FontSet*> fontsets;
+	//sprite set list for queued unloading
+	std::vector<SpriteSet*> sprite_unload_sets;
+	//audio set list for queued unloading
+	std::vector<AudioSet*> audio_unload_sets;
+	//font set list for queued unloading
+	std::vector<FontSet*> font_unload_sets;
 	//static instance
 	static SlaskEngine *slaskengine;
 	//game start function
@@ -109,6 +115,24 @@ public:
 	AudioSet* audioSet(unsigned int i);
 	//get font set by index in namespace
 	FontSet* fontSet(unsigned int i);
+
+	//queue set unload
+	inline void unloadSpriteSet(SpriteSet* set)
+	{
+		sprite_unload_sets.push_back(set);
+	}
+	//queue set unload
+	inline void unloadAudioSet(AudioSet* set)
+	{
+		audio_unload_sets.push_back(set);
+	}
+	//queue set unload
+	inline void unloadFontSet(FontSet* set)
+	{
+		font_unload_sets.push_back(set);
+	}
+	//solve unload queues
+	void resolveUnloadQueue();
 
 	//terminate run cycle in namespace or in init running
 	inline void gameEnd()

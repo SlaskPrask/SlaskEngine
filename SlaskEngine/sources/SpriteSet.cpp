@@ -23,7 +23,7 @@ SpriteSet::~SpriteSet()
 		loads = 1;
 		//fallthrough
 	case 1:
-		unload();
+		_unload();//forced
 		break;
 	}
 }
@@ -52,7 +52,7 @@ void SpriteSet::load()
 	}
 }
 
-void SpriteSet::unload()
+void SpriteSet::_unload()
 {
 	switch (loads)
 	{
@@ -110,4 +110,9 @@ Sprite* SpriteSet::get(unsigned int i)
 		}
 		return data[i];
 	}
+}
+
+void SpriteSet::unload()
+{
+	SlaskEngine::instance()->unloadSpriteSet(this);
 }

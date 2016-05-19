@@ -168,6 +168,10 @@ void SlaskEngine::init(int argc, char *argv[])
 			di = diNext;
 		}
 		graphics->drawEnd();
+
+		//unload sets marked for unload
+		//maybe this should happen before draw but safer here, just a bit more unexpected
+		resolveUnloadQueue();
 		
 		//exit handle
 		if (exitHandle)
@@ -282,6 +286,25 @@ FontSet* SlaskEngine::fontSet(unsigned int i)
 		return NULL;
 	}
 	return fontsets[i];
+}
+
+void SlaskEngine::resolveUnloadQueue()
+{
+	while (sprite_unload_sets.size())
+	{
+		sprite_unload_sets.back()->_unload();
+		sprite_unload_sets.pop_back();
+	}
+	while (audio_unload_sets.size())
+	{
+		audio_unload_sets.back()->_unload();
+		audio_unload_sets.pop_back();
+	}
+	while (font_unload_sets.size())
+	{
+		font_unload_sets.back()->_unload();
+		font_unload_sets.pop_back();
+	}
 }
 
 void SlaskEngine::resolveDepthQueue()

@@ -454,6 +454,9 @@ void GraphicsHandler::drawText(Font *font, const char* str, double x, double y, 
 		lines++;
 	}
 
+	if (linetext.size()<=0)
+	return;
+
 	curstr = &(linetext[0]);
 
 	int line = 0;

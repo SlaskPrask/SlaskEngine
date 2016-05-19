@@ -27,7 +27,7 @@ AudioSet::~AudioSet()
 		loads = 1;
 		//fallthrough
 	case 1:
-		unload();
+		_unload();//forced
 		break;
 	}
 }
@@ -64,7 +64,7 @@ void AudioSet::load()
 	}
 }
 
-void AudioSet::unload()
+void AudioSet::_unload()
 {
 	switch (loads)
 	{
@@ -136,4 +136,9 @@ Audio* AudioSet::get(unsigned int i)
 		}		
 		return data[i];
 	}
+}
+
+void AudioSet::unload()
+{
+	SlaskEngine::instance()->unloadAudioSet(this);
 }

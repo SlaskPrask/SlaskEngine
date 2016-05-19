@@ -23,7 +23,7 @@ FontSet::~FontSet()
 		loads = 1;
 		//fallthrough
 	case 1:
-		unload();
+		_unload();//forced
 		break;
 	}
 }
@@ -52,7 +52,7 @@ void FontSet::load()
 	}
 }
 
-void FontSet::unload()
+void FontSet::_unload()
 {
 	switch (loads)
 	{
@@ -110,4 +110,9 @@ Font* FontSet::get(unsigned int i)
 		}
 		return data[i];
 	}
+}
+
+void FontSet::unload()
+{
+	SlaskEngine::instance()->unloadFontSet(this);
 }
