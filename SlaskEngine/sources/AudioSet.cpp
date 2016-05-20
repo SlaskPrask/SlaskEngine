@@ -41,15 +41,19 @@ void AudioSet::load()
 {
 	if (bankFile=="")
 	{
-		LogHandler::notify("Resources", "Attempting to load audio set without a bank.");
-		return;
+		LogHandler::notify("Resources", "Loaded audio set without a bank, was this intended?");
 	}
 	
 	switch (loads)
 	{
 	case 0:
 		//TODO: multithreading
-		bank = new AudioBank(bankFile.c_str());
+		if (bankFile != "")
+		{
+			bank = new AudioBank(bankFile.c_str());
+			loads = 1;
+		}
+			
 
 		for (unsigned int i = 0; i < data.size(); i++)
 			if (file[i].length()>0)
@@ -82,8 +86,11 @@ void AudioSet::_unload()
 				delete a;
 			}
 		}
-		delete bank;
-		bank = NULL;
+		if (bank != NULL)
+		{
+			delete bank;
+			bank = NULL;
+		}
 
 		loads = 0;
 		break;
