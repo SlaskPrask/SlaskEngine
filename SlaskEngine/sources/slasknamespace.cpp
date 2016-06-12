@@ -308,6 +308,13 @@ double slask::getMouseX()
 {
 	return InputHandler::instance()->getmouse_camera_x();
 }
+
+double slask::getAxis(int joystick, int axis)
+{
+	return InputHandler::instance()->getaxis(joystick, axis);
+}
+
+
 double slask::getMouseY()
 {
 	return InputHandler::instance()->getmouse_camera_y();
@@ -396,7 +403,6 @@ bool slask::getButtonIdle(int joystick, int button)
 		return 1;
 	return (InputHandler::instance()->getbutton(joystick, button) <= 0);
 }
-
 
 
 #ifndef NO_AUDIO

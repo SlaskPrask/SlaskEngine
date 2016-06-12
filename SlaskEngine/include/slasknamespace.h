@@ -267,7 +267,6 @@ namespace slask
 	bool getKeyIdle(int keyCode);
 
 
-
 	inline bool getKey(int keyCode)
 	{
 		return getKeyHeld(keyCode);
@@ -282,6 +281,8 @@ namespace slask
 	bool getButtonRelease(int joystick, int button);
 	bool getButtonHeld(int joystick, int button);
 	bool getButtonIdle(int joystick, int button);
+
+	double getAxis(int joystick, int axis);
 
 	inline bool getButton(int joystick, int button)
 	{

@@ -67,6 +67,8 @@ public:
 
 	void addKeyboardChar(std::string *s, bool newlines = 0);
 
+	double getaxis(int i, int j);
+
 	void clearmouse(int i);
 	bool clearedmouse(int i);
 	void clearjoy(int i, int j);

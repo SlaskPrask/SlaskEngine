@@ -295,6 +295,20 @@ int InputHandler::getbutton(int i, int j)
 	}
 }
 
+double InputHandler::getaxis(int i, int j)
+{
+	if (j >= 0 && j < _SLASK_MAXJOYAXES)
+		return joy_axis[i][j];
+	else
+	{
+		std::string unhandledKey = "Reading axis ";
+		unhandledKey += std::to_string(i);
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
+}
+
 int InputHandler::getmouse(int i)
 {
 	if (i >= 0 && i < _SLASK_MAXMOUSEBUTTONS)
