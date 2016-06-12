@@ -15,6 +15,7 @@ namespace slask
 	{
 		return spriteSetSprite(i,j);
 	}
+#ifndef NO_AUDIO
 	AudioSet* audioSet(unsigned int i);//undocced
 	inline AudioSet* getAudioSet(unsigned int i)//undocced
 	{
@@ -25,6 +26,7 @@ namespace slask
 	{
 		return audioSetSound(i, j);
 	}
+#endif
 	FontSet* fontSet(unsigned int i);//undocced
 	inline FontSet* getFontSet(unsigned int i)//undocced
 	{
@@ -134,7 +136,7 @@ namespace slask
 	{
 		return static_cast<T*>(T::nextInstance());
 	}
-
+#ifndef NO_AUDIO
 	void setSoundSampleDecompress(bool enabled);//undocced
 	void setSoundSampleASync(bool enabled);//undocced
 	void playSound(Audio* audio);//undocced
@@ -155,6 +157,8 @@ namespace slask
 	bool getAudioBusMute(AudioBus* bus);//undocced
 	int getTimePosition(Audio* audio); //undocced
 	bool getAudioIsPlaying(Audio* audio); //undocced
+	float getSoundParameterValue(Audio* audio, const char* param);//undocced
+#endif
 
 	inline void clearKey(int keycode)//undocced
 	{
@@ -165,7 +169,7 @@ namespace slask
 		InputHandler::instance()->clearkeyany();
 	}
 
-	float getSoundParameterValue(Audio* audio, const char* param);//undocced
+	
 
 	inline bool inside(double x,double y,double left, double top, double right, double bottom)//undocced
 	{
@@ -262,6 +266,8 @@ namespace slask
 	bool getKeyHeld(int keyCode);
 	bool getKeyIdle(int keyCode);
 
+
+
 	inline bool getKey(int keyCode)
 	{
 		return getKeyHeld(keyCode);
@@ -270,6 +276,16 @@ namespace slask
 	inline bool getKeyAny()
 	{
 		return getKeyHeldAny();
+	}
+
+	bool getButtonPress(int joystick, int button);
+	bool getButtonRelease(int joystick, int button);
+	bool getButtonHeld(int joystick, int button);
+	bool getButtonIdle(int joystick, int button);
+
+	inline bool getButton(int joystick, int button)
+	{
+		return getButtonHeld(joystick, button);
 	}
 
 	void destroyAllObjects();

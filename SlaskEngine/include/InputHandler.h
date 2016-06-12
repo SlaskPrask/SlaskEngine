@@ -6,6 +6,8 @@
 
 #define _SLASK_MAXMOUSEBUTTONS (5)
 #define _SLASK_MAXJOYSTICKS (8)
+#define _SLASK_MAXJOYBUTTONS (32)
+#define _SLASK_MAXJOYAXES (8)
 
 class InputHandler
 {
@@ -23,6 +25,9 @@ private:
 	int anykeycount;
 	double deadzone[_SLASK_MAXJOYSTICKS];
 	double buttondeadzone[_SLASK_MAXJOYSTICKS];
+	double joy_axis[_SLASK_MAXJOYSTICKS][_SLASK_MAXJOYAXES];
+	int joy_butt[_SLASK_MAXJOYSTICKS][_SLASK_MAXJOYBUTTONS];
+	bool joy_clear[_SLASK_MAXJOYSTICKS][_SLASK_MAXJOYBUTTONS];
 
 	std::string keyboardstr;
 
@@ -64,6 +69,8 @@ public:
 
 	void clearmouse(int i);
 	bool clearedmouse(int i);
+	void clearjoy(int i, int j);
+	bool clearedjoy(int i, int j);
 	void clearkey(int i);
 	bool clearedkey(int i);
 	inline bool clearedkeyany()
@@ -105,6 +112,8 @@ public:
 	{
 		return mousewheeldown_clear;
 	}
+
+	int getbutton(int i, int j);
 
 	int getkey(int i);
 	int getmouse(int i);

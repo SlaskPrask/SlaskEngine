@@ -32,6 +32,15 @@ void InputHandler::init()
 		key_clear[i] = 0;
 	}
 
+	for (int i = 0; i < _SLASK_MAXJOYSTICKS; i++)
+	{
+		for (int j = 0; j < _SLASK_MAXJOYBUTTONS; j++)
+		{
+			joy_butt[i][j] = 0;
+			joy_clear[i][j] = 0;
+		}
+	}
+
 	LogHandler::log("Input", "Initialized");
 }
 
@@ -81,6 +90,19 @@ bool InputHandler::run()
 		if (mouse_butt[i] == -1)
 			mouse_butt[i] = 0;
 		mouse_clear[i] = 0;
+	}
+
+	for (int i = 0; i < _SLASK_MAXJOYSTICKS; i++)
+	{
+		for (int j = 0; j < _SLASK_MAXJOYBUTTONS; j++)
+		{
+			if (joy_butt[i][j] == 1)
+				joy_butt[i][j] = 2;
+			else
+				if (joy_butt[i][j] == -1)
+					joy_butt[i][j] = 0;
+			joy_clear[i][j] = 0;
+		}
 	}
 
 	anykeyreleased = anykeypressed = 0;
@@ -174,10 +196,20 @@ bool InputHandler::run()
 		case sf::Event::TouchBegan:
 			break;
 		case sf::Event::JoystickButtonPressed:
+			if (event.joystickButton.button >= 0 && event.joystickButton.button < _SLASK_MAXJOYBUTTONS)
+			{
+				joy_butt[event.joystickButton.joystickId][event.joystickButton.button] = 1;
+			}
 			break;
 		case sf::Event::JoystickButtonReleased:
+			if (event.joystickButton.button >= 0 && event.joystickButton.button < _SLASK_MAXJOYBUTTONS)
+			{
+				if (joy_butt[event.joystickButton.joystickId][event.joystickButton.button]>0)
+					joy_butt[event.joystickButton.joystickId][event.joystickButton.button] = 0;
+			}
 			break;
 		case sf::Event::JoystickMoved:
+			joy_axis[event.joystickMove.joystickId][event.joystickMove.axis] = event.joystickMove.position /100.0f;
 			break;
 		case sf::Event::JoystickConnected:
 			break;
@@ -242,6 +274,20 @@ int InputHandler::getkey(int i)
 	else
 	{
 		std::string unhandledKey = "Reading key ";
+		unhandledKey += std::to_string(i);
+		unhandledKey += " out of range.";
+		LogHandler::notify("Input", unhandledKey.c_str());
+		return 0;
+	}
+}
+
+int InputHandler::getbutton(int i, int j)
+{
+	if (j >=0 && j < _SLASK_MAXJOYBUTTONS)
+		return joy_butt[i][j];
+	else
+	{
+		std::string unhandledKey = "Reading button ";
 		unhandledKey += std::to_string(i);
 		unhandledKey += " out of range.";
 		LogHandler::notify("Input", unhandledKey.c_str());
@@ -322,6 +368,31 @@ InputHandler::~InputHandler()
 	delete[] key;
 	delete[] key_clear;
 	LogHandler::log("Input", "End");
+}
+
+void InputHandler::clearjoy(int i, int j)
+{
+	if (j < 0 || j >= _SLASK_MAXJOYBUTTONS)
+	{
+		std::string unhandledJoyButt = "Clearing joystick button ";
+		unhandledJoyButt += std::to_string(i);
+		unhandledJoyButt += " out of range.";
+		LogHandler::notify("Input", unhandledJoyButt.c_str());
+	}
+	joy_clear[i][j] = 1;
+}
+
+bool InputHandler::clearedjoy(int i, int j)
+{
+	if (j < 0 || j >= _SLASK_MAXJOYBUTTONS)
+	{
+		std::string unhandledJoyButt = "Reading mouse button ";
+		unhandledJoyButt += std::to_string(i);
+		unhandledJoyButt += " out of range.";
+		LogHandler::notify("Input", unhandledJoyButt.c_str());
+		return 0;
+	}
+	return joy_clear[i][j];
 }
 
 void InputHandler::clearmouse(int i)

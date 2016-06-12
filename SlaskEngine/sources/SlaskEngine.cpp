@@ -56,9 +56,12 @@ void SlaskEngine::init(int argc, char *argv[])
 	GraphicsHandler* graphics = GraphicsHandler::instance();
 	graphics->init("Game");
 
+	#ifndef NO_AUDIO
 	AudioHandler* audio = AudioHandler::instance();
 	audio->init(24);
 	audio->run();
+	#endif
+
 
 	#ifndef NO_STEAM
 	SteamHandler* steam = SteamHandler::instance();
@@ -102,8 +105,10 @@ void SlaskEngine::init(int argc, char *argv[])
 
 	while (running)
 	{
+#ifndef NO_AUDIO
 		//audio
 		audio->run();
+#endif
 		
 		//input
 		exitHandle = input->run();
@@ -226,12 +231,14 @@ SpriteSet* SlaskEngine::createSpriteSet(SpriteSet *ss)
 	return ss;
 }
 
+#ifndef NO_AUDIO
 AudioSet* SlaskEngine::createAudioSet(AudioSet *ss)
 {
 	ss->engine_id = audiosets.size();
 	audiosets.push_back(ss);
 	return ss;
 }
+#endif
 
 FontSet* SlaskEngine::createFontSet(FontSet *ss)
 {
@@ -256,6 +263,7 @@ SpriteSet* SlaskEngine::spriteSet(unsigned int i)
 	return spritesets[i];
 }
 
+#ifndef NO_AUDIO
 AudioSet* SlaskEngine::audioSet(unsigned int i)
 {
 	if (i < 0 || i >= audiosets.size())
@@ -271,6 +279,7 @@ AudioSet* SlaskEngine::audioSet(unsigned int i)
 	}
 	return audiosets[i];
 }
+#endif
 
 FontSet* SlaskEngine::fontSet(unsigned int i)
 {
@@ -295,11 +304,13 @@ void SlaskEngine::resolveUnloadQueue()
 		sprite_unload_sets.back()->_unload();
 		sprite_unload_sets.pop_back();
 	}
+#ifndef NO_AUDIO
 	while (audio_unload_sets.size())
 	{
 		audio_unload_sets.back()->_unload();
 		audio_unload_sets.pop_back();
 	}
+#endif
 	while (font_unload_sets.size())
 	{
 		font_unload_sets.back()->_unload();
@@ -414,12 +425,14 @@ void SlaskEngine::deleteAllSets()
 	}
 	spritesets.clear();
 
+#ifndef NO_AUDIO
 	for (unsigned int i = 0; i < audiosets.size(); i++)
 	{
 		audiosets[i]->_deathMark = 1;
 		delete audiosets[i];
 	}
 	audiosets.clear();
+#endif
 
 	for (unsigned int i = 0; i < fontsets.size(); i++)
 	{

@@ -62,24 +62,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="mainmenu.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="menubutton.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="data.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="background.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="sources\Audio.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
@@ -167,20 +149,11 @@
     <ClCompile Include="sources\Video.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="highscores.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
-    <ClCompile Include="hsplace.cpp">
-      <Filter>TechDemo</Filter>
-    </ClCompile>
     <ClCompile Include="sources\AnimationData.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
     <ClCompile Include="sources\Animation.cpp">
       <Filter>Source Files\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="tanim.cpp">
-      <Filter>TechDemo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,21 +162,6 @@
     <None Include="Documentation files\SlaskEngine API Documentation.hnd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
-    <ClInclude Include="mainmenu.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
-    <ClInclude Include="menubutton.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
-    <ClInclude Include="data.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
-    <ClInclude Include="background.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\Audio.h">
       <Filter>Header Files\Audio</Filter>
     </ClInclude>
@@ -300,9 +258,6 @@
     <ClInclude Include="include\Video.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="highscores.h">
-      <Filter>TechDemo</Filter>
-    </ClInclude>
     <ClInclude Include="include\FontChar.h">
       <Filter>Header Files\Class Resources</Filter>
     </ClInclude>
@@ -314,9 +269,6 @@
     </ClInclude>
     <ClInclude Include="include\Animation.h">
       <Filter>Header Files\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="tanim.h">
-      <Filter>TechDemo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

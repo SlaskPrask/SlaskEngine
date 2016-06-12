@@ -14,6 +14,7 @@ Sprite* slask::spriteSetSprite(unsigned int i, unsigned int j)
 	return NULL;
 }
 
+#ifndef NO_AUDIO
 AudioSet* slask::audioSet(unsigned int i)
 {
 	return SlaskEngine::instance()->audioSet(i);
@@ -27,6 +28,7 @@ Audio* slask::audioSetSound(unsigned int i, unsigned int j)
 	else
 		return NULL;
 }
+#endif
 
 FontSet* slask::fontSet(unsigned int i)
 {
@@ -369,6 +371,35 @@ bool slask::getKeyIdle(int keyCode)
 	return (InputHandler::instance()->getkey(keyCode)<=0);
 }
 
+bool slask::getButtonPress(int joystick, int button)
+{
+	if (InputHandler::instance()->clearedjoy(joystick, button))
+		return 0;
+	return (InputHandler::instance()->getbutton(joystick, button) == 1);
+}
+
+bool slask::getButtonRelease(int joystick, int button)
+{
+	if (InputHandler::instance()->clearedjoy(joystick, button))
+		return 0;
+	return (InputHandler::instance()->getbutton(joystick, button) == -1);
+}
+bool slask::getButtonHeld(int joystick, int button)
+{
+	if (InputHandler::instance()->clearedjoy(joystick, button))
+		return 0;
+	return (InputHandler::instance()->getbutton(joystick, button) >0);
+}
+bool slask::getButtonIdle(int joystick, int button)
+{
+	if (InputHandler::instance()->clearedjoy(joystick, button))
+		return 1;
+	return (InputHandler::instance()->getbutton(joystick, button) <= 0);
+}
+
+
+
+#ifndef NO_AUDIO
 void slask::setSoundSampleDecompress(bool enabled)
 {
 	AudioHandler::instance()->setSampleDecompress(enabled);
@@ -448,6 +479,7 @@ bool slask::getAudioIsPlaying(Audio* audio)
 {
 	return AudioHandler::instance()->getIsPlaying(audio);
 }
+#endif
 
 double slask::textWidth(Font *font,const char* str,double size,double lineSpacing)
 {

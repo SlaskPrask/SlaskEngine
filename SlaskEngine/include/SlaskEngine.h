@@ -3,18 +3,23 @@
 #include "SteamHandler.h"
 #include "InputHandler.h"
 #include "Sprite.h"
+#ifndef NO_AUDIO
+#include "Audio.h"
+#include "AudioBank.h"
 #include "AudioHandler.h"
+#include "AudioSet.h"
+#endif
+
 #include "LogHandler.h"
 #include "File.h"
 #include "Input.h"
 #include "Font.h"
-#include "Audio.h"
-#include "AudioBank.h"
+
 #include "Sprite.h"
 #include "ListHandle.h"
 #include "Timer.h"
 #include "SpriteSet.h"
-#include "AudioSet.h"
+
 #include "FontSet.h"
 #include "Platform.h"
 #include "Tag.h"
@@ -42,14 +47,18 @@ private:
 	ListHandle<Object> objects;
 	//sprite set list
 	std::vector<SpriteSet*> spritesets;
+#ifndef NO_AUDIO
 	//audio set list
 	std::vector<AudioSet*> audiosets;
+#endif
 	//font set list
 	std::vector<FontSet*> fontsets;
 	//sprite set list for queued unloading
 	std::vector<SpriteSet*> sprite_unload_sets;
+#ifndef NO_AUDIO
 	//audio set list for queued unloading
 	std::vector<AudioSet*> audio_unload_sets;
+#endif
 	//font set list for queued unloading
 	std::vector<FontSet*> font_unload_sets;
 	//static instance
@@ -105,14 +114,18 @@ public:
 	void createObject(Object *o);
 	//sprite sets request adding to listing in constructor
 	SpriteSet* createSpriteSet(SpriteSet *ss);
+#ifndef NO_AUDIO
 	//audio sets request adding to listing in constructor
 	AudioSet* createAudioSet(AudioSet *ss);
+#endif
 	//font sets request adding to listing in constructor
 	FontSet* createFontSet(FontSet *ss);
 	//get sprite set by index in namespace
 	SpriteSet* spriteSet(unsigned int i);
+#ifndef NO_AUDIO
 	//get audio set by index in namespace
 	AudioSet* audioSet(unsigned int i);
+#endif
 	//get font set by index in namespace
 	FontSet* fontSet(unsigned int i);
 
@@ -122,10 +135,12 @@ public:
 		sprite_unload_sets.push_back(set);
 	}
 	//queue set unload
+#ifndef NO_AUDIO
 	inline void unloadAudioSet(AudioSet* set)
 	{
 		audio_unload_sets.push_back(set);
 	}
+#endif
 	//queue set unload
 	inline void unloadFontSet(FontSet* set)
 	{
