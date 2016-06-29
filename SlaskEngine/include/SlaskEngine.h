@@ -1,8 +1,13 @@
 #pragma once
+
+#include <WinSock2.h>
+#include "ircHandler.h"
+
 #include "GraphicsHandler.h"
 #include "SteamHandler.h"
 #include "InputHandler.h"
 #include "Sprite.h"
+
 #ifndef NO_AUDIO
 #include "Audio.h"
 #include "AudioBank.h"
