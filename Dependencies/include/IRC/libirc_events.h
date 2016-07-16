@@ -11,7 +11,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public 
  * License for more details.
  */
-
+#pragma once
 
 #ifndef INCLUDE_IRC_EVENTS_H
 #define INCLUDE_IRC_EVENTS_H

@@ -21,7 +21,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 //
 ////////////////////////////////////////////////////////////
-
+#pragma once
 #ifndef SFML_FILEINPUTSTREAM_HPP
 #define SFML_FILEINPUTSTREAM_HPP
 

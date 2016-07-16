@@ -21,7 +21,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 //
 ////////////////////////////////////////////////////////////
-
+#pragma once
 #ifndef SFML_OPENGL_HPP
 #define SFML_OPENGL_HPP
 

@@ -41,6 +41,8 @@
  * program. Do not include other libirc_* headers.
  */
 
+#pragma once
+
 #ifndef INCLUDE_LIBIRC_H
 #define INCLUDE_LIBIRC_H
 

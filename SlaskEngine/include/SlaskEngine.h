@@ -1,7 +1,7 @@
 #pragma once
 
-#include <WinSock2.h>
-#include "ircHandler.h"
+/*#include <WinSock2.h>
+#include "ircHandler.h"*/
 
 #include "GraphicsHandler.h"
 #include "SteamHandler.h"

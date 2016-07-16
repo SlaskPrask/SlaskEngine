@@ -21,7 +21,7 @@
  * ::event_numeric callback. Every code also has a comment regarding its 
  * arguments.
  */
-
+#pragma once
 #ifndef INCLUDE_IRC_RFCNUMERIC_H
 #define INCLUDE_IRC_RFCNUMERIC_H
 
